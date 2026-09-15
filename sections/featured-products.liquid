@@ -13,12 +13,12 @@
       "name": "Product",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Product image" },
-        { "type": "text", "id": "name", "label": "Product name", "default": "The Essence" },
-        { "type": "text", "id": "name_cn", "label": "Chinese name", "default": "本 源" },
-        { "type": "text", "id": "category", "label": "Category", "default": "Minimal · Daily Wear" },
-        { "type": "text", "id": "price", "label": "Price", "default": "$128" },
-        { "type": "text", "id": "price_old", "label": "Old price", "default": "$150" },
-        { "type": "text", "id": "badge", "label": "Badge (optional)", "default": "Bestseller" },
+        { "type": "text", "id": "name", "label": "Product name" },
+        { "type": "text", "id": "name_cn", "label": "Chinese name" },
+        { "type": "text", "id": "category", "label": "Category" },
+        { "type": "text", "id": "price", "label": "Price" },
+        { "type": "text", "id": "price_old", "label": "Old price" },
+        { "type": "text", "id": "badge", "label": "Badge (optional)" },
         { "type": "url", "id": "link", "label": "Product link" }
       ]
     }
@@ -27,12 +27,12 @@
     {
       "name": "Featured Products",
       "blocks": [
-        { "type": "product", "settings": { "name": "The Essence", "name_cn": "本 源", "category": "Minimal · Daily Wear", "price": "$128", "price_old": "$150", "badge": "Bestseller" } },
-        { "type": "product", "settings": { "name": "The Dynasty", "name_cn": "朝 儀", "category": "Nanhong Agate · Cloisonné", "price": "$268", "price_old": "$310", "badge": "Signature" } },
-        { "type": "product", "settings": { "name": "The Whisper", "name_cn": "心 語", "category": "Hetian Jade · Woven", "price": "$98", "price_old": "$120", "badge": "" } },
-        { "type": "product", "settings": { "name": "The Aurum", "name_cn": "鎏 金", "category": "Gold Vermeil · Turquoise", "price": "$188", "price_old": "$220", "badge": "New" } },
-        { "type": "product", "settings": { "name": "The Halo", "name_cn": "流 光", "category": "Cat's Eye · Carnelian", "price": "$148", "price_old": "$175", "badge": "" } },
-        { "type": "product", "settings": { "name": "The Gourd", "name_cn": "福 祿", "category": "Gold Hulu · CZ Pendant", "price": "$198", "price_old": "$230", "badge": "Limited" } }
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
       ]
     }
   ]
@@ -46,40 +46,45 @@
       <p class="sec-lead" style="margin:0 auto">{{ section.settings.lead }}</p>
     </div>
     <div class="prod-grid">
+      {% assign default_names = "The Essence|The Dynasty|The Whisper|The Aurum|The Halo|The Gourd" | split: "|" %}
+      {% assign default_cns = "本 源|朝 儀|心 語|鎏 金|流 光|福 祿" | split: "|" %}
+      {% assign default_cats = "Minimal · Daily Wear|Nanhong Agate · Cloisonné|Hetian Jade · Woven|Gold Vermeil · Turquoise|Cat's Eye · Carnelian|Gold Hulu · CZ Pendant" | split: "|" %}
+      {% assign default_prices = "128|268|98|188|148|198" | split: "|" %}
+      {% assign default_olds = "150|310|120|220|175|230" | split: "|" %}
+      {% assign default_badges = "Bestseller|Signature||New||Limited" | split: "|" %}
+      {% assign default_imgs = "p01.jpg|p02.jpg|p03.jpg|p04.jpg|p05.jpg|p06.jpg" | split: "|" %}
+
       {% if section.blocks.size > 0 %}
-        {% assign defaults = "The Essence|本 源|Minimal · Daily Wear|$128|$150|Bestseller|p01.jpg||The Dynasty|朝 儀|Nanhong Agate · Cloisonné|$268|$310|Signature|p02.jpg||The Whisper|心 語|Hetian Jade · Woven|$98|$120||p03.jpg||The Aurum|鎏 金|Gold Vermeil · Turquoise|$188|$220|New|p04.jpg||The Halo|流 光|Cat's Eye · Carnelian|$148|$175||p05.jpg||The Gourd|福 祿|Gold Hulu · CZ Pendant|$198|$230|Limited|p06.jpg|" | split: "|" %}
         {% for block in section.blocks %}
-          {% assign i = forloop.index0 | times: 8 %}
-          {% if i < 48 %}
-            {% assign d_name = defaults[i] %}
-            {% assign d_cn = defaults[i+1] %}
-            {% assign d_cat = defaults[i+2] %}
-            {% assign d_price = defaults[i+3] %}
-            {% assign d_old = defaults[i+4] %}
-            {% assign d_badge = defaults[i+5] %}
-            {% assign d_img = defaults[i+6] %}
-          {% else %}
-            {% assign d_name = block.settings.name %}
-            {% assign d_cn = block.settings.name_cn %}
-            {% assign d_cat = block.settings.category %}
-            {% assign d_price = block.settings.price %}
-            {% assign d_old = block.settings.price_old %}
-            {% assign d_badge = block.settings.badge %}
-            {% assign d_img = '' %}
-          {% endif %}
+          {% assign idx = forloop.index0 %}
+          {% if idx > 5 %}{% assign idx = 5 %}{% endif %}
+          {% assign d_name = default_names[idx] %}
+          {% assign d_cn = default_cns[idx] %}
+          {% assign d_cat = default_cats[idx] %}
+          {% assign d_price = default_prices[idx] | prepend: '$' %}
+          {% assign d_old = default_olds[idx] | prepend: '$' %}
+          {% assign d_badge = default_badges[idx] %}
+          {% assign d_img = default_imgs[idx] %}
+
+          {% assign show_name = block.settings.name | default: d_name %}
+          {% assign show_cn = block.settings.name_cn | default: d_cn %}
+          {% assign show_cat = block.settings.category | default: d_cat %}
+          {% assign show_price = block.settings.price | default: d_price %}
+          {% assign show_old = block.settings.price_old | default: d_old %}
+          {% assign show_badge = block.settings.badge | default: d_badge %}
+
           <a href="{{ block.settings.link | default: '#' }}" class="pcard" {{ block.shopify_attributes }}>
             <div class="pcard-img">
-              {% assign badge = block.settings.badge | default: d_badge %}
-              {% if badge != blank %}<span class="pcard-badge">{{ badge }}</span>{% endif %}
-              {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name | default: d_name }}">
-              {% else %}<img src="{{ d_img | asset_url }}" alt="{{ block.settings.name | default: d_name }}">{% endif %}
+              {% if show_badge != blank %}<span class="pcard-badge">{{ show_badge }}</span>{% endif %}
+              {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ show_name }}">
+              {% else %}<img src="{{ d_img | asset_url }}" alt="{{ show_name }}">{% endif %}
             </div>
             <div class="pcard-body">
-              <div class="pcard-cat">{{ block.settings.category | default: d_cat }}</div>
-              <div class="pcard-name">{{ block.settings.name | default: d_name }}</div>
-              <div class="pcard-cn">{{ block.settings.name_cn | default: d_cn }}</div>
-              <div class="pcard-price">{{ block.settings.price | default: d_price }}{% assign old_p = block.settings.price_old | default: d_old %}{% if old_p != blank %}<span class="old">{{ old_p }}</span>{% endif %}</div>
-              <div class="pcard-pay">or 4 payments of {{ (block.settings.price | default: d_price) | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+              <div class="pcard-cat">{{ show_cat }}</div>
+              <div class="pcard-name">{{ show_name }}</div>
+              <div class="pcard-cn">{{ show_cn }}</div>
+              <div class="pcard-price">{{ show_price }}{% if show_old != blank %}<span class="old">{{ show_old }}</span>{% endif %}</div>
+              <div class="pcard-pay">or 4 payments of {{ show_price | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
             </div>
           </a>
         {% endfor %}
