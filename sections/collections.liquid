@@ -4,29 +4,16 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Curated Collections" },
     { "type": "text", "id": "title", "label": "Title", "default": "Wear the Tradition" },
-    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "系 列" }
-  ],
-  "blocks": [
-    {
-      "type": "card",
-      "name": "Collection Card",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Cinnabar Bracelets" },
-        { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "硃砂手串" },
-        { "type": "url", "id": "link", "label": "Link" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Collections",
-      "blocks": [
-        { "type": "card", "settings": { "title": "Cinnabar Bracelets", "title_cn": "硃砂手串" } },
-        { "type": "card", "settings": { "title": "Cloisonné & Gold", "title_cn": "景泰藍 · 鎏金" } },
-        { "type": "card", "settings": { "title": "Woven Charms", "title_cn": "編繩掛飾" } }
-      ]
-    }
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "系 列" },
+    { "type": "image_picker", "id": "img1", "label": "Card 1 image" },
+    { "type": "text", "id": "title1", "label": "Card 1 title", "default": "Cinnabar Bracelets" },
+    { "type": "text", "id": "title1_cn", "label": "Card 1 Chinese", "default": "硃砂手串" },
+    { "type": "image_picker", "id": "img2", "label": "Card 2 image" },
+    { "type": "text", "id": "title2", "label": "Card 2 title", "default": "Cloisonné & Gold" },
+    { "type": "text", "id": "title2_cn", "label": "Card 2 Chinese", "default": "景泰藍 · 鎏金" },
+    { "type": "image_picker", "id": "img3", "label": "Card 3 image" },
+    { "type": "text", "id": "title3", "label": "Card 3 title", "default": "Woven Charms" },
+    { "type": "text", "id": "title3_cn", "label": "Card 3 Chinese", "default": "編繩掛飾" }
   ]
 }
 {% endschema %}
@@ -37,32 +24,30 @@
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
     </div>
     <div class="coll-grid">
-      <a href="#" class="coll-card">
-        <img src="{{ 'p01.jpg' | asset_url }}" alt="Cinnabar Bracelets">
-        <div class="coll-overlay"><h3>Cinnabar Bracelets</h3><div class="cn">硃砂手串</div><span class="shop">Shop Now &rarr;</span></div>
+      <a href="javascript:void(0)" class="coll-card">
+        {% if section.settings.img1 %}
+          <img src="{{ section.settings.img1 | image_url: width: 800 }}" alt="{{ section.settings.title1 }}">
+        {% else %}
+          <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ section.settings.title1 }}">
+        {% endif %}
+        <div class="coll-overlay"><h3>{{ section.settings.title1 }}</h3><div class="cn">{{ section.settings.title1_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
       </a>
-      <a href="#" class="coll-card">
-        <img src="{{ 'p02.jpg' | asset_url }}" alt="Cloisonné & Gold">
-        <div class="coll-overlay"><h3>Cloisonn&eacute; &amp; Gold</h3><div class="cn">景泰藍 · 鎏金</div><span class="shop">Shop Now &rarr;</span></div>
+      <a href="javascript:void(0)" class="coll-card">
+        {% if section.settings.img2 %}
+          <img src="{{ section.settings.img2 | image_url: width: 800 }}" alt="{{ section.settings.title2 }}">
+        {% else %}
+          <img src="{{ 'p02.jpg' | asset_url }}" alt="{{ section.settings.title2 }}">
+        {% endif %}
+        <div class="coll-overlay"><h3>{{ section.settings.title2 }}</h3><div class="cn">{{ section.settings.title2_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
       </a>
-      <a href="#" class="coll-card">
-        <img src="{{ 'p03.jpg' | asset_url }}" alt="Woven Charms">
-        <div class="coll-overlay"><h3>Woven Charms</h3><div class="cn">編繩掛飾</div><span class="shop">Shop Now &rarr;</span></div>
+      <a href="javascript:void(0)" class="coll-card">
+        {% if section.settings.img3 %}
+          <img src="{{ section.settings.img3 | image_url: width: 800 }}" alt="{{ section.settings.title3 }}">
+        {% else %}
+          <img src="{{ 'p03.jpg' | asset_url }}" alt="{{ section.settings.title3 }}">
+        {% endif %}
+        <div class="coll-overlay"><h3>{{ section.settings.title3 }}</h3><div class="cn">{{ section.settings.title3_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
       </a>
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link | default: '#' }}" class="coll-card" {{ block.shopify_attributes }}>
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
-          {% else %}
-            <img src="{{ 'p04.jpg' | asset_url }}" alt="{{ block.settings.title }}">
-          {% endif %}
-          <div class="coll-overlay">
-            <h3>{{ block.settings.title }}</h3>
-            <div class="cn">{{ block.settings.title_cn }}</div>
-            <span class="shop">Shop Now &rarr;</span>
-          </div>
-        </a>
-      {% endfor %}
     </div>
   </div>
 </section>
