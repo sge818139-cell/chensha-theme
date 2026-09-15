@@ -32,17 +32,11 @@
       {{ logo | slice: 0, mid }}<span>{{ logo | slice: mid, logo.size }}</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          <li><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
-        {% endfor %}
-      {% else %}
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#bracelets">Bracelets</a></li>
-        <li><a href="#origin">Our Story</a></li>
-        <li><a href="#craft">Craft</a></li>
-        <li><a href="#journal">Journal</a></li>
-      {% endif %}
+      <li><a href="/collections/all">Collections</a></li>
+      <li><a href="/collections/all">Bracelets</a></li>
+      <li><a href="/pages/about">Our Story</a></li>
+      <li><a href="/pages/craft">Craft</a></li>
+      <li><a href="/pages/journal">Journal</a></li>
     </ul>
     <div class="header-icons">
       <svg viewBox="0 0 24 24" class="icon-search"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
