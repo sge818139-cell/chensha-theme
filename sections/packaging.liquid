@@ -28,9 +28,10 @@
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
       <p class="sec-lead">{{ section.settings.lead }}</p>
       <ul class="pack-list">
-        {% for i in (1..4) %}
-          <li><span class="dot"></span><span>{{ section.settings['li' | append: i] }}</span></li>
-        {% endfor %}
+        <li><span class="dot"></span><span>{{ section.settings.li1 }}</span></li>
+        <li><span class="dot"></span><span>{{ section.settings.li2 }}</span></li>
+        <li><span class="dot"></span><span>{{ section.settings.li3 }}</span></li>
+        <li><span class="dot"></span><span>{{ section.settings.li4 }}</span></li>
       </ul>
     </div>
   </div>

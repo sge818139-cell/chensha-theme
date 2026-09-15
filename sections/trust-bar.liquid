@@ -3,7 +3,13 @@
   "name": "Trust Bar",
   "settings": [
     { "type": "text", "id": "t1", "label": "Item 1 title", "default": "Authenticity Certified" },
-    { "type": "text", "id": "s1", "label": "Item 1 subtitle", "default": "Every piece includes a certificate of origin" }
+    { "type": "text", "id": "s1", "label": "Item 1 subtitle", "default": "Every piece includes a certificate of origin" },
+    { "type": "text", "id": "t2", "label": "Item 2 title", "default": "Free Global Shipping" },
+    { "type": "text", "id": "s2", "label": "Item 2 subtitle", "default": "To US, EU, SG, TW & MY on orders over $150" },
+    { "type": "text", "id": "t3", "label": "Item 3 title", "default": "30-Day Returns" },
+    { "type": "text", "id": "s3", "label": "Item 3 subtitle", "default": "Love it or send it back, no questions asked" },
+    { "type": "text", "id": "t4", "label": "Item 4 title", "default": "Handcrafted in China" },
+    { "type": "text", "id": "s4", "label": "Item 4 subtitle", "default": "Traditional artisans, modern design" }
   ]
 }
 {% endschema %}
@@ -12,6 +18,18 @@
     <div class="trust-item">
       <div class="t-title">{{ section.settings.t1 }}</div>
       <div class="t-sub">{{ section.settings.s1 }}</div>
+    </div>
+    <div class="trust-item">
+      <div class="t-title">{{ section.settings.t2 }}</div>
+      <div class="t-sub">{{ section.settings.s2 }}</div>
+    </div>
+    <div class="trust-item">
+      <div class="t-title">{{ section.settings.t3 }}</div>
+      <div class="t-sub">{{ section.settings.s3 }}</div>
+    </div>
+    <div class="trust-item">
+      <div class="t-title">{{ section.settings.t4 }}</div>
+      <div class="t-sub">{{ section.settings.s4 }}</div>
     </div>
   </div>
 </div>
