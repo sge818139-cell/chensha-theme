@@ -157,18 +157,6 @@
               "badge": "",
               "link": ""
             }
-          },
-          "product_PUhUA6": {
-            "type": "product",
-            "settings": {
-              "name": "",
-              "name_cn": "",
-              "category": "",
-              "price": "",
-              "price_old": "",
-              "badge": "",
-              "link": ""
-            }
           }
         },
         "block_order": [
@@ -177,8 +165,7 @@
           "product_BcMb96",
           "product_H3CJAb",
           "product_RrFj49",
-          "product_rKe9Mq",
-          "product_PUhUA6"
+          "product_rKe9Mq"
         ],
         "settings": {
           "eyebrow": "Bestsellers",
