@@ -5,9 +5,15 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 01 · Origin" },
     { "type": "text", "id": "title", "label": "Title", "default": "The Red Stone of China" },
     { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "朱砂之源" },
-    { "type": "textarea", "id": "body", "label": "Body", "default": "Mined from the mountains of Guizhou and Hunan, cinnabar — zhūshā 朱砂 — has been ground, carved, and worn as a talisman since the Han Dynasty. It is the color of festivals, seals, and the protective red thread that wraps around every CHENSHA piece." },
-    { "type": "textarea", "id": "quote", "label": "Pull quote", "default": "Cinnabar is not merely a stone. It is China's heartbeat, worn on the wrist." },
-    { "type": "image_picker", "id": "image", "label": "Image" }
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Mined from the mountains of Guizhou and Hunan, cinnabar — zhūshā 朱砂 — has been ground, carved, and worn as a talisman since the Han Dynasty. It is the color of festivals, seals, and the protective red thread that wraps around every CHENSHA piece." },
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "Cinnabar is not merely a stone. It is China's heartbeat, worn on the wrist." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "stat1_n", "label": "Stat 1 number", "default": "2000+" },
+    { "type": "text", "id": "stat1_l", "label": "Stat 1 label", "default": "Years of heritage" },
+    { "type": "text", "id": "stat2_n", "label": "Stat 2 number", "default": "99%" },
+    { "type": "text", "id": "stat2_l", "label": "Stat 2 label", "default": "High-density mineral" },
+    { "type": "text", "id": "stat3_n", "label": "Stat 3 number", "default": "30+" },
+    { "type": "text", "id": "stat3_l", "label": "Stat 3 label", "default": "Master artisans" }
   ]
 }
 {% endschema %}
@@ -15,7 +21,7 @@
   <div class="container origin-grid">
     <div class="origin-img">
       {% if section.settings.image %}
-        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="">
+        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Cinnabar">
       {% else %}
         <img src="{{ 'p01.jpg' | asset_url }}" alt="Cinnabar bead bracelet">
       {% endif %}
@@ -23,12 +29,12 @@
     <div>
       <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
-      <p class="sec-lead">{{ section.settings.body }}</p>
+      <p class="sec-lead">{{ section.settings.lead }}</p>
       <div class="origin-quote">{{ section.settings.quote }}</div>
       <div class="origin-stats">
-        <div class="ostat"><div class="n">2000+</div><div class="l">Years of heritage</div></div>
-        <div class="ostat"><div class="n">99%</div><div class="l">High-density mineral</div></div>
-        <div class="ostat"><div class="n">30+</div><div class="l">Master artisans</div></div>
+        <div class="ostat"><div class="n">{{ section.settings.stat1_n }}</div><div class="l">{{ section.settings.stat1_l }}</div></div>
+        <div class="ostat"><div class="n">{{ section.settings.stat2_n }}</div><div class="l">{{ section.settings.stat2_l }}</div></div>
+        <div class="ostat"><div class="n">{{ section.settings.stat3_n }}</div><div class="l">{{ section.settings.stat3_l }}</div></div>
       </div>
     </div>
   </div>

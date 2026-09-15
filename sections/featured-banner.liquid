@@ -5,10 +5,13 @@
     { "type": "text", "id": "tag", "label": "Tag", "default": "Editor's Pick · 編輯精選" },
     { "type": "text", "id": "title", "label": "Title", "default": "The Dynasty" },
     { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "南紅 · 景泰藍平安扣" },
-    { "type": "textarea", "id": "body", "label": "Body", "default": "A statement piece pairing polished Nanhong agate with hand-fired cloisonné in vintage gold, finished with a red agate peace-knot pendant." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "A statement piece pairing polished Nanhong agate with hand-fired cloisonné in vintage gold, finished with a red agate peace-knot pendant." },
     { "type": "text", "id": "price", "label": "Price", "default": "$268" },
-    { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "$310" },
-    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+    { "type": "text", "id": "price_old", "label": "Old price", "default": "$310" },
+    { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Add to Cart" },
+    { "type": "url", "id": "cta1_url", "label": "Primary CTA URL" },
+    { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "View Details" },
+    { "type": "url", "id": "cta2_url", "label": "Secondary CTA URL" }
   ]
 }
 {% endschema %}
@@ -17,11 +20,11 @@
     <div>
       <span class="feat-tag">{{ section.settings.tag }}</span>
       <h2>{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
-      <p>{{ section.settings.body }}</p>
-      <div class="feat-price">{{ section.settings.price }}<span class="old">{{ section.settings.compare_price }}</span></div>
+      <p>{{ section.settings.lead }}</p>
+      <div class="feat-price">{{ section.settings.price }}<span class="old">{{ section.settings.price_old }}</span></div>
       <div class="btn-row">
-        <a href="{{ section.settings.cta_url | default: '#' }}" class="btn btn-gold">Add to Cart</a>
-        <a href="{{ section.settings.cta_url | default: '#' }}" class="btn btn-ghost">View Details</a>
+        <a href="{{ section.settings.cta1_url | default: '#' }}" class="btn btn-gold">{{ section.settings.cta1 }}</a>
+        <a href="{{ section.settings.cta2_url | default: '#' }}" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
       </div>
     </div>
     <div></div>

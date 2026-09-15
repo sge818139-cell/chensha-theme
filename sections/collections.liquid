@@ -7,12 +7,26 @@
     { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "系 列" }
   ],
   "blocks": [
-    { "type": "collection", "name": "Collection card", "settings": [
-      { "type": "text", "id": "title", "label": "Title", "default": "Cinnabar Bracelets" },
-      { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "硃砂手串" },
-      { "type": "image_picker", "id": "image", "label": "Image" },
-      { "type": "url", "id": "url", "label": "Link" }
-    ]}
+    {
+      "type": "card",
+      "name": "Collection Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Cinnabar Bracelets" },
+        { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "硃砂手串" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Cinnabar Bracelets", "title_cn": "硃砂手串" } },
+        { "type": "card", "settings": { "title": "Cloisonné & Gold", "title_cn": "景泰藍 · 鎏金" } },
+        { "type": "card", "settings": { "title": "Woven Charms", "title_cn": "編繩掛飾" } }
+      ]
+    }
   ]
 }
 {% endschema %}
@@ -23,18 +37,17 @@
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
     </div>
     <div class="coll-grid">
-      {% assign default_imgs = 'p04.jpg,p02.jpg,p03.jpg' | split: ',' %}
       {% for block in section.blocks %}
-        <a href="{{ block.settings.url | default: '#' }}" class="coll-card">
+        <a href="{{ block.settings.link | default: '#' }}" class="coll-card">
           {% if block.settings.image %}
             <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
           {% else %}
-            <img src="{{ default_imgs[forloop.index0] | asset_url }}" alt="{{ block.settings.title }}">
+            <img src="{{ 'p04.jpg' | asset_url }}" alt="{{ block.settings.title }}">
           {% endif %}
           <div class="coll-overlay">
             <h3>{{ block.settings.title }}</h3>
             <div class="cn">{{ block.settings.title_cn }}</div>
-            <span class="shop">Shop Now →</span>
+            <span class="shop">Shop Now &rarr;</span>
           </div>
         </a>
       {% endfor %}

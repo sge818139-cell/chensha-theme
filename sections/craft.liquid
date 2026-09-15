@@ -4,14 +4,17 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 02 · Craft" },
     { "type": "text", "id": "title", "label": "Title", "default": "Meaning in Every Bead" },
-    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "工 藝 與 意 涵" }
-  ],
-  "blocks": [
-    { "type": "step", "name": "Step", "settings": [
-      { "type": "text", "id": "num", "label": "Number", "default": "I · 朱砂" },
-      { "type": "text", "id": "title", "label": "Title", "default": "The Stone" },
-      { "type": "textarea", "id": "body", "label": "Body", "default": "Genuine high-density cinnabar, hand-polished to a warm gloss." }
-    ]}
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "工藝與意涵" },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "CHENSHA pieces are not simply accessories. Each stone, knot, and charm is chosen to carry a specific intention." },
+    { "type": "text", "id": "c1_num", "label": "Card 1 number", "default": "I · 朱砂" },
+    { "type": "text", "id": "c1_title", "label": "Card 1 title", "default": "The Stone" },
+    { "type": "textarea", "id": "c1_text", "label": "Card 1 text", "default": "Genuine high-density cinnabar, hand-polished to a warm gloss. Believed in Chinese tradition to deflect negative energy and steady the spirit." },
+    { "type": "text", "id": "c2_num", "label": "Card 2 number", "default": "II · 編" },
+    { "type": "text", "id": "c2_title", "label": "Card 2 title", "default": "The Knot" },
+    { "type": "textarea", "id": "c2_text", "label": "Card 2 text", "default": "Each cord is hand-woven with 72-linen thread using traditional Chinese knotting techniques — strong, comfortable, and made to last." },
+    { "type": "text", "id": "c3_num", "label": "Card 3 number", "default": "III · 符" },
+    { "type": "text", "id": "c3_title", "label": "Card 3 title", "default": "The Symbol" },
+    { "type": "textarea", "id": "c3_text", "label": "Card 3 text", "default": "Pixiu, Hulu gourd, peace knot, five-petal flower — every charm is chosen for its centuries-old meaning, restyled for the modern wrist." }
   ]
 }
 {% endschema %}
@@ -20,16 +23,24 @@
     <div style="text-align:center;max-width:700px;margin:0 auto">
       <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
-      <p class="sec-lead" style="margin:0 auto">CHENSHA pieces are not simply accessories. Each stone, knot, and charm is chosen to carry a specific intention — so that what you wear every day also works for you.</p>
+      <p class="sec-lead" style="margin:0 auto">{{ section.settings.lead }}</p>
     </div>
     <div class="craft-grid">
-      {% for block in section.blocks %}
-        <div class="craft-card">
-          <div class="num">{{ block.settings.num }}</div>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.body }}</p>
-        </div>
-      {% endfor %}
+      <div class="craft-card">
+        <div class="num">{{ section.settings.c1_num }}</div>
+        <h3>{{ section.settings.c1_title }}</h3>
+        <p>{{ section.settings.c1_text }}</p>
+      </div>
+      <div class="craft-card">
+        <div class="num">{{ section.settings.c2_num }}</div>
+        <h3>{{ section.settings.c2_title }}</h3>
+        <p>{{ section.settings.c2_text }}</p>
+      </div>
+      <div class="craft-card">
+        <div class="num">{{ section.settings.c3_num }}</div>
+        <h3>{{ section.settings.c3_title }}</h3>
+        <p>{{ section.settings.c3_text }}</p>
+      </div>
     </div>
   </div>
 </section>
