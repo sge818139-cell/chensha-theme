@@ -47,25 +47,34 @@
       <p class="sec-lead" style="margin:0 auto">{{ section.settings.lead }}</p>
     </div>
     <div class="prod-grid">
-      {% for block in section.blocks %}
-        <div class="pcard" {{ block.shopify_attributes }}>
-          <div class="pcard-img">
-            {% if block.settings.badge != blank %}<span class="pcard-badge">{{ block.settings.badge }}</span>{% endif %}
-            {% if block.settings.image %}
-              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name }}">
-            {% else %}
-              <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ block.settings.name }}">
-            {% endif %}
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="pcard" {{ block.shopify_attributes }}>
+            <div class="pcard-img">
+              {% if block.settings.badge != blank %}<span class="pcard-badge">{{ block.settings.badge }}</span>{% endif %}
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name }}">
+              {% else %}
+                <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ block.settings.name }}">
+              {% endif %}
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-cat">{{ block.settings.category }}</div>
+              <div class="pcard-name">{{ block.settings.name }}</div>
+              <div class="pcard-cn">{{ block.settings.name_cn }}</div>
+              <div class="pcard-price">{{ block.settings.price }}{% if block.settings.price_old != blank %}<span class="old">{{ block.settings.price_old }}</span>{% endif %}</div>
+              <div class="pcard-pay">{{ block.settings.pay }}</div>
+            </div>
           </div>
-          <div class="pcard-body">
-            <div class="pcard-cat">{{ block.settings.category }}</div>
-            <div class="pcard-name">{{ block.settings.name }}</div>
-            <div class="pcard-cn">{{ block.settings.name_cn }}</div>
-            <div class="pcard-price">{{ block.settings.price }}{% if block.settings.price_old != blank %}<span class="old">{{ block.settings.price_old }}</span>{% endif %}</div>
-            <div class="pcard-pay">{{ block.settings.pay }}</div>
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Bestseller</span><img src="{{ 'p01.jpg' | asset_url }}" alt="The Essence"></div><div class="pcard-body"><div class="pcard-cat">Minimal · Daily Wear</div><div class="pcard-name">The Essence</div><div class="pcard-cn">本 源</div><div class="pcard-price">$128<span class="old">$150</span></div><div class="pcard-pay">or 4 payments of $32.00</div></div></div>
+        <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Signature</span><img src="{{ 'p02.jpg' | asset_url }}" alt="The Dynasty"></div><div class="pcard-body"><div class="pcard-cat">Nanhong Agate · Cloisonné</div><div class="pcard-name">The Dynasty</div><div class="pcard-cn">朝 儀</div><div class="pcard-price">$268<span class="old">$310</span></div><div class="pcard-pay">or 4 payments of $67.00</div></div></div>
+        <div class="pcard"><div class="pcard-img"><img src="{{ 'p03.jpg' | asset_url }}" alt="The Whisper"></div><div class="pcard-body"><div class="pcard-cat">Hetian Jade · Woven</div><div class="pcard-name">The Whisper</div><div class="pcard-cn">心 語</div><div class="pcard-price">$98<span class="old">$120</span></div><div class="pcard-pay">or 4 payments of $24.50</div></div></div>
+        <div class="pcard"><div class="pcard-img"><span class="pcard-badge">New</span><img src="{{ 'p04.jpg' | asset_url }}" alt="The Aurum"></div><div class="pcard-body"><div class="pcard-cat">Gold Vermeil · Turquoise</div><div class="pcard-name">The Aurum</div><div class="pcard-cn">鎏 金</div><div class="pcard-price">$188<span class="old">$220</span></div><div class="pcard-pay">or 4 payments of $47.00</div></div></div>
+        <div class="pcard"><div class="pcard-img"><img src="{{ 'p05.jpg' | asset_url }}" alt="The Halo"></div><div class="pcard-body"><div class="pcard-cat">Cat's Eye · Carnelian</div><div class="pcard-name">The Halo</div><div class="pcard-cn">流 光</div><div class="pcard-price">$148<span class="old">$175</span></div><div class="pcard-pay">or 4 payments of $37.00</div></div></div>
+        <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Limited</span><img src="{{ 'p06.jpg' | asset_url }}" alt="The Gourd"></div><div class="pcard-body"><div class="pcard-cat">Gold Hulu · CZ Pendant</div><div class="pcard-name">The Gourd</div><div class="pcard-cn">福 祿</div><div class="pcard-price">$198<span class="old">$230</span></div><div class="pcard-pay">or 4 payments of $49.50</div></div></div>
+      {% endif %}
     </div>
   </div>
 </section>

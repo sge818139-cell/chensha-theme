@@ -3,8 +3,11 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Scroll to top on load
-    if (!window.location.hash) { window.scrollTo(0, 0); }
+    // Clear any hash and scroll to top on load
+    if (window.location.hash) {
+      history.replaceState(null, document.title, window.location.pathname);
+    }
+    window.scrollTo(0, 0);
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
