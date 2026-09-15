@@ -37,20 +37,35 @@
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
     </div>
     <div class="coll-grid">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link | default: '#' }}" class="coll-card">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
-          {% else %}
-            <img src="{{ 'p04.jpg' | asset_url }}" alt="{{ block.settings.title }}">
-          {% endif %}
-          <div class="coll-overlay">
-            <h3>{{ block.settings.title }}</h3>
-            <div class="cn">{{ block.settings.title_cn }}</div>
-            <span class="shop">Shop Now &rarr;</span>
-          </div>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link | default: '#' }}" class="coll-card" {{ block.shopify_attributes }}>
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
+            {% else %}
+              <img src="{{ 'p04.jpg' | asset_url }}" alt="{{ block.settings.title }}">
+            {% endif %}
+            <div class="coll-overlay">
+              <h3>{{ block.settings.title }}</h3>
+              <div class="cn">{{ block.settings.title_cn }}</div>
+              <span class="shop">Shop Now &rarr;</span>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <a href="#bracelets" class="coll-card">
+          <img src="{{ 'p01.jpg' | asset_url }}" alt="Cinnabar Bracelets">
+          <div class="coll-overlay"><h3>Cinnabar Bracelets</h3><div class="cn">硃砂手串</div><span class="shop">Shop Now &rarr;</span></div>
         </a>
-      {% endfor %}
+        <a href="#bracelets" class="coll-card">
+          <img src="{{ 'p02.jpg' | asset_url }}" alt="Cloisonné & Gold">
+          <div class="coll-overlay"><h3>Cloisonn&eacute; &amp; Gold</h3><div class="cn">景泰藍 · 鎏金</div><span class="shop">Shop Now &rarr;</span></div>
+        </a>
+        <a href="#bracelets" class="coll-card">
+          <img src="{{ 'p03.jpg' | asset_url }}" alt="Woven Charms">
+          <div class="coll-overlay"><h3>Woven Charms</h3><div class="cn">編繩掛飾</div><span class="shop">Shop Now &rarr;</span></div>
+        </a>
+      {% endif %}
     </div>
   </div>
 </section>
