@@ -24,30 +24,30 @@
       <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
     </div>
     <div class="coll-grid">
-      <a href="javascript:void(0)" class="coll-card">
+      <div class="coll-card">
         {% if section.settings.img1 %}
           <img src="{{ section.settings.img1 | image_url: width: 800 }}" alt="{{ section.settings.title1 }}">
         {% else %}
           <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ section.settings.title1 }}">
         {% endif %}
         <div class="coll-overlay"><h3>{{ section.settings.title1 }}</h3><div class="cn">{{ section.settings.title1_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
-      </a>
-      <a href="javascript:void(0)" class="coll-card">
+      </div>
+      <div class="coll-card">
         {% if section.settings.img2 %}
           <img src="{{ section.settings.img2 | image_url: width: 800 }}" alt="{{ section.settings.title2 }}">
         {% else %}
           <img src="{{ 'p02.jpg' | asset_url }}" alt="{{ section.settings.title2 }}">
         {% endif %}
         <div class="coll-overlay"><h3>{{ section.settings.title2 }}</h3><div class="cn">{{ section.settings.title2_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
-      </a>
-      <a href="javascript:void(0)" class="coll-card">
+      </div>
+      <div class="coll-card">
         {% if section.settings.img3 %}
           <img src="{{ section.settings.img3 | image_url: width: 800 }}" alt="{{ section.settings.title3 }}">
         {% else %}
           <img src="{{ 'p03.jpg' | asset_url }}" alt="{{ section.settings.title3 }}">
         {% endif %}
         <div class="coll-overlay"><h3>{{ section.settings.title3 }}</h3><div class="cn">{{ section.settings.title3_cn }}</div><span class="shop">Shop Now &rarr;</span></div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
