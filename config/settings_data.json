@@ -1,7 +1,243 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "cinnabar": "#9E2B25",
     "gold": "#C9A24B",
-    "ivory": "#FAF6F0"
+    "ivory": "#FAF6F0",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "LAUNCH OFFER · FREE GLOBAL SHIPPING OVER $150 · CODE CHENSHA15"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "CHENSHA"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "eyebrow": "Authentic Chinese Cinnabar · Since Ancient Times",
+          "title": "CHENSHA",
+          "title_cn": "陳 砂",
+          "lead": "For over two millennia, cinnabar has been China's most revered red — worn by emperors, treasured by scholars, and believed to carry protection and vitality. CHENSHA crafts this sacred mineral into everyday amulets for the modern world.",
+          "cta1": "Shop the Collection",
+          "cta1_url": "",
+          "cta2": "Discover Our Story"
+        }
+      },
+      "trust-bar": {
+        "type": "trust-bar",
+        "settings": {
+          "t1": "Authenticity Certified",
+          "s1": "Every piece includes a certificate of origin",
+          "t2": "Free Global Shipping",
+          "s2": "To US, EU, SG, TW & MY on orders over $150",
+          "t3": "30-Day Returns",
+          "s3": "Love it or send it back, no questions asked",
+          "t4": "Handcrafted in China",
+          "s4": "Traditional artisans, modern design"
+        }
+      },
+      "origin-story": {
+        "type": "origin-story",
+        "settings": {
+          "eyebrow": "Chapter 01 · Origin",
+          "title": "The Red Stone of China",
+          "title_cn": "朱砂之源",
+          "lead": "Mined from the mountains of Guizhou and Hunan, cinnabar — zhūshā 朱砂 — has been ground, carved, and worn as a talisman since the Han Dynasty. It is the color of festivals, seals, and the protective red thread that wraps around every CHENSHA piece.",
+          "quote": "Cinnabar is not merely a stone. It is China's heartbeat, worn on the wrist.",
+          "stat1_n": "2000+",
+          "stat1_l": "Years of heritage",
+          "stat2_n": "99%",
+          "stat2_l": "High-density mineral",
+          "stat3_n": "30+",
+          "stat3_l": "Master artisans"
+        }
+      },
+      "collections": {
+        "type": "collections",
+        "settings": {
+          "eyebrow": "Curated Collections",
+          "title": "Wear the Tradition",
+          "title_cn": "系 列",
+          "title1": "Cinnabar Bracelets",
+          "title1_cn": "硃砂手串",
+          "link1": "",
+          "title2": "Cloisonné & Gold",
+          "title2_cn": "景泰藍 · 鎏金",
+          "link2": "",
+          "title3": "Woven Charms",
+          "title3_cn": "編繩掛飾",
+          "link3": ""
+        }
+      },
+      "featured-products": {
+        "type": "featured-products",
+        "blocks": {
+          "product_CYykDJ": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          },
+          "product_caLwj4": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          },
+          "product_H3CJAb": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          },
+          "product_RrFj49": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          },
+          "product_rKe9Mq": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          },
+          "product_PUhUA6": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "",
+              "price_old": "",
+              "badge": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "product_CYykDJ",
+          "product_caLwj4",
+          "product_H3CJAb",
+          "product_RrFj49",
+          "product_rKe9Mq",
+          "product_PUhUA6"
+        ],
+        "settings": {
+          "eyebrow": "Bestsellers",
+          "title": "The CHENSHA Selection",
+          "title_cn": "精選之作",
+          "lead": "Each piece is hand-assembled with authentic cinnabar and paired with symbolic materials — jade, gold vermeil, cloisonné, and cat's eye — chosen for meaning as much as beauty."
+        }
+      },
+      "featured-banner": {
+        "type": "featured-banner",
+        "settings": {
+          "tag": "Editor's Pick · 編輯精選",
+          "title": "The Dynasty",
+          "title_cn": "南紅 · 景泰藍平安扣",
+          "lead": "A statement piece pairing polished Nanhong agate with hand-fired cloisonné in vintage gold, finished with a red agate peace-knot pendant.",
+          "price": "$268",
+          "price_old": "$310",
+          "cta1": "Add to Cart",
+          "cta1_url": "",
+          "cta2": "View Details",
+          "cta2_url": ""
+        }
+      },
+      "packaging": {
+        "type": "packaging",
+        "settings": {
+          "eyebrow": "The CHENSHA Experience",
+          "title": "Wrapped in Red & Gold",
+          "title_cn": "開 盒 之 禮",
+          "lead": "Every order arrives in our signature ivory keepsake box, tied with a black grosgrain ribbon and finished with a velveteen pouch and certificate of authenticity.",
+          "li1": "Signature keepsake box — reusable, magnetic closure, lined in ivory.",
+          "li2": "Velveteen travel pouch — gold-foil stamped, protects your piece on the go.",
+          "li3": "Certificate of Authenticity — signed, numbered, with origin and care guide.",
+          "li4": "Ribbon & card — gift-ready by default."
+        }
+      },
+      "craft": {
+        "type": "craft",
+        "settings": {
+          "eyebrow": "Chapter 02 · Craft",
+          "title": "Meaning in Every Bead",
+          "title_cn": "工藝與意涵",
+          "lead": "CHENSHA pieces are not simply accessories. Each stone, knot, and charm is chosen to carry a specific intention.",
+          "c1_num": "I · 朱砂",
+          "c1_title": "The Stone",
+          "c1_text": "Genuine high-density cinnabar, hand-polished to a warm gloss. Believed in Chinese tradition to deflect negative energy and steady the spirit.",
+          "c2_num": "II · 編",
+          "c2_title": "The Knot",
+          "c2_text": "Each cord is hand-woven with 72-linen thread using traditional Chinese knotting techniques — strong, comfortable, and made to last.",
+          "c3_num": "III · 符",
+          "c3_title": "The Symbol",
+          "c3_text": "Pixiu, Hulu gourd, peace knot, five-petal flower — every charm is chosen for its centuries-old meaning, restyled for the modern wrist."
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Join the CHENSHA Circle",
+          "title_cn": "入 會",
+          "lead": "Subscribe for early access to limited collections, lunar-new-moon rituals, and a private 15% welcome code.",
+          "placeholder": "Your email address",
+          "button": "Subscribe"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "about": "Authentic cinnabar jewelry, handcrafted in China and designed for the modern world. Worn across the US, Europe, Singapore, Taiwan, and Malaysia.",
+          "copyright": "© 2026 CHENSHA Jewelry. All rights reserved."
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
