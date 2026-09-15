@@ -5,37 +5,61 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Bestsellers" },
     { "type": "text", "id": "title", "label": "Title", "default": "The CHENSHA Selection" },
     { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "精選之作" },
-    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Each piece is hand-assembled with authentic cinnabar and paired with symbolic materials — jade, gold vermeil, cloisonné, and cat's eye — chosen for meaning as much as beauty." }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product Card",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Product image" },
-        { "type": "text", "id": "name", "label": "Product name", "default": "The Essence" },
-        { "type": "text", "id": "name_cn", "label": "Chinese name", "default": "本 源" },
-        { "type": "text", "id": "category", "label": "Category", "default": "Minimal · Daily Wear" },
-        { "type": "text", "id": "price", "label": "Price", "default": "$128" },
-        { "type": "text", "id": "price_old", "label": "Old price", "default": "$150" },
-        { "type": "text", "id": "pay", "label": "Installment text", "default": "or 4 payments of $32.00" },
-        { "type": "text", "id": "badge", "label": "Badge (optional)", "default": "Bestseller" },
-        { "type": "url", "id": "link", "label": "Product link" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Featured Products",
-      "blocks": [
-        { "type": "product", "settings": { "name": "The Essence", "name_cn": "本 源", "category": "Minimal · Daily Wear", "price": "$128", "price_old": "$150", "pay": "or 4 payments of $32.00", "badge": "Bestseller" } },
-        { "type": "product", "settings": { "name": "The Dynasty", "name_cn": "朝 儀", "category": "Nanhong Agate · Cloisonné", "price": "$268", "price_old": "$310", "pay": "or 4 payments of $67.00", "badge": "Signature" } },
-        { "type": "product", "settings": { "name": "The Whisper", "name_cn": "心 語", "category": "Hetian Jade · Woven", "price": "$98", "price_old": "$120", "pay": "or 4 payments of $24.50", "badge": "" } },
-        { "type": "product", "settings": { "name": "The Aurum", "name_cn": "鎏 金", "category": "Gold Vermeil · Turquoise", "price": "$188", "price_old": "$220", "pay": "or 4 payments of $47.00", "badge": "New" } },
-        { "type": "product", "settings": { "name": "The Halo", "name_cn": "流 光", "category": "Cat's Eye · Carnelian", "price": "$148", "price_old": "$175", "pay": "or 4 payments of $37.00", "badge": "" } },
-        { "type": "product", "settings": { "name": "The Gourd", "name_cn": "福 祿", "category": "Gold Hulu · CZ Pendant", "price": "$198", "price_old": "$230", "pay": "or 4 payments of $49.50", "badge": "Limited" } }
-      ]
-    }
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Each piece is hand-assembled with authentic cinnabar and paired with symbolic materials — jade, gold vermeil, cloisonné, and cat's eye — chosen for meaning as much as beauty." },
+
+    { "type": "image_picker", "id": "img1", "label": "Product 1 image" },
+    { "type": "text", "id": "name1", "label": "Product 1 name", "default": "The Essence" },
+    { "type": "text", "id": "name1_cn", "label": "Product 1 Chinese", "default": "本 源" },
+    { "type": "text", "id": "cat1", "label": "Product 1 category", "default": "Minimal · Daily Wear" },
+    { "type": "text", "id": "price1", "label": "Product 1 price", "default": "$128" },
+    { "type": "text", "id": "price1_old", "label": "Product 1 old price", "default": "$150" },
+    { "type": "text", "id": "badge1", "label": "Product 1 badge", "default": "Bestseller" },
+    { "type": "url", "id": "link1", "label": "Product 1 link" },
+
+    { "type": "image_picker", "id": "img2", "label": "Product 2 image" },
+    { "type": "text", "id": "name2", "label": "Product 2 name", "default": "The Dynasty" },
+    { "type": "text", "id": "name2_cn", "label": "Product 2 Chinese", "default": "朝 儀" },
+    { "type": "text", "id": "cat2", "label": "Product 2 category", "default": "Nanhong Agate · Cloisonné" },
+    { "type": "text", "id": "price2", "label": "Product 2 price", "default": "$268" },
+    { "type": "text", "id": "price2_old", "label": "Product 2 old price", "default": "$310" },
+    { "type": "text", "id": "badge2", "label": "Product 2 badge", "default": "Signature" },
+    { "type": "url", "id": "link2", "label": "Product 2 link" },
+
+    { "type": "image_picker", "id": "img3", "label": "Product 3 image" },
+    { "type": "text", "id": "name3", "label": "Product 3 name", "default": "The Whisper" },
+    { "type": "text", "id": "name3_cn", "label": "Product 3 Chinese", "default": "心 語" },
+    { "type": "text", "id": "cat3", "label": "Product 3 category", "default": "Hetian Jade · Woven" },
+    { "type": "text", "id": "price3", "label": "Product 3 price", "default": "$98" },
+    { "type": "text", "id": "price3_old", "label": "Product 3 old price", "default": "$120" },
+    { "type": "text", "id": "badge3", "label": "Product 3 badge", "default": "" },
+    { "type": "url", "id": "link3", "label": "Product 3 link" },
+
+    { "type": "image_picker", "id": "img4", "label": "Product 4 image" },
+    { "type": "text", "id": "name4", "label": "Product 4 name", "default": "The Aurum" },
+    { "type": "text", "id": "name4_cn", "label": "Product 4 Chinese", "default": "鎏 金" },
+    { "type": "text", "id": "cat4", "label": "Product 4 category", "default": "Gold Vermeil · Turquoise" },
+    { "type": "text", "id": "price4", "label": "Product 4 price", "default": "$188" },
+    { "type": "text", "id": "price4_old", "label": "Product 4 old price", "default": "$220" },
+    { "type": "text", "id": "badge4", "label": "Product 4 badge", "default": "New" },
+    { "type": "url", "id": "link4", "label": "Product 4 link" },
+
+    { "type": "image_picker", "id": "img5", "label": "Product 5 image" },
+    { "type": "text", "id": "name5", "label": "Product 5 name", "default": "The Halo" },
+    { "type": "text", "id": "name5_cn", "label": "Product 5 Chinese", "default": "流 光" },
+    { "type": "text", "id": "cat5", "label": "Product 5 category", "default": "Cat's Eye · Carnelian" },
+    { "type": "text", "id": "price5", "label": "Product 5 price", "default": "$148" },
+    { "type": "text", "id": "price5_old", "label": "Product 5 old price", "default": "$175" },
+    { "type": "text", "id": "badge5", "label": "Product 5 badge", "default": "" },
+    { "type": "url", "id": "link5", "label": "Product 5 link" },
+
+    { "type": "image_picker", "id": "img6", "label": "Product 6 image" },
+    { "type": "text", "id": "name6", "label": "Product 6 name", "default": "The Gourd" },
+    { "type": "text", "id": "name6_cn", "label": "Product 6 Chinese", "default": "福 祿" },
+    { "type": "text", "id": "cat6", "label": "Product 6 category", "default": "Gold Hulu · CZ Pendant" },
+    { "type": "text", "id": "price6", "label": "Product 6 price", "default": "$198" },
+    { "type": "text", "id": "price6_old", "label": "Product 6 old price", "default": "$230" },
+    { "type": "text", "id": "badge6", "label": "Product 6 badge", "default": "Limited" },
+    { "type": "url", "id": "link6", "label": "Product 6 link" }
   ]
 }
 {% endschema %}
@@ -47,31 +71,103 @@
       <p class="sec-lead" style="margin:0 auto">{{ section.settings.lead }}</p>
     </div>
     <div class="prod-grid">
-      <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Bestseller</span><img src="{{ 'p01.jpg' | asset_url }}" alt="The Essence"></div><div class="pcard-body"><div class="pcard-cat">Minimal · Daily Wear</div><div class="pcard-name">The Essence</div><div class="pcard-cn">本 源</div><div class="pcard-price">$128<span class="old">$150</span></div><div class="pcard-pay">or 4 payments of $32.00</div></div></div>
-      <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Signature</span><img src="{{ 'p02.jpg' | asset_url }}" alt="The Dynasty"></div><div class="pcard-body"><div class="pcard-cat">Nanhong Agate · Cloisonné</div><div class="pcard-name">The Dynasty</div><div class="pcard-cn">朝 儀</div><div class="pcard-price">$268<span class="old">$310</span></div><div class="pcard-pay">or 4 payments of $67.00</div></div></div>
-      <div class="pcard"><div class="pcard-img"><img src="{{ 'p03.jpg' | asset_url }}" alt="The Whisper"></div><div class="pcard-body"><div class="pcard-cat">Hetian Jade · Woven</div><div class="pcard-name">The Whisper</div><div class="pcard-cn">心 語</div><div class="pcard-price">$98<span class="old">$120</span></div><div class="pcard-pay">or 4 payments of $24.50</div></div></div>
-      <div class="pcard"><div class="pcard-img"><span class="pcard-badge">New</span><img src="{{ 'p04.jpg' | asset_url }}" alt="The Aurum"></div><div class="pcard-body"><div class="pcard-cat">Gold Vermeil · Turquoise</div><div class="pcard-name">The Aurum</div><div class="pcard-cn">鎏 金</div><div class="pcard-price">$188<span class="old">$220</span></div><div class="pcard-pay">or 4 payments of $47.00</div></div></div>
-      <div class="pcard"><div class="pcard-img"><img src="{{ 'p05.jpg' | asset_url }}" alt="The Halo"></div><div class="pcard-body"><div class="pcard-cat">Cat's Eye · Carnelian</div><div class="pcard-name">The Halo</div><div class="pcard-cn">流 光</div><div class="pcard-price">$148<span class="old">$175</span></div><div class="pcard-pay">or 4 payments of $37.00</div></div></div>
-      <div class="pcard"><div class="pcard-img"><span class="pcard-badge">Limited</span><img src="{{ 'p06.jpg' | asset_url }}" alt="The Gourd"></div><div class="pcard-body"><div class="pcard-cat">Gold Hulu · CZ Pendant</div><div class="pcard-name">The Gourd</div><div class="pcard-cn">福 祿</div><div class="pcard-price">$198<span class="old">$230</span></div><div class="pcard-pay">or 4 payments of $49.50</div></div></div>
-      {% for block in section.blocks %}
-        <div class="pcard" {{ block.shopify_attributes }}>
-          <div class="pcard-img">
-            {% if block.settings.badge != blank %}<span class="pcard-badge">{{ block.settings.badge }}</span>{% endif %}
-            {% if block.settings.image %}
-              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name }}">
-            {% else %}
-              <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ block.settings.name }}">
-            {% endif %}
-          </div>
-          <div class="pcard-body">
-            <div class="pcard-cat">{{ block.settings.category }}</div>
-            <div class="pcard-name">{{ block.settings.name }}</div>
-            <div class="pcard-cn">{{ block.settings.name_cn }}</div>
-            <div class="pcard-price">{{ block.settings.price }}{% if block.settings.price_old != blank %}<span class="old">{{ block.settings.price_old }}</span>{% endif %}</div>
-            <div class="pcard-pay">{{ block.settings.pay }}</div>
-          </div>
+
+      {% assign link1 = section.settings.link1 | default: '#' %}
+      <a href="{{ link1 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge1 != blank %}<span class="pcard-badge">{{ section.settings.badge1 }}</span>{% endif %}
+          {% if section.settings.img1 %}<img src="{{ section.settings.img1 | image_url: width: 800 }}" alt="{{ section.settings.name1 }}">
+          {% else %}<img src="{{ 'p01.jpg' | asset_url }}" alt="{{ section.settings.name1 }}">{% endif %}
         </div>
-      {% endfor %}
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat1 }}</div>
+          <div class="pcard-name">{{ section.settings.name1 }}</div>
+          <div class="pcard-cn">{{ section.settings.name1_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price1 }}{% if section.settings.price1_old != blank %}<span class="old">{{ section.settings.price1_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price1 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
+      {% assign link2 = section.settings.link2 | default: '#' %}
+      <a href="{{ link2 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge2 != blank %}<span class="pcard-badge">{{ section.settings.badge2 }}</span>{% endif %}
+          {% if section.settings.img2 %}<img src="{{ section.settings.img2 | image_url: width: 800 }}" alt="{{ section.settings.name2 }}">
+          {% else %}<img src="{{ 'p02.jpg' | asset_url }}" alt="{{ section.settings.name2 }}">{% endif %}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat2 }}</div>
+          <div class="pcard-name">{{ section.settings.name2 }}</div>
+          <div class="pcard-cn">{{ section.settings.name2_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price2 }}{% if section.settings.price2_old != blank %}<span class="old">{{ section.settings.price2_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price2 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
+      {% assign link3 = section.settings.link3 | default: '#' %}
+      <a href="{{ link3 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge3 != blank %}<span class="pcard-badge">{{ section.settings.badge3 }}</span>{% endif %}
+          {% if section.settings.img3 %}<img src="{{ section.settings.img3 | image_url: width: 800 }}" alt="{{ section.settings.name3 }}">
+          {% else %}<img src="{{ 'p03.jpg' | asset_url }}" alt="{{ section.settings.name3 }}">{% endif %}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat3 }}</div>
+          <div class="pcard-name">{{ section.settings.name3 }}</div>
+          <div class="pcard-cn">{{ section.settings.name3_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price3 }}{% if section.settings.price3_old != blank %}<span class="old">{{ section.settings.price3_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price3 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
+      {% assign link4 = section.settings.link4 | default: '#' %}
+      <a href="{{ link4 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge4 != blank %}<span class="pcard-badge">{{ section.settings.badge4 }}</span>{% endif %}
+          {% if section.settings.img4 %}<img src="{{ section.settings.img4 | image_url: width: 800 }}" alt="{{ section.settings.name4 }}">
+          {% else %}<img src="{{ 'p04.jpg' | asset_url }}" alt="{{ section.settings.name4 }}">{% endif %}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat4 }}</div>
+          <div class="pcard-name">{{ section.settings.name4 }}</div>
+          <div class="pcard-cn">{{ section.settings.name4_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price4 }}{% if section.settings.price4_old != blank %}<span class="old">{{ section.settings.price4_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price4 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
+      {% assign link5 = section.settings.link5 | default: '#' %}
+      <a href="{{ link5 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge5 != blank %}<span class="pcard-badge">{{ section.settings.badge5 }}</span>{% endif %}
+          {% if section.settings.img5 %}<img src="{{ section.settings.img5 | image_url: width: 800 }}" alt="{{ section.settings.name5 }}">
+          {% else %}<img src="{{ 'p05.jpg' | asset_url }}" alt="{{ section.settings.name5 }}">{% endif %}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat5 }}</div>
+          <div class="pcard-name">{{ section.settings.name5 }}</div>
+          <div class="pcard-cn">{{ section.settings.name5_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price5 }}{% if section.settings.price5_old != blank %}<span class="old">{{ section.settings.price5_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price5 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
+      {% assign link6 = section.settings.link6 | default: '#' %}
+      <a href="{{ link6 }}" class="pcard">
+        <div class="pcard-img">
+          {% if section.settings.badge6 != blank %}<span class="pcard-badge">{{ section.settings.badge6 }}</span>{% endif %}
+          {% if section.settings.img6 %}<img src="{{ section.settings.img6 | image_url: width: 800 }}" alt="{{ section.settings.name6 }}">
+          {% else %}<img src="{{ 'p06.jpg' | asset_url }}" alt="{{ section.settings.name6 }}">{% endif %}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-cat">{{ section.settings.cat6 }}</div>
+          <div class="pcard-name">{{ section.settings.name6 }}</div>
+          <div class="pcard-cn">{{ section.settings.name6_cn }}</div>
+          <div class="pcard-price">{{ section.settings.price6 }}{% if section.settings.price6_old != blank %}<span class="old">{{ section.settings.price6_old }}</span>{% endif %}</div>
+          <div class="pcard-pay">or 4 payments of {{ section.settings.price6 | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
