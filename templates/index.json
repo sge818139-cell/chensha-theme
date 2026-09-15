@@ -1,15 +1,41 @@
 {
   "sections": {
     "announcement": { "type": "announcement-bar" },
-    "header": { "type": "header" },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "link1": { "type": "link", "settings": { "label": "Collections" } },
+        "link2": { "type": "link", "settings": { "label": "Bracelets" } },
+        "link3": { "type": "link", "settings": { "label": "Our Story" } },
+        "link4": { "type": "link", "settings": { "label": "Craft" } },
+        "link5": { "type": "link", "settings": { "label": "Journal" } }
+      },
+      "block_order": ["link1","link2","link3","link4","link5"]
+    },
     "hero": { "type": "hero" },
     "trust": { "type": "trust-bar" },
     "origin": { "type": "origin-story" },
-    "collections": { "type": "collections" },
+    "collections": {
+      "type": "collections",
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "title": "Cinnabar Bracelets", "title_cn": "硃砂手串" } },
+        "c2": { "type": "collection", "settings": { "title": "Cloisonné & Gold", "title_cn": "景泰藍 · 鎏金" } },
+        "c3": { "type": "collection", "settings": { "title": "Woven Charms", "title_cn": "編繩掛飾" } }
+      },
+      "block_order": ["c1","c2","c3"]
+    },
     "products": { "type": "featured-products" },
     "featured": { "type": "featured-banner" },
     "packaging": { "type": "packaging" },
-    "craft": { "type": "craft" },
+    "craft": {
+      "type": "craft",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "num": "I · 朱砂", "title": "The Stone", "body": "Genuine high-density cinnabar, hand-polished to a warm gloss. Believed in Chinese tradition to deflect negative energy and steady the spirit." } },
+        "s2": { "type": "step", "settings": { "num": "II · 編", "title": "The Knot", "body": "Each cord is hand-woven with 72-linen thread using traditional Chinese knotting techniques — strong, comfortable, and made to last." } },
+        "s3": { "type": "step", "settings": { "num": "III · 符", "title": "The Symbol", "body": "Pixiu, Hulu gourd, peace knot, five-petal flower — every charm is chosen for its centuries-old meaning, restyled for the modern wrist." } }
+      },
+      "block_order": ["s1","s2","s3"]
+    },
     "newsletter": { "type": "newsletter" },
     "footer": { "type": "footer" }
   },
