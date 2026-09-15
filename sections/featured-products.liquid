@@ -47,19 +47,39 @@
     </div>
     <div class="prod-grid">
       {% if section.blocks.size > 0 %}
+        {% assign defaults = "The Essence|本 源|Minimal · Daily Wear|$128|$150|Bestseller|p01.jpg||The Dynasty|朝 儀|Nanhong Agate · Cloisonné|$268|$310|Signature|p02.jpg||The Whisper|心 語|Hetian Jade · Woven|$98|$120||p03.jpg||The Aurum|鎏 金|Gold Vermeil · Turquoise|$188|$220|New|p04.jpg||The Halo|流 光|Cat's Eye · Carnelian|$148|$175||p05.jpg||The Gourd|福 祿|Gold Hulu · CZ Pendant|$198|$230|Limited|p06.jpg|" | split: "|" %}
         {% for block in section.blocks %}
+          {% assign i = forloop.index0 | times: 8 %}
+          {% if i < 48 %}
+            {% assign d_name = defaults[i] %}
+            {% assign d_cn = defaults[i+1] %}
+            {% assign d_cat = defaults[i+2] %}
+            {% assign d_price = defaults[i+3] %}
+            {% assign d_old = defaults[i+4] %}
+            {% assign d_badge = defaults[i+5] %}
+            {% assign d_img = defaults[i+6] %}
+          {% else %}
+            {% assign d_name = block.settings.name %}
+            {% assign d_cn = block.settings.name_cn %}
+            {% assign d_cat = block.settings.category %}
+            {% assign d_price = block.settings.price %}
+            {% assign d_old = block.settings.price_old %}
+            {% assign d_badge = block.settings.badge %}
+            {% assign d_img = '' %}
+          {% endif %}
           <a href="{{ block.settings.link | default: '#' }}" class="pcard" {{ block.shopify_attributes }}>
             <div class="pcard-img">
-              {% if block.settings.badge != blank %}<span class="pcard-badge">{{ block.settings.badge }}</span>{% endif %}
-              {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name }}">
-              {% else %}<img src="{{ 'p01.jpg' | asset_url }}" alt="{{ block.settings.name }}">{% endif %}
+              {% assign badge = block.settings.badge | default: d_badge %}
+              {% if badge != blank %}<span class="pcard-badge">{{ badge }}</span>{% endif %}
+              {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name | default: d_name }}">
+              {% else %}<img src="{{ d_img | asset_url }}" alt="{{ block.settings.name | default: d_name }}">{% endif %}
             </div>
             <div class="pcard-body">
-              <div class="pcard-cat">{{ block.settings.category }}</div>
-              <div class="pcard-name">{{ block.settings.name }}</div>
-              <div class="pcard-cn">{{ block.settings.name_cn }}</div>
-              <div class="pcard-price">{{ block.settings.price }}{% if block.settings.price_old != blank %}<span class="old">{{ block.settings.price_old }}</span>{% endif %}</div>
-              <div class="pcard-pay">or 4 payments of {{ block.settings.price | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
+              <div class="pcard-cat">{{ block.settings.category | default: d_cat }}</div>
+              <div class="pcard-name">{{ block.settings.name | default: d_name }}</div>
+              <div class="pcard-cn">{{ block.settings.name_cn | default: d_cn }}</div>
+              <div class="pcard-price">{{ block.settings.price | default: d_price }}{% assign old_p = block.settings.price_old | default: d_old %}{% if old_p != blank %}<span class="old">{{ old_p }}</span>{% endif %}</div>
+              <div class="pcard-pay">or 4 payments of {{ (block.settings.price | default: d_price) | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</div>
             </div>
           </a>
         {% endfor %}
