@@ -12,20 +12,27 @@
   ]
 }
 {% endschema %}
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a href="{{ routes.root_url }}" class="logo">CHEN<span>SHA</span></a>
-    <ul class="nav-links">
+    <a href="{{ routes.root_url }}" class="logo">
+      {% assign logo = section.settings.logo_text | default: 'CHENSHA' %}
+      {% assign mid = logo.size | divided_by: 2 | ceil %}
+      {{ logo | slice: 0, mid }}<span>{{ logo | slice: mid, logo.size }}</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
       {% for block in section.blocks %}
         <li><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
       {% endfor %}
     </ul>
     <div class="header-icons">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <a href="{{ routes.account_url }}"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <svg viewBox="0 0 24 24" class="icon-search"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <a href="{{ routes.account_url }}" class="icon-link"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
       <a href="{{ routes.cart_url }}" class="cart-count" data-count="{{ cart.item_count }}">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
   </div>
 </header>
