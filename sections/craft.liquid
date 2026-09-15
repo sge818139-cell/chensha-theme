@@ -1,0 +1,40 @@
+{% schema %}
+{
+  "name": "Craft",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 02 · Craft" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Meaning in Every Bead" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "工 藝 與 意 涵" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "num", "label": "Number", "default": "I · 朱砂" },
+      { "type": "text", "id": "title", "label": "Title", "default": "The Stone" },
+      { "type": "textarea", "id": "body", "label": "Body", "default": "Genuine high-density cinnabar, hand-polished to a warm gloss." }
+    ]}
+  ],
+  "default": [
+    { "type": "step", "settings": { "num": "I · 朱砂", "title": "The Stone", "body": "Genuine high-density cinnabar, hand-polished to a warm gloss. Believed in Chinese tradition to deflect negative energy and steady the spirit." } },
+    { "type": "step", "settings": { "num": "II · 編", "title": "The Knot", "body": "Each cord is hand-woven with 72-linen thread using traditional Chinese knotting techniques — strong, comfortable, and made to last." } },
+    { "type": "step", "settings": { "num": "III · 符", "title": "The Symbol", "body": "Pixiu, Hulu gourd, peace knot, five-petal flower — every charm is chosen for its centuries-old meaning, restyled for the modern wrist." } }
+  ]
+}
+{% endschema %}
+<section class="craft" id="craft">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto">
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+      <p class="sec-lead" style="margin:0 auto">CHENSHA pieces are not simply accessories. Each stone, knot, and charm is chosen to carry a specific intention — so that what you wear every day also works for you.</p>
+    </div>
+    <div class="craft-grid">
+      {% for block in section.blocks %}
+        <div class="craft-card">
+          <div class="num">{{ block.settings.num }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.body }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

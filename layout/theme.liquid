@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#9E2B25">
+  <title>{% if page_title %}{{ page_title }} · {{ shop.name }}{% else %}{{ shop.name }}{% endif %}</title>
+  <meta name="description" content="{{ page_description | default: shop.description | strip_html | truncate: 160 }}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%239E2B25'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='serif' font-size='16' fill='%23C9A24B' font-weight='bold'%3E砂%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  {{ content_for_header }}
+</head>
+<body>
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

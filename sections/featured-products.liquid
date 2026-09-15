@@ -1,0 +1,56 @@
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Bestsellers" },
+    { "type": "text", "id": "title", "label": "Title", "default": "The CHENSHA Selection" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "精選之作" },
+    { "type": "collection", "id": "collection", "label": "Collection (optional — leave empty to use demo products)" },
+    { "type": "range", "id": "limit", "label": "Max products", "min": 3, "max": 9, "step": 3, "default": 6 }
+  ]
+}
+{% endschema %}
+<section id="bracelets" style="padding-top:80px">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto">
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+      <p class="sec-lead" style="margin:0 auto">Each piece is hand-assembled with authentic cinnabar and paired with symbolic materials — jade, gold vermeil, cloisonné, and cat's eye — chosen for meaning as much as beauty.</p>
+    </div>
+
+    <div class="prod-grid">
+      {% if section.settings.collection != blank and section.settings.collection.products.size > 0 %}
+        {% for product in section.settings.collection.products limit: section.settings.limit %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      {% else %}
+        {% comment %} Demo products — replace by selecting a collection in the Customizer {% endcomment %}
+        {% assign demo = '
+          The Essence|本 源|Minimal · Daily Wear|p01.jpg|128.00|150.00|Bestseller
+          The Dynasty|朝 儀|Nanhong Agate · Cloisonné|p02.jpg|268.00|310.00|Signature
+          The Whisper|心 語|Hetian Jade · Woven|p03.jpg|98.00|120.00|
+          The Aurum|鎏 金|Gold Vermeil · Turquoise|p04.jpg|188.00|220.00|New
+          The Halo|流 光|Cat's Eye · Carnelian|p05.jpg|148.00|175.00|
+          The Gourd|福 祿|Gold Hulu · CZ Pendant|p06.jpg|198.00|230.00|Limited
+        ' | strip_newlines | split: '
+        ' %}
+        {% for line in demo %}
+          {% assign p = line | strip | split: '|' %}
+          <div class="pcard">
+            <div class="pcard-img">
+              {% if p[5] != '' %}<span class="pcard-badge">{{ p[5] }}</span>{% endif %}
+              <img src="{{ p[3] | asset_url }}" alt="{{ p[0] }}">
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-cat">{{ p[2] }}</div>
+              <div class="pcard-name">{{ p[0] }}</div>
+              <div class="pcard-cn">{{ p[1] }}</div>
+              <div class="pcard-price">${{ p[4] }}<span class="old">${{ p[5] | default: '' }}</span></div>
+              <div class="pcard-pay">or 4 payments of ${{ p[4] | divided_by: 4 | round: 2 }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>

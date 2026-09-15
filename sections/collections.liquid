@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Collections",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Curated Collections" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Wear the Tradition" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "系 列" }
+  ],
+  "blocks": [
+    { "type": "collection", "name": "Collection card", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Cinnabar Bracelets" },
+      { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "硃砂手串" },
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "url", "id": "url", "label": "Link" }
+    ]}
+  ],
+  "default": [
+    { "type": "collection", "settings": { "title": "Cinnabar Bracelets", "title_cn": "硃砂手串" } },
+    { "type": "collection", "settings": { "title": "Cloisonné & Gold", "title_cn": "景泰藍 · 鎏金" } },
+    { "type": "collection", "settings": { "title": "Woven Charms", "title_cn": "編繩掛飾" } }
+  ]
+}
+{% endschema %}
+<section class="collections" id="collections">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto">
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+    </div>
+    <div class="coll-grid">
+      {% assign default_imgs = 'p04.jpg,p02.jpg,p03.jpg' | split: ',' %}
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.url | default: '#' }}" class="coll-card">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
+          {% else %}
+            <img src="{{ default_imgs[forloop.index0] | asset_url }}" alt="{{ block.settings.title }}">
+          {% endif %}
+          <div class="coll-overlay">
+            <h3>{{ block.settings.title }}</h3>
+            <div class="cn">{{ block.settings.title_cn }}</div>
+            <span class="shop">Shop Now →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

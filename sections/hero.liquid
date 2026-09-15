@@ -1,0 +1,37 @@
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Authentic Chinese Cinnabar · Since Ancient Times" },
+    { "type": "text", "id": "title", "label": "Title", "default": "CHENSHA" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "陳 砂" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "For over two millennia, cinnabar has been China's most revered red — worn by emperors, treasured by scholars, and believed to carry protection and vitality. CHENSHA crafts this sacred mineral into everyday amulets for the modern world." },
+    { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Shop the Collection" },
+    { "type": "url", "id": "cta1_url", "label": "Primary CTA URL" },
+    { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "Discover Our Story" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" }
+  ]
+}
+{% endschema %}
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1>{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h1>
+      <p class="lead">{{ section.settings.lead }}</p>
+      <div class="btn-row">
+        <a href="{{ section.settings.cta1_url | default: '#' }}" class="btn btn-gold">{{ section.settings.cta1 }}</a>
+        <a href="#origin" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-circle">
+        {% if section.settings.image %}
+          <img class="hero-product" src="{{ section.settings.image | image_url: width: 900 }}" alt="{{ section.settings.image.alt | default: 'CHENSHA product' }}">
+        {% else %}
+          <img class="hero-product" src="{{ 'p06.jpg' | asset_url }}" alt="CHENSHA cinnabar bracelet">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

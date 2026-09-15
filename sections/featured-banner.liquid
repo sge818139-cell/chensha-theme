@@ -1,0 +1,29 @@
+{% schema %}
+{
+  "name": "Featured Banner",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Editor's Pick · 編輯精選" },
+    { "type": "text", "id": "title", "label": "Title", "default": "The Dynasty" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "南紅 · 景泰藍平安扣" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "A statement piece pairing polished Nanhong agate with hand-fired cloisonné in vintage gold, finished with a red agate peace-knot pendant." },
+    { "type": "text", "id": "price", "label": "Price", "default": "$268" },
+    { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "$310" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+  ]
+}
+{% endschema %}
+<section class="featured">
+  <div class="container feat-inner">
+    <div>
+      <span class="feat-tag">{{ section.settings.tag }}</span>
+      <h2>{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+      <p>{{ section.settings.body }}</p>
+      <div class="feat-price">{{ section.settings.price }}<span class="old">{{ section.settings.compare_price }}</span></div>
+      <div class="btn-row">
+        <a href="{{ section.settings.cta_url | default: '#' }}" class="btn btn-gold">Add to Cart</a>
+        <a href="{{ section.settings.cta_url | default: '#' }}" class="btn btn-ghost">View Details</a>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</section>

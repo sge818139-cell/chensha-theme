@@ -1,0 +1,31 @@
+{
+  "name": "CHENSHA",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "CHENSHA — authentic cinnabar jewelry for the modern world. This is the home page; use the Customizer to edit each section's text, images, and links."
+    },
+    {
+      "type": "header",
+      "content": "Branding"
+    },
+    {
+      "type": "color",
+      "id": "cinnabar",
+      "label": "Cinnabar (primary)",
+      "default": "#9E2B25"
+    },
+    {
+      "type": "color",
+      "id": "gold",
+      "label": "Gold (accent)",
+      "default": "#C9A24B"
+    },
+    {
+      "type": "color",
+      "id": "ivory",
+      "label": "Ivory (background)",
+      "default": "#FAF6F0"
+    }
+  ]
+}

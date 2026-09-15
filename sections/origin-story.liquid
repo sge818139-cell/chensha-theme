@@ -1,0 +1,35 @@
+{% schema %}
+{
+  "name": "Origin Story",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 01 · Origin" },
+    { "type": "text", "id": "title", "label": "Title", "default": "The Red Stone of China" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "朱砂之源" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Mined from the mountains of Guizhou and Hunan, cinnabar — zhūshā 朱砂 — has been ground, carved, and worn as a talisman since the Han Dynasty. It is the color of festivals, seals, and the protective red thread that wraps around every CHENSHA piece." },
+    { "type": "textarea", "id": "quote", "label": "Pull quote", "default": "Cinnabar is not merely a stone. It is China's heartbeat, worn on the wrist." },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ]
+}
+{% endschema %}
+<section class="origin" id="origin">
+  <div class="container origin-grid">
+    <div class="origin-img">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="">
+      {% else %}
+        <img src="{{ 'p01.jpg' | asset_url }}" alt="Cinnabar bead bracelet">
+      {% endif %}
+    </div>
+    <div>
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+      <p class="sec-lead">{{ section.settings.body }}</p>
+      <div class="origin-quote">{{ section.settings.quote }}</div>
+      <div class="origin-stats">
+        <div class="ostat"><div class="n">2000+</div><div class="l">Years of heritage</div></div>
+        <div class="ostat"><div class="n">99%</div><div class="l">High-density mineral</div></div>
+        <div class="ostat"><div class="n">30+</div><div class="l">Master artisans</div></div>
+      </div>
+    </div>
+  </div>
+</section>

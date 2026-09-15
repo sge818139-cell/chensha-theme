@@ -1,0 +1,9 @@
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Announcement text", "default": "LAUNCH OFFER · FREE GLOBAL SHIPPING OVER $150 · CODE CHENSHA15" }
+  ]
+}
+{% endschema %}
+<div class="announcement-bar">{{ section.settings.text }}</div>

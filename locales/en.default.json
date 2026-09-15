@@ -1,0 +1,25 @@
+{
+  "general": {
+    "meta": {
+      "tagline": "Authentic Chinese Cinnabar Jewelry"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for doesn't exist."
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search our store"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out"
+    }
+  }
+}

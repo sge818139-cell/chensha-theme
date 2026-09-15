@@ -1,0 +1,29 @@
+{% schema %}
+{
+  "name": "Trust Bar",
+  "settings": [
+    { "type": "header", "content": "Item 1" },
+    { "type": "text", "id": "t1", "label": "Title", "default": "Authenticity Certified" },
+    { "type": "text", "id": "s1", "label": "Subtitle", "default": "Every piece includes a certificate of origin" },
+    { "type": "header", "content": "Item 2" },
+    { "type": "text", "id": "t2", "label": "Title", "default": "Free Global Shipping" },
+    { "type": "text", "id": "s2", "label": "Subtitle", "default": "To US, EU, SG, TW & MY on orders over $150" },
+    { "type": "header", "content": "Item 3" },
+    { "type": "text", "id": "t3", "label": "Title", "default": "30-Day Returns" },
+    { "type": "text", "id": "s3", "label": "Subtitle", "default": "Love it or send it back, no questions asked" },
+    { "type": "header", "content": "Item 4" },
+    { "type": "text", "id": "t4", "label": "Title", "default": "Handcrafted in China" },
+    { "type": "text", "id": "s4", "label": "Subtitle", "default": "Traditional artisans, modern design" }
+  ]
+}
+{% endschema %}
+<div class="trust">
+  <div class="container trust-inner">
+    {% for i in (1..4) %}
+      <div class="trust-item">
+        <div class="t-title">{{ section.settings['t' | append: i] }}</div>
+        <div class="t-sub">{{ section.settings['s' | append: i] }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

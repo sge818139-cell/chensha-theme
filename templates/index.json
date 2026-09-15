@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "announcement": { "type": "announcement-bar" },
+    "header": { "type": "header" },
+    "hero": { "type": "hero" },
+    "trust": { "type": "trust-bar" },
+    "origin": { "type": "origin-story" },
+    "collections": { "type": "collections" },
+    "products": { "type": "featured-products" },
+    "featured": { "type": "featured-banner" },
+    "packaging": { "type": "packaging" },
+    "craft": { "type": "craft" },
+    "newsletter": { "type": "newsletter" },
+    "footer": { "type": "footer" }
+  },
+  "order": [
+    "announcement",
+    "header",
+    "hero",
+    "trust",
+    "origin",
+    "collections",
+    "products",
+    "featured",
+    "packaging",
+    "craft",
+    "newsletter",
+    "footer"
+  ]
+}

@@ -1,0 +1,49 @@
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "about", "label": "Brand description", "default": "Authentic cinnabar jewelry, handcrafted in China and designed for the modern world. Worn across the US, Europe, Singapore, Taiwan, and Malaysia." },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© 2026 CHENSHA Jewelry. All rights reserved." }
+  ]
+}
+{% endschema %}
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo">CHEN<span>SHA</span></div>
+        <p>{{ section.settings.about }}</p>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="{{ routes.collections_url }}">All Bracelets</a></li>
+          <li><a href="{{ routes.collections_url }}">Collections</a></li>
+          <li><a href="{{ routes.search_url }}">New Arrivals</a></li>
+          <li><a href="{{ routes.search_url }}">Best Sellers</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="{{ routes.cart_url }}">Shipping &amp; Delivery</a></li>
+          <li><a href="{{ routes.account_url }}">Returns</a></li>
+          <li><a href="{{ routes.root_url }}#craft">Caring for Cinnabar</a></li>
+          <li><a href="{{ routes.root_url }}">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="{{ routes.root_url }}#origin">Our Story</a></li>
+          <li><a href="{{ routes.root_url }}#craft">Craftsmanship</a></li>
+          <li><a href="{{ routes.root_url }}">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>{{ section.settings.copyright }}</div>
+      <div>USD · EUR · SGD · TWD · MYR &nbsp;|&nbsp; Made with intention in China</div>
+    </div>
+  </div>
+</footer>

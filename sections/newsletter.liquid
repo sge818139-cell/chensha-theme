@@ -1,0 +1,23 @@
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Join the CHENSHA Circle" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "入 會" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Subscribe for early access to limited collections, lunar-new-moon rituals, and a private 15% welcome code." }
+  ]
+}
+{% endschema %}
+<section class="newsletter" id="journal">
+  <div class="container">
+    <h2>{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+    <p>{{ section.settings.body }}</p>
+    {% form 'customer' %}
+      <div class="nl-form">
+        <input type="email" name="contact[email]" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </div>
+    {% endform %}
+    <div class="nl-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+{% layout 'theme' %}
+<section style="padding:80px 0">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="sec-eyebrow">{{ collection.title }}</div>
+      <h1 class="sec-title">{{ collection.title }}<span class="cn">全 部 作 品</span></h1>
+    </div>
+    <div class="prod-grid">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <p class="sec-lead" style="grid-column:1/-1;text-align:center">No products yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

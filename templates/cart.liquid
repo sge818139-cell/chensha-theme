@@ -1,0 +1,21 @@
+{% layout 'theme' %}
+<section style="padding:80px 0">
+  <div class="container">
+    <h1 class="sec-title">Your Cart</h1>
+    {% if cart.item_count == 0 %}
+      <p class="sec-lead">Your cart is empty.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-gold" style="margin-top:20px">Continue Shopping</a>
+    {% else %}
+      <table style="width:100%;border-collapse:collapse;margin-top:30px">
+        {% for item in cart.items %}
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:16px 0"><img src="{{ item.image | image_url: width: 120 }}" style="width:80px"></td>
+            <td style="padding:16px 0">{{ item.product.title }} × {{ item.quantity }}</td>
+            <td style="padding:16px 0;text-align:right">{{ item.final_line_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      <a href="{{ routes.cart_url }}/checkout" class="btn btn-gold" style="margin-top:30px">Check out</a>
+    {% endif %}
+  </div>
+</section>

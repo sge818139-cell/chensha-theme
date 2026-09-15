@@ -1,0 +1,34 @@
+{% schema %}
+{
+  "name": "Packaging",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The CHENSHA Experience" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Wrapped in Red & Gold" },
+    { "type": "text", "id": "title_cn", "label": "Chinese title", "default": "開 盒 之 禮" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Every order arrives in our signature ivory keepsake box, tied with a black grosgrain ribbon and finished with a velveteen pouch and certificate of authenticity." },
+    { "type": "image_picker", "id": "image", "label": "Packaging image" }
+  ]
+}
+{% endschema %}
+<section>
+  <div class="container pack-grid">
+    <div class="pack-img">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="CHENSHA packaging">
+      {% else %}
+        <img src="{{ 'packaging.jpg' | asset_url }}" alt="CHENSHA gift packaging">
+      {% endif %}
+    </div>
+    <div>
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="sec-title">{{ section.settings.title }}<span class="cn">{{ section.settings.title_cn }}</span></h2>
+      <p class="sec-lead">{{ section.settings.body }}</p>
+      <ul class="pack-list">
+        <li><span class="dot"></span><span><b>Signature keepsake box</b> — reusable, magnetic closure, lined in ivory.</span></li>
+        <li><span class="dot"></span><span><b>Velveteen travel pouch</b> — gold-foil stamped, protects your piece on the go.</span></li>
+        <li><span class="dot"></span><span><b>Certificate of Authenticity</b> — signed, numbered, with origin and care guide.</span></li>
+        <li><span class="dot"></span><span><b>Ribbon &amp; card</b> — gift-ready by default; add a personal note at checkout.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>

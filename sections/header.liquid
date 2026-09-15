@@ -1,0 +1,38 @@
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "CHENSHA" }
+  ],
+  "blocks": [
+    { "type": "link", "name": "Menu link", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Collections" },
+      { "type": "url", "id": "url", "label": "URL" }
+    ]}
+  ],
+  "default": [
+    { "type": "link", "settings": { "label": "Collections" } },
+    { "type": "link", "settings": { "label": "Bracelets" } },
+    { "type": "link", "settings": { "label": "Our Story" } },
+    { "type": "link", "settings": { "label": "Craft" } },
+    { "type": "link", "settings": { "label": "Journal" } }
+  ]
+}
+{% endschema %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ routes.root_url }}" class="logo">CHEN<span>SHA</span></a>
+    <ul class="nav-links">
+      {% for block in section.blocks %}
+        <li><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="header-icons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <a href="{{ routes.account_url }}"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="{{ routes.cart_url }}" class="cart-count" data-count="{{ cart.item_count }}">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
