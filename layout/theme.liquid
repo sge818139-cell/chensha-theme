@@ -12,8 +12,10 @@
   {{ content_for_header }}
 </head>
 <body>
-  {% section 'announcement-bar' %}
-  {% section 'header' %}
+  <div class="top-fixed">
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+  </div>
   <main role="main">
     {{ content_for_layout }}
   </main>
