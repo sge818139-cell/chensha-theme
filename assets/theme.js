@@ -90,22 +90,57 @@
           // Convert all prices on the page
           var allPriceElements = document.querySelectorAll('.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, .old, .pcard-pay');
           allPriceElements.forEach(function (el) {
-            // Skip elements that have child elements (like .pcard-price which contains .old)
-            if (el.children.length > 0) return;
+            // For elements with child elements, only convert direct text nodes
+            if (el.children.length > 0) {
+              // Get direct text content (not from child elements)
+              var directText = '';
+              el.childNodes.forEach(function (node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                  directText += node.textContent;
+                }
+              });
 
+              if (directText.trim()) {
+                var originalDirectText = el.getAttribute('data-original-direct-text');
+                if (!originalDirectText) {
+                  originalDirectText = directText;
+                  el.setAttribute('data-original-direct-text', originalDirectText);
+                }
+
+                var match = originalDirectText.match(/[\d,.]+\.\d{2}/);
+                if (match) {
+                  var originalPrice = parseFloat(match[0].replace(/,/g, ''));
+                  var convertedPrice = originalPrice * rate;
+
+                  // Replace price in direct text
+                  var newDirectText = originalDirectText
+                    .replace(/\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                    .replace(/€[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2));
+
+                  // Update only the direct text nodes
+                  var textIndex = 0;
+                  el.childNodes.forEach(function (node) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                      node.textContent = newDirectText;
+                    }
+                  });
+                }
+              }
+              return;
+            }
+
+            // Leaf elements - convert entire text
             var originalText = el.getAttribute('data-original-text');
             if (!originalText) {
               originalText = el.textContent;
               el.setAttribute('data-original-text', originalText);
             }
 
-            // Extract price number from text (only match prices with decimal point)
             var match = originalText.match(/[\d,.]+\.\d{2}/);
             if (match) {
               var originalPrice = parseFloat(match[0].replace(/,/g, ''));
               var convertedPrice = originalPrice * rate;
 
-              // Replace any existing currency symbol and price with new symbol + converted price
               var newText = originalText
                 .replace(/\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
                 .replace(/€[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
