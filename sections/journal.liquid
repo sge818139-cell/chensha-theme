@@ -6,49 +6,52 @@
       <p class="sec-sub">{{ section.settings.subtitle | default: 'Stories of craft, meaning and the art of wearing cinnabar.' }}</p>
     </div>
     <div class="journal-grid">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          <a href="{{ block.settings.link | default: '/blogs/journal' }}" class="journal-card" {{ block.shopify_attributes }}>
-            <div class="journal-img">
-              {% if block.settings.image != blank %}
-                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
-              {% else %}
-                <div class="journal-img-placeholder"></div>
-              {% endif %}
-            </div>
-            <div class="journal-body">
-              <h3>{{ block.settings.title }}</h3>
-              <p>{{ block.settings.excerpt }}</p>
-              <span class="journal-more">{{ block.settings.link_text | default: 'Read More' }} →</span>
-            </div>
-          </a>
-        {% endfor %}
-      {% else %}
-        <a href="/blogs/journal" class="journal-card">
-          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
-          <div class="journal-body">
-            <h3>The Meaning of Cinnabar</h3>
-            <p>For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red.</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </a>
-        <a href="/blogs/journal" class="journal-card">
-          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
-          <div class="journal-body">
-            <h3>How to Care for Your Piece</h3>
-            <p>Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come.</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </a>
-        <a href="/blogs/journal" class="journal-card">
-          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
-          <div class="journal-body">
-            <h3>Choosing Your Intention</h3>
-            <p>Pixiu, Hulu gourd, peace knot — every charm carries a different meaning. Find the one that speaks to you.</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </a>
-      {% endif %}
+
+      <a href="{{ section.settings.post1_link | default: '/blogs/journal' }}" class="journal-card">
+        <div class="journal-img">
+          {% if section.settings.post1_image != blank %}
+            <img src="{{ section.settings.post1_image | image_url: width: 600 }}" alt="{{ section.settings.post1_title | escape }}">
+          {% else %}
+            <div class="journal-img-placeholder"></div>
+          {% endif %}
+        </div>
+        <div class="journal-body">
+          <h3>{{ section.settings.post1_title }}</h3>
+          <p>{{ section.settings.post1_excerpt }}</p>
+          <span class="journal-more">{{ section.settings.post1_link_text | default: 'Read More' }} →</span>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.post2_link | default: '/blogs/journal' }}" class="journal-card">
+        <div class="journal-img">
+          {% if section.settings.post2_image != blank %}
+            <img src="{{ section.settings.post2_image | image_url: width: 600 }}" alt="{{ section.settings.post2_title | escape }}">
+          {% else %}
+            <div class="journal-img-placeholder"></div>
+          {% endif %}
+        </div>
+        <div class="journal-body">
+          <h3>{{ section.settings.post2_title }}</h3>
+          <p>{{ section.settings.post2_excerpt }}</p>
+          <span class="journal-more">{{ section.settings.post2_link_text | default: 'Read More' }} →</span>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.post3_link | default: '/blogs/journal' }}" class="journal-card">
+        <div class="journal-img">
+          {% if section.settings.post3_image != blank %}
+            <img src="{{ section.settings.post3_image | image_url: width: 600 }}" alt="{{ section.settings.post3_title | escape }}">
+          {% else %}
+            <div class="journal-img-placeholder"></div>
+          {% endif %}
+        </div>
+        <div class="journal-body">
+          <h3>{{ section.settings.post3_title }}</h3>
+          <p>{{ section.settings.post3_excerpt }}</p>
+          <span class="journal-more">{{ section.settings.post3_link_text | default: 'Read More' }} →</span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -58,30 +61,31 @@
   "name": "Journal",
   "settings": [
     { "type": "text", "id": "title", "label": "Section Title", "default": "CHENSHA Journal" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Stories of craft, meaning and the art of wearing cinnabar." }
-  ],
-  "blocks": [
-    {
-      "type": "post",
-      "name": "Blog Post",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Title", "default": "The Meaning of Cinnabar" },
-        { "type": "textarea", "id": "excerpt", "label": "Excerpt", "default": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." },
-        { "type": "url", "id": "link", "label": "Link" },
-        { "type": "text", "id": "link_text", "label": "Link Text", "default": "Read More" }
-      ]
-    }
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Stories of craft, meaning and the art of wearing cinnabar." },
+
+    { "type": "header", "content": "Post 1" },
+    { "type": "image_picker", "id": "post1_image", "label": "Image" },
+    { "type": "text", "id": "post1_title", "label": "Title", "default": "The Meaning of Cinnabar" },
+    { "type": "textarea", "id": "post1_excerpt", "label": "Excerpt", "default": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." },
+    { "type": "url", "id": "post1_link", "label": "Link" },
+    { "type": "text", "id": "post1_link_text", "label": "Link Text", "default": "Read More" },
+
+    { "type": "header", "content": "Post 2" },
+    { "type": "image_picker", "id": "post2_image", "label": "Image" },
+    { "type": "text", "id": "post2_title", "label": "Title", "default": "How to Care for Your Piece" },
+    { "type": "textarea", "id": "post2_excerpt", "label": "Excerpt", "default": "Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come." },
+    { "type": "url", "id": "post2_link", "label": "Link" },
+    { "type": "text", "id": "post2_link_text", "label": "Link Text", "default": "Read More" },
+
+    { "type": "header", "content": "Post 3" },
+    { "type": "image_picker", "id": "post3_image", "label": "Image" },
+    { "type": "text", "id": "post3_title", "label": "Title", "default": "Choosing Your Intention" },
+    { "type": "textarea", "id": "post3_excerpt", "label": "Excerpt", "default": "Pixiu, Hulu gourd, peace knot — every charm carries a different meaning. Find the one that speaks to you." },
+    { "type": "url", "id": "post3_link", "label": "Link" },
+    { "type": "text", "id": "post3_link_text", "label": "Link Text", "default": "Read More" }
   ],
   "presets": [
-    {
-      "name": "Journal",
-      "blocks": [
-        { "type": "post", "settings": { "title": "The Meaning of Cinnabar", "excerpt": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." } },
-        { "type": "post", "settings": { "title": "How to Care for Your Piece", "excerpt": "Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come." } },
-        { "type": "post", "settings": { "title": "Choosing Your Intention", "excerpt": "Pixiu, Hulu gourd, peace knot — every charm carries a different meaning. Find the one that speaks to you." } }
-      ]
-    }
+    { "name": "Journal" }
   ]
 }
 {% endschema %}
