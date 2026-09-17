@@ -88,7 +88,8 @@
           currencyCode.textContent = currency;
 
           // Convert all prices on the page
-          document.querySelectorAll('.price, .pdp-price, .cart-price, .product-price').forEach(function (el) {
+          var priceSelectors = '.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, .pcard-pay, .old';
+          document.querySelectorAll(priceSelectors).forEach(function (el) {
             var originalText = el.getAttribute('data-original-price');
             if (!originalText) {
               var match = el.textContent.match(/[\d,.]+/);
