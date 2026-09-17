@@ -105,8 +105,14 @@
               var originalPrice = parseFloat(match[0].replace(/,/g, ''));
               var convertedPrice = originalPrice * rate;
 
-              // Replace price in original text, preserving surrounding text
-              var newText = originalText.replace(/[\d,.]+\.\d{2}/, convertedPrice.toFixed(2));
+              // Replace any existing currency symbol and price with new symbol + converted price
+              var newText = originalText
+                .replace(/\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                .replace(/€[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                .replace(/S\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                .replace(/NT\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                .replace(/HK\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
+                .replace(/RM[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2));
               el.textContent = newText;
             }
           });
