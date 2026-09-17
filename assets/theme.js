@@ -93,20 +93,21 @@
             // Skip elements that have child elements (like .pcard-price which contains .old)
             if (el.children.length > 0) return;
 
-            var originalText = el.getAttribute('data-original-price');
+            var originalText = el.getAttribute('data-original-text');
             if (!originalText) {
-              var match = el.textContent.match(/[\d,.]+/);
-              if (match) {
-                originalText = match[0].replace(/,/g, '');
-                el.setAttribute('data-original-price', originalText);
-              }
+              originalText = el.textContent;
+              el.setAttribute('data-original-text', originalText);
             }
-            if (originalText) {
-              var originalPrice = parseFloat(originalText);
+
+            // Extract price number from text
+            var match = originalText.match(/[\d,.]+/);
+            if (match) {
+              var originalPrice = parseFloat(match[0].replace(/,/g, ''));
               var convertedPrice = originalPrice * rate;
-              // Preserve currency symbol if it exists
-              var hasSymbol = el.textContent.trim().startsWith('$') || el.textContent.trim().startsWith('€') || el.textContent.trim().startsWith('S$');
-              el.textContent = symbol + convertedPrice.toFixed(2);
+
+              // Replace price in original text, preserving surrounding text
+              var newText = originalText.replace(/[\d,.]+/, convertedPrice.toFixed(2));
+              el.textContent = newText;
             }
           });
 
