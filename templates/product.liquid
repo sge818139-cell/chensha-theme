@@ -1,19 +1,93 @@
 {% layout 'theme' %}
-<section style="padding:80px 0">
-  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
-    <div>
-      {% if product.featured_image %}
-        <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" style="width:100%">
-      {% endif %}
-    </div>
-    <div>
-      <div class="sec-eyebrow">{{ product.type }}</div>
-      <h1 class="sec-title">{{ product.title }}</h1>
-      <div class="pcard-price" style="font-size:28px;margin:20px 0">{{ product.price | money }}</div>
-      <p class="sec-lead">{{ product.description }}</p>
-      {% form 'product', product %}
-        <button type="submit" name="add" class="btn btn-gold" style="margin-top:30px">Add to Cart</button>
-      {% endform %}
+
+<section class="pdp-page">
+  <div class="container">
+    <div class="pdp-grid">
+
+      <!-- Gallery -->
+      <div class="pdp-gallery">
+        <div class="pdp-main-img">
+          {% if product.featured_image %}
+            <img id="pdpMain" src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}">
+          {% else %}
+            <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ product.title | escape }}">
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+        <div class="pdp-thumbs">
+          {% for image in product.images %}
+            <img src="{{ image | image_url: width: 200 }}" alt="{{ product.title | escape | append: ' thumb' }}"
+                 class="pdp-thumb{% if forloop.first %} active{% endif %}"
+                 onclick="document.getElementById('pdpMain').src='{{ image | image_url: width: 900 }}'">
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Info -->
+      <div class="pdp-info">
+        {% if product.type %}<div class="sec-eyebrow">{{ product.type }}</div>{% endif %}
+        <h1 class="pdp-title">{{ product.title }}</h1>
+
+        <div class="pdp-price-row">
+          <span class="pdp-price">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span class="pdp-price-old">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+
+        <div class="pdp-pay">or 4 payments of {{ product.price | money | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }} with <strong>Afterpay</strong></div>
+
+        <div class="pdp-divider"></div>
+
+        <div class="pdp-desc">
+          {{ product.description }}
+        </div>
+
+        {% form 'product', product %}
+          {% unless product.variants.size == 1 %}
+            <div class="pdp-variants">
+              {% for option in product.options_with_values %}
+                <label class="pdp-opt-label">{{ option.name }}</label>
+                <select name="options[{{ option.name }}]" class="pdp-select">
+                  {% for value in option.values %}
+                    <option value="{{ value }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <div class="pdp-actions">
+            <button type="submit" name="add" class="btn btn-gold pdp-add-btn">Add to Cart</button>
+          </div>
+
+          <div class="pdp-trust">
+            <div class="pdp-trust-item">
+              <span class="pdp-trust-icon">🚚</span>
+              <span>Free global shipping over $150</span>
+            </div>
+            <div class="pdp-trust-item">
+              <span class="pdp-trust-icon">↩️</span>
+              <span>30-day easy returns</span>
+            </div>
+            <div class="pdp-trust-item">
+              <span class="pdp-trust-icon">✓</span>
+              <span>Authenticity certificate included</span>
+            </div>
+          </div>
+        {% endform %}
+
+        <div class="pdp-packaging">
+          <div class="pdp-packaging-title">Every order arrives in</div>
+          <div class="pdp-packaging-items">
+            <span>🎁 Cinnabar gift box</span>
+            <span>🧸 Velvet pouch</span>
+            <span>📜 Certificate of authenticity</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
