@@ -99,14 +99,14 @@
               el.setAttribute('data-original-text', originalText);
             }
 
-            // Extract price number from text
-            var match = originalText.match(/[\d,.]+/);
+            // Extract price number from text (only match prices with decimal point)
+            var match = originalText.match(/[\d,.]+\.\d{2}/);
             if (match) {
               var originalPrice = parseFloat(match[0].replace(/,/g, ''));
               var convertedPrice = originalPrice * rate;
 
               // Replace price in original text, preserving surrounding text
-              var newText = originalText.replace(/[\d,.]+/, convertedPrice.toFixed(2));
+              var newText = originalText.replace(/[\d,.]+\.\d{2}/, convertedPrice.toFixed(2));
               el.textContent = newText;
             }
           });
