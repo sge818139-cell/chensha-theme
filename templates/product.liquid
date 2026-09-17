@@ -1,5 +1,10 @@
 {% layout 'theme' %}
 
+{% assign product = product | default: all_products['the-essence'] %}
+{% unless product %}
+  {% assign product = collections.all.products.first %}
+{% endunless %}
+
 <section class="pdp">
   <div class="container">
     <div class="pdp-layout">
@@ -49,6 +54,7 @@
 
         <div class="pdp-divider"></div>
 
+        {% if product and product.available %}
         {% form 'product', product %}
           {% unless product.variants.size == 1 %}
             <div class="pdp-variants">
@@ -77,6 +83,16 @@
             <button type="submit" name="add" class="pdp-add-btn">Add to Cart</button>
           </div>
         {% endform %}
+        {% else %}
+          <div class="pdp-qty-cart">
+            <div class="pdp-qty">
+              <button type="button">−</button>
+              <input type="number" value="1" min="1" readonly>
+              <button type="button">+</button>
+            </div>
+            <button class="pdp-add-btn" disabled>Add to Cart</button>
+          </div>
+        {% endif %}
 
         <div class="pdp-guarantees">
           <div class="pdp-guarantee">
