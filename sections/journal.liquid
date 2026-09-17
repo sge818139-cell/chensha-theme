@@ -6,22 +6,49 @@
       <p class="sec-sub">{{ section.settings.subtitle | default: 'Stories of craft, meaning and the art of wearing cinnabar.' }}</p>
     </div>
     <div class="journal-grid">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link | default: '#' }}" class="journal-card">
-          <div class="journal-img">
-            {% if block.settings.image != blank %}
-              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
-            {% else %}
-              <div class="journal-img-placeholder"></div>
-            {% endif %}
-          </div>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link | default: '#' }}" class="journal-card">
+            <div class="journal-img">
+              {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
+              {% else %}
+                <div class="journal-img-placeholder"></div>
+              {% endif %}
+            </div>
+            <div class="journal-body">
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.excerpt }}</p>
+              <span class="journal-more">{{ block.settings.link_text | default: 'Read More' }} →</span>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <a href="#" class="journal-card">
+          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
           <div class="journal-body">
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.excerpt }}</p>
-            <span class="journal-more">{{ block.settings.link_text | default: 'Read More' }} →</span>
+            <h3>The Meaning of Cinnabar</h3>
+            <p>For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red.</p>
+            <span class="journal-more">Read More →</span>
           </div>
         </a>
-      {% endfor %}
+        <a href="#" class="journal-card">
+          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
+          <div class="journal-body">
+            <h3>How to Care for Your Piece</h3>
+            <p>Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come.</p>
+            <span class="journal-more">Read More →</span>
+          </div>
+        </a>
+        <a href="#" class="journal-card">
+          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
+          <div class="journal-body">
+            <h3>Choosing Your Intention</h3>
+            <p>Pixiu, Hulu gourd, peace knot — every charm carries a different meaning. Find the one that speaks to you.</p>
+            <span class="journal-more">Read More →</span>
+          </div>
+        </a>
+      {% endif %}
     </div>
   </div>
 </section>
