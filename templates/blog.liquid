@@ -1,0 +1,45 @@
+{% layout 'theme' %}
+<section class="journal-page">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="sec-eyebrow">CHENSHA JOURNAL</div>
+      <h1 class="sec-title">{{ blog.title | default: 'CHENSHA Journal' }}</h1>
+      <p class="sec-sub">Stories of craft, meaning and the art of wearing cinnabar.</p>
+    </div>
+    <div class="journal-page-grid">
+      {% for article in blog.articles %}
+        <a href="{{ article.url }}" class="journal-card large">
+          <div class="journal-img">
+            {% if article.image %}
+              <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title | escape }}">
+            {% else %}
+              <div class="journal-img-placeholder"></div>
+            {% endif %}
+          </div>
+          <div class="journal-body">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p>
+            <span class="journal-more">Read More →</span>
+          </div>
+        </a>
+      {% else %}
+        <div class="journal-card large">
+          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
+          <div class="journal-body">
+            <h3>The Meaning of Cinnabar</h3>
+            <p>For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red.</p>
+            <span class="journal-more">Read More →</span>
+          </div>
+        </div>
+        <div class="journal-card large">
+          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
+          <div class="journal-body">
+            <h3>How to Care for Your Piece</h3>
+            <p>Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come.</p>
+            <span class="journal-more">Read More →</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

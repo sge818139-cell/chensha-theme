@@ -8,7 +8,7 @@
     <div class="journal-grid">
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
-          <a href="{{ block.settings.link | default: '#' }}" class="journal-card">
+          <a href="{{ block.settings.link | default: '#' }}" class="journal-card" {{ block.shopify_attributes }}>
             <div class="journal-img">
               {% if block.settings.image != blank %}
                 <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
