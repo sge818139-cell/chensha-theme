@@ -41,40 +41,32 @@
     <div class="header-icons">
       <div class="currency-selector">
         <button class="currency-btn" id="currencyBtn">
-          <span class="currency-flag">{{ cart.currency.iso_code | slice: 0, 2 }}</span>
-          <span class="currency-code">{{ cart.currency.iso_code }} $</span>
+          <span class="currency-flag" id="currencyFlag">US</span>
+          <span class="currency-code" id="currencyCode">USD</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="currency-dropdown" id="currencyDropdown">
           <div class="currency-dropdown-title">Select Region / Currency</div>
-          {% for currency in shop.enabled_currencies %}
-            <a href="?currency={{ currency.iso_code }}" class="currency-option {% if currency.iso_code == cart.currency.iso_code %}active{% endif %}">
-              <span class="currency-flag">{{ currency.iso_code | slice: 0, 2 }}</span>
-              <span>{{ currency.iso_code }}</span>
-            </a>
-          {% endfor %}
-          {% if shop.enabled_currencies.size <= 1 %}
-            <a href="?currency=USD" class="currency-option {% if cart.currency.iso_code == 'USD' %}active{% endif %}">
-              <span class="currency-flag">US</span>
-              <span>USD — United States</span>
-            </a>
-            <a href="?currency=EUR" class="currency-option">
-              <span class="currency-flag">EU</span>
-              <span>EUR — Europe</span>
-            </a>
-            <a href="?currency=SGD" class="currency-option">
-              <span class="currency-flag">SG</span>
-              <span>SGD — Singapore</span>
-            </a>
-            <a href="?currency=TWD" class="currency-option">
-              <span class="currency-flag">TW</span>
-              <span>TWD — Taiwan</span>
-            </a>
-            <a href="?currency=MYR" class="currency-option">
-              <span class="currency-flag">MY</span>
-              <span>MYR — Malaysia</span>
-            </a>
-          {% endif %}
+          <a href="#" class="currency-option active" data-currency="USD" data-rate="1" data-symbol="$">
+            <span class="currency-flag">US</span>
+            <span>USD — United States</span>
+          </a>
+          <a href="#" class="currency-option" data-currency="EUR" data-rate="0.92" data-symbol="€">
+            <span class="currency-flag">EU</span>
+            <span>EUR — Europe</span>
+          </a>
+          <a href="#" class="currency-option" data-currency="SGD" data-rate="1.35" data-symbol="S$">
+            <span class="currency-flag">SG</span>
+            <span>SGD — Singapore</span>
+          </a>
+          <a href="#" class="currency-option" data-currency="TWD" data-rate="32.5" data-symbol="NT$">
+            <span class="currency-flag">TW</span>
+            <span>TWD — Taiwan</span>
+          </a>
+          <a href="#" class="currency-option" data-currency="MYR" data-rate="4.7" data-symbol="RM">
+            <span class="currency-flag">MY</span>
+            <span>MYR — Malaysia</span>
+          </a>
         </div>
       </div>
       <svg viewBox="0 0 24 24" class="icon-search"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
