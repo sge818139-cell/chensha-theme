@@ -1,0 +1,60 @@
+<section class="journal-section" id="journal">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="sec-eyebrow">CHAPT 03 · JOURNAL</div>
+      <h2 class="sec-title">{{ section.settings.title | default: 'CHENSHA Journal' }}</h2>
+      <p class="sec-sub">{{ section.settings.subtitle | default: 'Stories of craft, meaning and the art of wearing cinnabar.' }}</p>
+    </div>
+    <div class="journal-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="journal-card">
+          <div class="journal-img">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
+            {% else %}
+              <div class="journal-img-placeholder"></div>
+            {% endif %}
+          </div>
+          <div class="journal-body">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.excerpt }}</p>
+            <span class="journal-more">{{ block.settings.link_text | default: 'Read More' }} →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Journal",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section Title", "default": "CHENSHA Journal" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Stories of craft, meaning and the art of wearing cinnabar." }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Blog Post",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "The Meaning of Cinnabar" },
+        { "type": "textarea", "id": "excerpt", "label": "Excerpt", "default": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "text", "id": "link_text", "label": "Link Text", "default": "Read More" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal",
+      "blocks": [
+        { "type": "post", "settings": { "title": "The Meaning of Cinnabar", "excerpt": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." } },
+        { "type": "post", "settings": { "title": "How to Care for Your Piece", "excerpt": "Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come." } },
+        { "type": "post", "settings": { "title": "Choosing Your Intention", "excerpt": "Pixiu, Hulu gourd, peace knot — every charm carries a different meaning. Find the one that speaks to you." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
