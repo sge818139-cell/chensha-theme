@@ -92,10 +92,10 @@
               "name": "",
               "name_cn": "",
               "category": "",
-              "price": "",
-              "price_old": "",
+              "price": "$596.22",
+              "price_old": "$700",
               "badge": "",
-              "link": ""
+              "link": "shopify://products/collector-grade-natural-cinnabar-bracelet-收藏品质天然朱砂手串"
             }
           },
           "product_caLwj4": {
@@ -104,10 +104,22 @@
               "name": "",
               "name_cn": "",
               "category": "",
-              "price": "",
-              "price_old": "",
+              "price": "$596.22",
+              "price_old": "$700",
               "badge": "",
-              "link": ""
+              "link": "shopify://products/cinnabar-cloisonne-enamel-charm-bracelet-朱砂掌丝珐琅手串"
+            }
+          },
+          "product_BcMb96": {
+            "type": "product",
+            "settings": {
+              "name": "",
+              "name_cn": "",
+              "category": "",
+              "price": "$596.22",
+              "price_old": "$700",
+              "badge": "",
+              "link": "shopify://products/cinnabar-woven-cord-bracelet-with-jade-cloud-clasp-朱砂编练手串-白玉祥云扣"
             }
           },
           "product_H3CJAb": {
@@ -116,10 +128,10 @@
               "name": "",
               "name_cn": "",
               "category": "",
-              "price": "",
-              "price_old": "",
+              "price": "$596.22",
+              "price_old": "$700",
               "badge": "",
-              "link": ""
+              "link": "shopify://products/cinnabar-turquoise-gold-accent-bracelet-朱砂松石金珠手串"
             }
           },
           "product_RrFj49": {
@@ -128,10 +140,10 @@
               "name": "",
               "name_cn": "",
               "category": "",
-              "price": "",
-              "price_old": "",
+              "price": "$596.22",
+              "price_old": "$700",
               "badge": "",
-              "link": ""
+              "link": "shopify://products/cinnabar-carnelian-cat-s-eye-bracelet-朱砂南红猫眼手串"
             }
           },
           "product_rKe9Mq": {
@@ -140,32 +152,20 @@
               "name": "",
               "name_cn": "",
               "category": "",
-              "price": "",
-              "price_old": "",
+              "price": "$596.22",
+              "price_old": "$700",
               "badge": "",
-              "link": ""
-            }
-          },
-          "product_PUhUA6": {
-            "type": "product",
-            "settings": {
-              "name": "",
-              "name_cn": "",
-              "category": "",
-              "price": "",
-              "price_old": "",
-              "badge": "",
-              "link": ""
+              "link": "shopify://products/cinnabar-gold-gourd-charm-bracelet-朱砂金葫芦吹坠手串"
             }
           }
         },
         "block_order": [
           "product_CYykDJ",
           "product_caLwj4",
+          "product_BcMb96",
           "product_H3CJAb",
           "product_RrFj49",
-          "product_rKe9Mq",
-          "product_PUhUA6"
+          "product_rKe9Mq"
         ],
         "settings": {
           "eyebrow": "Bestsellers",
@@ -196,6 +196,7 @@
           "title": "Wrapped in Red & Gold",
           "title_cn": "開 盒 之 禮",
           "lead": "Every order arrives in our signature ivory keepsake box, tied with a black grosgrain ribbon and finished with a velveteen pouch and certificate of authenticity.",
+          "image": "shopify://shop_images/5d82910fe187870f0b30c95f3052c047.jpg",
           "li1": "Signature keepsake box — reusable, magnetic closure, lined in ivory.",
           "li2": "Velveteen travel pouch — gold-foil stamped, protects your piece on the go.",
           "li3": "Certificate of Authenticity — signed, numbered, with origin and care guide.",
