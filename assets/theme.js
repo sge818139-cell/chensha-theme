@@ -88,8 +88,11 @@
           currencyCode.textContent = currency;
 
           // Convert all prices on the page
-          var priceSelectors = '.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, .pcard-pay, .old';
-          document.querySelectorAll(priceSelectors).forEach(function (el) {
+          var allPriceElements = document.querySelectorAll('.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, .old, .pcard-pay');
+          allPriceElements.forEach(function (el) {
+            // Skip elements that have child elements (like .pcard-price which contains .old)
+            if (el.children.length > 0) return;
+
             var originalText = el.getAttribute('data-original-price');
             if (!originalText) {
               var match = el.textContent.match(/[\d,.]+/);
@@ -101,6 +104,8 @@
             if (originalText) {
               var originalPrice = parseFloat(originalText);
               var convertedPrice = originalPrice * rate;
+              // Preserve currency symbol if it exists
+              var hasSymbol = el.textContent.trim().startsWith('$') || el.textContent.trim().startsWith('€') || el.textContent.trim().startsWith('S$');
               el.textContent = symbol + convertedPrice.toFixed(2);
             }
           });
