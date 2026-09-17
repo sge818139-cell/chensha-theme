@@ -321,3 +321,21 @@ section{padding:100px 0}
   .pdp-title{font-size:28px}
   .pdp-qty-cart{flex-direction:column}
 }
+
+/* Packaging image in gallery */
+.pdp-packaging-img{margin-top:12px;border-radius:6px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.pdp-packaging-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Brand story split section */
+.pdp-story{display:grid;grid-template-columns:1fr 1fr;margin-top:80px}
+.pdp-story-img{overflow:hidden}
+.pdp-story-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:500px}
+.pdp-story-text{background:var(--cinnabar-deep);padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.pdp-story-eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;font-weight:600}
+.pdp-story-text h2{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:40px;font-weight:500;color:#FBF3E4;line-height:1.2;margin-bottom:24px;font-style:italic}
+.pdp-story-text p{font-size:16px;line-height:1.9;color:rgba(244,228,208,.85);margin-bottom:16px}
+@media(max-width:900px){
+  .pdp-story{grid-template-columns:1fr}
+  .pdp-story-text{padding:40px 24px}
+  .pdp-story-text h2{font-size:28px}
+}
