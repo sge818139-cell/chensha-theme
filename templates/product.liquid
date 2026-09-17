@@ -55,7 +55,9 @@
         <div class="pdp-divider"></div>
 
         {% if product and product.available %}
-        {% form 'product', product %}
+        {% form 'product', product, id: 'product-form', class: 'product-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
           {% unless product.variants.size == 1 %}
             <div class="pdp-variants">
               {% for option in product.options_with_values %}
@@ -134,3 +136,35 @@
 
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('product-form');
+  if (!form) return;
+  
+  var variants = {{ product.variants | json }};
+  
+  form.querySelectorAll('.pdp-value input').forEach(function(input) {
+    input.addEventListener('change', function() {
+      updateVariant();
+    });
+  });
+  
+  function updateVariant() {
+    var selectedOptions = {};
+    form.querySelectorAll('.pdp-option').forEach(function(option) {
+      var label = option.querySelector('.pdp-option-label').textContent;
+      var selected = option.querySelector('input:checked');
+      if (selected) selectedOptions[label] = selected.value;
+    });
+    
+    var matchingVariant = variants.find(function(v) {
+      return JSON.stringify(v.options) === JSON.stringify(Object.values(selectedOptions));
+    });
+    
+    if (matchingVariant) {
+      form.querySelector('input[name="id"]').value = matchingVariant.id;
+    }
+  }
+});
+</script>
