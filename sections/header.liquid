@@ -39,6 +39,19 @@
       <li><a href="/#journal">Journal</a></li>
     </ul>
     <div class="header-icons">
+      <div class="currency-selector">
+        <button class="currency-btn" id="currencyBtn">
+          <span class="currency-flag">{{ cart.currency.iso_code | slice: 0, 2 }}</span>
+          <span class="currency-code">{{ cart.currency.iso_code }} $</span>
+        </button>
+        <div class="currency-dropdown" id="currencyDropdown">
+          {% for currency in shop.enabled_currencies %}
+            <a href="?currency={{ currency.iso_code }}" class="currency-option {% if currency.iso_code == cart.currency.iso_code %}active{% endif %}">
+              {{ currency.iso_code }} — {{ currency.format }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
       <svg viewBox="0 0 24 24" class="icon-search"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <a href="{{ routes.account_url }}" class="icon-link"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
       <a href="{{ routes.cart_url }}" class="cart-count" data-count="{{ cart.item_count }}">

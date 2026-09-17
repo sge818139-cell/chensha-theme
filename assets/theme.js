@@ -50,5 +50,21 @@
       overlay.addEventListener('click', closeMenu);
       nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
     }
+
+    // Currency selector dropdown
+    var currencyBtn = document.getElementById('currencyBtn');
+    var currencyDropdown = document.getElementById('currencyDropdown');
+    if (currencyBtn && currencyDropdown) {
+      currencyBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        currencyDropdown.classList.toggle('open');
+      });
+      document.addEventListener('click', function () {
+        currencyDropdown.classList.remove('open');
+      });
+      currencyDropdown.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
   });
 })();
