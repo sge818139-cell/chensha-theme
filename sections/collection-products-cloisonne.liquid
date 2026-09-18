@@ -1,0 +1,85 @@
+<section class="collection-products">
+  <div class="container collection-layout">
+    <!-- 左侧筛选栏 -->
+    <aside class="collection-sidebar">
+      <div class="filter-title">{{ section.settings.filter_title }}</div>
+      <div class="filter-group">
+        <div class="filter-label">{{ section.settings.filter_1 }} <span class="filter-plus">+</span></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">{{ section.settings.filter_2 }} <span class="filter-plus">+</span></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">{{ section.settings.filter_3 }} <span class="filter-plus">+</span></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">{{ section.settings.filter_4 }} <span class="filter-plus">+</span></div>
+      </div>
+    </aside>
+
+    <!-- 右侧产品网格 -->
+    <div class="collection-main">
+      <div class="collection-toolbar">
+        <div class="collection-count">{{ section.settings.product_count_text }}</div>
+        <div class="collection-sort">{{ section.settings.sort_text }}</div>
+      </div>
+      <div class="prod-grid">
+        {% for block in section.blocks %}
+          <div class="pcard">
+            <div class="pcard-img">
+              {% if block.settings.image != blank %}
+                <a href="{{ block.settings.link }}">
+                  <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}">
+                </a>
+              {% else %}
+                <div class="pcard-img-placeholder"></div>
+              {% endif %}
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-name"><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></div>
+              <div class="pcard-price">{{ block.settings.price }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Products - Cloisonne",
+  "settings": [
+    { "type": "text", "id": "filter_title", "label": "Filter Title", "default": "FILTER BY" },
+    { "type": "text", "id": "filter_1", "label": "Filter 1", "default": "Intention" },
+    { "type": "text", "id": "filter_2", "label": "Filter 2", "default": "Symbol" },
+    { "type": "text", "id": "filter_3", "label": "Filter 3", "default": "Material" },
+    { "type": "text", "id": "filter_4", "label": "Filter 4", "default": "Price" },
+    { "type": "text", "id": "product_count_text", "label": "Product Count Text", "default": "9 RESULTS" },
+    { "type": "text", "id": "sort_text", "label": "Sort Text", "default": "SORT BY: NEWEST ↓" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Product Image" },
+        { "type": "text", "id": "title", "label": "Product Title", "default": "Product Name" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$0.00" },
+        { "type": "url", "id": "link", "label": "Product Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "default": {
+    "blocks": [
+      { "type": "product", "settings": { "title": "CLOISONNÉ & GOLD", "price": "$168.00" } },
+      { "type": "product", "settings": { "title": "CINNABAR & ENAMEL", "price": "$178.00" } },
+      { "type": "product", "settings": { "title": "GOLD GOURD CHARM", "price": "$188.00" } },
+      { "type": "product", "settings": { "title": "TURQUOISE & GOLD", "price": "$158.00" } },
+      { "type": "product", "settings": { "title": "NORTH STAR BRACELET", "price": "$168.00" } },
+      { "type": "product", "settings": { "title": "DIVINE EYE CHARM", "price": "$188.00" } }
+    ]
+  }
+}
+{% endschema %}
