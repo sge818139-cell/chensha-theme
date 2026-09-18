@@ -1,21 +1,51 @@
 {% layout 'theme' %}
 <section class="article-page">
-  <div class="container narrow">
-    <div class="sec-head center">
-      <div class="sec-eyebrow">CHENSHA JOURNAL</div>
-      <h1 class="sec-title">{{ article.title }}</h1>
-      <p class="sec-sub">{{ article.published_at | date: '%B %d, %Y' }}</p>
-    </div>
-    {% if article.image %}
-      <div class="article-img">
-        <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}">
+  <div class="article-container">
+    <!-- 左侧：文章内容 -->
+    <div class="article-main">
+      <div class="article-header">
+        <div class="sec-eyebrow">CHENSHA JOURNAL</div>
+        <h1 class="article-title">{{ article.title }}</h1>
+        <p class="article-date">{{ article.published_at | date: '%B %d, %Y' }}</p>
       </div>
-    {% endif %}
-    <div class="article-content">
-      {{ article.content }}
+
+      {% if article.image %}
+        <div class="article-hero">
+          <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}">
+        </div>
+      {% endif %}
+
+      <div class="article-body">
+        {{ article.content }}
+      </div>
+
+      <div class="article-footer">
+        <a href="{{ routes.blog_url }}" class="back-link">← Back to Journal</a>
+      </div>
     </div>
-    <div class="article-nav">
-      <a href="{{ routes.blog_url }}" class="journal-more">← Back to Journal</a>
-    </div>
+
+    <!-- 右侧：相关产品 -->
+    <aside class="article-sidebar">
+      <div class="related-products">
+        <h3 class="related-title">Related Products</h3>
+        <div class="related-divider"></div>
+
+        {% for product in collections.all.products limit: 3 %}
+          <a href="{{ product.url }}" class="related-card">
+            <div class="related-img">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title | escape }}">
+              {% else %}
+                <div class="related-img-placeholder"></div>
+              {% endif %}
+            </div>
+            <div class="related-info">
+              <h4>{{ product.title }}</h4>
+              <p class="related-price">{{ product.price | money }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </aside>
   </div>
 </section>

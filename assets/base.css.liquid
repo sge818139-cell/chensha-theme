@@ -273,14 +273,42 @@ section{padding:100px 0}
 }
 
 /* ===== Article Page ===== */
-.article-page{padding:80px 0}
-.container.narrow{max-width:800px}
-.article-img{margin:40px 0;border-radius:4px;overflow:hidden}
-.article-img img{width:100%;height:auto;display:block}
-.article-content{font-size:16px;line-height:1.9;color:var(--ink-soft)}
-.article-content h2{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:28px;color:var(--ink);margin:30px 0 16px}
-.article-content p{margin-bottom:16px}
-.article-nav{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.article-page{padding:60px 0}
+.article-container{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 320px;gap:60px}
+.article-main{min-width:0}
+.article-header{margin-bottom:30px}
+.article-title{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:42px;line-height:1.2;color:var(--ink);margin:10px 0}
+.article-date{font-size:14px;color:var(--ink-light);letter-spacing:0.05em}
+.article-hero{margin:30px 0;border-radius:4px;overflow:hidden}
+.article-hero img{width:100%;height:auto;display:block}
+.article-body{font-size:16px;line-height:1.9;color:var(--ink-soft)}
+.article-body h2{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:28px;color:var(--ink);margin:40px 0 16px}
+.article-body h3{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:22px;color:var(--ink);margin:30px 0 12px}
+.article-body p{margin-bottom:18px}
+.article-body ul,.article-body ol{margin-bottom:18px;padding-left:20px}
+.article-body li{margin-bottom:8px}
+.article-body a{color:var(--cinnabar);text-decoration:none;border-bottom:1px solid var(--cinnabar)}
+.article-footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line)}
+.back-link{color:var(--cinnabar);text-decoration:none;font-size:14px;letter-spacing:0.05em}
+.back-link:hover{opacity:0.7}
+
+/* Sidebar */
+.article-sidebar{position:sticky;top:120px;align-self:start}
+.related-title{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:24px;color:var(--ink);margin-bottom:12px}
+.related-divider{width:40px;height:1px;background:var(--ink);margin-bottom:24px}
+.related-card{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:opacity 0.3s}
+.related-card:hover{opacity:0.8}
+.related-img{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;background:var(--paper)}
+.related-img img{width:100%;height:100%;object-fit:cover}
+.related-img-placeholder{width:100%;height:100%;background:var(--cinnabar)}
+.related-info{flex:1}
+.related-info h4{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:16px;color:var(--ink);line-height:1.4;margin:0 0 6px}
+.related-price{font-size:14px;color:var(--ink-light);margin:0}
+
+@media(max-width:900px){
+  .article-container{grid-template-columns:1fr;gap:40px}
+  .article-sidebar{position:static}
+}
 
 /* ===== Newsletter ===== */
 .newsletter{background:var(--paper);text-align:center}
