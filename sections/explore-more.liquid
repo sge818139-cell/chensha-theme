@@ -1,7 +1,7 @@
 <section class="explore-more">
   <div class="container">
     <div class="sec-head center">
-      <h2 class="sec-title">Explore More Treasures</h2>
+      <h2 class="sec-title">{{ section.settings.heading }}</h2>
       <div class="gold-divider"></div>
     </div>
     <div class="explore-grid">
@@ -27,26 +27,75 @@
 {% schema %}
 {
   "name": "Explore More",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Explore More Treasures"
+    }
+  ],
   "blocks": [
     {
       "type": "card",
       "name": "Card",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Title", "default": "BRACELETS" },
-        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Shop Now" },
-        { "type": "url", "id": "link", "label": "Link" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "BRACELETS"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
       ]
     }
   ],
   "max_blocks": 4,
   "default": {
     "blocks": [
-      { "type": "card", "settings": { "title": "BRACELETS", "subtitle": "Shop Now" } },
-      { "type": "card", "settings": { "title": "NECKLACES", "subtitle": "Shop Now" } },
-      { "type": "card", "settings": { "title": "RINGS", "subtitle": "Shop Now" } },
-      { "type": "card", "settings": { "title": "CHARMS", "subtitle": "Shop Now" } }
+      {
+        "type": "card",
+        "settings": {
+          "title": "BRACELETS",
+          "subtitle": "Shop Now"
+        }
+      },
+      {
+        "type": "card",
+        "settings": {
+          "title": "NECKLACES",
+          "subtitle": "Shop Now"
+        }
+      },
+      {
+        "type": "card",
+        "settings": {
+          "title": "RINGS",
+          "subtitle": "Shop Now"
+        }
+      },
+      {
+        "type": "card",
+        "settings": {
+          "title": "CHARMS",
+          "subtitle": "Shop Now"
+        }
+      }
     ]
   }
 }
