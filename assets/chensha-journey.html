@@ -498,7 +498,15 @@
         <!-- 地面 -->
         <div class="element ground"></div>
 
-        <!-- 场景 1: 品质 -->
+        <!-- 场景 1: 起源 -->
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('scene-origin.png')"></div>
+          <div class="scene-eyebrow">01 · ORIGIN</div>
+          <div class="scene-title">Ancient Origins</div>
+          <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
+        </div>
+
+        <!-- 场景 2: 品质 -->
         <div class="element scene-block">
           <div class="scene-image" style="background-image: url('scene-quality.png')"></div>
           <div class="scene-eyebrow">02 · QUALITY</div>
@@ -520,13 +528,6 @@
           <div class="scene-eyebrow">04 · COLLECTION</div>
           <div class="scene-title">Our Collection</div>
           <p class="scene-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
-        </div>
-
-        <!-- 中间大标题 -->
-        <div class="element main-title">
-          <div class="main-eyebrow">01 · ORIGIN</div>
-          <h1 class="main-heading">Into The Cinnabar</h1>
-          <div class="main-line"></div>
         </div>
 
         <!-- 结尾 -->
@@ -551,22 +552,6 @@
     const scenes = document.querySelectorAll('.scene-block');
     const finale = document.querySelector('.finale');
     const progressFill = document.querySelector('.progress-fill');
-    const mainHeading = document.querySelector('.main-heading');
-    const mainEyebrow = document.querySelector('.main-eyebrow');
-
-    const titles = [
-      'Into The Cinnabar',
-      'Premium Quality',
-      'Master Craftsmanship',
-      'Our Collection'
-    ];
-
-    const eyebrows = [
-      '01 · ORIGIN',
-      '02 · QUALITY',
-      '03 · CRAFT',
-      '04 · COLLECTION'
-    ];
 
     function updateJourney() {
       const scrollTop = window.pageYOffset;
@@ -583,17 +568,9 @@
         const nextThreshold = (i + 2) * 0.18;
         if (progress > threshold && progress < nextThreshold) {
           scenes[i].classList.add('visible');
-          mainHeading.textContent = titles[i + 1];
-          mainEyebrow.textContent = eyebrows[i + 1];
         } else {
           scenes[i].classList.remove('visible');
         }
-      }
-
-      // 如果在最开头，显示默认标题
-      if (progress < 0.18) {
-        mainHeading.textContent = titles[0];
-        mainEyebrow.textContent = eyebrows[0];
       }
 
       // 结尾
