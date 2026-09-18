@@ -1,397 +1,347 @@
-<section class="cinnabar-journey">
+<section class="panther-journey">
 
-  <div class="journey-track">
+  <div class="journey-viewport">
+    <div class="journey-3d">
 
-    <!-- 场景 1: 起源 -->
-    <div class="j-scene">
-      <div class="j-bg j-bg-1"></div>
-      <div class="j-content">
-        <div class="j-text j-text-left">
-          <div class="j-eyebrow">01 · ORIGIN</div>
-          <h2 class="j-title">{{ section.settings.scene_1_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_1_desc }}</p>
-        </div>
-        <div class="j-visual j-visual-right">
-          <div class="j-img-placeholder j-img-map">
-            <div class="map-shape"></div>
-            <div class="map-pin"></div>
-            <div class="map-label">铜仁<br>Tongren</div>
+      <!-- 地面 -->
+      <div class="journey-floor"></div>
+
+      <!-- 远景层 -->
+      <div class="j-layer j-layer-far">
+        <div class="far-mountain far-mountain-left"></div>
+        <div class="far-mountain far-mountain-right"></div>
+        <div class="far-cloud far-cloud-1"></div>
+        <div class="far-cloud far-cloud-2"></div>
+      </div>
+
+      <!-- 中景层 - 两侧植物 -->
+      <div class="j-layer j-layer-mid">
+        <div class="mid-plant mid-plant-left-1"></div>
+        <div class="mid-plant mid-plant-left-2"></div>
+        <div class="mid-plant mid-plant-right-1"></div>
+        <div class="mid-plant mid-plant-right-2"></div>
+      </div>
+
+      <!-- 主角 - 朱砂原石 -->
+      <div class="journey-hero">
+        <div class="hero-shadow"></div>
+        <div class="hero-crystal"></div>
+      </div>
+
+      <!-- 场景元素 - 从两侧浮现 -->
+      <div class="scene-float scene-1-left">
+        <div class="scene-card">
+          <div class="scene-card-icon map-icon"></div>
+          <div class="scene-card-text">
+            <div class="scene-card-eyebrow">01</div>
+            <div class="scene-card-title">{{ section.settings.scene_1_title }}</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 场景 2: 品质 -->
-    <div class="j-scene">
-      <div class="j-bg j-bg-2"></div>
-      <div class="j-content">
-        <div class="j-visual j-visual-left">
-          <div class="j-img-placeholder j-img-crystal">
-            <div class="crystal-shape"></div>
-            <div class="crystal-glow"></div>
-          </div>
-        </div>
-        <div class="j-text j-text-right">
-          <div class="j-eyebrow">02 · QUALITY</div>
-          <h2 class="j-title">{{ section.settings.scene_2_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_2_desc }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 场景 3: 工艺 -->
-    <div class="j-scene">
-      <div class="j-bg j-bg-3"></div>
-      <div class="j-content">
-        <div class="j-text j-text-left">
-          <div class="j-eyebrow">03 · CRAFT</div>
-          <h2 class="j-title">{{ section.settings.scene_3_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_3_desc }}</p>
-        </div>
-        <div class="j-visual j-visual-right">
-          <div class="j-img-placeholder j-img-craft">
-            <div class="bead-row">
-              <div class="bead"></div>
-              <div class="bead"></div>
-              <div class="bead"></div>
-              <div class="bead"></div>
-              <div class="bead"></div>
-            </div>
+      <div class="scene-float scene-2-right">
+        <div class="scene-card">
+          <div class="scene-card-icon crystal-icon"></div>
+          <div class="scene-card-text">
+            <div class="scene-card-eyebrow">02</div>
+            <div class="scene-card-title">{{ section.settings.scene_2_title }}</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 场景 4: 产品 -->
-    <div class="j-scene">
-      <div class="j-bg j-bg-4"></div>
-      <div class="j-content">
-        <div class="j-text j-text-center">
-          <div class="j-eyebrow">04 · COLLECTION</div>
-          <h2 class="j-title">{{ section.settings.scene_4_title }}</h2>
-          <div class="j-divider j-divider-center"></div>
-          <p class="j-desc">{{ section.settings.scene_4_desc }}</p>
-        </div>
-        <div class="j-products">
-          <div class="j-product">
-            <div class="j-product-img j-product-1"></div>
-            <div class="j-product-name">Cinnabar Bracelets</div>
-          </div>
-          <div class="j-product">
-            <div class="j-product-img j-product-2"></div>
-            <div class="j-product-name">Gold & Cinnabar</div>
+      <div class="scene-float scene-3-left">
+        <div class="scene-card">
+          <div class="scene-card-icon craft-icon"></div>
+          <div class="scene-card-text">
+            <div class="scene-card-eyebrow">03</div>
+            <div class="scene-card-title">{{ section.settings.scene_3_title }}</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 场景 5: 结尾 -->
-    <div class="j-scene j-scene-finale">
-      <div class="j-bg j-bg-5"></div>
-      <div class="j-content j-content-center">
-        <div class="j-eyebrow j-eyebrow-light">CHENSHA</div>
-        <h2 class="j-title j-title-light">{{ section.settings.finale_title }}</h2>
-        <div class="j-divider j-divider-center"></div>
-        <p class="j-desc j-desc-light">{{ section.settings.finale_desc }}</p>
-        <a href="{{ section.settings.cta_link }}" class="j-cta-btn">{{ section.settings.cta_button }}</a>
+      <div class="scene-float scene-4-right">
+        <div class="scene-card">
+          <div class="scene-card-icon product-icon"></div>
+          <div class="scene-card-text">
+            <div class="scene-card-eyebrow">04</div>
+            <div class="scene-card-title">{{ section.settings.scene_4_title }}</div>
+          </div>
+        </div>
       </div>
-    </div>
 
+      <!-- 底部标题 -->
+      <div class="journey-title-bar">
+        <div class="title-eyebrow">{{ section.settings.title_eyebrow }}</div>
+        <h2 class="title-main">{{ section.settings.title_main }}</h2>
+        <div class="title-line"></div>
+      </div>
+
+      <!-- 结尾 CTA -->
+      <div class="journey-finale">
+        <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
+        <p class="finale-desc">{{ section.settings.finale_desc }}</p>
+        <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
+      </div>
+
+    </div>
   </div>
 
-  <!-- 进度指示 -->
-  <div class="j-progress">
-    <div class="j-progress-dot active"></div>
-    <div class="j-progress-dot"></div>
-    <div class="j-progress-dot"></div>
-    <div class="j-progress-dot"></div>
-    <div class="j-progress-dot"></div>
+  <!-- 滚动进度 -->
+  <div class="journey-progress">
+    <div class="progress-track"></div>
+    <div class="progress-fill"></div>
   </div>
 
 </section>
 
 <style>
-.cinnabar-journey {
+.panther-journey {
   position: relative;
   width: 100%;
+  height: 600vh;
   background: #FAF6F0;
-}
-
-.journey-track {
-  position: relative;
-  width: 100%;
-}
-
-.j-scene {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
-.j-bg {
-  position: absolute;
+.journey-viewport {
+  position: sticky;
   top: 0;
-  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.journey-3d {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: 0;
-}
-.j-bg-1 {
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(158,43,37,0.05) 0%, transparent 50%),
-    linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
-}
-.j-bg-2 {
-  background: 
-    radial-gradient(ellipse at 80% 50%, rgba(201,162,75,0.08) 0%, transparent 50%),
-    linear-gradient(135deg, #F4EDE2 0%, #EDE3D3 100%);
-}
-.j-bg-3 {
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(158,43,37,0.06) 0%, transparent 50%),
-    linear-gradient(135deg, #EDE3D3 0%, #E8DCC8 100%);
-}
-.j-bg-4 {
-  background: linear-gradient(135deg, #E8DCC8 0%, #F4EDE2 100%);
-}
-.j-bg-5 {
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
 }
 
-.j-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
+/* 地面 */
+.journey-floor {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(70deg);
+  width: 300%;
+  height: 200%;
+  background: 
+    radial-gradient(ellipse at center, rgba(158,43,37,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #F4EDE2 0%, #E8DCC8 100%);
+  transform-origin: center bottom;
+}
+
+/* 远景层 */
+.j-layer {
+  position: absolute;
   width: 100%;
-  padding: 0 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  height: 100%;
+  pointer-events: none;
 }
-.j-content-center {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
+.j-layer-far {
+  opacity: 0.3;
+}
+.far-mountain {
+  position: absolute;
+  bottom: 35%;
+  width: 400px;
+  height: 300px;
+  background: #C9B896;
+  clip-path: polygon(0 100%, 15% 50%, 35% 70%, 55% 30%, 75% 60%, 90% 40%, 100% 100%);
+}
+.far-mountain-left { left: 0; }
+.far-mountain-right { right: 0; transform: scale(1.3); }
+.far-cloud {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+.far-cloud-1 { top: 20%; left: 15%; }
+.far-cloud-2 { top: 30%; right: 20%; }
+
+/* 中景植物 */
+.j-layer-mid {
+  opacity: 0.4;
+}
+.mid-plant {
+  position: absolute;
+  bottom: 20%;
+  width: 100px;
+  height: 180px;
+  background: #B8A888;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.mid-plant-left-1 { left: 3%; }
+.mid-plant-left-2 { left: 12%; bottom: 15%; transform: scale(1.4); }
+.mid-plant-right-1 { right: 3%; transform: scaleX(-1); }
+.mid-plant-right-2 { right: 12%; bottom: 15%; transform: scaleX(-1) scale(1.4); }
+
+/* 主角 */
+.journey-hero {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  z-index: 10;
+  transition: transform 0.1s linear;
+}
+.hero-crystal {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%);
+  box-shadow: 0 0 40px rgba(158,43,37,0.4);
+  animation: heroWalk 2s ease-in-out infinite;
+}
+.hero-shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 15px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+@keyframes heroWalk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.j-text {
+/* 场景卡片 */
+.scene-float {
+  position: absolute;
+  width: 280px;
+  z-index: 5;
   opacity: 0;
-  transform: translateY(50px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.j-scene.in-view .j-text {
+.scene-float.visible {
   opacity: 1;
-  transform: translateY(0);
 }
-
-.j-eyebrow {
-  font-size: 13px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #9E2B25;
-  margin-bottom: 15px;
+.scene-1-left {
+  left: 10%;
+  top: 30%;
 }
-.j-eyebrow-light {
-  color: #E0C88A;
+.scene-2-right {
+  right: 10%;
+  top: 30%;
 }
-.j-title {
-  font-size: 52px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #2A1F1A;
-  margin-bottom: 20px;
+.scene-3-left {
+  left: 10%;
+  top: 30%;
 }
-.j-title-light {
-  color: #FAF6F0;
+.scene-4-right {
+  right: 10%;
+  top: 30%;
 }
-.j-divider {
-  width: 60px;
-  height: 2px;
-  background: #9E2B25;
-  margin-bottom: 25px;
-}
-.j-divider-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-.j-desc {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #555;
-}
-.j-desc-light {
-  color: #E0C88A;
-}
-
-.j-visual {
-  opacity: 0;
-  transform: translateY(50px) scale(0.95);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.j-scene.in-view .j-visual {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.j-img-placeholder {
-  width: 100%;
-  height: 400px;
+.scene-card {
+  background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(158,43,37,0.15);
-  position: relative;
-  overflow: hidden;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(158,43,37,0.15);
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-
-/* 地图占位 */
-.j-img-map {
-  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
+.scene-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  flex-shrink: 0;
 }
-.map-shape {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 200px;
-  background: rgba(158,43,37,0.3);
-  clip-path: polygon(30% 10%, 70% 5%, 90% 30%, 85% 70%, 60% 95%, 25% 90%, 10% 60%, 15% 25%);
-  border: 2px solid #C9A24B;
+.map-icon {
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
 }
-.map-pin {
-  position: absolute;
-  top: 45%;
-  left: 55%;
-  width: 20px;
-  height: 20px;
-  background: #9E2B25;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 0 4px rgba(158,43,37,0.2);
-  animation: pinPulse 2s ease-in-out infinite;
+.crystal-icon {
+  background: linear-gradient(135deg, #C9A24B 0%, #9E2B25 100%);
 }
-@keyframes pinPulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(158,43,37,0.2); }
-  50% { box-shadow: 0 0 0 12px rgba(158,43,37,0.1); }
+.craft-icon {
+  background: linear-gradient(135deg, #7A1F1A 0%, #2A1F1A 100%);
 }
-.map-label {
-  position: absolute;
-  top: 40%;
-  left: 60%;
-  font-size: 14px;
+.product-icon {
+  background: linear-gradient(135deg, #9E2B25 0%, #C9A24B 100%);
+}
+.scene-card-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
   color: #9E2B25;
+  margin-bottom: 5px;
+}
+.scene-card-title {
+  font-size: 18px;
+  color: #2A1F1A;
   font-weight: 500;
 }
 
-/* 晶体占位 */
-.j-img-crystal {
-  background: linear-gradient(135deg, #2A1F1A 0%, #3D2A20 100%);
-}
-.crystal-shape {
+/* 底部标题 */
+.journey-title-bar {
   position: absolute;
-  top: 50%;
+  bottom: 8%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 160px;
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-  clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%);
-  box-shadow: 0 0 60px rgba(158,43,37,0.5);
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 8;
 }
-.crystal-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(158,43,37,0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: glowPulse 3s ease-in-out infinite;
+.title-eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #9E2B25;
+  margin-bottom: 10px;
 }
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+.title-main {
+  font-size: 36px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 15px;
+}
+.title-line {
+  width: 60px;
+  height: 2px;
+  background: #9E2B25;
+  margin: 0 auto;
 }
 
-/* 工艺占位 - 手链 */
-.j-img-craft {
-  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
+/* 结尾 */
+.journey-finale {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.bead-row {
-  display: flex;
-  gap: 15px;
-}
-.bead {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-  box-shadow: 0 5px 15px rgba(158,43,37,0.3);
-  animation: beadFloat 3s ease-in-out infinite;
-}
-.bead:nth-child(2) { animation-delay: 0.2s; }
-.bead:nth-child(3) { animation-delay: 0.4s; }
-.bead:nth-child(4) { animation-delay: 0.6s; }
-.bead:nth-child(5) { animation-delay: 0.8s; }
-@keyframes beadFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* 产品展示 */
-.j-products {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-.j-product {
   text-align: center;
+  z-index: 20;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease 0.3s;
+  transition: opacity 1s ease;
 }
-.j-scene.in-view .j-product {
+.journey-finale.visible {
   opacity: 1;
-  transform: translateY(0);
 }
-.j-product-img {
-  width: 100%;
-  height: 350px;
-  border-radius: 16px;
-  margin-bottom: 15px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+.finale-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: #FAF6F0;
+  margin-bottom: 20px;
 }
-.j-product-1 {
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+.finale-desc {
+  font-size: 18px;
+  color: #E0C88A;
+  margin-bottom: 30px;
 }
-.j-product-2 {
-  background: linear-gradient(135deg, #C9A24B 0%, #9E2B25 100%);
-}
-.j-product-name {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #2A1F1A;
-}
-
-/* CTA 按钮 */
-.j-cta-btn {
+.finale-btn {
   display: inline-block;
-  margin-top: 30px;
   padding: 16px 50px;
   background: #C9A24B;
   color: #2A1F1A;
@@ -401,97 +351,129 @@
   font-size: 14px;
   transition: all 0.3s ease;
 }
-.j-cta-btn:hover {
+.finale-btn:hover {
   background: transparent;
   color: #C9A24B;
   border: 1px solid #C9A24B;
 }
 
-/* 进度指示 */
-.j-progress {
+/* 进度条 */
+.journey-progress {
   position: fixed;
   right: 30px;
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  width: 3px;
+  height: 200px;
+  background: rgba(158,43,37,0.1);
   z-index: 100;
 }
-.j-progress-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.j-progress-dot.active {
+.progress-fill {
+  width: 100%;
+  height: 0%;
   background: #9E2B25;
-  transform: scale(1.5);
+  transition: height 0.1s linear;
 }
 
 @media (max-width: 768px) {
-  .j-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 30px;
+  .journey-hero {
+    width: 80px;
+    height: 80px;
   }
-  .j-title {
-    font-size: 36px;
+  .scene-float {
+    width: 220px;
   }
-  .j-products {
-    grid-template-columns: 1fr;
+  .scene-1-left, .scene-3-left {
+    left: 5%;
   }
-  .j-progress {
-    right: 15px;
+  .scene-2-right, .scene-4-right {
+    right: 5%;
+  }
+  .title-main {
+    font-size: 28px;
+  }
+  .finale-title {
+    font-size: 32px;
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const scenes = document.querySelectorAll('.j-scene');
-  const dots = document.querySelectorAll('.j-progress-dot');
+  const journey = document.querySelector('.panther-journey');
+  const hero = document.querySelector('.journey-hero');
+  const scenes = document.querySelectorAll('.scene-float');
+  const finale = document.querySelector('.journey-finale');
+  const progressFill = document.querySelector('.progress-fill');
+  const titleMain = document.querySelector('.title-main');
+  const titleEyebrow = document.querySelector('.title-eyebrow');
   
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        // 更新进度点
-        const sceneIndex = Array.from(scenes).indexOf(entry.target);
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === sceneIndex);
-        });
+  const sceneTitles = [
+    'Ancient Origins',
+    'Premium Quality',
+    'Master Craft',
+    'Our Collection'
+  ];
+  const sceneEyebrows = [
+    '01 · ORIGIN',
+    '02 · QUALITY',
+    '03 · CRAFT',
+    '04 · COLLECTION'
+  ];
+  
+  function updateJourney() {
+    const scrollTop = window.pageYOffset;
+    const journeyTop = journey.offsetTop;
+    const journeyHeight = journey.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (scrollTop - journeyTop) / journeyHeight));
+    
+    // 进度条
+    progressFill.style.height = (progress * 100) + '%';
+    
+    // 主角向前走（变大）
+    const scale = 1 + progress * 0.8;
+    hero.style.transform = `translateX(-50%) scale(${scale})`;
+    
+    // 场景出现时机（4个场景，每个占25%）
+    for (let i = 0; i < scenes.length; i++) {
+      const threshold = (i + 1) * 0.18;
+      if (progress > threshold) {
+        scenes[i].classList.add('visible');
+        // 更新底部标题
+        titleMain.textContent = sceneTitles[i];
+        titleEyebrow.textContent = sceneEyebrows[i];
       }
-    });
-  }, {
-    threshold: 0.3
-  });
+    }
+    
+    // 结尾
+    if (progress > 0.85) {
+      finale.classList.add('visible');
+    } else {
+      finale.classList.remove('visible');
+    }
+    
+    // 视差 - 远景移动慢，中景移动快
+    const farLayer = document.querySelector('.j-layer-far');
+    const midLayer = document.querySelector('.j-layer-mid');
+    if (farLayer) farLayer.style.transform = `translateY(${progress * 30}px)`;
+    if (midLayer) midLayer.style.transform = `translateY(${progress * 60}px)`;
+  }
   
-  scenes.forEach(scene => observer.observe(scene));
-  
-  // 进度点点击跳转
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      scenes[i].scrollIntoView({ behavior: 'smooth' });
-    });
-  });
+  window.addEventListener('scroll', updateJourney);
+  updateJourney();
 });
 </script>
 
 {% schema %}
 {
-  "name": "Cinnabar Journey",
+  "name": "Panther Journey",
   "settings": [
     { "type": "text", "id": "scene_1_title", "label": "Scene 1 Title", "default": "Ancient Origins" },
-    { "type": "textarea", "id": "scene_1_desc", "label": "Scene 1 Desc", "default": "For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar. This sacred red stone has been treasured by emperors and scholars through every dynasty." },
     { "type": "text", "id": "scene_2_title", "label": "Scene 2 Title", "default": "Premium Quality" },
-    { "type": "textarea", "id": "scene_2_desc", "label": "Scene 2 Desc", "default": "Our cinnabar boasts 99% purity, with a deep, vibrant crimson that reflects the light with a warm, golden glow. Each piece is carefully selected for the highest quality." },
-    { "type": "text", "id": "scene_3_title", "label": "Scene 3 Title", "default": "Master Craftsmanship" },
-    { "type": "textarea", "id": "scene_3_desc", "label": "Scene 3 Desc", "default": "Every CHENSHA bracelet is handcrafted by master artisans with decades of experience. From stringing to finishing, each step is done with meticulous care." },
+    { "type": "text", "id": "scene_3_title", "label": "Scene 3 Title", "default": "Master Craft" },
     { "type": "text", "id": "scene_4_title", "label": "Scene 4 Title", "default": "Our Collection" },
-    { "type": "textarea", "id": "scene_4_desc", "label": "Scene 4 Desc", "default": "Discover bracelets that carry thousands of years of Chinese heritage, crafted to be worn and treasured every day." },
+    { "type": "text", "id": "title_eyebrow", "label": "Title Eyebrow", "default": "01 · ORIGIN" },
+    { "type": "text", "id": "title_main", "label": "Title Main", "default": "Ancient Origins" },
     { "type": "text", "id": "finale_title", "label": "Finale Title", "default": "Thank You for Choosing CHENSHA" },
     { "type": "textarea", "id": "finale_desc", "label": "Finale Desc", "default": "Carry a piece of Chinese heritage with you." },
     { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "EXPLORE MORE" },
@@ -499,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "presets": [
     {
-      "name": "Cinnabar Journey",
+      "name": "Panther Journey",
       "category": "Featured"
     }
   ]
