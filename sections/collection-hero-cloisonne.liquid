@@ -1,0 +1,30 @@
+<section class="collection-hero">
+  <div class="container collection-hero-grid">
+    <div class="collection-hero-text">
+      <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="collection-hero-title">{{ section.settings.title }}<span class="cn-title">{{ section.settings.cn_title }}</span></h1>
+      <div class="hero-divider"></div>
+      <p class="collection-hero-desc">{{ section.settings.description }}</p>
+    </div>
+    <div class="collection-hero-img">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | escape }}">
+      {% else %}
+        <img src="{{ 'collection-hero-cloisonne.jpg' | asset_url }}" alt="{{ section.settings.title | escape }}">
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Hero - Cloisonne",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "COLLECTION" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Cloisonné & Gold" },
+    { "type": "text", "id": "cn_title", "label": "Chinese Title", "default": "景 泰 蓝 · 鎏 金" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Ancient Chinese enamel craftsmanship meets modern design, each piece a fusion of art and elegance." },
+    { "type": "image_picker", "id": "image", "label": "Hero Image" }
+  ]
+}
+{% endschema %}
