@@ -1,45 +1,114 @@
 {% layout 'theme' %}
 <section class="journal-page">
-  <div class="container">
-    <div class="sec-head center">
-      <div class="sec-eyebrow">CHENSHA JOURNAL</div>
-      <h1 class="sec-title">{{ blog.title | default: 'CHENSHA Journal' }}</h1>
-      <p class="sec-sub">Stories of craft, meaning and the art of wearing cinnabar.</p>
+  <div class="journal-hero">
+    <div class="journal-hero-img">
+      <img src="{{ 'blog-hero.jpg' | asset_img_url: '1600x' }}" alt="Cinnabar stone">
     </div>
-    <div class="journal-page-grid">
-      {% for article in blog.articles %}
-        <a href="{{ article.url }}" class="journal-card large">
-          <div class="journal-img">
-            {% if article.image %}
-              <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title | escape }}">
-            {% else %}
-              <div class="journal-img-placeholder"></div>
-            {% endif %}
-          </div>
-          <div class="journal-body">
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </a>
-      {% else %}
-        <div class="journal-card large">
-          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
-          <div class="journal-body">
-            <h3>The Meaning of Cinnabar</h3>
-            <p>For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red.</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </div>
-        <div class="journal-card large">
-          <div class="journal-img"><div class="journal-img-placeholder"></div></div>
-          <div class="journal-body">
-            <h3>How to Care for Your Piece</h3>
-            <p>Simple rituals to keep your cinnabar bracelet vibrant and beautiful for years to come.</p>
-            <span class="journal-more">Read More →</span>
-          </div>
-        </div>
-      {% endfor %}
+    <div class="journal-hero-overlay">
+      <div class="container">
+        <div class="sec-eyebrow gold">CHENSHA JOURNAL</div>
+        <h1 class="journal-page-title">Why Cinnabar, the World's Oldest Red, Is the New Protection Amulet</h1>
+        <p class="journal-page-date">September 18, 2026</p>
+      </div>
     </div>
+  </div>
+
+  <div class="article-container">
+    <!-- 左侧：文章内容 -->
+    <div class="article-main">
+      <div class="article-body">
+        <p class="article-lead">From the emperor's seal to your wrist — the story of CHENSHA.</p>
+
+        <h2>A Red That Hasn't Faded for 3,000 Years</h2>
+        <p>In the archives of the Forbidden City, there are oracle bones dating back to the Shang Dynasty — carved over 3,000 years ago. The writing on them is still vivid, still red. The pigment used was cinnabar: a mineral so dense, so saturated, that it outlasted empires.</p>
+
+        <div class="article-img">
+          <img src="{{ 'blog-forbidden-city.jpg' | asset_img_url: '1200x' }}" alt="Forbidden City red wall">
+        </div>
+
+        <p>For millennia, this was not just a color. It was the color of power. Emperors stamped their seals in cinnabar. Priests ground it into medicine and alchemy. Warriors wore it against evil. It was believed to hold the energy of the earth itself — grounding, protective, unshakable.</p>
+
+        <p>CHENSHA was born from a simple question: <em>Why is this red reserved for museums?</em></p>
+
+        <h2>What Is Cinnabar, Really?</h2>
+        <p>Cinnabar is mercury sulfide — the same mineral that, when heated, becomes mercury. In ancient China, this transformation was seen as alchemical magic: the stone that could turn from solid to liquid, from earth to energy.</p>
+
+        <p>But CHENSHA does not sell superstition. We sell the symbolism.</p>
+
+        <p>We believe that a meaningful object does not have to be magical to matter. A red string on your wrist can be a reminder of what you care about. A Pixiu charm can be a symbol of the goals you're working toward. A Hulu gourd can represent the protection you want for yourself and the people you love.</p>
+
+        <p>In a world that feels unstable, we are all looking for something to hold onto. Cinnabar is that something — beautifully designed, quietly powerful, yours to define.</p>
+
+        <h2>The Design Problem: Too Sacred to Wear?</h2>
+
+        <div class="article-img">
+          <img src="{{ 'blog-craft.jpg' | asset_img_url: '1200x' }}" alt="Cinnabar bracelet and cord">
+        </div>
+
+        <p>Traditional Chinese cinnabar jewelry has always been heavy, ornate, almost ceremonial. It belonged in temples, not in offices. Young people saw it as something their grandmother would wear — beautiful, yes, but not <em>them</em>.</p>
+
+        <p>We wanted to change that.</p>
+
+        <p>Every CHENSHA piece is designed to be worn daily. We pair the deep, velvety red of cinnabar beads with fine cord, subtle gold accents, and minimalist silhouettes. It works with a white tee. It works with a blazer. It does not shout "I am spiritual" — it whispers.</p>
+
+        <p>The carving details — the Pixiu's horns, the Hulu's curves, the peace knot's symmetry — are preserved exactly as they have been for centuries. We did not redesign them. We simply put them in a context where you would actually want to wear them.</p>
+
+        <h2>Choose Your Intention</h2>
+        <p>Each CHENSHA piece carries a meaning. You don't have to believe in it. But we hope you will <em>feel</em> it.</p>
+
+        <ul>
+          <li><strong>Pixiu Bracelet</strong> — Wealth, opportunity, and the courage to pursue what you want. Traditionally, Pixiu is the mythical creature that never lets wealth leave its mouth. We see it as a symbol of ambition: show up, and don't let opportunities slip.</li>
+          <li><strong>Hulu Gourd</strong> — Protection, health, and harmony. The Hulu was the container Taoist masters used to hold medicine. It is still given as a gift to wish someone well.</li>
+          <li><strong>Peace Knot</strong> — Balance and connection. The Chinese knot has no beginning and no end. It is worn to calm the mind and steady the heart.</li>
+          <li><strong>Pure Cinnabar Beads</strong> — Grounding. The simplest piece, for anyone who just wants to carry the color.</li>
+        </ul>
+
+        <div class="article-img">
+          <img src="{{ 'blog-wearing.jpg' | asset_img_url: '1200x' }}" alt="Wearing cinnabar bracelet">
+        </div>
+
+        <h2>How to Wear It</h2>
+        <p>Some small rituals, if you'd like them:</p>
+        <ul>
+          <li>Wear it on your left wrist — in Chinese tradition, the left side receives energy.</li>
+          <li>Take it off before showering or swimming. Cord and cinnabar prefer dryness.</li>
+          <li>When you put it on in the morning, take one breath. Think of your intention for the day. That is all.</li>
+        </ul>
+
+        <h2>From Our Studio</h2>
+        <p>Every CHENSHA piece is hand-strung by artisans who have been making Chinese jewelry for generations. We do not mass-produce. Each cord is tied, each bead checked, each charm inspected before it reaches you.</p>
+
+        <p>The red on your wrist is the same red that sealed emperor's decrees. The difference is that now, it is yours.</p>
+
+        <div class="article-cta">
+          <p>Your wrist is the smallest, most personal place to carry a piece of the world's oldest red.</p>
+          <a href="/collections/all" class="btn-primary">Choose your intention →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧：相关产品 -->
+    <aside class="article-sidebar">
+      <div class="related-products">
+        <h3 class="related-title">Related Products</h3>
+        <div class="related-divider"></div>
+
+        {% for product in collections.all.products limit: 3 %}
+          <a href="{{ product.url }}" class="related-card">
+            <div class="related-img">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title | escape }}">
+              {% else %}
+                <div class="related-img-placeholder"></div>
+              {% endif %}
+            </div>
+            <div class="related-info">
+              <h4>{{ product.title }}</h4>
+              <p class="related-price">{{ product.price | money }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </aside>
   </div>
 </section>
