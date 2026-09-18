@@ -1,0 +1,18 @@
+<section class="collection-products">
+  <div class="container">
+    <div class="prod-grid">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <p class="sec-lead" style="grid-column:1/-1;text-align:center">No products yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Products",
+  "settings": []
+}
+{% endschema %}

@@ -1,22 +1,19 @@
-{% schema %}
-{
-  "name": "Product Card",
-  "settings": []
-}
-{% endschema %}
-{% comment %} Rendered via {% render 'product-card', product: product %} {% endcomment %}
 <div class="pcard">
   <div class="pcard-img">
     {% if product.compare_at_price > product.price %}<span class="pcard-badge">Sale</span>{% endif %}
     <a href="{{ product.url }}">
-      <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
+      {% else %}
+        <div class="pcard-img-placeholder"></div>
+      {% endif %}
     </a>
   </div>
   <div class="pcard-body">
     <div class="pcard-cat">{{ product.type }}</div>
     <div class="pcard-name"><a href="{{ product.url }}">{{ product.title }}</a></div>
-    <div class="pcard-price">${{ product.price | money_without_currency | replace: ',', '' }}
-      {% if product.compare_at_price > product.price %}<span class="old">${{ product.compare_at_price | money_without_currency | replace: ',', '' }}</span>{% endif %}
+    <div class="pcard-price">{{ product.price | money }}
+      {% if product.compare_at_price > product.price %}<span class="old">{{ product.compare_at_price | money }}</span>{% endif %}
     </div>
   </div>
 </div>

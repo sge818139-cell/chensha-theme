@@ -1,0 +1,21 @@
+<section class="collection-hero">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="sec-eyebrow">{{ section.settings.eyebrow | default: collection.title }}</div>
+      <h1 class="sec-title">{{ section.settings.title | default: collection.title }}<span class="cn">{{ section.settings.cn_title | default: '全 部 作 品' }}</span></h1>
+      <p class="sec-sub" style="font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:18px;font-style:italic;color:var(--ink-light);max-width:500px;margin:16px auto 0;line-height:1.6;letter-spacing:0.01em;">{{ section.settings.subtitle }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "PRODUCTS" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Products" },
+    { "type": "text", "id": "cn_title", "label": "Chinese Title", "default": "全 部 作 品" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Every piece, handcrafted." }
+  ]
+}
+{% endschema %}
