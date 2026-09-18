@@ -611,6 +611,7 @@
     const scenes = document.querySelectorAll('.scene-block');
     const finale = document.querySelector('.finale');
     const progressFill = document.querySelector('.progress-fill');
+    const introText = document.querySelector('.intro-text');
 
     function updateJourney() {
       const scrollTop = window.pageYOffset;
@@ -620,6 +621,15 @@
 
       // 进度条
       progressFill.style.height = (progress * 100) + '%';
+
+      // 引导文字 - 只在最开始显示，滑动后消失
+      if (progress < 0.05) {
+        introText.style.opacity = '1';
+        introText.style.transform = 'translate(-50%, -50%)';
+      } else {
+        introText.style.opacity = '0';
+        introText.style.transform = 'translate(-50%, -70%)';
+      }
 
       // 场景出现时机 - 动态显示/隐藏，支持倒退
       for (let i = 0; i < scenes.length; i++) {
