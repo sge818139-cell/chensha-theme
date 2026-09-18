@@ -1,0 +1,52 @@
+<section class="explore-more">
+  <div class="container">
+    <div class="sec-head center">
+      <h2 class="sec-title">Explore More Treasures</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="explore-grid">
+      {% for block in section.blocks %}
+        <div class="explore-card">
+          <div class="explore-img">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}">
+            {% else %}
+              <div class="explore-placeholder"></div>
+            {% endif %}
+          </div>
+          <div class="explore-body">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.subtitle }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Explore More",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "BRACELETS" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Shop Now" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "default": {
+    "blocks": [
+      { "type": "card", "settings": { "title": "BRACELETS", "subtitle": "Shop Now" } },
+      { "type": "card", "settings": { "title": "NECKLACES", "subtitle": "Shop Now" } },
+      { "type": "card", "settings": { "title": "RINGS", "subtitle": "Shop Now" } },
+      { "type": "card", "settings": { "title": "CHARMS", "subtitle": "Shop Now" } }
+    ]
+  }
+}
+{% endschema %}

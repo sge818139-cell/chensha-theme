@@ -10,7 +10,7 @@
       {% if section.settings.image != blank %}
         <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | escape }}">
       {% else %}
-        <div class="collection-hero-placeholder"></div>
+        <img src="{{ 'collection-hero.jpg' | asset_url }}" alt="{{ section.settings.title | escape }}">
       {% endif %}
     </div>
   </div>
