@@ -1,266 +1,579 @@
 <section class="cinnabar-journey">
 
   <div class="journey-container">
+    <div class="viewport">
+      <div class="scene">
 
-    <!-- 场景 1: 起源 -->
-    <div class="j-scene">
-      <div class="j-grid">
-        <div class="j-left">
-          <div class="j-eyebrow">01 · ORIGIN</div>
-          <h2 class="j-title">{{ section.settings.scene_1_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_1_desc }}</p>
+        <!-- 第1层 - 最远 -->
+        <div class="layer-1">
+          <div class="element far-mountain"></div>
+          <div class="element cloud-1"></div>
+          <div class="element cloud-2"></div>
         </div>
-        <div class="j-right">
-          <div class="j-gem gem-red"></div>
+
+        <!-- 第2层 - 远 -->
+        <div class="layer-2">
+          <div class="element mountain"></div>
+          <div class="element bird"></div>
         </div>
+
+        <!-- 第3层 - 中 -->
+        <div class="layer-3">
+          <div class="element bamboo-left"></div>
+          <div class="element pine-right"></div>
+        </div>
+
+        <!-- 第4层 - 近 -->
+        <div class="layer-4">
+          <div class="element plum-left"></div>
+          <div class="element willow-right"></div>
+        </div>
+
+        <!-- 第5层 - 最近 -->
+        <div class="layer-5">
+          <div class="element rock-left"></div>
+          <div class="element rock-right"></div>
+        </div>
+
+        <!-- 地面 -->
+        <div class="element ground"></div>
+
+        <!-- 引导词 - 开始页面 -->
+        <div class="element intro-text">
+          <div class="intro-eyebrow">CHENSHA JOURNEY</div>
+          <div class="intro-title">Into The Cinnabar</div>
+          <div class="intro-desc">Scroll to explore</div>
+          <div class="intro-arrow">↓</div>
+        </div>
+
+        <!-- 场景 1: 起源 -->
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">01 · ORIGIN</div>
+          <div class="scene-title">{{ section.settings.scene_1_title }}</div>
+          <div class="scene-location">中国铜仁 · Tongren, China</div>
+          <p class="scene-desc">{{ section.settings.scene_1_desc }}</p>
+        </div>
+
+        <!-- 场景 2: 品质 -->
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">02 · QUALITY</div>
+          <div class="scene-title">{{ section.settings.scene_2_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_2_desc }}</p>
+        </div>
+
+        <!-- 场景 3: 工艺 -->
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">03 · CRAFT</div>
+          <div class="scene-title">{{ section.settings.scene_3_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_3_desc }}</p>
+        </div>
+
+        <!-- 场景 4: 产品 -->
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">04 · COLLECTION</div>
+          <div class="scene-title">{{ section.settings.scene_4_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_4_desc }}</p>
+        </div>
+
+        <!-- 结尾 -->
+        <div class="element finale">
+          <div class="finale-eyebrow">CHENSHA</div>
+          <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
+          <p class="finale-desc">{{ section.settings.finale_desc }}</p>
+          <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
+        </div>
+
       </div>
     </div>
+  </div>
 
-    <!-- 场景 2: 品质 -->
-    <div class="j-scene">
-      <div class="j-grid j-grid-reverse">
-        <div class="j-left">
-          <div class="j-gem gem-gold"></div>
-        </div>
-        <div class="j-right">
-          <div class="j-eyebrow">02 · QUALITY</div>
-          <h2 class="j-title">{{ section.settings.scene_2_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_2_desc }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 场景 3: 工艺 -->
-    <div class="j-scene">
-      <div class="j-grid">
-        <div class="j-left">
-          <div class="j-eyebrow">03 · CRAFT</div>
-          <h2 class="j-title">{{ section.settings.scene_3_title }}</h2>
-          <div class="j-divider"></div>
-          <p class="j-desc">{{ section.settings.scene_3_desc }}</p>
-        </div>
-        <div class="j-right">
-          <div class="j-gem gem-dark"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 场景 4: 产品 -->
-    <div class="j-scene j-scene-center">
-      <div class="j-eyebrow">04 · COLLECTION</div>
-      <h2 class="j-title">{{ section.settings.scene_4_title }}</h2>
-      <div class="j-divider j-divider-center"></div>
-      <p class="j-desc j-desc-center">{{ section.settings.scene_4_desc }}</p>
-      <div class="j-products">
-        <div class="j-product"></div>
-        <div class="j-product"></div>
-      </div>
-    </div>
-
-    <!-- 结尾 -->
-    <div class="j-scene j-scene-finale">
-      <div class="j-eyebrow j-eyebrow-light">CHENSHA</div>
-      <h2 class="j-title j-title-light">{{ section.settings.finale_title }}</h2>
-      <p class="j-desc j-desc-light">{{ section.settings.finale_desc }}</p>
-      <a href="{{ section.settings.cta_link }}" class="j-btn">{{ section.settings.cta_button }}</a>
-    </div>
-
+  <!-- 进度条 -->
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
   </div>
 
 </section>
 
 <style>
 .cinnabar-journey {
-  width: 100%;
-  background: #FAF6F0;
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  background: #FAF8F4;
+  color: #2A1F1A;
+  overflow-x: hidden;
 }
 
 .journey-container {
+  position: relative;
+  height: 1500vh;
+  background: #FAF8F4;
+}
+
+.viewport {
+  position: sticky;
+  top: 0;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.j-scene {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 40px;
-  background: #FAF6F0;
-}
-
-.j-scene:nth-child(even) {
-  background: #F4EDE2;
-}
-
-.j-scene-finale {
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-}
-
-.j-grid {
-  max-width: 1200px;
+.scene {
+  position: relative;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  height: 100%;
 }
 
-.j-grid-reverse {
-  direction: rtl;
-}
-.j-grid-reverse > * {
-  direction: ltr;
+.element {
+  position: absolute;
+  display: block;
 }
 
-.j-eyebrow {
-  font-size: 13px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+/* 第1层 - 最远 */
+.layer-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.layer-1 .far-mountain {
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  background: url('{{ 'ink-far-mountain.png' | asset_url }}') center/contain no-repeat;
+}
+
+.layer-1 .cloud-1 {
+  top: 10%;
+  left: 15%;
+  width: 100px;
+  height: 100px;
+  background: url('{{ 'ink-cloud.png' | asset_url }}') center/contain no-repeat;
+}
+
+.layer-1 .cloud-2 {
+  top: 20%;
+  right: 20%;
+  width: 80px;
+  height: 80px;
+  background: url('{{ 'ink-cloud.png' | asset_url }}') center/contain no-repeat;
+}
+
+/* 第2层 - 远 */
+.layer-2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.layer-2 .mountain {
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: url('{{ 'ink-mountain.png' | asset_url }}') center/contain no-repeat;
+}
+
+.layer-2 .bird {
+  top: 15%;
+  left: 30%;
+  width: 80px;
+  height: 60px;
+  background: url('{{ 'ink-bird.png' | asset_url }}') center/contain no-repeat;
+}
+
+/* 第3层 - 中 */
+.layer-3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.layer-3 .bamboo-left {
+  bottom: 25%;
+  left: 2%;
+  width: 130px;
+  height: 260px;
+  background: url('{{ 'ink-bamboo.png' | asset_url }}') center/contain no-repeat;
+}
+
+.layer-3 .pine-right {
+  bottom: 20%;
+  right: 3%;
+  width: 150px;
+  height: 290px;
+  background: url('{{ 'ink-pine.png' | asset_url }}') center/contain no-repeat;
+}
+
+/* 第4层 - 近 */
+.layer-4 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.layer-4 .plum-left {
+  bottom: 15%;
+  left: 8%;
+  width: 110px;
+  height: 220px;
+  background: url('{{ 'ink-plum.png' | asset_url }}') center/contain no-repeat;
+}
+
+.layer-4 .willow-right {
+  bottom: 18%;
+  right: 10%;
+  width: 120px;
+  height: 240px;
+  background: url('{{ 'ink-willow.png' | asset_url }}') center/contain no-repeat;
+}
+
+/* 第5层 - 最近 */
+.layer-5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.layer-5 .rock-left {
+  bottom: 5%;
+  left: 3%;
+  width: 90px;
+  height: 65px;
+  background: #B8A888;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.layer-5 .rock-right {
+  bottom: 8%;
+  right: 5%;
+  width: 110px;
+  height: 75px;
+  background: #B8A888;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* 地面 */
+.ground {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18%;
+  background: linear-gradient(180deg, 
+    rgba(240, 235, 225, 0) 0%, 
+    rgba(235, 228, 215, 0.8) 100%
+  );
+}
+
+/* 引导词 - 开始页面 */
+.intro-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 8;
+  transition: all 2s ease;
+}
+
+.intro-eyebrow {
+  font-size: 12px;
+  letter-spacing: 6px;
   color: #9E2B25;
-  margin-bottom: 15px;
-}
-.j-eyebrow-light {
-  color: #E0C88A;
-}
-
-.j-title {
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #2A1F1A;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
-.j-title-light {
-  color: #FAF6F0;
+
+.intro-title {
+  font-size: 56px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 25px;
+  line-height: 1.1;
 }
 
-.j-divider {
-  width: 60px;
-  height: 2px;
-  background: #9E2B25;
+.intro-desc {
+  font-size: 16px;
+  color: #8A7A72;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.intro-arrow {
+  font-size: 32px;
+  color: #9E2B25;
+  animation: bounceArrow 2s ease-in-out infinite;
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* 居中场景 - 图片在上，文字在下 */
+.scene-block {
+  width: 400px;
+  z-index: 6;
+  opacity: 0;
+  transition: all 1.2s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  text-align: center;
+}
+
+.scene-block.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.scene-image {
+  width: 320px;
+  height: 320px;
+  margin: 0 auto 20px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: floatImage 6s ease-in-out infinite;
+  mix-blend-mode: multiply;
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.scene-eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #9E2B25;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.scene-title {
+  font-size: 36px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.scene-location {
+  font-size: 14px;
+  color: #9E2B25;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.scene-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5A4A42;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* 结尾 */
+.finale {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.finale.visible {
+  opacity: 1;
+}
+
+.finale-eyebrow {
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: #E0C88A;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.finale-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: #FAF6F0;
   margin-bottom: 25px;
 }
-.j-divider-center {
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.j-desc {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #555;
-}
-.j-desc-center {
-  text-align: center;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.j-desc-light {
+.finale-desc {
+  font-size: 18px;
   color: #E0C88A;
-  text-align: center;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 40px;
 }
 
-.j-gem {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  margin: 0 auto;
-  animation: gemFloat 4s ease-in-out infinite;
-}
-
-.gem-red {
-  background: radial-gradient(circle at 30% 30%, #C94B44 0%, #9E2B25 50%, #7A1F1A 100%);
-  box-shadow: 0 0 80px rgba(158,43,37,0.4);
-}
-
-.gem-gold {
-  background: radial-gradient(circle at 30% 30%, #E0C88A 0%, #C9A24B 50%, #9E7B2F 100%);
-  box-shadow: 0 0 80px rgba(201,162,75,0.4);
-}
-
-.gem-dark {
-  background: radial-gradient(circle at 30% 30%, #B83830 0%, #9E2B25 50%, #5A1510 100%);
-  box-shadow: 0 0 80px rgba(158,43,37,0.5);
-}
-
-@keyframes gemFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
-}
-
-.j-scene-center {
-  flex-direction: column;
-  text-align: center;
-}
-
-.j-products {
-  display: flex;
-  gap: 40px;
-  margin-top: 50px;
-  justify-content: center;
-}
-
-.j-product {
-  width: 220px;
-  height: 280px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.j-product:nth-child(1) {
-  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-}
-
-.j-product:nth-child(2) {
-  background: linear-gradient(135deg, #C9A24B 0%, #9E2B25 100%);
-}
-
-.j-btn {
+.finale-btn {
   display: inline-block;
-  margin-top: 30px;
-  padding: 16px 50px;
+  padding: 18px 60px;
   background: #C9A24B;
   color: #2A1F1A;
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
-.j-btn:hover {
+.finale-btn:hover {
   background: transparent;
   color: #C9A24B;
   border: 1px solid #C9A24B;
 }
 
+/* 进度条 */
+.progress-bar {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 200px;
+  background: rgba(158, 43, 37, 0.1);
+  z-index: 100;
+}
+
+.progress-fill {
+  width: 100%;
+  height: 0%;
+  background: #9E2B25;
+  transition: height 0.1s linear;
+}
+
 @media (max-width: 768px) {
-  .j-scene {
-    padding: 60px 20px;
+  .intro-title {
+    font-size: 36px;
   }
-  .j-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .scene-block {
+    width: 320px;
   }
-  .j-title {
-    font-size: 32px;
+  .scene-image {
+    width: 220px;
+    height: 220px;
   }
-  .j-gem {
-    width: 180px;
+  .scene-title {
+    font-size: 28px;
+  }
+  .layer-1 .far-mountain {
+    width: 600px;
+    height: 300px;
+  }
+  .layer-2 .mountain {
+    width: 500px;
+    height: 250px;
+  }
+  .layer-3 .bamboo-left {
+    width: 90px;
     height: 180px;
   }
-  .j-products {
-    flex-direction: column;
-    align-items: center;
+  .layer-3 .pine-right {
+    width: 100px;
+    height: 200px;
   }
 }
 </style>
+
+<script>
+(function() {
+  const journey = document.querySelector('.cinnabar-journey .journey-container');
+  if (!journey) return;
+  
+  const scenes = document.querySelectorAll('.cinnabar-journey .scene-block');
+  const finale = document.querySelector('.cinnabar-journey .finale');
+  const progressFill = document.querySelector('.cinnabar-journey .progress-fill');
+  const introText = document.querySelector('.cinnabar-journey .intro-text');
+
+  function updateJourney() {
+    const journeyTop = journey.offsetTop;
+    const journeyHeight = journey.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (window.pageYOffset - journeyTop) / journeyHeight));
+
+    if (progressFill) progressFill.style.height = (progress * 100) + '%';
+
+    if (introText) {
+      if (progress < 0.05) {
+        introText.style.opacity = '1';
+        introText.style.transform = 'translate(-50%, -50%)';
+      } else {
+        introText.style.opacity = '0';
+        introText.style.transform = 'translate(-50%, -70%)';
+      }
+    }
+
+    for (let i = 0; i < scenes.length; i++) {
+      const threshold = (i + 1) * 0.18;
+      const nextThreshold = (i + 2) * 0.18;
+      if (progress > threshold && progress < nextThreshold) {
+        scenes[i].classList.add('visible');
+      } else {
+        scenes[i].classList.remove('visible');
+      }
+    }
+
+    if (finale) {
+      if (progress > 0.9) {
+        finale.classList.add('visible');
+      } else {
+        finale.classList.remove('visible');
+      }
+    }
+
+    const layer1 = document.querySelector('.cinnabar-journey .layer-1');
+    const layer2 = document.querySelector('.cinnabar-journey .layer-2');
+    const layer3 = document.querySelector('.cinnabar-journey .layer-3');
+    const layer4 = document.querySelector('.cinnabar-journey .layer-4');
+    const layer5 = document.querySelector('.cinnabar-journey .layer-5');
+
+    if (layer1) layer1.style.transform = `translateY(${progress * 30}px)`;
+    if (layer2) layer2.style.transform = `translateY(${progress * 60}px)`;
+    if (layer3) layer3.style.transform = `translateY(${progress * 90}px)`;
+    if (layer4) layer4.style.transform = `translateY(${progress * 120}px)`;
+    if (layer5) layer5.style.transform = `translateY(${progress * 150}px)`;
+  }
+
+  window.addEventListener('scroll', updateJourney);
+  updateJourney();
+})();
+</script>
 
 {% schema %}
 {
