@@ -1,83 +1,84 @@
 <section class="cinnabar-journey">
 
-  <!-- 开始页面 -->
-  <div class="journey-screen intro-screen">
-    <div class="bg-layer bg-far"></div>
-    <div class="bg-layer bg-mid"></div>
-    <div class="bg-layer bg-near"></div>
-    
-    <div class="intro-content">
-      <div class="intro-eyebrow">CHENSHA JOURNEY</div>
-      <div class="intro-title">Into The Cinnabar</div>
-      <div class="intro-desc">Scroll to explore</div>
-      <div class="intro-arrow">↓</div>
-    </div>
-  </div>
+  <div class="journey-container">
+    <div class="viewport">
+      <div class="scene">
 
-  <!-- 场景 1: 起源 -->
-  <div class="journey-screen">
-    <div class="bg-layer bg-far"></div>
-    <div class="bg-layer bg-mid"></div>
-    <div class="bg-layer bg-near"></div>
-    
-    <div class="scene-content">
-      <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
-      <div class="scene-eyebrow">01 · ORIGIN</div>
-      <div class="scene-title">{{ section.settings.scene_1_title }}</div>
-      <div class="scene-location">中国铜仁 · Tongren, China</div>
-      <p class="scene-desc">{{ section.settings.scene_1_desc }}</p>
-    </div>
-  </div>
+        <!-- 第1层 - 最远 -->
+        <div class="layer layer-far">
+          <div class="bg-img far-mountain"></div>
+          <div class="bg-img cloud cloud-1"></div>
+          <div class="bg-img cloud cloud-2"></div>
+        </div>
 
-  <!-- 场景 2: 品质 -->
-  <div class="journey-screen">
-    <div class="bg-layer bg-far"></div>
-    <div class="bg-layer bg-mid"></div>
-    <div class="bg-layer bg-near"></div>
-    
-    <div class="scene-content">
-      <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
-      <div class="scene-eyebrow">02 · QUALITY</div>
-      <div class="scene-title">{{ section.settings.scene_2_title }}</div>
-      <p class="scene-desc">{{ section.settings.scene_2_desc }}</p>
-    </div>
-  </div>
+        <!-- 第2层 - 远 -->
+        <div class="layer layer-mid-far">
+          <div class="bg-img mountain"></div>
+          <div class="bg-img bird"></div>
+        </div>
 
-  <!-- 场景 3: 工艺 -->
-  <div class="journey-screen">
-    <div class="bg-layer bg-far"></div>
-    <div class="bg-layer bg-mid"></div>
-    <div class="bg-layer bg-near"></div>
-    
-    <div class="scene-content">
-      <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
-      <div class="scene-eyebrow">03 · CRAFT</div>
-      <div class="scene-title">{{ section.settings.scene_3_title }}</div>
-      <p class="scene-desc">{{ section.settings.scene_3_desc }}</p>
-    </div>
-  </div>
+        <!-- 第3层 - 中 -->
+        <div class="layer layer-mid">
+          <div class="bg-img bamboo"></div>
+          <div class="bg-img pine"></div>
+        </div>
 
-  <!-- 场景 4: 产品 -->
-  <div class="journey-screen">
-    <div class="bg-layer bg-far"></div>
-    <div class="bg-layer bg-mid"></div>
-    <div class="bg-layer bg-near"></div>
-    
-    <div class="scene-content">
-      <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
-      <div class="scene-eyebrow">04 · COLLECTION</div>
-      <div class="scene-title">{{ section.settings.scene_4_title }}</div>
-      <p class="scene-desc">{{ section.settings.scene_4_desc }}</p>
-    </div>
-  </div>
+        <!-- 第4层 - 近 -->
+        <div class="layer layer-near">
+          <div class="bg-img plum"></div>
+          <div class="bg-img willow"></div>
+        </div>
 
-  <!-- 结尾 -->
-  <div class="journey-screen finale-screen">
-    <div class="finale-content">
-      <div class="finale-eyebrow">CHENSHA</div>
-      <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
-      <p class="finale-desc">{{ section.settings.finale_desc }}</p>
-      <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
+        <!-- 引导词 - 开始页面 -->
+        <div class="scene-element intro-text">
+          <div class="intro-eyebrow">CHENSHA JOURNEY</div>
+          <div class="intro-title">Into The Cinnabar</div>
+          <div class="intro-desc">Scroll to explore</div>
+          <div class="intro-arrow">↓</div>
+        </div>
+
+        <!-- 场景 1: 起源 -->
+        <div class="scene-element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">01 · ORIGIN</div>
+          <div class="scene-title">{{ section.settings.scene_1_title }}</div>
+          <div class="scene-location">中国铜仁 · Tongren, China</div>
+          <p class="scene-desc">{{ section.settings.scene_1_desc }}</p>
+        </div>
+
+        <!-- 场景 2: 品质 -->
+        <div class="scene-element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">02 · QUALITY</div>
+          <div class="scene-title">{{ section.settings.scene_2_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_2_desc }}</p>
+        </div>
+
+        <!-- 场景 3: 工艺 -->
+        <div class="scene-element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">03 · CRAFT</div>
+          <div class="scene-title">{{ section.settings.scene_3_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_3_desc }}</p>
+        </div>
+
+        <!-- 场景 4: 产品 -->
+        <div class="scene-element scene-block">
+          <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
+          <div class="scene-eyebrow">04 · COLLECTION</div>
+          <div class="scene-title">{{ section.settings.scene_4_title }}</div>
+          <p class="scene-desc">{{ section.settings.scene_4_desc }}</p>
+        </div>
+
+        <!-- 结尾 -->
+        <div class="scene-element finale">
+          <div class="finale-eyebrow">CHENSHA</div>
+          <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
+          <p class="finale-desc">{{ section.settings.finale_desc }}</p>
+          <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -93,19 +94,27 @@
   padding: 0;
 }
 
-.journey-screen {
+.journey-container {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: 300vh;
   background: #FAF8F4;
 }
 
-/* 背景层 */
-.bg-layer {
+.viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.layer {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -114,32 +123,97 @@
   pointer-events: none;
 }
 
-.bg-far {
-  background: 
-    url('{{ 'ink-far-mountain.png' | asset_url }}') bottom center / 800px auto no-repeat,
-    linear-gradient(180deg, #FAF8F4 0%, #F0EBE0 100%);
-  opacity: 0.3;
+.bg-img {
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.bg-mid {
-  background: 
-    url('{{ 'ink-mountain.png' | asset_url }}') bottom center / 600px auto no-repeat,
-    url('{{ 'ink-cloud.png' | asset_url }}') top left / 100px auto no-repeat;
-  opacity: 0.5;
+/* 第1层 - 最远 */
+.layer-far { opacity: 0.25; }
+.far-mountain {
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background-image: url('{{ 'ink-far-mountain.png' | asset_url }}');
+}
+.cloud {
+  width: 80px;
+  height: 80px;
+  background-image: url('{{ 'ink-cloud.png' | asset_url }}');
+}
+.cloud-1 { top: 15%; left: 15%; }
+.cloud-2 { top: 25%; right: 20%; width: 60px; height: 60px; }
+
+/* 第2层 - 远 */
+.layer-mid-far { opacity: 0.4; }
+.mountain {
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background-image: url('{{ 'ink-mountain.png' | asset_url }}');
+}
+.bird {
+  top: 20%;
+  left: 30%;
+  width: 60px;
+  height: 50px;
+  background-image: url('{{ 'ink-bird.png' | asset_url }}');
 }
 
-.bg-near {
-  background: 
-    url('{{ 'ink-bamboo.png' | asset_url }}') bottom left / 150px auto no-repeat,
-    url('{{ 'ink-pine.png' | asset_url }}') bottom right / 150px auto no-repeat;
-  opacity: 0.7;
+/* 第3层 - 中 */
+.layer-mid { opacity: 0.55; }
+.bamboo {
+  bottom: 15%;
+  left: 3%;
+  width: 120px;
+  height: 240px;
+  background-image: url('{{ 'ink-bamboo.png' | asset_url }}');
+}
+.pine {
+  bottom: 12%;
+  right: 4%;
+  width: 140px;
+  height: 270px;
+  background-image: url('{{ 'ink-pine.png' | asset_url }}');
+}
+
+/* 第4层 - 近 */
+.layer-near { opacity: 0.7; }
+.plum {
+  bottom: 8%;
+  left: 10%;
+  width: 100px;
+  height: 200px;
+  background-image: url('{{ 'ink-plum.png' | asset_url }}');
+}
+.willow {
+  bottom: 10%;
+  right: 12%;
+  width: 110px;
+  height: 220px;
+  background-image: url('{{ 'ink-willow.png' | asset_url }}');
+}
+
+/* 场景元素 */
+.scene-element {
+  position: absolute;
+  display: block;
 }
 
 /* 引导词 */
-.intro-content {
-  position: relative;
-  z-index: 10;
+.intro-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 10;
+  transition: opacity 2s ease, transform 2s ease;
 }
 
 .intro-eyebrow {
@@ -176,13 +250,21 @@
   50% { transform: translateY(10px); }
 }
 
-/* 场景内容 */
-.scene-content {
-  position: relative;
-  z-index: 10;
+/* 场景块 */
+.scene-block {
+  width: 400px;
+  z-index: 8;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
   text-align: center;
-  max-width: 400px;
-  padding: 40px;
+}
+
+.scene-block.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 .scene-image {
@@ -222,19 +304,29 @@
   font-size: 16px;
   line-height: 1.7;
   color: #5A4A42;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 /* 结尾 */
-.finale-screen {
+.finale {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
-.finale-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 600px;
-  padding: 40px;
+.finale.visible {
+  opacity: 1;
 }
 
 .finale-eyebrow {
@@ -277,21 +369,80 @@
 }
 
 @media (max-width: 768px) {
-  .intro-title {
-    font-size: 36px;
-  }
-  .scene-image {
-    width: 220px;
-    height: 220px;
-  }
-  .scene-title {
-    font-size: 28px;
-  }
-  .finale-title {
-    font-size: 32px;
-  }
+  .journey-container { height: 400vh; }
+  .intro-title { font-size: 36px; }
+  .scene-block { width: 320px; }
+  .scene-image { width: 220px; height: 220px; }
+  .scene-title { font-size: 28px; }
+  .far-mountain { width: 500px; height: 250px; }
+  .mountain { width: 400px; height: 200px; }
+  .bamboo { width: 80px; height: 160px; }
+  .pine { width: 90px; height: 180px; }
 }
 </style>
+
+<script>
+(function() {
+  const section = document.currentScript.closest('.cinnabar-journey');
+  if (!section) return;
+  
+  const container = section.querySelector('.journey-container');
+  const layers = section.querySelectorAll('.layer');
+  const scenes = section.querySelectorAll('.scene-block');
+  const finale = section.querySelector('.finale');
+  const introText = section.querySelector('.intro-text');
+
+  function update() {
+    const rect = container.getBoundingClientRect();
+    const total = container.offsetHeight - window.innerHeight;
+    const scrolled = Math.max(0, Math.min(total, -rect.top));
+    const progress = total > 0 ? scrolled / total : 0;
+
+    // 引导文字
+    if (introText) {
+      if (progress < 0.05) {
+        introText.style.opacity = '1';
+        introText.style.transform = 'translate(-50%, -50%)';
+      } else {
+        introText.style.opacity = '0';
+        introText.style.transform = 'translate(-50%, -70%)';
+      }
+    }
+
+    // 场景显示
+    for (let i = 0; i < scenes.length; i++) {
+      const start = (i + 1) * 0.2;
+      const end = (i + 2) * 0.2;
+      if (progress > start && progress < end) {
+        scenes[i].classList.add('visible');
+      } else {
+        scenes[i].classList.remove('visible');
+      }
+    }
+
+    // 结尾
+    if (finale) {
+      if (progress > 0.85) {
+        finale.classList.add('visible');
+      } else {
+        finale.classList.remove('visible');
+      }
+    }
+
+    // 视差移动
+    const speeds = [0.3, 0.6, 0.9, 1.2];
+    for (let i = 0; i < layers.length; i++) {
+      if (layers[i]) {
+        layers[i].style.transform = `translateY(${progress * speeds[i] * 100}px)`;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', update);
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 
 {% schema %}
 {
