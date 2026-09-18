@@ -16,8 +16,8 @@
           {% endif %}
         </div>
         <div class="journal-body">
-          <h3>{{ section.settings.post1_title }}</h3>
-          <p>{{ section.settings.post1_excerpt }}</p>
+          <h3>{{ section.settings.post1_title | default: 'Our Story' }}</h3>
+          <p>{{ section.settings.post1_excerpt | default: 'Founded on a reverence for Chinese craft and the sacred meaning of cinnabar, CHENSHA brings two millennia of tradition into the modern world. Discover the story behind every piece.' }}</p>
           <span class="journal-more">{{ section.settings.post1_link_text | default: 'Read More' }} →</span>
         </div>
       </a>
@@ -65,8 +65,8 @@
 
     { "type": "header", "content": "Post 1" },
     { "type": "image_picker", "id": "post1_image", "label": "Image" },
-    { "type": "text", "id": "post1_title", "label": "Title", "default": "The Meaning of Cinnabar" },
-    { "type": "textarea", "id": "post1_excerpt", "label": "Excerpt", "default": "For over two millennia, cinnabar has been the color of emperors, scholars and protection. Discover why it remains the most meaningful red." },
+    { "type": "text", "id": "post1_title", "label": "Title", "default": "Our Story" },
+    { "type": "textarea", "id": "post1_excerpt", "label": "Excerpt", "default": "Founded on a reverence for Chinese craft and the sacred meaning of cinnabar, CHENSHA brings two millennia of tradition into the modern world. Discover the story behind every piece." },
     { "type": "url", "id": "post1_link", "label": "Link" },
     { "type": "text", "id": "post1_link_text", "label": "Link Text", "default": "Read More" },
 
