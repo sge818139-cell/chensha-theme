@@ -1,423 +1,451 @@
-<section class="cinematic-journey">
-  <!-- 第 1 幕: 入口 - 起源地图 -->
-  <div class="journey-scene" data-depth="0.2">
-    <div class="scene-layer bg-layer">
-      <div class="bg-mist bg-mist-1"></div>
-      <div class="bg-mist bg-mist-2"></div>
+<section class="wild-journey">
+  <!-- 3D 场景容器 -->
+  <div class="journey-scene-3d">
+
+    <!-- 地面小路 -->
+    <div class="journey-ground"></div>
+
+    <!-- 远景层 -->
+    <div class="layer layer-far">
+      <div class="mountain mountain-1"></div>
+      <div class="mountain mountain-2"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
     </div>
-    <div class="scene-layer content-layer">
-      <div class="journey-container">
-        <div class="journey-text">
-          <div class="journey-eyebrow">01 · ORIGIN</div>
-          <h2 class="journey-title">{{ section.settings.origin_title }}</h2>
-          <div class="journey-line"></div>
-          <p class="journey-desc">{{ section.settings.origin_text }}</p>
-        </div>
-        <div class="journey-visual">
-          {% if section.settings.origin_image != blank %}
-            <img src="{{ section.settings.origin_image | image_url: width: 1000 }}" alt="" class="parallax-img" data-speed="0.15">
-          {% else %}
-            <img src="{{ 'mine-map.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.15">
-          {% endif %}
-        </div>
+
+    <!-- 中景层 - 两侧植物 -->
+    <div class="layer layer-mid">
+      <div class="plant plant-left-1"></div>
+      <div class="plant plant-left-2"></div>
+      <div class="plant plant-right-1"></div>
+      <div class="plant plant-right-2"></div>
+    </div>
+
+    <!-- 主角 - 朱砂原石 -->
+    <div class="journey-hero">
+      <div class="hero-shadow"></div>
+      {% if section.settings.hero_image != blank %}
+        <img src="{{ section.settings.hero_image | image_url: width: 600 }}" alt="Cinnabar Hero" class="hero-img">
+      {% else %}
+        <img src="{{ 'mine-crystal.jpg' | asset_url }}" alt="Cinnabar Hero" class="hero-img">
+      {% endif %}
+    </div>
+
+    <!-- 场景元素 - 从两侧浮现 -->
+    <div class="scene-card scene-left scene-1">
+      <div class="card-inner">
+        {% if section.settings.scene_1_image != blank %}
+          <img src="{{ section.settings.scene_1_image | image_url: width: 500 }}" alt="">
+        {% else %}
+          <img src="{{ 'mine-map.jpg' | asset_url }}" alt="">
+        {% endif %}
       </div>
     </div>
+    <div class="scene-text scene-text-1">
+      <div class="scene-eyebrow">01 · ORIGIN</div>
+      <h3>{{ section.settings.scene_1_title }}</h3>
+      <p>{{ section.settings.scene_1_desc }}</p>
+    </div>
+
+    <div class="scene-card scene-right scene-2">
+      <div class="card-inner">
+        {% if section.settings.scene_2_image != blank %}
+          <img src="{{ section.settings.scene_2_image | image_url: width: 500 }}" alt="">
+        {% else %}
+          <img src="{{ 'p01.jpg' | asset_url }}" alt="">
+        {% endif %}
+      </div>
+    </div>
+    <div class="scene-text scene-text-2">
+      <div class="scene-eyebrow">02 · CRAFT</div>
+      <h3>{{ section.settings.scene_2_title }}</h3>
+      <p>{{ section.settings.scene_2_desc }}</p>
+    </div>
+
+    <div class="scene-card scene-left scene-3">
+      <div class="card-inner">
+        {% if section.settings.scene_3_image != blank %}
+          <img src="{{ section.settings.scene_3_image | image_url: width: 500 }}" alt="">
+        {% else %}
+          <img src="{{ 'p04.jpg' | asset_url }}" alt="">
+        {% endif %}
+      </div>
+    </div>
+    <div class="scene-text scene-text-3">
+      <div class="scene-eyebrow">03 · QUALITY</div>
+      <h3>{{ section.settings.scene_3_title }}</h3>
+      <p>{{ section.settings.scene_3_desc }}</p>
+    </div>
+
+    <div class="scene-card scene-right scene-4">
+      <div class="card-inner product-duo">
+        {% if section.settings.scene_4_image_1 != blank %}
+          <img src="{{ section.settings.scene_4_image_1 | image_url: width: 300 }}" alt="">
+        {% else %}
+          <img src="{{ 'p02.jpg' | asset_url }}" alt="">
+        {% endif %}
+        {% if section.settings.scene_4_image_2 != blank %}
+          <img src="{{ section.settings.scene_4_image_2 | image_url: width: 300 }}" alt="">
+        {% else %}
+          <img src="{{ 'p05.jpg' | asset_url }}" alt="">
+        {% endif %}
+      </div>
+    </div>
+    <div class="scene-text scene-text-4">
+      <div class="scene-eyebrow">04 · COLLECTION</div>
+      <h3>{{ section.settings.scene_4_title }}</h3>
+      <p>{{ section.settings.scene_4_desc }}</p>
+    </div>
+
+    <!-- 结尾 -->
+    <div class="finale">
+      <h2>{{ section.settings.finale_title }}</h2>
+      <p>{{ section.settings.finale_desc }}</p>
+      <a href="{{ section.settings.cta_link }}" class="cta-btn">{{ section.settings.cta_button }}</a>
+    </div>
+
   </div>
 
-  <!-- 第 2 幕: 品质 -->
-  <div class="journey-scene" data-depth="0.4">
-    <div class="scene-layer bg-layer">
-      <div class="bg-mist bg-mist-3"></div>
-    </div>
-    <div class="scene-layer content-layer">
-      <div class="journey-container reverse">
-        <div class="journey-visual">
-          {% if section.settings.quality_image != blank %}
-            <img src="{{ section.settings.quality_image | image_url: width: 1000 }}" alt="" class="parallax-img" data-speed="0.2">
-          {% else %}
-            <img src="{{ 'mine-crystal.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.2">
-          {% endif %}
-        </div>
-        <div class="journey-text">
-          <div class="journey-eyebrow">02 · QUALITY</div>
-          <h2 class="journey-title">{{ section.settings.quality_title }}</h2>
-          <div class="journey-line"></div>
-          <p class="journey-desc">{{ section.settings.quality_text }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 第 3 幕: 工艺 -->
-  <div class="journey-scene" data-depth="0.6">
-    <div class="scene-layer bg-layer">
-      <div class="bg-mist bg-mist-4"></div>
-    </div>
-    <div class="scene-layer content-layer">
-      <div class="journey-container">
-        <div class="journey-text">
-          <div class="journey-eyebrow">03 · CRAFT</div>
-          <h2 class="journey-title">{{ section.settings.craft_title }}</h2>
-          <div class="journey-line"></div>
-          <p class="journey-desc">{{ section.settings.craft_text }}</p>
-        </div>
-        <div class="journey-visual">
-          {% if section.settings.craft_image != blank %}
-            <img src="{{ section.settings.craft_image | image_url: width: 1000 }}" alt="" class="parallax-img" data-speed="0.25">
-          {% else %}
-            <img src="{{ 'p01.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.25">
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 第 4 幕: 我们的选择 -->
-  <div class="journey-scene" data-depth="0.8">
-    <div class="scene-layer bg-layer"></div>
-    <div class="scene-layer content-layer">
-      <div class="journey-container reverse">
-        <div class="journey-visual">
-          {% if section.settings.choice_image != blank %}
-            <img src="{{ section.settings.choice_image | image_url: width: 1000 }}" alt="" class="parallax-img" data-speed="0.18">
-          {% else %}
-            <img src="{{ 'p04.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.18">
-          {% endif %}
-        </div>
-        <div class="journey-text">
-          <div class="journey-eyebrow">04 · OUR CHOICE</div>
-          <h2 class="journey-title">{{ section.settings.choice_title }}</h2>
-          <div class="journey-line"></div>
-          <p class="journey-desc">{{ section.settings.choice_text }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 第 5 幕: 产品展示 -->
-  <div class="journey-scene product-scene" data-depth="1.0">
-    <div class="scene-layer bg-layer"></div>
-    <div class="scene-layer content-layer">
-      <div class="journey-container center">
-        <div class="journey-text center-text">
-          <div class="journey-eyebrow">05 · COLLECTION</div>
-          <h2 class="journey-title">Our Treasures</h2>
-        </div>
-        <div class="product-duo">
-          <div class="product-item">
-            {% if section.settings.product_1_image != blank %}
-              <img src="{{ section.settings.product_1_image | image_url: width: 600 }}" alt="" class="parallax-img" data-speed="0.12">
-            {% else %}
-              <img src="{{ 'p02.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.12">
-            {% endif %}
-            <div class="product-label">{{ section.settings.product_1_name }}</div>
-          </div>
-          <div class="product-item">
-            {% if section.settings.product_2_image != blank %}
-              <img src="{{ section.settings.product_2_image | image_url: width: 600 }}" alt="" class="parallax-img" data-speed="0.12">
-            {% else %}
-              <img src="{{ 'p05.jpg' | asset_url }}" alt="" class="parallax-img" data-speed="0.12">
-            {% endif %}
-            <div class="product-label">{{ section.settings.product_2_name }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 第 6 幕: 结尾 -->
-  <div class="journey-scene finale-scene" data-depth="1.2">
-    <div class="scene-layer bg-layer"></div>
-    <div class="scene-layer content-layer">
-      <div class="finale-content">
-        <div class="journey-eyebrow">CHENSHA</div>
-        <h2 class="journey-title finale-title">{{ section.settings.cta_title }}</h2>
-        <div class="journey-line center-line"></div>
-        <p class="journey-desc center-text">{{ section.settings.cta_text }}</p>
-        <a href="{{ section.settings.cta_link }}" class="btn-cinematic">{{ section.settings.cta_button }}</a>
-      </div>
-    </div>
+  <!-- 滚动进度条 -->
+  <div class="scroll-progress">
+    <div class="progress-bar"></div>
   </div>
 </section>
 
 <style>
-.cinematic-journey {
+.wild-journey {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, #FAF6F0 0%, #F4EDE2 25%, #EDE3D3 50%, #F4EDE2 75%, #FAF6F0 100%);
-}
-
-.journey-scene {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 500vh;
+  background: linear-gradient(180deg, #FAF6F0 0%, #F4EDE2 50%, #EDE3D3 100%);
   overflow: hidden;
 }
 
-.scene-layer {
-  position: absolute;
+.journey-scene-3d {
+  position: sticky;
   top: 0;
-  left: 0;
+  width: 100%;
+  height: 100vh;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+/* 地面小路 */
+.journey-ground {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(60deg);
+  width: 200%;
+  height: 150%;
+  background: 
+    radial-gradient(ellipse at center, rgba(158,43,37,0.1) 0%, transparent 70%),
+    linear-gradient(180deg, #E8DCC8 0%, #D4C4A8 100%);
+  transform-origin: center bottom;
+}
+
+/* 远景层 */
+.layer {
+  position: absolute;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
-
-.bg-layer {
-  z-index: 0;
+.layer-far {
+  opacity: 0.4;
 }
-
-.content-layer {
-  z-index: 2;
-}
-
-/* 雾气背景 */
-.bg-mist {
+.mountain {
   position: absolute;
+  bottom: 30%;
+  width: 400px;
+  height: 300px;
+  background: linear-gradient(180deg, #C9B896 0%, transparent 100%);
+  clip-path: polygon(0 100%, 20% 40%, 40% 60%, 60% 20%, 80% 50%, 100% 100%);
+}
+.mountain-1 { left: 5%; }
+.mountain-2 { right: 5%; transform: scale(1.2); }
+.cloud {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  background: white;
   border-radius: 50%;
-  filter: blur(80px);
+  opacity: 0.6;
+}
+.cloud-1 { top: 15%; left: 20%; }
+.cloud-2 { top: 25%; right: 15%; }
+
+/* 中景植物 */
+.layer-mid {
   opacity: 0.5;
 }
-.bg-mist-1 {
-  top: 10%;
-  left: 10%;
-  width: 400px;
-  height: 400px;
-  background: #C9A24B;
+.plant {
+  position: absolute;
+  width: 150px;
+  height: 250px;
+  background: linear-gradient(180deg, #D4C4A8 0%, #B8A888 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
-.bg-mist-2 {
-  bottom: 20%;
-  right: 15%;
-  width: 500px;
-  height: 500px;
-  background: #9E2B25;
-  opacity: 0.2;
-}
-.bg-mist-3 {
-  top: 30%;
-  right: 10%;
-  width: 600px;
-  height: 600px;
-  background: #E0C88A;
-}
-.bg-mist-4 {
-  bottom: 10%;
-  left: 20%;
-  width: 500px;
-  height: 500px;
-  background: #7A1F1A;
-  opacity: 0.15;
-}
+.plant-left-1 { left: 5%; bottom: 20%; }
+.plant-left-2 { left: 15%; bottom: 10%; transform: scale(1.3); }
+.plant-right-1 { right: 5%; bottom: 20%; transform: scaleX(-1); }
+.plant-right-2 { right: 15%; bottom: 10%; transform: scaleX(-1) scale(1.3); }
 
-/* 内容容器 */
-.journey-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  max-width: 1200px;
+/* 主角 */
+.journey-hero {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+}
+.hero-img {
   width: 100%;
-  padding: 0 60px;
+  height: 100%;
+  object-fit: contain;
+  animation: heroWalk 2s ease-in-out infinite;
 }
-.journey-container.reverse {
-  direction: rtl;
+.hero-shadow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
+  border-radius: 50%;
 }
-.journey-container.reverse > * {
-  direction: ltr;
-}
-.journey-container.center {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+@keyframes heroWalk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.journey-text {
+/* 场景卡片 */
+.scene-card {
+  position: absolute;
+  width: 350px;
+  z-index: 5;
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(50px) scale(0.8);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.journey-scene.in-view .journey-text {
+.scene-card.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
-.center-text {
-  text-align: center;
+.scene-left { left: 8%; }
+.scene-right { right: 8%; }
+.card-inner {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(158,43,37,0.15);
 }
-.journey-eyebrow {
-  font-size: 13px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: #9E2B25;
-  margin-bottom: 20px;
-}
-.journey-title {
-  font-size: 56px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #2A1F1A;
-  margin-bottom: 25px;
-}
-.finale-title {
-  font-size: 64px;
-  color: #9E2B25;
-}
-.journey-line {
-  width: 80px;
-  height: 2px;
-  background: #9E2B25;
-  margin-bottom: 30px;
-}
-.center-line {
-  margin: 0 auto 30px;
-}
-.journey-desc {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #555;
-}
-
-.journey-visual img {
+.card-inner img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 30px 80px rgba(158,43,37,0.2);
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
-.journey-scene.in-view .journey-visual img {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* 产品双列 */
 .product-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-top: 50px;
+  gap: 2px;
 }
-.product-item img {
+.product-duo img {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  transition: transform 0.5s ease;
 }
-.product-item:hover img {
-  transform: translateY(-15px);
+
+/* 场景文字 */
+.scene-text {
+  position: absolute;
+  width: 300px;
+  z-index: 6;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease 0.3s;
 }
-.product-label {
-  margin-top: 20px;
-  font-size: 14px;
+.scene-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scene-text-1 { top: 25%; left: 8%; }
+.scene-text-2 { top: 25%; right: 8%; text-align: right; }
+.scene-text-3 { top: 25%; left: 8%; }
+.scene-text-4 { top: 25%; right: 8%; text-align: right; }
+
+.scene-eyebrow {
+  font-size: 12px;
   letter-spacing: 3px;
-  text-transform: uppercase;
+  color: #9E2B25;
+  margin-bottom: 10px;
+}
+.scene-text h3 {
+  font-size: 28px;
+  font-weight: 400;
   color: #2A1F1A;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+.scene-text p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
 }
 
 /* 结尾 */
-.finale-content {
+.finale {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  max-width: 800px;
-  padding: 0 40px;
+  z-index: 10;
+  opacity: 0;
+  transition: all 1s ease;
 }
-.btn-cinematic {
+.finale.visible {
+  opacity: 1;
+}
+.finale h2 {
+  font-size: 48px;
+  font-weight: 400;
+  color: #9E2B25;
+  margin-bottom: 20px;
+}
+.finale p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+.cta-btn {
   display: inline-block;
-  margin-top: 40px;
-  padding: 18px 60px;
+  padding: 16px 50px;
   background: #9E2B25;
-  color: #FAF6F0;
+  color: white;
   text-decoration: none;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 14px;
-  transition: all 0.4s ease;
-  border: 1px solid #9E2B25;
+  transition: all 0.3s ease;
 }
-.btn-cinematic:hover {
-  background: transparent;
-  color: #9E2B25;
+.cta-btn:hover {
+  background: #7A1F1A;
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(158,43,37,0.2);
+  box-shadow: 0 10px 30px rgba(158,43,37,0.3);
+}
+
+/* 滚动进度条 */
+.scroll-progress {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 200px;
+  background: rgba(158,43,37,0.1);
+  z-index: 100;
+}
+.progress-bar {
+  width: 100%;
+  height: 0%;
+  background: #9E2B25;
+  transition: height 0.1s ease;
 }
 
 @media (max-width: 768px) {
-  .journey-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 30px;
+  .scene-card {
+    width: 280px;
   }
-  .journey-title {
-    font-size: 36px;
+  .scene-text {
+    width: 250px;
   }
-  .finale-title {
-    font-size: 42px;
+  .finale h2 {
+    font-size: 32px;
   }
-  .product-duo {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .journey-hero {
+    width: 150px;
+    height: 150px;
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 滚动触发动画
-  const scenes = document.querySelectorAll('.journey-scene');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
+  const journey = document.querySelector('.wild-journey');
+  const scenes = document.querySelectorAll('.scene-card, .scene-text, .finale');
+  const progressBar = document.querySelector('.progress-bar');
+  
+  function updateJourney() {
+    const scrollTop = window.pageYOffset;
+    const journeyTop = journey.offsetTop;
+    const journeyHeight = journey.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (scrollTop - journeyTop) / journeyHeight));
+    
+    // 进度条
+    progressBar.style.height = (progress * 100) + '%';
+    
+    // 场景出现时机（4个场景 + 结尾）
+    const thresholds = [0.15, 0.35, 0.55, 0.75, 0.9];
+    
+    for (let i = 0; i < scenes.length; i++) {
+      const scene = scenes[i];
+      const sceneIndex = Math.floor(i / 2); // 每个场景有卡片和文字两个元素
+      if (scene.classList.contains('finale')) {
+        if (progress > 0.85) scene.classList.add('visible');
+      } else {
+        if (progress > thresholds[sceneIndex]) {
+          scene.classList.add('visible');
+        }
       }
-    });
-  }, {
-    threshold: 0.2
-  });
-  scenes.forEach(scene => observer.observe(scene));
-
-  // 视差滚动
-  window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-    document.querySelectorAll('.parallax-img').forEach(img => {
-      const speed = parseFloat(img.dataset.speed) || 0.15;
-      const rect = img.getBoundingClientRect();
-      const offset = (rect.top - window.innerHeight / 2) * speed;
-      img.style.transform = `translateY(${offset}px)`;
-    });
-  });
+    }
+    
+    // 主角随滚动向前移动（模拟前进）
+    const hero = document.querySelector('.journey-hero');
+    if (hero) {
+      const scale = 1 + progress * 0.5;
+      hero.style.transform = `translateX(-50%) scale(${scale})`;
+    }
+    
+    // 背景视差
+    const farLayer = document.querySelector('.layer-far');
+    const midLayer = document.querySelector('.layer-mid');
+    if (farLayer) farLayer.style.transform = `translateY(${progress * 50}px)`;
+    if (midLayer) midLayer.style.transform = `translateY(${progress * 100}px)`;
+  }
+  
+  window.addEventListener('scroll', updateJourney);
+  updateJourney();
 });
 </script>
 
 {% schema %}
 {
-  "name": "Cinematic Journey",
+  "name": "Wild Journey",
   "settings": [
-    { "type": "text", "id": "origin_title", "label": "Origin Title", "default": "Ancient Origins" },
-    { "type": "textarea", "id": "origin_text", "label": "Origin Text", "default": "For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar. This sacred red stone has been treasured by emperors, worn by scholars, and carried as a talisman through every dynasty of Chinese history." },
-    { "type": "image_picker", "id": "origin_image", "label": "Origin Image" },
-    { "type": "text", "id": "quality_title", "label": "Quality Title", "default": "Premium Quality" },
-    { "type": "textarea", "id": "quality_text", "label": "Quality Text", "default": "Our cinnabar boasts 99% purity, with a deep, vibrant crimson that reflects the light with a warm, golden glow. Each piece is carefully selected to ensure the highest quality and most beautiful color." },
-    { "type": "image_picker", "id": "quality_image", "label": "Quality Image" },
-    { "type": "text", "id": "craft_title", "label": "Craft Title", "default": "Master Craftsmanship" },
-    { "type": "textarea", "id": "craft_text", "label": "Craft Text", "default": "Every CHENSHA bracelet is handcrafted by master artisans with decades of experience. From stringing the beads to finishing the knots, each step is done with meticulous care and respect for traditional techniques." },
-    { "type": "image_picker", "id": "craft_image", "label": "Craft Image" },
-    { "type": "text", "id": "choice_title", "label": "Choice Title", "default": "Our Choice" },
-    { "type": "textarea", "id": "choice_text", "label": "Choice Text", "default": "We believe that jewelry should tell a story. That's why we choose materials with meaning and create pieces that connect you to thousands of years of Chinese culture. Every CHENSHA piece is a testament to tradition, quality, and timeless beauty." },
-    { "type": "image_picker", "id": "choice_image", "label": "Choice Image" },
-    { "type": "text", "id": "product_1_name", "label": "Product 1 Name", "default": "Cinnabar Bracelets" },
-    { "type": "image_picker", "id": "product_1_image", "label": "Product 1 Image" },
-    { "type": "text", "id": "product_2_name", "label": "Product 2 Name", "default": "Gold & Cinnabar" },
-    { "type": "image_picker", "id": "product_2_image", "label": "Product 2 Image" },
-    { "type": "text", "id": "cta_title", "label": "CTA Title", "default": "Thank You for Choosing CHENSHA" },
-    { "type": "textarea", "id": "cta_text", "label": "CTA Text", "default": "Discover our collection and carry a piece of Chinese heritage with you." },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero Image (Cinnabar Crystal)" },
+    { "type": "text", "id": "scene_1_title", "label": "Scene 1 Title", "default": "Ancient Origins" },
+    { "type": "textarea", "id": "scene_1_desc", "label": "Scene 1 Desc", "default": "For over two millennia, Tongren, Guizhou has been the heart of cinnabar mining." },
+    { "type": "image_picker", "id": "scene_1_image", "label": "Scene 1 Image" },
+    { "type": "text", "id": "scene_2_title", "label": "Scene 2 Title", "default": "Master Craft" },
+    { "type": "textarea", "id": "scene_2_desc", "label": "Scene 2 Desc", "default": "Handcrafted by master artisans using centuries-old techniques." },
+    { "type": "image_picker", "id": "scene_2_image", "label": "Scene 2 Image" },
+    { "type": "text", "id": "scene_3_title", "label": "Scene 3 Title", "default": "Premium Quality" },
+    { "type": "textarea", "id": "scene_3_desc", "label": "Scene 3 Desc", "default": "99% pure cinnabar with the deepest, most vibrant crimson color." },
+    { "type": "image_picker", "id": "scene_3_image", "label": "Scene 3 Image" },
+    { "type": "text", "id": "scene_4_title", "label": "Scene 4 Title", "default": "Our Collection" },
+    { "type": "textarea", "id": "scene_4_desc", "label": "Scene 4 Desc", "default": "Discover bracelets that carry thousands of years of Chinese heritage." },
+    { "type": "image_picker", "id": "scene_4_image_1", "label": "Scene 4 Product 1" },
+    { "type": "image_picker", "id": "scene_4_image_2", "label": "Scene 4 Product 2" },
+    { "type": "text", "id": "finale_title", "label": "Finale Title", "default": "Thank You for Choosing CHENSHA" },
+    { "type": "textarea", "id": "finale_desc", "label": "Finale Desc", "default": "Carry a piece of Chinese heritage with you every day." },
     { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "EXPLORE MORE" },
     { "type": "url", "id": "cta_link", "label": "CTA Link" }
   ],
   "presets": [
     {
-      "name": "Cinematic Journey",
+      "name": "Wild Journey",
       "category": "Featured"
     }
   ]
