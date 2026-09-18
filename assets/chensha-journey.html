@@ -56,7 +56,7 @@
     /* 主容器 */
     .journey-container {
       position: relative;
-      height: 1000vh;
+      height: 1200vh;
       background: #FAF8F4;
     }
 
@@ -76,61 +76,114 @@
       height: 100%;
     }
 
-    /* 所有场景元素 - 绝对定位，确保可见 */
+    /* 所有场景元素 - 绝对定位 */
     .element {
       position: absolute;
       display: block;
     }
 
-    /* 远山 - 左右各一座 */
-    .mountain {
-      width: 400px;
-      height: 300px;
-      background: #D4C4A8;
-      opacity: 0.3;
-      bottom: 35%;
-    }
-
-    .m-left {
-      left: -5%;
-    }
-
-    .m-right {
-      right: -5%;
-    }
-
-    /* 中景植物 - 左右各两个 */
-    .plant {
-      width: 100px;
-      height: 180px;
-      background: #C9B896;
+    /* 远景层 - 最远，移动最慢 */
+    .layer-far {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
       opacity: 0.4;
-      bottom: 20%;
     }
 
-    .p-left-1 { left: 3%; }
-    .p-left-2 { left: 12%; bottom: 15%; transform: scale(1.3); }
-    .p-right-1 { right: 3%; }
-    .p-right-2 { right: 12%; bottom: 15%; transform: scale(1.3); }
+    .far-mountain {
+      bottom: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: url('ink-mountain.png') center/contain no-repeat;
+    }
 
-    /* 前景石头 - 左右各一个 */
-    .rock {
+    .far-cloud {
+      top: 15%;
+      left: 10%;
+      width: 120px;
+      height: 120px;
+      background: url('ink-cloud.png') center/contain no-repeat;
+      opacity: 0.5;
+    }
+
+    .far-cloud-2 {
+      top: 25%;
+      right: 15%;
+      width: 100px;
+      height: 100px;
+      background: url('ink-cloud.png') center/contain no-repeat;
+      opacity: 0.4;
+    }
+
+    /* 中景层 - 中间，移动中等 */
+    .layer-mid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .mid-bamboo-left {
+      bottom: 20%;
+      left: 2%;
+      width: 150px;
+      height: 300px;
+      background: url('ink-bamboo.png') center/contain no-repeat;
+    }
+
+    .mid-pine-right {
+      bottom: 15%;
+      right: 3%;
+      width: 180px;
+      height: 350px;
+      background: url('ink-pine.png') center/contain no-repeat;
+    }
+
+    /* 前景层 - 最近，移动最快 */
+    .layer-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .front-rock {
+      bottom: 5%;
+      left: 5%;
       width: 80px;
       height: 60px;
       background: #B8A888;
-      opacity: 0.6;
-      bottom: 8%;
+      border-radius: 50%;
+      opacity: 0.5;
     }
 
-    .r-left { left: 2%; }
-    .r-right { right: 2%; }
+    .front-rock-right {
+      bottom: 8%;
+      right: 8%;
+      width: 100px;
+      height: 70px;
+      background: #B8A888;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
 
     /* 地面 */
     .ground {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 25%;
+      height: 20%;
       background: linear-gradient(180deg, 
         rgba(240, 235, 225, 0) 0%, 
         rgba(235, 228, 215, 0.8) 100%
@@ -139,7 +192,7 @@
 
     /* 主角 - 朱砂圆形 */
     .hero {
-      bottom: 18%;
+      bottom: 20%;
       left: 50%;
       transform: translateX(-50%);
       width: 140px;
@@ -184,7 +237,7 @@
       border-radius: 20px;
       padding: 30px;
       box-shadow: 0 20px 50px rgba(158, 43, 37, 0.15);
-      top: 25%;
+      top: 22%;
     }
 
     .scene-card.visible {
@@ -252,7 +305,7 @@
 
     /* 中间大标题 */
     .main-title {
-      top: 12%;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -382,13 +435,17 @@
         left: 5%;
         right: 5%;
       }
-      .mountain {
-        width: 250px;
+      .far-mountain {
+        width: 500px;
+        height: 250px;
+      }
+      .mid-bamboo-left {
+        width: 100px;
         height: 200px;
       }
-      .plant {
-        width: 70px;
-        height: 130px;
+      .mid-pine-right {
+        width: 120px;
+        height: 230px;
       }
     }
   </style>
@@ -407,19 +464,24 @@
     <div class="viewport">
       <div class="scene">
 
-        <!-- 远山 -->
-        <div class="element mountain m-left"></div>
-        <div class="element mountain m-right"></div>
+        <!-- 远景层 -->
+        <div class="layer-far">
+          <div class="element far-mountain"></div>
+          <div class="element far-cloud"></div>
+          <div class="element far-cloud-2"></div>
+        </div>
 
-        <!-- 中景植物 -->
-        <div class="element plant p-left-1"></div>
-        <div class="element plant p-left-2"></div>
-        <div class="element plant p-right-1"></div>
-        <div class="element plant p-right-2"></div>
+        <!-- 中景层 -->
+        <div class="layer-mid">
+          <div class="element mid-bamboo-left"></div>
+          <div class="element mid-pine-right"></div>
+        </div>
 
-        <!-- 前景石头 -->
-        <div class="element rock r-left"></div>
-        <div class="element rock r-right"></div>
+        <!-- 前景层 -->
+        <div class="layer-front">
+          <div class="element front-rock"></div>
+          <div class="element front-rock-right"></div>
+        </div>
 
         <!-- 地面 -->
         <div class="element ground"></div>
@@ -545,22 +607,14 @@
         finale.classList.remove('visible');
       }
 
-      // 视差 - 简单的 translateY
-      const mountains = document.querySelectorAll('.mountain');
-      const plants = document.querySelectorAll('.plant');
-      const rocks = document.querySelectorAll('.rock');
+      // 视差分层 - 近快远慢
+      const layerFar = document.querySelector('.layer-far');
+      const layerMid = document.querySelector('.layer-mid');
+      const layerFront = document.querySelector('.layer-front');
 
-      mountains.forEach((m, i) => {
-        m.style.transform = `translateY(${progress * 30}px) ${i === 1 ? 'scaleX(-1)' : ''}`;
-      });
-
-      plants.forEach((p, i) => {
-        p.style.transform = `translateY(${progress * 60}px) ${i === 1 || i === 3 ? 'scale(1.3)' : ''}`;
-      });
-
-      rocks.forEach((r, i) => {
-        r.style.transform = `translateY(${progress * 100}px)`;
-      });
+      if (layerFar) layerFar.style.transform = `translateY(${progress * 40}px)`;
+      if (layerMid) layerMid.style.transform = `translateY(${progress * 80}px)`;
+      if (layerFront) layerFront.style.transform = `translateY(${progress * 120}px)`;
     }
 
     window.addEventListener('scroll', updateJourney);
