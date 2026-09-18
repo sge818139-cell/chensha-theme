@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
-      background: #FAF6F0;
+      background: #FAF8F4;
       color: #2A1F1A;
       overflow-x: hidden;
     }
@@ -28,7 +28,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(250, 246, 240, 0.95);
+      background: rgba(250, 248, 244, 0.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
     }
@@ -54,11 +54,11 @@
       text-transform: uppercase;
     }
 
-    /* 主容器 - 超长滚动距离 */
+    /* 主容器 */
     .journey-wrap {
       position: relative;
       height: 800vh;
-      background: #FAF6F0;
+      background: #FAF8F4;
     }
 
     /* 固定视口 */
@@ -75,94 +75,64 @@
       position: relative;
       width: 100%;
       height: 100%;
-      perspective: 1400px;
-      perspective-origin: 50% 45%;
-      transform-style: preserve-3d;
     }
 
-    /* 地面小路 */
+    /* 白色丛林背景 - 两侧植物 */
+    .jungle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #FAF8F4;
+    }
+
+    /* 左侧植物 */
+    .plant-left {
+      position: absolute;
+      left: -5%;
+      bottom: 0;
+      width: 50%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 20% 80%, rgba(200, 190, 170, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 60%, rgba(200, 190, 170, 0.2) 0%, transparent 40%),
+        radial-gradient(ellipse at 30% 40%, rgba(200, 190, 170, 0.15) 0%, transparent 35%);
+    }
+
+    /* 右侧植物 */
+    .plant-right {
+      position: absolute;
+      right: -5%;
+      bottom: 0;
+      width: 50%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 80% 80%, rgba(200, 190, 170, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 60%, rgba(200, 190, 170, 0.2) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 40%, rgba(200, 190, 170, 0.15) 0%, transparent 35%);
+    }
+
+    /* 小路 */
     .path {
       position: absolute;
-      bottom: -10%;
+      bottom: 0;
       left: 50%;
-      transform: translateX(-50%) rotateX(65deg);
-      width: 180%;
-      height: 160%;
-      background: 
-        radial-gradient(ellipse at center, rgba(158,43,37,0.12) 0%, transparent 50%),
-        repeating-linear-gradient(
-          90deg,
-          #E8DCC8 0px,
-          #E8DCC8 80px,
-          #DCCDB4 80px,
-          #DCCDB4 160px
-        );
-      transform-origin: center bottom;
-    }
-
-    /* 远景层 - 远山 */
-    .far-mountains {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0.25;
-      pointer-events: none;
-    }
-
-    .mountain {
-      position: absolute;
-      bottom: 40%;
-      width: 500px;
-      height: 350px;
-      background: linear-gradient(180deg, #C9B896 0%, #B8A888 100%);
-      clip-path: polygon(
-        0 100%, 
-        10% 60%, 
-        25% 75%, 
-        40% 35%, 
-        55% 65%, 
-        70% 25%, 
-        85% 55%, 
-        100% 100%
+      transform: translateX(-50%);
+      width: 40%;
+      height: 70%;
+      background: linear-gradient(180deg, 
+        rgba(240, 235, 225, 0) 0%, 
+        rgba(240, 235, 225, 0.5) 30%, 
+        rgba(235, 228, 215, 0.8) 100%
       );
+      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
     }
-
-    .m-left { left: -5%; }
-    .m-right { right: -5%; transform: scaleX(-1) scale(1.2); }
-
-    /* 中景层 - 植物 */
-    .mid-plants {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .plant {
-      position: absolute;
-      bottom: 25%;
-      width: 120px;
-      height: 200px;
-      background: linear-gradient(180deg, #D4C4A8 0%, #B8A888 100%);
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    }
-
-    .p-left-1 { left: 2%; bottom: 20%; }
-    .p-left-2 { left: 10%; bottom: 15%; transform: scale(1.5); }
-    .p-left-3 { left: 18%; bottom: 10%; transform: scale(0.8); }
-    .p-right-1 { right: 2%; bottom: 20%; transform: scaleX(-1); }
-    .p-right-2 { right: 10%; bottom: 15%; transform: scaleX(-1) scale(1.5); }
-    .p-right-3 { right: 18%; bottom: 10%; transform: scaleX(-1) scale(0.8); }
 
     /* 主角 - 朱砂原石 */
     .hero {
       position: absolute;
-      bottom: 15%;
+      bottom: 18%;
       left: 50%;
       transform: translateX(-50%);
       width: 100px;
@@ -188,118 +158,110 @@
         0% 35%, 
         25% 15%
       );
-      box-shadow: 0 0 50px rgba(158,43,37,0.5), inset 0 0 20px rgba(0,0,0,0.2);
+      box-shadow: 0 0 60px rgba(158, 43, 37, 0.5), inset 0 0 20px rgba(0,0,0,0.2);
       animation: heroBreathe 3s ease-in-out infinite;
     }
 
     .hero-shadow {
       position: absolute;
-      bottom: -18px;
+      bottom: -20px;
       left: 50%;
       transform: translateX(-50%);
-      width: 70px;
-      height: 18px;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
+      width: 80px;
+      height: 20px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
       border-radius: 50%;
     }
 
     @keyframes heroBreathe {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-6px) scale(1.02); }
+      50% { transform: translateY(-8px) scale(1.03); }
     }
 
-    /* 场景元素 - 从两侧浮现 */
+    /* 场景元素 - 从远处浮现 */
     .scene {
       position: absolute;
-      width: 320px;
+      width: 300px;
       z-index: 5;
       opacity: 0;
-      transform: translateY(80px) scale(0.7);
-      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .scene.visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
     }
 
-    .scene-card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 25px 60px rgba(158,43,37,0.2);
+    .scene-left {
+      left: 8%;
+      top: 30%;
     }
 
-    .scene-img {
-      width: 100%;
-      height: 200px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .scene-right {
+      right: 8%;
+      top: 30%;
     }
 
-    .img-origin {
-      background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-    }
-
-    .img-quality {
-      background: linear-gradient(135deg, #C9A24B 0%, #9E7B2F 100%);
-    }
-
-    .img-craft {
-      background: linear-gradient(135deg, #2A1F1A 0%, #4A2F2A 100%);
-    }
-
-    .img-collection {
-      background: linear-gradient(135deg, #9E2B25 0%, #C9A24B 100%);
+    .scene-content {
+      text-align: center;
     }
 
     .scene-icon {
-      width: 50px;
-      height: 50px;
-      background: white;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 32px;
+      box-shadow: 0 10px 30px rgba(158, 43, 37, 0.2);
+    }
+
+    .icon-origin {
+      background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+    }
+
+    .icon-quality {
+      background: linear-gradient(135deg, #C9A24B 0%, #9E7B2F 100%);
+    }
+
+    .icon-craft {
+      background: linear-gradient(135deg, #2A1F1A 0%, #4A2F2A 100%);
+    }
+
+    .icon-collection {
+      background: linear-gradient(135deg, #9E2B25 0%, #C9A24B 100%);
     }
 
     .scene-eyebrow {
-      font-size: 11px;
-      letter-spacing: 3px;
+      font-size: 12px;
+      letter-spacing: 4px;
       color: #9E2B25;
       text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .scene-title {
-      font-size: 22px;
-      font-weight: 400;
-      color: #2A1F1A;
       margin-bottom: 10px;
     }
 
-    .scene-desc {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #666;
+    .scene-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: #2A1F1A;
+      margin-bottom: 15px;
     }
 
-    .scene-left { left: 6%; top: 25%; }
-    .scene-right { right: 6%; top: 25%; }
+    .scene-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+    }
 
     /* 底部标题 */
     .bottom-title {
       position: absolute;
-      bottom: 10%;
+      bottom: 12%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       z-index: 8;
-      transition: all 0.8s ease;
     }
 
     .bottom-eyebrow {
@@ -385,7 +347,7 @@
       border: 1px solid #C9A24B;
     }
 
-    /* 进度指示 */
+    /* 进度条 */
     .progress {
       position: fixed;
       right: 40px;
@@ -393,7 +355,7 @@
       transform: translateY(-50%);
       width: 4px;
       height: 240px;
-      background: rgba(158,43,37,0.1);
+      background: rgba(158, 43, 37, 0.1);
       z-index: 100;
       border-radius: 2px;
     }
@@ -452,24 +414,14 @@
     <div class="viewport">
       <div class="scene-3d">
 
-        <!-- 地面小路 -->
+        <!-- 丛林背景 -->
+        <div class="jungle">
+          <div class="plant-left"></div>
+          <div class="plant-right"></div>
+        </div>
+
+        <!-- 小路 -->
         <div class="path"></div>
-
-        <!-- 远景山 -->
-        <div class="far-mountains">
-          <div class="mountain m-left"></div>
-          <div class="mountain m-right"></div>
-        </div>
-
-        <!-- 中景植物 -->
-        <div class="mid-plants">
-          <div class="plant p-left-1"></div>
-          <div class="plant p-left-2"></div>
-          <div class="plant p-left-3"></div>
-          <div class="plant p-right-1"></div>
-          <div class="plant p-right-2"></div>
-          <div class="plant p-right-3"></div>
-        </div>
 
         <!-- 主角 -->
         <div class="hero">
@@ -479,10 +431,8 @@
 
         <!-- 场景 1: 起源 -->
         <div class="scene scene-left">
-          <div class="scene-card">
-            <div class="scene-img img-origin">
-              <div class="scene-icon">⛰️</div>
-            </div>
+          <div class="scene-content">
+            <div class="scene-icon icon-origin">⛰️</div>
             <div class="scene-eyebrow">01 · ORIGIN</div>
             <div class="scene-title">Ancient Origins</div>
             <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
@@ -491,10 +441,8 @@
 
         <!-- 场景 2: 品质 -->
         <div class="scene scene-right">
-          <div class="scene-card">
-            <div class="scene-img img-quality">
-              <div class="scene-icon">💎</div>
-            </div>
+          <div class="scene-content">
+            <div class="scene-icon icon-quality">💎</div>
             <div class="scene-eyebrow">02 · QUALITY</div>
             <div class="scene-title">Premium Quality</div>
             <p class="scene-desc">99% pure cinnabar with the deepest, most vibrant crimson and a warm golden glow.</p>
@@ -503,10 +451,8 @@
 
         <!-- 场景 3: 工艺 -->
         <div class="scene scene-left">
-          <div class="scene-card">
-            <div class="scene-img img-craft">
-              <div class="scene-icon">✨</div>
-            </div>
+          <div class="scene-content">
+            <div class="scene-icon icon-craft">✨</div>
             <div class="scene-eyebrow">03 · CRAFT</div>
             <div class="scene-title">Master Craftsmanship</div>
             <p class="scene-desc">Handcrafted by master artisans with decades of experience, every piece made with meticulous care.</p>
@@ -515,10 +461,8 @@
 
         <!-- 场景 4: 产品 -->
         <div class="scene scene-right">
-          <div class="scene-card">
-            <div class="scene-img img-collection">
-              <div class="scene-icon">🧿</div>
-            </div>
+          <div class="scene-content">
+            <div class="scene-icon icon-collection">🧿</div>
             <div class="scene-eyebrow">04 · COLLECTION</div>
             <div class="scene-title">Our Collection</div>
             <p class="scene-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
@@ -602,10 +546,10 @@
       }
 
       // 视差
-      const farMountains = document.querySelector('.far-mountains');
-      const midPlants = document.querySelector('.mid-plants');
-      if (farMountains) farMountains.style.transform = `translateY(${progress * 40}px)`;
-      if (midPlants) midPlants.style.transform = `translateY(${progress * 80}px)`;
+      const plantLeft = document.querySelector('.plant-left');
+      const plantRight = document.querySelector('.plant-right');
+      if (plantLeft) plantLeft.style.transform = `translateX(${progress * -20}px)`;
+      if (plantRight) plantRight.style.transform = `translateX(${progress * 20}px)`;
     }
 
     window.addEventListener('scroll', updateJourney);
