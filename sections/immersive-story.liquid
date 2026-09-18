@@ -1,293 +1,486 @@
-<section class="immersive-story">
-  <!-- 章节 1: Hero -->
-  <div class="story-scene scene-hero">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <div class="scene-eyebrow">CHENSHA</div>
-      <h1 class="scene-title">{{ section.settings.hero_title }}</h1>
-      <div class="scene-subtitle">{{ section.settings.hero_subtitle }}</div>
-      <div class="scroll-hint">
-        <span>SCROLL</span>
-        <div class="scroll-line"></div>
+<section class="cinematic-story">
+  <!-- 中国风背景装饰 -->
+  <div class="bg-decor">
+    <div class="cloud-pattern cloud-1"></div>
+    <div class="cloud-pattern cloud-2"></div>
+    <div class="mountain-silhouette"></div>
+  </div>
+
+  <!-- 进度指示器 -->
+  <div class="progress-dots">
+    <div class="dot active" data-scene="0"></div>
+    <div class="dot" data-scene="1"></div>
+    <div class="dot" data-scene="2"></div>
+    <div class="dot" data-scene="3"></div>
+    <div class="dot" data-scene="4"></div>
+    <div class="dot" data-scene="5"></div>
+  </div>
+
+  <!-- 场景容器 -->
+  <div class="scenes-container">
+
+    <!-- 场景 0: 起源 - 地图 -->
+    <div class="story-scene active" data-scene="0">
+      <div class="scene-inner">
+        <div class="scene-image-side">
+          {% if section.settings.origin_image != blank %}
+            <img src="{{ section.settings.origin_image | image_url: width: 1000 }}" alt="Cinnabar Origin" class="float-animation">
+          {% else %}
+            <img src="{{ 'mine-map.jpg' | asset_url }}" alt="Cinnabar Origin" class="float-animation">
+          {% endif %}
+        </div>
+        <div class="scene-text-side">
+          <div class="scene-number">01</div>
+          <h2 class="scene-title">{{ section.settings.origin_title }}</h2>
+          <div class="scene-divider"></div>
+          <p class="scene-text">{{ section.settings.origin_text }}</p>
+        </div>
       </div>
     </div>
+
+    <!-- 场景 1: 品质 -->
+    <div class="story-scene" data-scene="1">
+      <div class="scene-inner">
+        <div class="scene-text-side">
+          <div class="scene-number">02</div>
+          <h2 class="scene-title">{{ section.settings.quality_title }}</h2>
+          <div class="scene-divider"></div>
+          <p class="scene-text">{{ section.settings.quality_text }}</p>
+        </div>
+        <div class="scene-image-side">
+          {% if section.settings.quality_image != blank %}
+            <img src="{{ section.settings.quality_image | image_url: width: 1000 }}" alt="Cinnabar Quality" class="float-animation">
+          {% else %}
+            <img src="{{ 'mine-crystal.jpg' | asset_url }}" alt="Cinnabar Quality" class="float-animation">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景 2: 工艺 -->
+    <div class="story-scene" data-scene="2">
+      <div class="scene-inner">
+        <div class="scene-image-side">
+          {% if section.settings.craft_image != blank %}
+            <img src="{{ section.settings.craft_image | image_url: width: 1000 }}" alt="Cinnabar Craft" class="float-animation">
+          {% else %}
+            <img src="{{ 'p01.jpg' | asset_url }}" alt="Cinnabar Craft" class="float-animation">
+          {% endif %}
+        </div>
+        <div class="scene-text-side">
+          <div class="scene-number">03</div>
+          <h2 class="scene-title">{{ section.settings.craft_title }}</h2>
+          <div class="scene-divider"></div>
+          <p class="scene-text">{{ section.settings.craft_text }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景 3: 我们的选择 -->
+    <div class="story-scene" data-scene="3">
+      <div class="scene-inner">
+        <div class="scene-text-side">
+          <div class="scene-number">04</div>
+          <h2 class="scene-title">{{ section.settings.choice_title }}</h2>
+          <div class="scene-divider"></div>
+          <p class="scene-text">{{ section.settings.choice_text }}</p>
+        </div>
+        <div class="scene-image-side">
+          {% if section.settings.choice_image != blank %}
+            <img src="{{ section.settings.choice_image | image_url: width: 1000 }}" alt="Our Choice" class="float-animation">
+          {% else %}
+            <img src="{{ 'p04.jpg' | asset_url }}" alt="Our Choice" class="float-animation">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景 4: 产品展示 -->
+    <div class="story-scene" data-scene="4">
+      <div class="scene-inner">
+        <div class="scene-product-row">
+          <div class="product-card">
+            {% if section.settings.product_1_image != blank %}
+              <img src="{{ section.settings.product_1_image | image_url: width: 600 }}" alt="">
+            {% else %}
+              <img src="{{ 'p02.jpg' | asset_url }}" alt="">
+            {% endif %}
+            <div class="product-name">{{ section.settings.product_1_name }}</div>
+          </div>
+          <div class="product-card">
+            {% if section.settings.product_2_image != blank %}
+              <img src="{{ section.settings.product_2_image | image_url: width: 600 }}" alt="">
+            {% else %}
+              <img src="{{ 'p05.jpg' | asset_url }}" alt="">
+            {% endif %}
+            <div class="product-name">{{ section.settings.product_2_name }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景 5: 结尾 CTA -->
+    <div class="story-scene" data-scene="5">
+      <div class="scene-inner scene-cta">
+        <h2 class="scene-title">{{ section.settings.cta_title }}</h2>
+        <div class="scene-divider"></div>
+        <p class="scene-text">{{ section.settings.cta_text }}</p>
+        <a href="{{ section.settings.cta_link }}" class="btn btn-gold">{{ section.settings.cta_button }}</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- 章节 2: 起源 -->
-  <div class="story-scene scene-origin">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <div class="scene-number">01</div>
-      <h2 class="scene-title">{{ section.settings.origin_title }}</h2>
-      <div class="scene-text">{{ section.settings.origin_text }}</div>
-    </div>
-    {% if section.settings.origin_image != blank %}
-      <img src="{{ section.settings.origin_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
-    {% endif %}
+  <!-- 前进按钮 -->
+  <div class="nav-arrow next" onclick="nextScene()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </div>
-
-  <!-- 章节 3: 工艺 -->
-  <div class="story-scene scene-craft">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <div class="scene-number">02</div>
-      <h2 class="scene-title">{{ section.settings.craft_title }}</h2>
-      <div class="scene-text">{{ section.settings.craft_text }}</div>
-    </div>
-    {% if section.settings.craft_image != blank %}
-      <img src="{{ section.settings.craft_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
-    {% endif %}
-  </div>
-
-  <!-- 章节 4: 传承 -->
-  <div class="story-scene scene-heritage">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <div class="scene-number">03</div>
-      <h2 class="scene-title">{{ section.settings.heritage_title }}</h2>
-      <div class="scene-text">{{ section.settings.heritage_text }}</div>
-    </div>
-    {% if section.settings.heritage_image != blank %}
-      <img src="{{ section.settings.heritage_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
-    {% endif %}
-  </div>
-
-  <!-- 章节 5: 结尾 CTA -->
-  <div class="story-scene scene-cta">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <h2 class="scene-title">{{ section.settings.cta_title }}</h2>
-      <div class="scene-text">{{ section.settings.cta_text }}</div>
-      <a href="{{ section.settings.cta_link }}" class="btn btn-gold">{{ section.settings.cta_button }}</a>
-    </div>
+  <div class="nav-arrow prev" onclick="prevScene()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </div>
 </section>
 
 <style>
-.immersive-story {
+.cinematic-story {
   position: relative;
   width: 100%;
-}
-.story-scene {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
   overflow: hidden;
+  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 50%, #E8DCC8 100%);
 }
-.scene-bg {
+
+/* 背景装饰 */
+.bg-decor {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   z-index: 0;
 }
-.scene-hero .scene-bg {
-  background: linear-gradient(180deg, #7A1F1A 0%, #9E2B25 50%, #FAF6F0 100%);
+.cloud-pattern {
+  position: absolute;
+  opacity: 0.15;
 }
-.scene-origin .scene-bg {
-  background: linear-gradient(180deg, #FAF6F0 0%, #F4EDE2 100%);
+.cloud-1 {
+  top: 10%;
+  right: 10%;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, #C9A24B 0%, transparent 70%);
+  border-radius: 50%;
 }
-.scene-craft .scene-bg {
-  background: linear-gradient(180deg, #2A1F1A 0%, #3D2A20 100%);
+.cloud-2 {
+  bottom: 15%;
+  left: 5%;
+  width: 400px;
+  height: 250px;
+  background: radial-gradient(ellipse, #9E2B25 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.08;
 }
-.scene-heritage .scene-bg {
-  background: linear-gradient(180deg, #F4EDE2 0%, #E8DCC8 100%);
+.mountain-silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(180deg, transparent 0%, rgba(158,43,37,0.05) 100%);
+  clip-path: polygon(0 100%, 15% 60%, 30% 80%, 45% 50%, 60% 70%, 75% 45%, 90% 65%, 100% 100%);
 }
-.scene-cta .scene-bg {
-  background: linear-gradient(180deg, #9E2B25 0%, #7A1F1A 100%);
-}
-.scene-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 60px 40px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
-}
-.story-scene.in-view .scene-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scene-eyebrow {
-  font-size: 14px;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  color: #E0C88A;
-  margin-bottom: 20px;
-}
-.scene-title {
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 30px;
-}
-.scene-hero .scene-title {
-  color: #FAF6F0;
-}
-.scene-origin .scene-title,
-.scene-heritage .scene-title {
-  color: #2A1F1A;
-}
-.scene-craft .scene-title {
-  color: #FAF6F0;
-}
-.scene-cta .scene-title {
-  color: #FAF6F0;
-}
-.scene-subtitle {
-  font-size: 20px;
-  color: #E0C88A;
-  font-style: italic;
-  margin-bottom: 60px;
-}
-.scene-number {
-  font-size: 16px;
-  letter-spacing: 4px;
-  color: #C9A24B;
-  margin-bottom: 20px;
-}
-.scene-text {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 40px;
-}
-.scene-origin .scene-text,
-.scene-heritage .scene-text {
-  color: #555;
-}
-.scene-craft .scene-text {
-  color: #E8DCC8;
-}
-.scene-cta .scene-text {
-  color: #E0C88A;
-}
-.scroll-hint {
+
+/* 进度点 */
+.progress-dots {
   position: absolute;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  z-index: 3;
+  gap: 12px;
+  z-index: 10;
 }
-.scroll-hint span {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #E0C88A;
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.scroll-line {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(180deg, #E0C88A 0%, transparent 100%);
-  animation: scrollPulse 2s ease-in-out infinite;
+.dot.active {
+  background: #9E2B25;
+  width: 24px;
+  border-radius: 4px;
 }
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+
+/* 场景容器 */
+.scenes-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
-.scene-img {
+.story-scene {
   position: absolute;
-  width: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  padding: 80px;
+}
+.story-scene.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.story-scene.prev {
+  transform: translateX(-100px);
+}
+.scene-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+.scene-image-side img {
+  width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  z-index: 1;
+  box-shadow: 0 20px 60px rgba(158,43,37,0.2);
 }
-.scene-origin .scene-img {
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+.float-animation {
+  animation: float 4s ease-in-out infinite;
 }
-.scene-craft .scene-img {
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
-.scene-heritage .scene-img {
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+.scene-number {
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #C9A24B;
+  margin-bottom: 15px;
+}
+.scene-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.scene-divider {
+  width: 60px;
+  height: 2px;
+  background: #9E2B25;
+  margin-bottom: 30px;
+}
+.scene-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* 产品展示场景 */
+.scene-product-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  width: 100%;
+}
+.product-card {
+  text-align: center;
+}
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+.product-card:hover img {
+  transform: translateY(-10px);
+}
+.product-name {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #2A1F1A;
+}
+
+/* CTA 场景 */
+.scene-cta {
+  text-align: center;
+  flex-direction: column;
 }
 .btn-gold {
   display: inline-block;
   padding: 16px 48px;
-  background: #C9A24B;
-  color: #2A1F1A;
+  background: #9E2B25;
+  color: #FAF6F0;
   text-decoration: none;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 14px;
   transition: all 0.3s ease;
-  border: 1px solid #C9A24B;
+  margin-top: 30px;
 }
 .btn-gold:hover {
-  background: transparent;
-  color: #C9A24B;
+  background: #7A1F1A;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(158,43,37,0.3);
 }
+
+/* 导航箭头 */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: #9E2B25;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.nav-arrow:hover {
+  background: #9E2B25;
+  color: #fff;
+}
+.nav-arrow.prev {
+  left: 30px;
+}
+.nav-arrow.next {
+  right: 30px;
+}
+
 @media (max-width: 768px) {
+  .story-scene {
+    padding: 100px 40px;
+  }
+  .scene-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
   .scene-title {
-    font-size: 40px;
+    font-size: 32px;
   }
-  .scene-img {
-    width: 80%;
-    opacity: 0.3;
+  .scene-product-row {
+    grid-template-columns: 1fr;
   }
-  .scene-origin .scene-img,
-  .scene-craft .scene-img,
-  .scene-heritage .scene-img {
-    right: 10%;
-    left: 10%;
+  .nav-arrow.prev {
+    left: 10px;
+  }
+  .nav-arrow.next {
+    right: 10px;
   }
 }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+let currentScene = 0;
+const totalScenes = 6;
+let autoPlayTimer;
+
+function goToScene(n) {
+  if (n < 0 || n >= totalScenes) return;
   const scenes = document.querySelectorAll('.story-scene');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      }
-    });
-  }, {
-    threshold: 0.3
+  scenes[currentScene].classList.remove('active');
+  if (n > currentScene) {
+    scenes[currentScene].classList.add('prev');
+  } else {
+    scenes[currentScene].classList.remove('prev');
+  }
+  setTimeout(() => {
+    scenes.forEach(s => s.classList.remove('prev'));
+  }, 800);
+  scenes[n].classList.add('active');
+  currentScene = n;
+  
+  // 更新进度点
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === n);
   });
-  scenes.forEach(scene => observer.observe(scene));
+  
+  resetAutoPlay();
+}
+
+function nextScene() {
+  goToScene((currentScene + 1) % totalScenes);
+}
+
+function prevScene() {
+  goToScene((currentScene - 1 + totalScenes) % totalScenes);
+}
+
+function resetAutoPlay() {
+  clearInterval(autoPlayTimer);
+  autoPlayTimer = setInterval(() => {
+    nextScene();
+  }, 8000);
+}
+
+// 初始化
+document.querySelectorAll('.dot').forEach((dot, i) => {
+  dot.addEventListener('click', () => goToScene(i));
 });
+
+// 键盘导航
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
+});
+
+resetAutoPlay();
 </script>
 
 {% schema %}
 {
-  "name": "Immersive Story",
+  "name": "Cinematic Story",
   "settings": [
-    { "type": "text", "id": "hero_title", "label": "Hero Title", "default": "The Red Stone of China" },
-    { "type": "text", "id": "hero_subtitle", "label": "Hero Subtitle", "default": "A Journey Through 2000 Years of Cinnabar Heritage" },
     { "type": "text", "id": "origin_title", "label": "Origin Title", "default": "Ancient Origins" },
-    { "type": "textarea", "id": "origin_text", "label": "Origin Text", "default": "For over two millennia, the mountains of Guizhou have yielded the world's finest cinnabar. From the Han Dynasty to today, this sacred red stone has been worn as a talisman, carved into imperial seals, and treasured as China's most profound color." },
+    { "type": "textarea", "id": "origin_text", "label": "Origin Text", "default": "For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar. This sacred red stone has been treasured by emperors, worn by scholars, and carried as a talisman through every dynasty of Chinese history." },
     { "type": "image_picker", "id": "origin_image", "label": "Origin Image" },
+    { "type": "text", "id": "quality_title", "label": "Quality Title", "default": "Premium Quality" },
+    { "type": "textarea", "id": "quality_text", "label": "Quality Text", "default": "Our cinnabar boasts 99% purity, with a deep, vibrant crimson that reflects the light with a warm, golden glow. Each piece is carefully selected to ensure the highest quality and most beautiful color." },
+    { "type": "image_picker", "id": "quality_image", "label": "Quality Image" },
     { "type": "text", "id": "craft_title", "label": "Craft Title", "default": "Master Craftsmanship" },
-    { "type": "textarea", "id": "craft_text", "label": "Craft Text", "default": "Each CHENSHA piece is handcrafted by master artisans using techniques passed down through generations. From selecting the purest cinnabar to the final polishing, every step is a tribute to centuries of Chinese jewelry making." },
+    { "type": "textarea", "id": "craft_text", "label": "Craft Text", "default": "Every CHENSHA bracelet is handcrafted by master artisans with decades of experience. From stringing the beads to finishing the knots, each step is done with meticulous care and respect for traditional techniques." },
     { "type": "image_picker", "id": "craft_image", "label": "Craft Image" },
-    { "type": "text", "id": "heritage_title", "label": "Heritage Title", "default": "Timeless Heritage" },
-    { "type": "textarea", "id": "heritage_text", "label": "Heritage Text", "default": "More than jewelry, CHENSHA is a piece of Chinese culture that you can wear. Each bracelet carries the blessings of ancient wisdom and the vibrant spirit of the East." },
-    { "type": "image_picker", "id": "heritage_image", "label": "Heritage Image" },
-    { "type": "text", "id": "cta_title", "label": "CTA Title", "default": "Begin Your Journey" },
+    { "type": "text", "id": "choice_title", "label": "Choice Title", "default": "Our Choice" },
+    { "type": "textarea", "id": "choice_text", "label": "Choice Text", "default": "We believe that jewelry should tell a story. That's why we choose materials with meaning and create pieces that connect you to thousands of years of Chinese culture. Every CHENSHA piece is a testament to tradition, quality, and timeless beauty." },
+    { "type": "image_picker", "id": "choice_image", "label": "Choice Image" },
+    { "type": "text", "id": "product_1_name", "label": "Product 1 Name", "default": "Cinnabar Bracelets" },
+    { "type": "image_picker", "id": "product_1_image", "label": "Product 1 Image" },
+    { "type": "text", "id": "product_2_name", "label": "Product 2 Name", "default": "Gold & Cinnabar" },
+    { "type": "image_picker", "id": "product_2_image", "label": "Product 2 Image" },
+    { "type": "text", "id": "cta_title", "label": "CTA Title", "default": "Thank You for Choosing CHENSHA" },
     { "type": "textarea", "id": "cta_text", "label": "CTA Text", "default": "Discover our collection and carry a piece of Chinese heritage with you." },
-    { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "EXPLORE COLLECTION" },
+    { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "EXPLORE MORE" },
     { "type": "url", "id": "cta_link", "label": "CTA Link" }
   ],
   "presets": [
     {
-      "name": "Immersive Story",
+      "name": "Cinematic Story",
       "category": "Featured"
     }
   ]
