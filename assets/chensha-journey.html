@@ -519,14 +519,23 @@
       // 进度条
       progressFill.style.height = (progress * 100) + '%';
 
-      // 场景出现时机
+      // 场景出现时机 - 动态显示/隐藏，支持倒退
       for (let i = 0; i < scenes.length; i++) {
         const threshold = (i + 1) * 0.18;
-        if (progress > threshold) {
+        const nextThreshold = (i + 2) * 0.18;
+        if (progress > threshold && progress < nextThreshold) {
           scenes[i].classList.add('visible');
           mainHeading.textContent = titles[i + 1];
           mainEyebrow.textContent = eyebrows[i + 1];
+        } else {
+          scenes[i].classList.remove('visible');
         }
+      }
+
+      // 如果在最开头，显示默认标题
+      if (progress < 0.18) {
+        mainHeading.textContent = titles[0];
+        mainEyebrow.textContent = eyebrows[0];
       }
 
       // 结尾
