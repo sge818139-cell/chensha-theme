@@ -13,7 +13,9 @@
     { "type": "text", "id": "stat2_n", "label": "Stat 2 number", "default": "99%" },
     { "type": "text", "id": "stat2_l", "label": "Stat 2 label", "default": "High-density mineral" },
     { "type": "text", "id": "stat3_n", "label": "Stat 3 number", "default": "30+" },
-    { "type": "text", "id": "stat3_l", "label": "Stat 3 label", "default": "Master artisans" }
+    { "type": "text", "id": "stat3_l", "label": "Stat 3 label", "default": "Master artisans" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "LEARN MORE" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
   ]
 }
 {% endschema %}
@@ -36,6 +38,9 @@
         <div class="ostat"><div class="n">{{ section.settings.stat2_n }}</div><div class="l">{{ section.settings.stat2_l }}</div></div>
         <div class="ostat"><div class="n">{{ section.settings.stat3_n }}</div><div class="l">{{ section.settings.stat3_l }}</div></div>
       </div>
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn btn-primary" style="margin-top:30px">{{ section.settings.button_text }}</a>
+      {% endif %}
     </div>
   </div>
 </section>
