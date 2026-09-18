@@ -1,99 +1,84 @@
 <section class="cinnabar-journey">
 
-  <div class="journey-container">
-    <div class="viewport">
-      <div class="scene">
-
-        <!-- 第1层 - 最远 -->
-        <div class="layer-1">
-          <div class="element far-mountain"></div>
-          <div class="element cloud-1"></div>
-          <div class="element cloud-2"></div>
-        </div>
-
-        <!-- 第2层 - 远 -->
-        <div class="layer-2">
-          <div class="element mountain"></div>
-          <div class="element bird"></div>
-        </div>
-
-        <!-- 第3层 - 中 -->
-        <div class="layer-3">
-          <div class="element bamboo-left"></div>
-          <div class="element pine-right"></div>
-        </div>
-
-        <!-- 第4层 - 近 -->
-        <div class="layer-4">
-          <div class="element plum-left"></div>
-          <div class="element willow-right"></div>
-        </div>
-
-        <!-- 第5层 - 最近 -->
-        <div class="layer-5">
-          <div class="element rock-left"></div>
-          <div class="element rock-right"></div>
-        </div>
-
-        <!-- 地面 -->
-        <div class="element ground"></div>
-
-        <!-- 引导词 - 开始页面 -->
-        <div class="element intro-text">
-          <div class="intro-eyebrow">CHENSHA JOURNEY</div>
-          <div class="intro-title">Into The Cinnabar</div>
-          <div class="intro-desc">Scroll to explore</div>
-          <div class="intro-arrow">↓</div>
-        </div>
-
-        <!-- 场景 1: 起源 -->
-        <div class="element scene-block">
-          <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
-          <div class="scene-eyebrow">01 · ORIGIN</div>
-          <div class="scene-title">{{ section.settings.scene_1_title }}</div>
-          <div class="scene-location">中国铜仁 · Tongren, China</div>
-          <p class="scene-desc">{{ section.settings.scene_1_desc }}</p>
-        </div>
-
-        <!-- 场景 2: 品质 -->
-        <div class="element scene-block">
-          <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
-          <div class="scene-eyebrow">02 · QUALITY</div>
-          <div class="scene-title">{{ section.settings.scene_2_title }}</div>
-          <p class="scene-desc">{{ section.settings.scene_2_desc }}</p>
-        </div>
-
-        <!-- 场景 3: 工艺 -->
-        <div class="element scene-block">
-          <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
-          <div class="scene-eyebrow">03 · CRAFT</div>
-          <div class="scene-title">{{ section.settings.scene_3_title }}</div>
-          <p class="scene-desc">{{ section.settings.scene_3_desc }}</p>
-        </div>
-
-        <!-- 场景 4: 产品 -->
-        <div class="element scene-block">
-          <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
-          <div class="scene-eyebrow">04 · COLLECTION</div>
-          <div class="scene-title">{{ section.settings.scene_4_title }}</div>
-          <p class="scene-desc">{{ section.settings.scene_4_desc }}</p>
-        </div>
-
-        <!-- 结尾 -->
-        <div class="element finale">
-          <div class="finale-eyebrow">CHENSHA</div>
-          <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
-          <p class="finale-desc">{{ section.settings.finale_desc }}</p>
-          <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
-        </div>
-
-      </div>
+  <!-- 开始页面 -->
+  <div class="journey-screen intro-screen">
+    <div class="bg-layer bg-far"></div>
+    <div class="bg-layer bg-mid"></div>
+    <div class="bg-layer bg-near"></div>
+    
+    <div class="intro-content">
+      <div class="intro-eyebrow">CHENSHA JOURNEY</div>
+      <div class="intro-title">Into The Cinnabar</div>
+      <div class="intro-desc">Scroll to explore</div>
+      <div class="intro-arrow">↓</div>
     </div>
   </div>
 
-  <!-- 进度条 -->
-  <div class="progress-bar">
-    <div class="progress-fill"></div>
+  <!-- 场景 1: 起源 -->
+  <div class="journey-screen">
+    <div class="bg-layer bg-far"></div>
+    <div class="bg-layer bg-mid"></div>
+    <div class="bg-layer bg-near"></div>
+    
+    <div class="scene-content">
+      <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
+      <div class="scene-eyebrow">01 · ORIGIN</div>
+      <div class="scene-title">{{ section.settings.scene_1_title }}</div>
+      <div class="scene-location">中国铜仁 · Tongren, China</div>
+      <p class="scene-desc">{{ section.settings.scene_1_desc }}</p>
+    </div>
+  </div>
+
+  <!-- 场景 2: 品质 -->
+  <div class="journey-screen">
+    <div class="bg-layer bg-far"></div>
+    <div class="bg-layer bg-mid"></div>
+    <div class="bg-layer bg-near"></div>
+    
+    <div class="scene-content">
+      <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
+      <div class="scene-eyebrow">02 · QUALITY</div>
+      <div class="scene-title">{{ section.settings.scene_2_title }}</div>
+      <p class="scene-desc">{{ section.settings.scene_2_desc }}</p>
+    </div>
+  </div>
+
+  <!-- 场景 3: 工艺 -->
+  <div class="journey-screen">
+    <div class="bg-layer bg-far"></div>
+    <div class="bg-layer bg-mid"></div>
+    <div class="bg-layer bg-near"></div>
+    
+    <div class="scene-content">
+      <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
+      <div class="scene-eyebrow">03 · CRAFT</div>
+      <div class="scene-title">{{ section.settings.scene_3_title }}</div>
+      <p class="scene-desc">{{ section.settings.scene_3_desc }}</p>
+    </div>
+  </div>
+
+  <!-- 场景 4: 产品 -->
+  <div class="journey-screen">
+    <div class="bg-layer bg-far"></div>
+    <div class="bg-layer bg-mid"></div>
+    <div class="bg-layer bg-near"></div>
+    
+    <div class="scene-content">
+      <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
+      <div class="scene-eyebrow">04 · COLLECTION</div>
+      <div class="scene-title">{{ section.settings.scene_4_title }}</div>
+      <p class="scene-desc">{{ section.settings.scene_4_desc }}</p>
+    </div>
+  </div>
+
+  <!-- 结尾 -->
+  <div class="journey-screen finale-screen">
+    <div class="finale-content">
+      <div class="finale-eyebrow">CHENSHA</div>
+      <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
+      <p class="finale-desc">{{ section.settings.finale_desc }}</p>
+      <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
+    </div>
   </div>
 
 </section>
@@ -103,205 +88,58 @@
   font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
   background: #FAF8F4;
   color: #2A1F1A;
-  overflow-x: hidden;
-  position: relative;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.journey-container {
+.journey-screen {
   position: relative;
-  height: 1500px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background: #FAF8F4;
 }
 
-.viewport {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.element {
-  position: absolute;
-  display: block;
-}
-
-/* 第1层 - 最远 */
-.layer-1 {
+/* 背景层 */
+.bg-layer {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   pointer-events: none;
-  opacity: 0.25;
 }
 
-.layer-1 .far-mountain {
-  bottom: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 450px;
-  background: url('{{ 'ink-far-mountain.png' | asset_url }}') center/contain no-repeat;
+.bg-far {
+  background: 
+    url('{{ 'ink-far-mountain.png' | asset_url }}') bottom center / 800px auto no-repeat,
+    linear-gradient(180deg, #FAF8F4 0%, #F0EBE0 100%);
+  opacity: 0.3;
 }
 
-.layer-1 .cloud-1 {
-  top: 10%;
-  left: 15%;
-  width: 100px;
-  height: 100px;
-  background: url('{{ 'ink-cloud.png' | asset_url }}') center/contain no-repeat;
-}
-
-.layer-1 .cloud-2 {
-  top: 20%;
-  right: 20%;
-  width: 80px;
-  height: 80px;
-  background: url('{{ 'ink-cloud.png' | asset_url }}') center/contain no-repeat;
-}
-
-/* 第2层 - 远 */
-.layer-2 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.35;
-}
-
-.layer-2 .mountain {
-  bottom: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 700px;
-  height: 350px;
-  background: url('{{ 'ink-mountain.png' | asset_url }}') center/contain no-repeat;
-}
-
-.layer-2 .bird {
-  top: 15%;
-  left: 30%;
-  width: 80px;
-  height: 60px;
-  background: url('{{ 'ink-bird.png' | asset_url }}') center/contain no-repeat;
-}
-
-/* 第3层 - 中 */
-.layer-3 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
+.bg-mid {
+  background: 
+    url('{{ 'ink-mountain.png' | asset_url }}') bottom center / 600px auto no-repeat,
+    url('{{ 'ink-cloud.png' | asset_url }}') top left / 100px auto no-repeat;
   opacity: 0.5;
 }
 
-.layer-3 .bamboo-left {
-  bottom: 25%;
-  left: 2%;
-  width: 130px;
-  height: 260px;
-  background: url('{{ 'ink-bamboo.png' | asset_url }}') center/contain no-repeat;
+.bg-near {
+  background: 
+    url('{{ 'ink-bamboo.png' | asset_url }}') bottom left / 150px auto no-repeat,
+    url('{{ 'ink-pine.png' | asset_url }}') bottom right / 150px auto no-repeat;
+  opacity: 0.7;
 }
 
-.layer-3 .pine-right {
-  bottom: 20%;
-  right: 3%;
-  width: 150px;
-  height: 290px;
-  background: url('{{ 'ink-pine.png' | asset_url }}') center/contain no-repeat;
-}
-
-/* 第4层 - 近 */
-.layer-4 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.65;
-}
-
-.layer-4 .plum-left {
-  bottom: 15%;
-  left: 8%;
-  width: 110px;
-  height: 220px;
-  background: url('{{ 'ink-plum.png' | asset_url }}') center/contain no-repeat;
-}
-
-.layer-4 .willow-right {
-  bottom: 18%;
-  right: 10%;
-  width: 120px;
-  height: 240px;
-  background: url('{{ 'ink-willow.png' | asset_url }}') center/contain no-repeat;
-}
-
-/* 第5层 - 最近 */
-.layer-5 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.layer-5 .rock-left {
-  bottom: 5%;
-  left: 3%;
-  width: 90px;
-  height: 65px;
-  background: #B8A888;
-  border-radius: 50%;
-  opacity: 0.6;
-}
-
-.layer-5 .rock-right {
-  bottom: 8%;
-  right: 5%;
-  width: 110px;
-  height: 75px;
-  background: #B8A888;
-  border-radius: 50%;
-  opacity: 0.6;
-}
-
-/* 地面 */
-.ground {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 18%;
-  background: linear-gradient(180deg, 
-    rgba(240, 235, 225, 0) 0%, 
-    rgba(235, 228, 215, 0.8) 100%
-  );
-}
-
-/* 引导词 - 开始页面 */
-.intro-text {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* 引导词 */
+.intro-content {
+  position: relative;
+  z-index: 10;
   text-align: center;
-  z-index: 8;
-  transition: all 2s ease;
 }
 
 .intro-eyebrow {
@@ -338,37 +176,23 @@
   50% { transform: translateY(10px); }
 }
 
-/* 居中场景 - 图片在上，文字在下 */
-.scene-block {
-  width: 400px;
-  z-index: 6;
-  opacity: 0;
-  transition: all 1.2s ease;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%);
+/* 场景内容 */
+.scene-content {
+  position: relative;
+  z-index: 10;
   text-align: center;
-}
-
-.scene-block.visible {
-  opacity: 1;
-  transform: translate(-50%, -50%);
+  max-width: 400px;
+  padding: 40px;
 }
 
 .scene-image {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   margin: 0 auto 20px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  animation: floatImage 6s ease-in-out infinite;
   mix-blend-mode: multiply;
-}
-
-@keyframes floatImage {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 .scene-eyebrow {
@@ -398,29 +222,19 @@
   font-size: 16px;
   line-height: 1.7;
   color: #5A4A42;
-  max-width: 320px;
-  margin: 0 auto;
 }
 
 /* 结尾 */
-.finale {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.finale-screen {
   background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  z-index: 20;
-  opacity: 0;
-  transition: opacity 1.5s ease;
 }
 
-.finale.visible {
-  opacity: 1;
+.finale-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
 }
 
 .finale-eyebrow {
@@ -462,31 +276,9 @@
   border: 1px solid #C9A24B;
 }
 
-/* 进度条 */
-.progress-bar {
-  position: fixed;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 200px;
-  background: rgba(158, 43, 37, 0.1);
-  z-index: 100;
-}
-
-.progress-fill {
-  width: 100%;
-  height: 0%;
-  background: #9E2B25;
-  transition: height 0.1s linear;
-}
-
 @media (max-width: 768px) {
   .intro-title {
     font-size: 36px;
-  }
-  .scene-block {
-    width: 320px;
   }
   .scene-image {
     width: 220px;
@@ -495,90 +287,11 @@
   .scene-title {
     font-size: 28px;
   }
-  .layer-1 .far-mountain {
-    width: 600px;
-    height: 300px;
-  }
-  .layer-2 .mountain {
-    width: 500px;
-    height: 250px;
-  }
-  .layer-3 .bamboo-left {
-    width: 90px;
-    height: 180px;
-  }
-  .layer-3 .pine-right {
-    width: 100px;
-    height: 200px;
+  .finale-title {
+    font-size: 32px;
   }
 }
 </style>
-
-<script>
-(function() {
-  const section = document.currentScript.closest('.cinnabar-journey');
-  if (!section) return;
-  
-  const journey = section.querySelector('.journey-container');
-  const scenes = section.querySelectorAll('.scene-block');
-  const finale = section.querySelector('.finale');
-  const progressFill = section.querySelector('.progress-fill');
-  const introText = section.querySelector('.intro-text');
-
-  function updateJourney() {
-    const rect = journey.getBoundingClientRect();
-    const totalScroll = journey.offsetHeight - window.innerHeight;
-    const scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
-    const progress = totalScroll > 0 ? scrolled / totalScroll : 0;
-
-    if (progressFill) progressFill.style.height = (progress * 100) + '%';
-
-    if (introText) {
-      if (progress < 0.05) {
-        introText.style.opacity = '1';
-        introText.style.transform = 'translate(-50%, -50%)';
-      } else {
-        introText.style.opacity = '0';
-        introText.style.transform = 'translate(-50%, -70%)';
-      }
-    }
-
-    for (let i = 0; i < scenes.length; i++) {
-      const threshold = (i + 1) * 0.18;
-      const nextThreshold = (i + 2) * 0.18;
-      if (progress > threshold && progress < nextThreshold) {
-        scenes[i].classList.add('visible');
-      } else {
-        scenes[i].classList.remove('visible');
-      }
-    }
-
-    if (finale) {
-      if (progress > 0.9) {
-        finale.classList.add('visible');
-      } else {
-        finale.classList.remove('visible');
-      }
-    }
-
-    const layer1 = section.querySelector('.layer-1');
-    const layer2 = section.querySelector('.layer-2');
-    const layer3 = section.querySelector('.layer-3');
-    const layer4 = section.querySelector('.layer-4');
-    const layer5 = section.querySelector('.layer-5');
-
-    if (layer1) layer1.style.transform = `translateY(${progress * 30}px)`;
-    if (layer2) layer2.style.transform = `translateY(${progress * 60}px)`;
-    if (layer3) layer3.style.transform = `translateY(${progress * 90}px)`;
-    if (layer4) layer4.style.transform = `translateY(${progress * 120}px)`;
-    if (layer5) layer5.style.transform = `translateY(${progress * 150}px)`;
-  }
-
-  window.addEventListener('scroll', updateJourney);
-  window.addEventListener('resize', updateJourney);
-  updateJourney();
-})();
-</script>
 
 {% schema %}
 {
