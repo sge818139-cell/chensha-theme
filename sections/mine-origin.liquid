@@ -1,0 +1,208 @@
+<section class="mine-origin">
+  <div class="container mine-grid">
+    <!-- 左边：地图和文字 -->
+    <div class="mine-left">
+      <div class="mine-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="mine-title">{{ section.settings.title }}</h2>
+      <div class="mine-subtitle">{{ section.settings.subtitle }}</div>
+      
+      <div class="mine-text">
+        {{ section.settings.description }}
+      </div>
+
+      <div class="mine-features">
+        <div class="feature-item">
+          <div class="feature-icon">{{ section.settings.feature_1_icon }}</div>
+          <div class="feature-text">
+            <div class="feature-title">{{ section.settings.feature_1_title }}</div>
+            <div class="feature-desc">{{ section.settings.feature_1_desc }}</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">{{ section.settings.feature_2_icon }}</div>
+          <div class="feature-text">
+            <div class="feature-title">{{ section.settings.feature_2_title }}</div>
+            <div class="feature-desc">{{ section.settings.feature_2_desc }}</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">{{ section.settings.feature_3_icon }}</div>
+          <div class="feature-text">
+            <div class="feature-title">{{ section.settings.feature_3_title }}</div>
+            <div class="feature-desc">{{ section.settings.feature_3_desc }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右边：地图图片 -->
+    <div class="mine-right">
+      {% if section.settings.map_image != blank %}
+        <img src="{{ section.settings.map_image | image_url: width: 1000 }}" alt="Cinnabar Origin Map" class="mine-map-img">
+      {% else %}
+        <img src="{{ 'mine-map.jpg' | asset_url }}" alt="Cinnabar Origin Map" class="mine-map-img">
+      {% endif %}
+      {% if section.settings.crystal_image != blank %}
+        <img src="{{ section.settings.crystal_image | image_url: width: 600 }}" alt="Cinnabar Crystal" class="mine-crystal-img">
+      {% else %}
+        <img src="{{ 'mine-crystal.jpg' | asset_url }}" alt="Cinnabar Crystal" class="mine-crystal-img">
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.mine-origin {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
+  overflow: hidden;
+}
+.mine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.mine-eyebrow {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9E2B25;
+  margin-bottom: 15px;
+}
+.mine-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.mine-subtitle {
+  font-size: 18px;
+  color: #9E2B25;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+.mine-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 40px;
+}
+.mine-features {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  border-left: 3px solid #9E2B25;
+  transition: all 0.3s ease;
+}
+.feature-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 20px rgba(158,43,37,0.1);
+}
+.feature-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+.feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #9E2B25;
+  margin-bottom: 5px;
+}
+.feature-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+.mine-right {
+  position: relative;
+}
+.mine-map-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(158,43,37,0.15);
+  animation: fadeInUp 1s ease;
+}
+.mine-crystal-img {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 40%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(158,43,37,0.2);
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@media (max-width: 768px) {
+  .mine-grid {
+    grid-template-columns: 1fr;
+  }
+  .mine-title {
+    font-size: 36px;
+  }
+  .mine-crystal-img {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 60%;
+    margin: 20px auto 0;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Cinnabar Origin",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 02 · Sourcing" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Our Cinnabar Origin" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Sourced from Tongren, Guizhou" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Nestled in the mountains of Guizhou, Tongren has been the heartland of cinnabar mining for over 2,000 years. Our cinnabar is carefully sourced from these ancient mines, known for its exceptional purity and vibrant red hue. Each piece carries the legacy of Chinese craftsmanship and the rich mineral heritage of the region." },
+    { "type": "image_picker", "id": "map_image", "label": "Map Image" },
+    { "type": "image_picker", "id": "crystal_image", "label": "Crystal Image" },
+    { "type": "text", "id": "feature_1_icon", "label": "Feature 1 Icon", "default": "⛰️" },
+    { "type": "text", "id": "feature_1_title", "label": "Feature 1 Title", "default": "Premium Source" },
+    { "type": "text", "id": "feature_1_desc", "label": "Feature 1 Desc", "default": "Sourced from the most renowned cinnabar mines in Tongren, Guizhou" },
+    { "type": "text", "id": "feature_2_icon", "label": "Feature 2 Icon", "default": "💎" },
+    { "type": "text", "id": "feature_2_title", "label": "Feature 2 Title", "default": "High Purity" },
+    { "type": "text", "id": "feature_2_desc", "label": "Feature 2 Desc", "default": "99% purity mineral with deep, vivid red coloration" },
+    { "type": "text", "id": "feature_3_icon", "label": "Feature 3 Icon", "default": "🏺" },
+    { "type": "text", "id": "feature_3_title", "label": "Feature 3 Title", "default": "Collector's Value" },
+    { "type": "text", "id": "feature_3_desc", "label": "Feature 3 Desc", "default": "Rare mineral with investment and collection value" }
+  ],
+  "presets": [
+    {
+      "name": "Cinnabar Origin",
+      "category": "Featured"
+    }
+  ]
+}
+{% endschema %}
