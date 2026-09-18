@@ -514,18 +514,20 @@
 
 <script>
 (function() {
-  const journey = document.querySelector('.cinnabar-journey .journey-container');
-  if (!journey) return;
+  const section = document.currentScript.closest('.cinnabar-journey');
+  if (!section) return;
   
-  const scenes = document.querySelectorAll('.cinnabar-journey .scene-block');
-  const finale = document.querySelector('.cinnabar-journey .finale');
-  const progressFill = document.querySelector('.cinnabar-journey .progress-fill');
-  const introText = document.querySelector('.cinnabar-journey .intro-text');
+  const journey = section.querySelector('.journey-container');
+  const scenes = section.querySelectorAll('.scene-block');
+  const finale = section.querySelector('.finale');
+  const progressFill = section.querySelector('.progress-fill');
+  const introText = section.querySelector('.intro-text');
 
   function updateJourney() {
-    const journeyTop = journey.offsetTop;
-    const journeyHeight = journey.offsetHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, (window.pageYOffset - journeyTop) / journeyHeight));
+    const rect = journey.getBoundingClientRect();
+    const totalScroll = journey.offsetHeight - window.innerHeight;
+    const scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
+    const progress = totalScroll > 0 ? scrolled / totalScroll : 0;
 
     if (progressFill) progressFill.style.height = (progress * 100) + '%';
 
@@ -557,11 +559,11 @@
       }
     }
 
-    const layer1 = document.querySelector('.cinnabar-journey .layer-1');
-    const layer2 = document.querySelector('.cinnabar-journey .layer-2');
-    const layer3 = document.querySelector('.cinnabar-journey .layer-3');
-    const layer4 = document.querySelector('.cinnabar-journey .layer-4');
-    const layer5 = document.querySelector('.cinnabar-journey .layer-5');
+    const layer1 = section.querySelector('.layer-1');
+    const layer2 = section.querySelector('.layer-2');
+    const layer3 = section.querySelector('.layer-3');
+    const layer4 = section.querySelector('.layer-4');
+    const layer5 = section.querySelector('.layer-5');
 
     if (layer1) layer1.style.transform = `translateY(${progress * 30}px)`;
     if (layer2) layer2.style.transform = `translateY(${progress * 60}px)`;
@@ -571,6 +573,7 @@
   }
 
   window.addEventListener('scroll', updateJourney);
+  window.addEventListener('resize', updateJourney);
   updateJourney();
 })();
 </script>
