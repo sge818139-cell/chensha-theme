@@ -64,7 +64,9 @@
           "stat2_n": "99%",
           "stat2_l": "High-density mineral",
           "stat3_n": "30+",
-          "stat3_l": "Master artisans"
+          "stat3_l": "Master artisans",
+          "button_text": "ABOUT US",
+          "button_link": ""
         }
       },
       "collections": {
