@@ -243,57 +243,49 @@
       );
     }
 
-    /* 主角 - 水墨朱砂圆形 */
-    .hero {
-      bottom: 22%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140px;
-      height: 140px;
-      z-index: 10;
+    /* 场景配图 - 带微动效 */
+    .scene-image {
+      width: 320px;
+      height: 320px;
+      z-index: 6;
+      opacity: 0;
+      transition: all 1.2s ease;
+      top: 35%;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(158, 43, 37, 0.12);
     }
 
-    .hero-circle {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: 
-        radial-gradient(circle at 30% 30%, 
-          rgba(158, 43, 37, 0.9) 0%, 
-          rgba(122, 31, 26, 0.8) 40%, 
-          rgba(42, 31, 26, 0.9) 100%),
-        radial-gradient(circle at 70% 70%, 
-          rgba(201, 162, 75, 0.3) 0%, 
-          transparent 50%);
-      box-shadow: 
-        0 0 40px rgba(158, 43, 37, 0.3),
-        inset 0 0 40px rgba(0, 0, 0, 0.4);
-      animation: heroSpin 20s linear infinite;
+    .scene-image.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation: floatImage 6s ease-in-out infinite;
     }
 
-    .hero-shadow {
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 22px;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.15) 0%, transparent 70%);
-      border-radius: 50%;
+    @keyframes floatImage {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.02); }
     }
 
-    @keyframes heroSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .img-left {
+      left: 10%;
+      transform: translateY(80px);
     }
 
-    /* 嵌入式场景文字 - 没有白色卡片，直接融入场景 */
+    .img-right {
+      right: 10%;
+      transform: translateY(80px);
+    }
+
+    /* 嵌入式场景文字 */
     .scene-text {
       width: 300px;
       z-index: 5;
       opacity: 0;
       transition: all 1.2s ease;
       padding: 20px;
-      top: 20%;
+      top: 22%;
     }
 
     .scene-text.visible {
@@ -302,13 +294,13 @@
     }
 
     .text-left {
-      left: 8%;
+      left: 12%;
       transform: translateY(80px);
       text-align: left;
     }
 
     .text-right {
-      right: 8%;
+      right: 12%;
       transform: translateY(80px);
       text-align: left;
     }
@@ -453,12 +445,12 @@
       .nav-logo {
         font-size: 24px;
       }
-      .hero {
-        width: 100px;
-        height: 100px;
-      }
       .main-heading {
         font-size: 36px;
+      }
+      .scene-image {
+        width: 240px;
+        height: 240px;
       }
       .scene-text {
         width: 260px;
@@ -467,6 +459,10 @@
         font-size: 26px;
       }
       .text-left, .text-right {
+        left: 5%;
+        right: 5%;
+      }
+      .img-left, .img-right {
         left: 5%;
         right: 5%;
       }
@@ -537,39 +533,37 @@
         <!-- 地面 -->
         <div class="element ground"></div>
 
-        <!-- 主角 -->
-        <div class="element hero">
-          <div class="hero-shadow"></div>
-          <div class="hero-circle"></div>
-        </div>
-
-        <!-- 场景 1: 起源 - 嵌入式文字 -->
+        <!-- 场景 1: 起源 -->
         <div class="element scene-text text-left">
           <div class="text-eyebrow">01 · ORIGIN</div>
           <div class="text-title">Ancient Origins</div>
           <p class="text-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
         </div>
+        <div class="element scene-image img-left" style="background-image: url('scene-origin.png')"></div>
 
-        <!-- 场景 2: 品质 - 嵌入式文字 -->
+        <!-- 场景 2: 品质 -->
         <div class="element scene-text text-right">
           <div class="text-eyebrow">02 · QUALITY</div>
           <div class="text-title">Premium Quality</div>
           <p class="text-desc">99% pure cinnabar with the deepest, most vibrant crimson and a warm golden glow.</p>
         </div>
+        <div class="element scene-image img-right" style="background-image: url('scene-quality.png')"></div>
 
-        <!-- 场景 3: 工艺 - 嵌入式文字 -->
+        <!-- 场景 3: 工艺 -->
         <div class="element scene-text text-left">
           <div class="text-eyebrow">03 · CRAFT</div>
           <div class="text-title">Master Craftsmanship</div>
           <p class="text-desc">Handcrafted by master artisans with decades of experience, every piece made with meticulous care.</p>
         </div>
+        <div class="element scene-image img-left" style="background-image: url('scene-craft.png')"></div>
 
-        <!-- 场景 4: 产品 - 嵌入式文字 -->
+        <!-- 场景 4: 产品 -->
         <div class="element scene-text text-right">
           <div class="text-eyebrow">04 · COLLECTION</div>
           <div class="text-title">Our Collection</div>
           <p class="text-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
         </div>
+        <div class="element scene-image img-right" style="background-image: url('scene-product.png')"></div>
 
         <!-- 中间大标题 -->
         <div class="element main-title">
@@ -597,7 +591,8 @@
 
   <script>
     const journey = document.querySelector('.journey-container');
-    const scenes = document.querySelectorAll('.scene-text');
+    const texts = document.querySelectorAll('.scene-text');
+    const images = document.querySelectorAll('.scene-image');
     const finale = document.querySelector('.finale');
     const progressFill = document.querySelector('.progress-fill');
     const mainHeading = document.querySelector('.main-heading');
@@ -629,15 +624,17 @@
       progressFill.style.height = (progress * 100) + '%';
 
       // 场景出现时机 - 动态显示/隐藏，支持倒退
-      for (let i = 0; i < scenes.length; i++) {
+      for (let i = 0; i < texts.length; i++) {
         const threshold = (i + 1) * 0.18;
         const nextThreshold = (i + 2) * 0.18;
         if (progress > threshold && progress < nextThreshold) {
-          scenes[i].classList.add('visible');
+          texts[i].classList.add('visible');
+          images[i].classList.add('visible');
           mainHeading.textContent = titles[i + 1];
           mainEyebrow.textContent = eyebrows[i + 1];
         } else {
-          scenes[i].classList.remove('visible');
+          texts[i].classList.remove('visible');
+          images[i].classList.remove('visible');
         }
       }
 
