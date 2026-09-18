@@ -1,247 +1,227 @@
-<section class="cinnabar-walk">
+<section class="cinnabar-journey">
 
-  <div class="walk-container">
+  <div class="journey-container">
 
-    <!-- 全屏场景 1: 起源 -->
-    <div class="walk-scene walk-scene-1">
-      <div class="scene-bg"></div>
-      <div class="scene-hero">
-        <div class="hero-gem gem-1"></div>
-      </div>
-      <div class="scene-content">
-        <div class="scene-text">
-          <div class="scene-eyebrow">01 · ORIGIN</div>
-          <h2>{{ section.settings.scene_1_title }}</h2>
-          <p>{{ section.settings.scene_1_desc }}</p>
+    <!-- 场景 1: 起源 -->
+    <div class="j-scene">
+      <div class="j-grid">
+        <div class="j-left">
+          <div class="j-eyebrow">01 · ORIGIN</div>
+          <h2 class="j-title">{{ section.settings.scene_1_title }}</h2>
+          <div class="j-divider"></div>
+          <p class="j-desc">{{ section.settings.scene_1_desc }}</p>
+        </div>
+        <div class="j-right">
+          <div class="j-gem gem-red"></div>
         </div>
       </div>
     </div>
 
-    <!-- 全屏场景 2: 品质 -->
-    <div class="walk-scene walk-scene-2">
-      <div class="scene-bg scene-bg-gold"></div>
-      <div class="scene-hero">
-        <div class="hero-gem gem-2"></div>
-      </div>
-      <div class="scene-content">
-        <div class="scene-text scene-text-right">
-          <div class="scene-eyebrow">02 · QUALITY</div>
-          <h2>{{ section.settings.scene_2_title }}</h2>
-          <p>{{ section.settings.scene_2_desc }}</p>
+    <!-- 场景 2: 品质 -->
+    <div class="j-scene">
+      <div class="j-grid j-grid-reverse">
+        <div class="j-left">
+          <div class="j-gem gem-gold"></div>
+        </div>
+        <div class="j-right">
+          <div class="j-eyebrow">02 · QUALITY</div>
+          <h2 class="j-title">{{ section.settings.scene_2_title }}</h2>
+          <div class="j-divider"></div>
+          <p class="j-desc">{{ section.settings.scene_2_desc }}</p>
         </div>
       </div>
     </div>
 
-    <!-- 全屏场景 3: 工艺 -->
-    <div class="walk-scene walk-scene-3">
-      <div class="scene-bg"></div>
-      <div class="scene-hero">
-        <div class="hero-gem gem-3"></div>
-      </div>
-      <div class="scene-content">
-        <div class="scene-text">
-          <div class="scene-eyebrow">03 · CRAFT</div>
-          <h2>{{ section.settings.scene_3_title }}</h2>
-          <p>{{ section.settings.scene_3_desc }}</p>
+    <!-- 场景 3: 工艺 -->
+    <div class="j-scene">
+      <div class="j-grid">
+        <div class="j-left">
+          <div class="j-eyebrow">03 · CRAFT</div>
+          <h2 class="j-title">{{ section.settings.scene_3_title }}</h2>
+          <div class="j-divider"></div>
+          <p class="j-desc">{{ section.settings.scene_3_desc }}</p>
+        </div>
+        <div class="j-right">
+          <div class="j-gem gem-dark"></div>
         </div>
       </div>
     </div>
 
-    <!-- 全屏场景 4: 产品 -->
-    <div class="walk-scene walk-scene-4">
-      <div class="scene-bg scene-bg-gold"></div>
-      <div class="scene-content scene-content-center">
-        <div class="scene-eyebrow">04 · COLLECTION</div>
-        <h2>{{ section.settings.scene_4_title }}</h2>
-        <p>{{ section.settings.scene_4_desc }}</p>
-        <div class="product-row">
-          <div class="product-item"></div>
-          <div class="product-item"></div>
-        </div>
+    <!-- 场景 4: 产品 -->
+    <div class="j-scene j-scene-center">
+      <div class="j-eyebrow">04 · COLLECTION</div>
+      <h2 class="j-title">{{ section.settings.scene_4_title }}</h2>
+      <div class="j-divider j-divider-center"></div>
+      <p class="j-desc j-desc-center">{{ section.settings.scene_4_desc }}</p>
+      <div class="j-products">
+        <div class="j-product"></div>
+        <div class="j-product"></div>
       </div>
     </div>
 
     <!-- 结尾 -->
-    <div class="walk-scene walk-scene-finale">
-      <div class="finale-bg"></div>
-      <div class="scene-content scene-content-center">
-        <div class="scene-eyebrow scene-eyebrow-light">CHENSHA</div>
-        <h2 class="finale-title">{{ section.settings.finale_title }}</h2>
-        <p class="finale-desc">{{ section.settings.finale_desc }}</p>
-        <a href="{{ section.settings.cta_link }}" class="finale-btn">{{ section.settings.cta_button }}</a>
-      </div>
+    <div class="j-scene j-scene-finale">
+      <div class="j-eyebrow j-eyebrow-light">CHENSHA</div>
+      <h2 class="j-title j-title-light">{{ section.settings.finale_title }}</h2>
+      <p class="j-desc j-desc-light">{{ section.settings.finale_desc }}</p>
+      <a href="{{ section.settings.cta_link }}" class="j-btn">{{ section.settings.cta_button }}</a>
     </div>
 
-  </div>
-
-  <!-- 滚动进度 -->
-  <div class="walk-progress">
-    <div class="progress-line"></div>
   </div>
 
 </section>
 
 <style>
-.cinnabar-walk {
-  position: relative;
+.cinnabar-journey {
+  width: 100%;
+  background: #FAF6F0;
+}
+
+.journey-container {
   width: 100%;
 }
 
-.walk-container {
-  position: relative;
-  width: 100%;
-}
-
-.walk-scene {
-  position: relative;
-  width: 100%;
+.j-scene {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 80px 40px;
+  background: #FAF6F0;
 }
 
-.walk-scene.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.j-scene:nth-child(even) {
+  background: #F4EDE2;
 }
 
-.scene-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
-  z-index: 0;
-}
-.scene-bg-gold {
-  background: linear-gradient(135deg, #F4EDE2 0%, #EDE3D3 100%);
-}
-
-.finale-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.j-scene-finale {
   background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-  z-index: 0;
 }
 
-.scene-hero {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-.walk-scene-2 .scene-hero {
-  right: auto;
-  left: 10%;
-}
-
-.hero-gem {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  animation: gemFloat 4s ease-in-out infinite;
-}
-.gem-1 {
-  background: radial-gradient(circle at 30% 30%, #C94B44 0%, #9E2B25 50%, #7A1F1A 100%);
-  box-shadow: 0 0 60px rgba(158,43,37,0.4);
-}
-.gem-2 {
-  background: radial-gradient(circle at 30% 30%, #E0C88A 0%, #C9A24B 50%, #9E7B2F 100%);
-  box-shadow: 0 0 60px rgba(201,162,75,0.4);
-}
-.gem-3 {
-  background: radial-gradient(circle at 30% 30%, #B83830 0%, #9E2B25 50%, #5A1510 100%);
-  box-shadow: 0 0 60px rgba(158,43,37,0.5);
-}
-@keyframes gemFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
-}
-
-.scene-content {
-  position: relative;
-  z-index: 2;
+.j-grid {
   max-width: 1200px;
   width: 100%;
-  padding: 0 80px;
-}
-.scene-content-center {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: center;
 }
 
-.scene-text {
-  max-width: 500px;
+.j-grid-reverse {
+  direction: rtl;
 }
-.scene-text-right {
-  margin-left: auto;
-  text-align: right;
+.j-grid-reverse > * {
+  direction: ltr;
 }
 
-.scene-eyebrow {
+.j-eyebrow {
   font-size: 13px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #9E2B25;
   margin-bottom: 15px;
 }
-.scene-eyebrow-light {
+.j-eyebrow-light {
   color: #E0C88A;
 }
 
-.scene-text h2,
-.scene-content h2 {
+.j-title {
   font-size: 48px;
   font-weight: 400;
   line-height: 1.2;
   color: #2A1F1A;
   margin-bottom: 20px;
 }
-.finale-title {
+.j-title-light {
   color: #FAF6F0;
 }
 
-.scene-text p,
-.scene-content p {
+.j-divider {
+  width: 60px;
+  height: 2px;
+  background: #9E2B25;
+  margin-bottom: 25px;
+}
+.j-divider-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.j-desc {
   font-size: 17px;
   line-height: 1.8;
   color: #555;
 }
-.finale-desc {
-  color: #E0C88A !important;
+.j-desc-center {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.j-desc-light {
+  color: #E0C88A;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.product-row {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
-}
-.product-item {
-  width: 200px;
+.j-gem {
+  width: 250px;
   height: 250px;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: gemFloat 4s ease-in-out infinite;
+}
+
+.gem-red {
+  background: radial-gradient(circle at 30% 30%, #C94B44 0%, #9E2B25 50%, #7A1F1A 100%);
+  box-shadow: 0 0 80px rgba(158,43,37,0.4);
+}
+
+.gem-gold {
+  background: radial-gradient(circle at 30% 30%, #E0C88A 0%, #C9A24B 50%, #9E7B2F 100%);
+  box-shadow: 0 0 80px rgba(201,162,75,0.4);
+}
+
+.gem-dark {
+  background: radial-gradient(circle at 30% 30%, #B83830 0%, #9E2B25 50%, #5A1510 100%);
+  box-shadow: 0 0 80px rgba(158,43,37,0.5);
+}
+
+@keyframes gemFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.j-scene-center {
+  flex-direction: column;
+  text-align: center;
+}
+
+.j-products {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.j-product {
+  width: 220px;
+  height: 280px;
   border-radius: 16px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
-.product-item:nth-child(1) {
+
+.j-product:nth-child(1) {
   background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
 }
-.product-item:nth-child(2) {
+
+.j-product:nth-child(2) {
   background: linear-gradient(135deg, #C9A24B 0%, #9E2B25 100%);
 }
 
-.finale-btn {
+.j-btn {
   display: inline-block;
   margin-top: 30px;
   padding: 16px 50px;
@@ -253,90 +233,38 @@
   font-size: 14px;
   transition: all 0.3s ease;
 }
-.finale-btn:hover {
+
+.j-btn:hover {
   background: transparent;
   color: #C9A24B;
   border: 1px solid #C9A24B;
 }
 
-.walk-progress {
-  position: fixed;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2px;
-  height: 200px;
-  background: rgba(158,43,37,0.1);
-  z-index: 100;
-}
-.progress-line {
-  width: 100%;
-  height: 0%;
-  background: #9E2B25;
-  transition: height 0.1s linear;
-}
-
 @media (max-width: 768px) {
-  .scene-content {
-    padding: 0 30px;
+  .j-scene {
+    padding: 60px 20px;
   }
-  .scene-text h2,
-  .scene-content h2 {
+  .j-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .j-title {
     font-size: 32px;
   }
-  .scene-hero {
-    right: 50%;
-    transform: translate(50%, -50%);
-    top: 20%;
+  .j-gem {
+    width: 180px;
+    height: 180px;
   }
-  .walk-scene-2 .scene-hero {
-    left: auto;
-    right: 50%;
-    transform: translate(50%, -50%);
-  }
-  .hero-gem {
-    width: 120px;
-    height: 120px;
-  }
-  .product-row {
+  .j-products {
     flex-direction: column;
     align-items: center;
   }
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const scenes = document.querySelectorAll('.walk-scene');
-  const progressLine = document.querySelector('.progress-line');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      }
-    });
-  }, {
-    threshold: 0.3
-  });
-  
-  scenes.forEach(scene => observer.observe(scene));
-  
-  function updateProgress() {
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
-    progressLine.style.height = (progress * 100) + '%';
-  }
-  
-  window.addEventListener('scroll', updateProgress);
-  updateProgress();
-});
-</script>
-
 {% schema %}
 {
-  "name": "Cinnabar Walk",
+  "name": "Cinnabar Journey",
   "settings": [
     { "type": "text", "id": "scene_1_title", "label": "Scene 1 Title", "default": "Ancient Origins" },
     { "type": "textarea", "id": "scene_1_desc", "label": "Scene 1 Desc", "default": "For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar. This sacred red stone has been treasured by emperors and scholars through every dynasty." },
@@ -353,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "presets": [
     {
-      "name": "Cinnabar Walk",
+      "name": "Cinnabar Journey",
       "category": "Featured"
     }
   ]
