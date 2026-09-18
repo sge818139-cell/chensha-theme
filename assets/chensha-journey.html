@@ -243,88 +243,60 @@
       );
     }
 
-    /* 场景配图 - 带微动效 */
-    .scene-image {
-      width: 320px;
-      height: 320px;
+    /* 居中场景 - 图片在上，文字在下 */
+    .scene-block {
+      width: 400px;
       z-index: 6;
       opacity: 0;
       transition: all 1.2s ease;
-      top: 35%;
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px;
-      box-shadow: 0 15px 40px rgba(158, 43, 37, 0.12);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      text-align: center;
     }
 
-    .scene-image.visible {
+    .scene-block.visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translate(-50%, -50%);
+    }
+
+    .scene-image {
+      width: 280px;
+      height: 280px;
+      margin: 0 auto 30px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
       animation: floatImage 6s ease-in-out infinite;
     }
 
     @keyframes floatImage {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-8px) scale(1.02); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .img-left {
-      left: 10%;
-      transform: translateY(80px);
-    }
-
-    .img-right {
-      right: 10%;
-      transform: translateY(80px);
-    }
-
-    /* 嵌入式场景文字 */
-    .scene-text {
-      width: 300px;
-      z-index: 5;
-      opacity: 0;
-      transition: all 1.2s ease;
-      padding: 20px;
-      top: 22%;
-    }
-
-    .scene-text.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .text-left {
-      left: 12%;
-      transform: translateY(80px);
-      text-align: left;
-    }
-
-    .text-right {
-      right: 12%;
-      transform: translateY(80px);
-      text-align: left;
-    }
-
-    .text-eyebrow {
+    .scene-eyebrow {
       font-size: 11px;
       letter-spacing: 4px;
       color: #9E2B25;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .text-title {
-      font-size: 32px;
+    .scene-title {
+      font-size: 36px;
       font-weight: 400;
       color: #2A1F1A;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       line-height: 1.2;
     }
 
-    .text-desc {
-      font-size: 15px;
+    .scene-desc {
+      font-size: 16px;
       line-height: 1.7;
       color: #5A4A42;
+      max-width: 320px;
+      margin: 0 auto;
     }
 
     /* 中间大标题 */
@@ -448,23 +420,15 @@
       .main-heading {
         font-size: 36px;
       }
+      .scene-block {
+        width: 320px;
+      }
       .scene-image {
-        width: 240px;
-        height: 240px;
+        width: 220px;
+        height: 220px;
       }
-      .scene-text {
-        width: 260px;
-      }
-      .text-title {
-        font-size: 26px;
-      }
-      .text-left, .text-right {
-        left: 5%;
-        right: 5%;
-      }
-      .img-left, .img-right {
-        left: 5%;
-        right: 5%;
+      .scene-title {
+        font-size: 28px;
       }
       .layer-1 .far-mountain {
         width: 600px;
@@ -534,36 +498,36 @@
         <div class="element ground"></div>
 
         <!-- 场景 1: 起源 -->
-        <div class="element scene-text text-left">
-          <div class="text-eyebrow">01 · ORIGIN</div>
-          <div class="text-title">Ancient Origins</div>
-          <p class="text-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('scene-origin.png')"></div>
+          <div class="scene-eyebrow">01 · ORIGIN</div>
+          <div class="scene-title">Ancient Origins</div>
+          <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
         </div>
-        <div class="element scene-image img-left" style="background-image: url('scene-origin.png')"></div>
 
         <!-- 场景 2: 品质 -->
-        <div class="element scene-text text-right">
-          <div class="text-eyebrow">02 · QUALITY</div>
-          <div class="text-title">Premium Quality</div>
-          <p class="text-desc">99% pure cinnabar with the deepest, most vibrant crimson and a warm golden glow.</p>
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('scene-quality.png')"></div>
+          <div class="scene-eyebrow">02 · QUALITY</div>
+          <div class="scene-title">Premium Quality</div>
+          <p class="scene-desc">99% pure cinnabar with the deepest, most vibrant crimson and a warm golden glow.</p>
         </div>
-        <div class="element scene-image img-right" style="background-image: url('scene-quality.png')"></div>
 
         <!-- 场景 3: 工艺 -->
-        <div class="element scene-text text-left">
-          <div class="text-eyebrow">03 · CRAFT</div>
-          <div class="text-title">Master Craftsmanship</div>
-          <p class="text-desc">Handcrafted by master artisans with decades of experience, every piece made with meticulous care.</p>
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('scene-craft.png')"></div>
+          <div class="scene-eyebrow">03 · CRAFT</div>
+          <div class="scene-title">Master Craftsmanship</div>
+          <p class="scene-desc">Handcrafted by master artisans with decades of experience, every piece made with meticulous care.</p>
         </div>
-        <div class="element scene-image img-left" style="background-image: url('scene-craft.png')"></div>
 
         <!-- 场景 4: 产品 -->
-        <div class="element scene-text text-right">
-          <div class="text-eyebrow">04 · COLLECTION</div>
-          <div class="text-title">Our Collection</div>
-          <p class="text-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
+        <div class="element scene-block">
+          <div class="scene-image" style="background-image: url('scene-product.png')"></div>
+          <div class="scene-eyebrow">04 · COLLECTION</div>
+          <div class="scene-title">Our Collection</div>
+          <p class="scene-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
         </div>
-        <div class="element scene-image img-right" style="background-image: url('scene-product.png')"></div>
 
         <!-- 中间大标题 -->
         <div class="element main-title">
@@ -591,8 +555,7 @@
 
   <script>
     const journey = document.querySelector('.journey-container');
-    const texts = document.querySelectorAll('.scene-text');
-    const images = document.querySelectorAll('.scene-image');
+    const scenes = document.querySelectorAll('.scene-block');
     const finale = document.querySelector('.finale');
     const progressFill = document.querySelector('.progress-fill');
     const mainHeading = document.querySelector('.main-heading');
@@ -624,17 +587,15 @@
       progressFill.style.height = (progress * 100) + '%';
 
       // 场景出现时机 - 动态显示/隐藏，支持倒退
-      for (let i = 0; i < texts.length; i++) {
+      for (let i = 0; i < scenes.length; i++) {
         const threshold = (i + 1) * 0.18;
         const nextThreshold = (i + 2) * 0.18;
         if (progress > threshold && progress < nextThreshold) {
-          texts[i].classList.add('visible');
-          images[i].classList.add('visible');
+          scenes[i].classList.add('visible');
           mainHeading.textContent = titles[i + 1];
           mainEyebrow.textContent = eyebrows[i + 1];
         } else {
-          texts[i].classList.remove('visible');
-          images[i].classList.remove('visible');
+          scenes[i].classList.remove('visible');
         }
       }
 
