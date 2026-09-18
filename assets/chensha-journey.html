@@ -243,6 +243,49 @@
       );
     }
 
+    /* 引导词 - 开始页面 */
+    .intro-text {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 8;
+    }
+
+    .intro-eyebrow {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: #9E2B25;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .intro-title {
+      font-size: 56px;
+      font-weight: 400;
+      color: #2A1F1A;
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+
+    .intro-desc {
+      font-size: 16px;
+      color: #8A7A72;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .intro-arrow {
+      font-size: 32px;
+      color: #9E2B25;
+      animation: bounceArrow 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
     /* 居中场景 - 图片在上，文字在下 */
     .scene-block {
       width: 400px;
@@ -288,8 +331,15 @@
       font-size: 36px;
       font-weight: 400;
       color: #2A1F1A;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       line-height: 1.2;
+    }
+
+    .scene-location {
+      font-size: 14px;
+      color: #9E2B25;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
     }
 
     .scene-desc {
@@ -498,11 +548,20 @@
         <!-- 地面 -->
         <div class="element ground"></div>
 
+        <!-- 引导词 - 开始页面 -->
+        <div class="element intro-text">
+          <div class="intro-eyebrow">CHENSHA JOURNEY</div>
+          <div class="intro-title">Into The Cinnabar</div>
+          <div class="intro-desc">Scroll to explore</div>
+          <div class="intro-arrow">↓</div>
+        </div>
+
         <!-- 场景 1: 起源 -->
         <div class="element scene-block">
           <div class="scene-image" style="background-image: url('scene-origin.png')"></div>
           <div class="scene-eyebrow">01 · ORIGIN</div>
           <div class="scene-title">Ancient Origins</div>
+          <div class="scene-location">中国铜仁 · Tongren, China</div>
           <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
         </div>
 
