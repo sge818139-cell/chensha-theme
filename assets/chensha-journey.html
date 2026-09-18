@@ -261,13 +261,14 @@
     }
 
     .scene-image {
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       margin: 0 auto 20px;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
       animation: floatImage 6s ease-in-out infinite;
+      mix-blend-mode: multiply;
     }
 
     @keyframes floatImage {
@@ -497,15 +498,7 @@
         <!-- 地面 -->
         <div class="element ground"></div>
 
-        <!-- 场景 1: 起源 -->
-        <div class="element scene-block">
-          <div class="scene-image" style="background-image: url('scene-origin.png')"></div>
-          <div class="scene-eyebrow">01 · ORIGIN</div>
-          <div class="scene-title">Ancient Origins</div>
-          <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
-        </div>
-
-        <!-- 场景 2: 品质 -->
+        <!-- 场景 1: 品质 -->
         <div class="element scene-block">
           <div class="scene-image" style="background-image: url('scene-quality.png')"></div>
           <div class="scene-eyebrow">02 · QUALITY</div>
@@ -563,7 +556,6 @@
 
     const titles = [
       'Into The Cinnabar',
-      'Ancient Origins',
       'Premium Quality',
       'Master Craftsmanship',
       'Our Collection'
@@ -573,8 +565,7 @@
       '01 · ORIGIN',
       '02 · QUALITY',
       '03 · CRAFT',
-      '04 · COLLECTION',
-      '05 · HERITAGE'
+      '04 · COLLECTION'
     ];
 
     function updateJourney() {
