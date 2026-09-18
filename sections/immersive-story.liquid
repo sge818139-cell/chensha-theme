@@ -1,0 +1,295 @@
+<section class="immersive-story">
+  <!-- 章节 1: Hero -->
+  <div class="story-scene scene-hero">
+    <div class="scene-bg"></div>
+    <div class="scene-content">
+      <div class="scene-eyebrow">CHENSHA</div>
+      <h1 class="scene-title">{{ section.settings.hero_title }}</h1>
+      <div class="scene-subtitle">{{ section.settings.hero_subtitle }}</div>
+      <div class="scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 章节 2: 起源 -->
+  <div class="story-scene scene-origin">
+    <div class="scene-bg"></div>
+    <div class="scene-content">
+      <div class="scene-number">01</div>
+      <h2 class="scene-title">{{ section.settings.origin_title }}</h2>
+      <div class="scene-text">{{ section.settings.origin_text }}</div>
+    </div>
+    {% if section.settings.origin_image != blank %}
+      <img src="{{ section.settings.origin_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
+    {% endif %}
+  </div>
+
+  <!-- 章节 3: 工艺 -->
+  <div class="story-scene scene-craft">
+    <div class="scene-bg"></div>
+    <div class="scene-content">
+      <div class="scene-number">02</div>
+      <h2 class="scene-title">{{ section.settings.craft_title }}</h2>
+      <div class="scene-text">{{ section.settings.craft_text }}</div>
+    </div>
+    {% if section.settings.craft_image != blank %}
+      <img src="{{ section.settings.craft_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
+    {% endif %}
+  </div>
+
+  <!-- 章节 4: 传承 -->
+  <div class="story-scene scene-heritage">
+    <div class="scene-bg"></div>
+    <div class="scene-content">
+      <div class="scene-number">03</div>
+      <h2 class="scene-title">{{ section.settings.heritage_title }}</h2>
+      <div class="scene-text">{{ section.settings.heritage_text }}</div>
+    </div>
+    {% if section.settings.heritage_image != blank %}
+      <img src="{{ section.settings.heritage_image | image_url: width: 1200 }}" alt="" class="scene-img parallax-img">
+    {% endif %}
+  </div>
+
+  <!-- 章节 5: 结尾 CTA -->
+  <div class="story-scene scene-cta">
+    <div class="scene-bg"></div>
+    <div class="scene-content">
+      <h2 class="scene-title">{{ section.settings.cta_title }}</h2>
+      <div class="scene-text">{{ section.settings.cta_text }}</div>
+      <a href="{{ section.settings.cta_link }}" class="btn btn-gold">{{ section.settings.cta_button }}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.immersive-story {
+  position: relative;
+  width: 100%;
+}
+.story-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.scene-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.scene-hero .scene-bg {
+  background: linear-gradient(180deg, #7A1F1A 0%, #9E2B25 50%, #FAF6F0 100%);
+}
+.scene-origin .scene-bg {
+  background: linear-gradient(180deg, #FAF6F0 0%, #F4EDE2 100%);
+}
+.scene-craft .scene-bg {
+  background: linear-gradient(180deg, #2A1F1A 0%, #3D2A20 100%);
+}
+.scene-heritage .scene-bg {
+  background: linear-gradient(180deg, #F4EDE2 0%, #E8DCC8 100%);
+}
+.scene-cta .scene-bg {
+  background: linear-gradient(180deg, #9E2B25 0%, #7A1F1A 100%);
+}
+.scene-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 60px 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+.story-scene.in-view .scene-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scene-eyebrow {
+  font-size: 14px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #E0C88A;
+  margin-bottom: 20px;
+}
+.scene-title {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+.scene-hero .scene-title {
+  color: #FAF6F0;
+}
+.scene-origin .scene-title,
+.scene-heritage .scene-title {
+  color: #2A1F1A;
+}
+.scene-craft .scene-title {
+  color: #FAF6F0;
+}
+.scene-cta .scene-title {
+  color: #FAF6F0;
+}
+.scene-subtitle {
+  font-size: 20px;
+  color: #E0C88A;
+  font-style: italic;
+  margin-bottom: 60px;
+}
+.scene-number {
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: #C9A24B;
+  margin-bottom: 20px;
+}
+.scene-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.scene-origin .scene-text,
+.scene-heritage .scene-text {
+  color: #555;
+}
+.scene-craft .scene-text {
+  color: #E8DCC8;
+}
+.scene-cta .scene-text {
+  color: #E0C88A;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 3;
+}
+.scroll-hint span {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #E0C88A;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, #E0C88A 0%, transparent 100%);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+.scene-img {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.scene-origin .scene-img {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.scene-craft .scene-img {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.scene-heritage .scene-img {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn-gold {
+  display: inline-block;
+  padding: 16px 48px;
+  background: #C9A24B;
+  color: #2A1F1A;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid #C9A24B;
+}
+.btn-gold:hover {
+  background: transparent;
+  color: #C9A24B;
+}
+@media (max-width: 768px) {
+  .scene-title {
+    font-size: 40px;
+  }
+  .scene-img {
+    width: 80%;
+    opacity: 0.3;
+  }
+  .scene-origin .scene-img,
+  .scene-craft .scene-img,
+  .scene-heritage .scene-img {
+    right: 10%;
+    left: 10%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const scenes = document.querySelectorAll('.story-scene');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+  scenes.forEach(scene => observer.observe(scene));
+});
+</script>
+
+{% schema %}
+{
+  "name": "Immersive Story",
+  "settings": [
+    { "type": "text", "id": "hero_title", "label": "Hero Title", "default": "The Red Stone of China" },
+    { "type": "text", "id": "hero_subtitle", "label": "Hero Subtitle", "default": "A Journey Through 2000 Years of Cinnabar Heritage" },
+    { "type": "text", "id": "origin_title", "label": "Origin Title", "default": "Ancient Origins" },
+    { "type": "textarea", "id": "origin_text", "label": "Origin Text", "default": "For over two millennia, the mountains of Guizhou have yielded the world's finest cinnabar. From the Han Dynasty to today, this sacred red stone has been worn as a talisman, carved into imperial seals, and treasured as China's most profound color." },
+    { "type": "image_picker", "id": "origin_image", "label": "Origin Image" },
+    { "type": "text", "id": "craft_title", "label": "Craft Title", "default": "Master Craftsmanship" },
+    { "type": "textarea", "id": "craft_text", "label": "Craft Text", "default": "Each CHENSHA piece is handcrafted by master artisans using techniques passed down through generations. From selecting the purest cinnabar to the final polishing, every step is a tribute to centuries of Chinese jewelry making." },
+    { "type": "image_picker", "id": "craft_image", "label": "Craft Image" },
+    { "type": "text", "id": "heritage_title", "label": "Heritage Title", "default": "Timeless Heritage" },
+    { "type": "textarea", "id": "heritage_text", "label": "Heritage Text", "default": "More than jewelry, CHENSHA is a piece of Chinese culture that you can wear. Each bracelet carries the blessings of ancient wisdom and the vibrant spirit of the East." },
+    { "type": "image_picker", "id": "heritage_image", "label": "Heritage Image" },
+    { "type": "text", "id": "cta_title", "label": "CTA Title", "default": "Begin Your Journey" },
+    { "type": "textarea", "id": "cta_text", "label": "CTA Text", "default": "Discover our collection and carry a piece of Chinese heritage with you." },
+    { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "EXPLORE COLLECTION" },
+    { "type": "url", "id": "cta_link", "label": "CTA Link" }
+  ],
+  "presets": [
+    {
+      "name": "Immersive Story",
+      "category": "Featured"
+    }
+  ]
+}
+{% endschema %}
