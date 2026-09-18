@@ -320,6 +320,76 @@
           "explore-more-3"
         ],
         "settings": {}
+      },
+      "collection-products-editable": {
+        "type": "collection-products-editable",
+        "blocks": {
+          "collection-products-editable-0": {
+            "type": "product",
+            "settings": {
+              "title": "CINNABAR BRACELETS",
+              "price": "$168.00",
+              "link": ""
+            }
+          },
+          "collection-products-editable-1": {
+            "type": "product",
+            "settings": {
+              "title": "CLOISONNÉ & GOLD",
+              "price": "$178.00",
+              "link": ""
+            }
+          },
+          "collection-products-editable-2": {
+            "type": "product",
+            "settings": {
+              "title": "GOLD GOURD CHARM",
+              "price": "$188.00",
+              "link": ""
+            }
+          },
+          "collection-products-editable-3": {
+            "type": "product",
+            "settings": {
+              "title": "TURQUOISE & GOLD",
+              "price": "$158.00",
+              "link": ""
+            }
+          },
+          "collection-products-editable-4": {
+            "type": "product",
+            "settings": {
+              "title": "NORTH STAR BRACELET",
+              "price": "$168.00",
+              "link": ""
+            }
+          },
+          "collection-products-editable-5": {
+            "type": "product",
+            "settings": {
+              "title": "DIVINE EYE CHARM",
+              "price": "$188.00",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "collection-products-editable-0",
+          "collection-products-editable-1",
+          "collection-products-editable-2",
+          "collection-products-editable-3",
+          "collection-products-editable-4",
+          "collection-products-editable-5"
+        ],
+        "settings": {
+          "filter_title": "FILTER BY",
+          "filter_1": "Intention",
+          "filter_2": "Symbol",
+          "filter_3": "Material",
+          "filter_4": "Price",
+          "product_count_text": "6 RESULTS",
+          "sort_text": "SORT BY: NEWEST ↓"
+        }
       }
     },
     "content_for_index": []
