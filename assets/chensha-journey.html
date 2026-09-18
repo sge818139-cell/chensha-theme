@@ -18,46 +18,45 @@
       overflow-x: hidden;
     }
 
-    /* 导航 */
-    .nav {
+    /* 顶部导航 */
+    .top-nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 20px 60px;
+      padding: 25px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(250, 248, 244, 0.95);
-      backdrop-filter: blur(10px);
       z-index: 1000;
+      background: transparent;
     }
 
-    .logo {
-      font-size: 28px;
-      letter-spacing: 4px;
+    .nav-left {
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: #9E2B25;
+      text-transform: uppercase;
+    }
+
+    .nav-logo {
+      font-size: 32px;
+      letter-spacing: 6px;
       color: #9E2B25;
       font-weight: 500;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #2A1F1A;
+    .nav-right {
       font-size: 14px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      color: #9E2B25;
       text-transform: uppercase;
     }
 
     /* 主容器 */
-    .journey-wrap {
+    .journey-container {
       position: relative;
-      height: 800vh;
+      height: 1000vh;
       background: #FAF8F4;
     }
 
@@ -70,294 +69,168 @@
       overflow: hidden;
     }
 
-    /* 3D 场景 */
-    .scene-3d {
+    /* 场景 */
+    .scene {
       position: relative;
       width: 100%;
       height: 100%;
     }
 
-    /* 白色丛林背景 - 两侧植物 */
-    .jungle {
+    /* 背景层 - 两侧植物 */
+    .bg-layer {
       position: absolute;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      background: #FAF8F4;
+      pointer-events: none;
     }
 
-    /* 左侧植物 */
     .plant-left {
       position: absolute;
       left: -5%;
-      bottom: 0;
-      width: 50%;
+      top: 0;
+      width: 45%;
       height: 100%;
-      background: 
-        radial-gradient(ellipse at 20% 80%, rgba(200, 190, 170, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 40% 60%, rgba(200, 190, 170, 0.2) 0%, transparent 40%),
-        radial-gradient(ellipse at 30% 40%, rgba(200, 190, 170, 0.15) 0%, transparent 35%);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      opacity: 0.3;
     }
 
-    /* 右侧植物 */
     .plant-right {
       position: absolute;
       right: -5%;
-      bottom: 0;
-      width: 50%;
+      top: 0;
+      width: 45%;
       height: 100%;
-      background: 
-        radial-gradient(ellipse at 80% 80%, rgba(200, 190, 170, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 60%, rgba(200, 190, 170, 0.2) 0%, transparent 40%),
-        radial-gradient(ellipse at 70% 40%, rgba(200, 190, 170, 0.15) 0%, transparent 35%);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      opacity: 0.3;
     }
 
-    /* 小路 */
-    .path {
+    .plant-bamboo-left {
+      background-image: url('bamboo-leaf.png');
+    }
+
+    .plant-plum-right {
+      background-image: url('plum-branch.png');
+    }
+
+    /* 地面小路 */
+    .ground {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 40%;
-      height: 70%;
+      width: 60%;
+      height: 30%;
       background: linear-gradient(180deg, 
         rgba(240, 235, 225, 0) 0%, 
-        rgba(240, 235, 225, 0.5) 30%, 
-        rgba(235, 228, 215, 0.8) 100%
+        rgba(235, 228, 215, 0.6) 50%,
+        rgba(230, 222, 205, 0.8) 100%
       );
-      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+      border-radius: 50% 50% 0 0;
     }
 
     /* 主角 - 朱砂原石 */
     .hero {
       position: absolute;
-      bottom: 18%;
+      bottom: 15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       z-index: 10;
       transition: transform 0.05s linear;
     }
 
-    .hero-gem {
+    .hero img {
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 35% 35%, #D4554E 0%, #9E2B25 40%, #7A1F1A 100%);
-      clip-path: polygon(
-        50% 0%, 
-        75% 15%, 
-        100% 35%, 
-        95% 65%, 
-        75% 90%, 
-        50% 100%, 
-        25% 90%, 
-        5% 65%, 
-        0% 35%, 
-        25% 15%
-      );
-      box-shadow: 0 0 60px rgba(158, 43, 37, 0.5), inset 0 0 20px rgba(0,0,0,0.2);
-      animation: heroBreathe 3s ease-in-out infinite;
+      object-fit: contain;
+      border-radius: 50%;
     }
 
     .hero-shadow {
       position: absolute;
-      bottom: -20px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 90px;
       height: 20px;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(0,0,0,0.15) 0%, transparent 70%);
       border-radius: 50%;
     }
 
-    @keyframes heroBreathe {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-8px) scale(1.03); }
-    }
-
-    /* 场景元素 - 从远处浮现 */
-    .scene {
+    /* 中间大标题 */
+    .main-title {
       position: absolute;
-      width: 300px;
-      z-index: 5;
-      opacity: 0;
-      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .scene.visible {
-      opacity: 1;
-    }
-
-    .scene-left {
-      left: 8%;
-      top: 30%;
-    }
-
-    .scene-right {
-      right: 8%;
-      top: 30%;
-    }
-
-    .scene-content {
-      text-align: center;
-    }
-
-    .scene-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      box-shadow: 0 10px 30px rgba(158, 43, 37, 0.2);
-    }
-
-    .icon-origin {
-      background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-    }
-
-    .icon-quality {
-      background: linear-gradient(135deg, #C9A24B 0%, #9E7B2F 100%);
-    }
-
-    .icon-craft {
-      background: linear-gradient(135deg, #2A1F1A 0%, #4A2F2A 100%);
-    }
-
-    .icon-collection {
-      background: linear-gradient(135deg, #9E2B25 0%, #C9A24B 100%);
-    }
-
-    .scene-eyebrow {
-      font-size: 12px;
-      letter-spacing: 4px;
-      color: #9E2B25;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .scene-title {
-      font-size: 24px;
-      font-weight: 400;
-      color: #2A1F1A;
-      margin-bottom: 15px;
-    }
-
-    .scene-desc {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #666;
-    }
-
-    /* 底部标题 */
-    .bottom-title {
-      position: absolute;
-      bottom: 12%;
+      top: 40%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       z-index: 8;
+      transition: all 0.8s ease;
     }
 
-    .bottom-eyebrow {
-      font-size: 12px;
-      letter-spacing: 5px;
+    .main-eyebrow {
+      font-size: 13px;
+      letter-spacing: 6px;
       color: #9E2B25;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
-    .bottom-main {
-      font-size: 42px;
+    .main-heading {
+      font-size: 64px;
       font-weight: 400;
+      line-height: 1.1;
       color: #2A1F1A;
-      margin-bottom: 18px;
+      margin-bottom: 25px;
     }
 
-    .bottom-line {
-      width: 50px;
+    .main-line {
+      width: 60px;
       height: 2px;
       background: #9E2B25;
       margin: 0 auto;
     }
 
-    /* 结尾 */
-    .finale {
+    /* 底部按钮 */
+    .explore-btn {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 20;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-    }
-
-    .finale.visible {
-      opacity: 1;
-    }
-
-    .finale-eyebrow {
+      bottom: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 8;
+      padding: 16px 50px;
+      background: transparent;
+      border: 1px solid #9E2B25;
+      color: #9E2B25;
       font-size: 13px;
-      letter-spacing: 5px;
-      color: #E0C88A;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .finale-title {
-      font-size: 52px;
-      font-weight: 400;
-      color: #FAF6F0;
-      margin-bottom: 25px;
-    }
-
-    .finale-desc {
-      font-size: 18px;
-      color: #E0C88A;
-      margin-bottom: 40px;
-    }
-
-    .finale-btn {
-      display: inline-block;
-      padding: 18px 60px;
-      background: #C9A24B;
-      color: #2A1F1A;
-      text-decoration: none;
       letter-spacing: 3px;
       text-transform: uppercase;
-      font-size: 14px;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .finale-btn:hover {
-      background: transparent;
-      color: #C9A24B;
-      border: 1px solid #C9A24B;
+    .explore-btn:hover {
+      background: #9E2B25;
+      color: white;
     }
 
     /* 进度条 */
-    .progress {
+    .progress-bar {
       position: fixed;
       right: 40px;
       top: 50%;
       transform: translateY(-50%);
-      width: 4px;
-      height: 240px;
+      width: 3px;
+      height: 200px;
       background: rgba(158, 43, 37, 0.1);
       z-index: 100;
-      border-radius: 2px;
     }
 
     .progress-fill {
@@ -365,154 +238,99 @@
       height: 0%;
       background: #9E2B25;
       transition: height 0.1s linear;
-      border-radius: 2px;
     }
 
     @media (max-width: 768px) {
-      .nav {
-        padding: 15px 20px;
+      .top-nav {
+        padding: 20px;
       }
-      .nav-links {
-        display: none;
+      .nav-logo {
+        font-size: 24px;
       }
       .hero {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
       }
-      .scene {
-        width: 260px;
+      .main-heading {
+        font-size: 42px;
       }
-      .scene-left, .scene-right {
-        left: 5%;
-        right: 5%;
-      }
-      .bottom-main {
-        font-size: 28px;
-      }
-      .finale-title {
-        font-size: 32px;
+      .plant-left, .plant-right {
+        width: 60%;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 导航 -->
-  <nav class="nav">
-    <div class="logo">CHENSHA</div>
-    <ul class="nav-links">
-      <li><a href="#">Collections</a></li>
-      <li><a href="#">Bracelets</a></li>
-      <li><a href="#">Our Story</a></li>
-      <li><a href="#">Craft</a></li>
-      <li><a href="#">Journal</a></li>
-    </ul>
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <div class="nav-left">JOURNEY</div>
+    <div class="nav-logo">CHENSHA</div>
+    <div class="nav-right">探索</div>
   </nav>
 
-  <!-- 主旅程 -->
-  <div class="journey-wrap">
+  <!-- 主旅程容器 -->
+  <div class="journey-container">
     <div class="viewport">
-      <div class="scene-3d">
+      <div class="scene">
 
-        <!-- 丛林背景 -->
-        <div class="jungle">
-          <div class="plant-left"></div>
-          <div class="plant-right"></div>
+        <!-- 背景层 -->
+        <div class="bg-layer">
+          <div class="plant-left plant-bamboo-left"></div>
+          <div class="plant-right plant-plum-right"></div>
         </div>
 
-        <!-- 小路 -->
-        <div class="path"></div>
+        <!-- 地面 -->
+        <div class="ground"></div>
 
         <!-- 主角 -->
         <div class="hero">
           <div class="hero-shadow"></div>
-          <div class="hero-gem"></div>
+          <img src="cinnabar-gem.png" alt="Cinnabar Gem">
         </div>
 
-        <!-- 场景 1: 起源 -->
-        <div class="scene scene-left">
-          <div class="scene-content">
-            <div class="scene-icon icon-origin">⛰️</div>
-            <div class="scene-eyebrow">01 · ORIGIN</div>
-            <div class="scene-title">Ancient Origins</div>
-            <p class="scene-desc">For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar.</p>
-          </div>
+        <!-- 中间大标题 -->
+        <div class="main-title">
+          <div class="main-eyebrow">01 · ORIGIN</div>
+          <h1 class="main-heading">Into The<br>Cinnabar</h1>
+          <div class="main-line"></div>
         </div>
 
-        <!-- 场景 2: 品质 -->
-        <div class="scene scene-right">
-          <div class="scene-content">
-            <div class="scene-icon icon-quality">💎</div>
-            <div class="scene-eyebrow">02 · QUALITY</div>
-            <div class="scene-title">Premium Quality</div>
-            <p class="scene-desc">99% pure cinnabar with the deepest, most vibrant crimson and a warm golden glow.</p>
-          </div>
-        </div>
-
-        <!-- 场景 3: 工艺 -->
-        <div class="scene scene-left">
-          <div class="scene-content">
-            <div class="scene-icon icon-craft">✨</div>
-            <div class="scene-eyebrow">03 · CRAFT</div>
-            <div class="scene-title">Master Craftsmanship</div>
-            <p class="scene-desc">Handcrafted by master artisans with decades of experience, every piece made with meticulous care.</p>
-          </div>
-        </div>
-
-        <!-- 场景 4: 产品 -->
-        <div class="scene scene-right">
-          <div class="scene-content">
-            <div class="scene-icon icon-collection">🧿</div>
-            <div class="scene-eyebrow">04 · COLLECTION</div>
-            <div class="scene-title">Our Collection</div>
-            <p class="scene-desc">Discover bracelets that carry thousands of years of Chinese heritage, crafted for everyday wear.</p>
-          </div>
-        </div>
-
-        <!-- 底部标题 -->
-        <div class="bottom-title">
-          <div class="bottom-eyebrow">01 · ORIGIN</div>
-          <h2 class="bottom-main">Ancient Origins</h2>
-          <div class="bottom-line"></div>
-        </div>
-
-        <!-- 结尾 -->
-        <div class="finale">
-          <div class="finale-eyebrow">CHENSHA</div>
-          <h2 class="finale-title">Thank You for Choosing CHENSHA</h2>
-          <p class="finale-desc">Carry a piece of Chinese heritage with you.</p>
-          <a href="#" class="finale-btn">Explore More</a>
-        </div>
+        <!-- 探索按钮 -->
+        <button class="explore-btn">探索</button>
 
       </div>
     </div>
   </div>
 
   <!-- 进度条 -->
-  <div class="progress">
+  <div class="progress-bar">
     <div class="progress-fill"></div>
   </div>
 
   <script>
-    const journey = document.querySelector('.journey-wrap');
+    const journey = document.querySelector('.journey-container');
     const hero = document.querySelector('.hero');
-    const scenes = document.querySelectorAll('.scene');
-    const finale = document.querySelector('.finale');
     const progressFill = document.querySelector('.progress-fill');
-    const bottomMain = document.querySelector('.bottom-main');
-    const bottomEyebrow = document.querySelector('.bottom-eyebrow');
+    const mainHeading = document.querySelector('.main-heading');
+    const mainEyebrow = document.querySelector('.main-eyebrow');
+    const plantLeft = document.querySelector('.plant-left');
+    const plantRight = document.querySelector('.plant-right');
 
-    const sceneTitles = [
-      'Ancient Origins',
-      'Premium Quality',
-      'Master Craftsmanship',
-      'Our Collection'
+    const titles = [
+      'Into The<br>Cinnabar',
+      'Ancient<br>Origins',
+      'Premium<br>Quality',
+      'Master<br>Craft',
+      'Our<br>Collection'
     ];
-    const sceneEyebrows = [
+
+    const eyebrows = [
       '01 · ORIGIN',
       '02 · QUALITY',
       '03 · CRAFT',
-      '04 · COLLECTION'
+      '04 · COLLECTION',
+      '05 · HERITAGE'
     ];
 
     function updateJourney() {
@@ -525,31 +343,17 @@
       progressFill.style.height = (progress * 100) + '%';
 
       // 主角向前走（变大）
-      const scale = 1 + progress * 1.2;
+      const scale = 1 + progress * 1.5;
       hero.style.transform = `translateX(-50%) scale(${scale})`;
 
-      // 场景出现时机
-      for (let i = 0; i < scenes.length; i++) {
-        const threshold = (i + 1) * 0.16;
-        if (progress > threshold) {
-          scenes[i].classList.add('visible');
-          bottomMain.textContent = sceneTitles[i];
-          bottomEyebrow.textContent = sceneEyebrows[i];
-        }
-      }
-
-      // 结尾
-      if (progress > 0.88) {
-        finale.classList.add('visible');
-      } else {
-        finale.classList.remove('visible');
-      }
+      // 标题切换
+      const titleIndex = Math.min(4, Math.floor(progress * 5));
+      mainHeading.innerHTML = titles[titleIndex];
+      mainEyebrow.textContent = eyebrows[titleIndex];
 
       // 视差
-      const plantLeft = document.querySelector('.plant-left');
-      const plantRight = document.querySelector('.plant-right');
-      if (plantLeft) plantLeft.style.transform = `translateX(${progress * -20}px)`;
-      if (plantRight) plantRight.style.transform = `translateX(${progress * 20}px)`;
+      if (plantLeft) plantLeft.style.transform = `translateX(${progress * -30}px)`;
+      if (plantRight) plantRight.style.transform = `translateX(${progress * 30}px)`;
     }
 
     window.addEventListener('scroll', updateJourney);
