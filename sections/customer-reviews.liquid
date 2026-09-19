@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <a href="#" class="read-all-link">{{ section.settings.read_all_link }}</a>
+    <a href="{{ section.settings.read_all_link }}" class="read-all-link">Read all {{ section.settings.review_count }} reviews</a>
   </div>
 </section>
 
@@ -206,7 +206,7 @@
     {
       "type": "text",
       "id": "review_count",
-      "label": "Review Count",
+      "label": "Total Review Count",
       "default": "6"
     },
     {
@@ -232,10 +232,9 @@
       "label": "Write Review Button Link"
     },
     {
-      "type": "text",
+      "type": "url",
       "id": "read_all_link",
-      "label": "Read All Link Text",
-      "default": "Read all 6 reviews"
+      "label": "Read All Reviews Link"
     },
     {
       "type": "header",
