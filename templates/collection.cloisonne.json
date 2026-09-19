@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "hero": {
+      "type": "collection-hero-cloisonne",
+      "settings": {}
+    },
+    "products": {
+      "type": "collection-products-cloisonne",
+      "settings": {}
+    },
+    "explore": {
+      "type": "explore-more",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "products", "explore"]
+}
