@@ -1,4 +1,4 @@
-<section class="cinnabar-journey">
+<section class="cinnabar-journey" id="cinnabar-journey-{{ section.id }}">
 
   <!-- 固定背景层 -->
   <div class="journey-bg">
@@ -331,18 +331,17 @@
 
 <script>
 (function() {
-  const section = document.currentScript.closest('.cinnabar-journey');
+  const section = document.getElementById('cinnabar-journey-{{ section.id }}');
   if (!section) return;
 
   const layers = section.querySelectorAll('.bg-layer');
   const contents = section.querySelectorAll('.screen-content');
 
-  // 增强的视差效果 + 内容动效
   function updateAnimation() {
     const scrollY = window.scrollY;
     const windowH = window.innerHeight;
 
-    // 背景层视差移动 - 速度更大更明显
+    // 背景层视差移动
     const speeds = [0.2, 0.35, 0.5, 0.65];
     for (let i = 0; i < layers.length; i++) {
       if (layers[i]) {
@@ -350,7 +349,7 @@
       }
     }
 
-    // 场景内容动效 - 根据滚动位置调整透明度和位置
+    // 场景内容动效
     for (let i = 0; i < contents.length; i++) {
       const rect = contents[i].getBoundingClientRect();
       const elementCenter = rect.top + rect.height / 2;
