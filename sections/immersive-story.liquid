@@ -328,6 +328,53 @@
 }
 </style>
 
+<script>
+(function() {
+  const section = document.currentScript.closest('.cinnabar-journey');
+  if (!section) return;
+
+  const layers = section.querySelectorAll('.bg-layer');
+  const screens = section.querySelectorAll('.journey-screen');
+  const introContent = section.querySelector('.intro-screen .screen-content');
+
+  function updateScroll() {
+    const scrollY = window.scrollY;
+    const windowH = window.innerHeight;
+    
+    // 计算当前滚动了多少个屏幕
+    const totalScroll = section.offsetTop + (screens.length - 1) * windowH;
+    const scrolled = Math.max(0, scrollY - section.offsetTop);
+    const progress = Math.min(1, scrolled / totalScroll);
+
+    // 背景层视差移动
+    const speeds = [0.1, 0.2, 0.35, 0.5];
+    for (let i = 0; i < layers.length; i++) {
+      if (layers[i]) {
+        layers[i].style.transform = 'translateY(' + (progress * speeds[i] * windowH) + 'px)';
+      }
+    }
+
+    // 场景内容淡入淡出
+    for (let i = 0; i < screens.length; i++) {
+      const screenTop = section.offsetTop + i * windowH;
+      const screenCenter = screenTop + windowH / 2;
+      const distance = Math.abs(scrollY + windowH / 2 - screenCenter);
+      const opacity = Math.max(0, 1 - distance / (windowH * 0.6));
+      
+      const content = screens[i].querySelector('.screen-content');
+      if (content) {
+        content.style.opacity = opacity;
+        content.style.transform = 'translateY(' + (distance * 0.1) + 'px)';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  window.addEventListener('resize', updateScroll);
+  updateScroll();
+})();
+</script>
+
 {% schema %}
 {
   "name": "Cinnabar Journey",
