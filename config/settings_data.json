@@ -409,6 +409,38 @@
           "cta_button": "EXPLORE MORE",
           "cta_link": "shopify://collections/original"
         }
+      },
+      "product-tabs": {
+        "type": "product-tabs",
+        "blocks": {
+          "tab_myFzEA": {
+            "type": "tab",
+            "settings": {
+              "title": "Details",
+              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
+            }
+          },
+          "tab_9eLxGV": {
+            "type": "tab",
+            "settings": {
+              "title": "Details",
+              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
+            }
+          },
+          "tab_kB9eVw": {
+            "type": "tab",
+            "settings": {
+              "title": "Details",
+              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
+            }
+          }
+        },
+        "block_order": [
+          "tab_myFzEA",
+          "tab_9eLxGV",
+          "tab_kB9eVw"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": []
