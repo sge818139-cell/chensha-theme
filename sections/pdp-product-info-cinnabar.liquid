@@ -1,0 +1,383 @@
+<section class="pdp-top-section">
+  <div class="pdp-layout">
+
+    <!-- LEFT: Gallery -->
+    <div class="pdp-gallery">
+      <div class="pdp-main">
+        {% if product.featured_image %}
+          <img id="pdpMainImg" src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.title | escape }}">
+        {% else %}
+          <img src="{{ 'p01.jpg' | asset_url }}" alt="{{ product.title | escape }}">
+        {% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+      <div class="pdp-thumbs">
+        {% for image in product.images %}
+          <img src="{{ image | image_url: width: 150 }}" alt="{{ product.title | append: ' thumb' | escape }}"
+               class="pdp-thumb{% if forloop.first %} active{% endif %}"
+               onclick="var m=document.getElementById('pdpMainImg');m.src='{{ image | image_url: width: 1000 }}';document.querySelectorAll('.pdp-thumb').forEach(function(t){t.classList.remove('active')});this.classList.add('active')">
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="pdp-packaging-img">
+        {% if section.settings.packaging_image != blank %}
+          <img src="{{ section.settings.packaging_image | image_url: width: 1000 }}" alt="CHENSHA gift packaging">
+        {% else %}
+          <img src="{{ 'packaging.jpg' | asset_url }}" alt="CHENSHA gift packaging">
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- RIGHT: Info -->
+    <div class="pdp-info">
+      {% if product.type %}<div class="pdp-eyebrow">{{ product.type }}</div>{% endif %}
+      <h1 class="pdp-title">{{ product.title }}</h1>
+
+      <div class="pdp-price-row">
+        <span class="pdp-price">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span class="pdp-compare">{{ product.compare_at_price | money }}</span>
+          <span class="pdp-sale-badge">SAVE {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%</span>
+        {% endif %}
+      </div>
+
+      <div class="pdp-rating-row">
+        <span class="pdp-stars">★★★★★</span>
+        <span class="pdp-rating-text" id="ratingText">{{ section.settings.rating_text }}</span>
+      </div>
+
+      <div class="pdp-divider"></div>
+
+      {% if product and product.available %}
+      {% form 'product', product, id: 'product-form', class: 'product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {% unless product.variants.size == 1 %}
+          <div class="pdp-variants">
+            {% for option in product.options_with_values %}
+              <div class="pdp-option">
+                <label class="pdp-option-label">{{ option.name }}</label>
+                <div class="pdp-option-values">
+                  {% for value in option.values %}
+                    <label class="pdp-value">
+                      <input type="radio" name="options[{{ option.name }}]" value="{{ value }}" {% if forloop.first %}checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <div class="pdp-qty-cart">
+          <div class="pdp-qty">
+            <button type="button" onclick="var i=this.nextElementSibling;i.value=Math.max(1,parseInt(i.value)-1)">−</button>
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="button" onclick="var i=this.previousElementSibling;i.value=parseInt(i.value)+1">+</button>
+          </div>
+          <button type="submit" name="add" class="pdp-add-btn">Add to Cart</button>
+        </div>
+      {% endform %}
+      {% else %}
+        <div class="pdp-qty-cart">
+          <div class="pdp-qty">
+            <button type="button">−</button>
+            <input type="number" value="1" min="1" readonly>
+            <button type="button">+</button>
+          </div>
+          <button class="pdp-add-btn" disabled>Add to Cart</button>
+        </div>
+      {% endif %}
+
+      <div class="pdp-guarantees">
+        <div class="pdp-guarantee">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div><strong>{{ section.settings.guarantee1_title }}</strong><span>{{ section.settings.guarantee1_subtitle }}</span></div>
+        </div>
+        <div class="pdp-guarantee">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          <div><strong>{{ section.settings.guarantee2_title }}</strong><span>{{ section.settings.guarantee2_subtitle }}</span></div>
+        </div>
+        <div class="pdp-guarantee">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
+          <div><strong>{{ section.settings.guarantee3_title }}</strong><span>{{ section.settings.guarantee3_subtitle }}</span></div>
+        </div>
+      </div>
+
+      <!-- Product Tabs -->
+      <div class="pdp-tabs-section">
+        <div class="pdp-tabs">
+          <div class="pdp-tab-headers">
+            <button class="pdp-tab-header active" data-tab="tab1">{{ section.settings.tab1_title }}</button>
+            <button class="pdp-tab-header" data-tab="tab2">{{ section.settings.tab2_title }}</button>
+            <button class="pdp-tab-header" data-tab="tab3">{{ section.settings.tab3_title }}</button>
+            <button class="pdp-tab-header" data-tab="tab4">{{ section.settings.tab4_title }}</button>
+          </div>
+          <div class="pdp-tab-content">
+            <div class="pdp-tab-panel active" data-panel="tab1">
+              {{ section.settings.tab1_content }}
+            </div>
+            <div class="pdp-tab-panel" data-panel="tab2">
+              {{ section.settings.tab2_content }}
+            </div>
+            <div class="pdp-tab-panel" data-panel="tab3">
+              {{ section.settings.tab3_content }}
+            </div>
+            <div class="pdp-tab-panel" data-panel="tab4">
+              {{ section.settings.tab4_content }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Info "name": "Product Info & Gallery" Gallery - Cinnabar",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "packaging_image",
+      "label": "Packaging Image (Bottom Left)"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "(No reviews yet)"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee 1"
+    },
+    {
+      "type": "text",
+      "id": "guarantee1_title",
+      "label": "Guarantee 1 Title",
+      "default": "Free Worldwide Shipping"
+    },
+    {
+      "type": "text",
+      "id": "guarantee1_subtitle",
+      "label": "Guarantee 1 Subtitle",
+      "default": "On orders over $150"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee 2"
+    },
+    {
+      "type": "text",
+      "id": "guarantee2_title",
+      "label": "Guarantee 2 Title",
+      "default": "30-Day Easy Returns"
+    },
+    {
+      "type": "text",
+      "id": "guarantee2_subtitle",
+      "label": "Guarantee 2 Subtitle",
+      "default": "Hassle-free returns & exchanges"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee 3"
+    },
+    {
+      "type": "text",
+      "id": "guarantee3_title",
+      "label": "Guarantee 3 Title",
+      "default": "Authenticity Certified"
+    },
+    {
+      "type": "text",
+      "id": "guarantee3_subtitle",
+      "label": "Guarantee 3 Subtitle",
+      "default": "Certificate included with every order"
+    },
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab1_title",
+      "label": "Tab 1 Title",
+      "default": "Details"
+    },
+    {
+      "type": "richtext",
+      "id": "tab1_content",
+      "label": "Tab 1 Content",
+      "default": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence. A luminous stone sits at the center, illuminating your way forward.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li><li>Hypoallergenic & made for everyday wear</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab2_title",
+      "label": "Tab 2 Title",
+      "default": "Symbolism"
+    },
+    {
+      "type": "richtext",
+      "id": "tab2_content",
+      "label": "Tab 2 Content",
+      "default": "<p>For over two millennia, cinnabar has been revered as the Stone of Life in Chinese culture.</p><ul><li>Represents good fortune, protection, and vitality</li><li>Worn by emperors and scholars through every dynasty</li><li>Believed to ward off negative energy</li><li>Symbol of passion, creativity, and confidence</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+    {
+      "type": "text",
+      "id": "tab3_title",
+      "label": "Tab 3 Title",
+      "default": "Materials"
+    },
+    {
+      "type": "richtext",
+      "id": "tab3_content",
+      "label": "Tab 3 Content",
+      "default": "<p>Sourced from the ancient mines of Tongren, Guizhou - the birthplace of the world's finest cinnabar.</p><ul><li>99% pure natural cinnabar (HgS)</li><li>Hand-polished to a deep, luminous crimson</li><li>Waxed cotton cord, adjustable</li><li>Gold vermeil accents (18k gold over sterling silver)</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Tab 4"
+    },
+    {
+      "type": "text",
+      "id": "tab4_title",
+      "label": "Tab 4 Title",
+      "default": "Care"
+    },
+    {
+      "type": "richtext",
+      "id": "tab4_content",
+      "label": "Tab 4 Content",
+      "default": "<p>Caring for your CHENSHA piece ensures it stays beautiful for generations.</p><ul><li>Avoid prolonged contact with water, perfume, or chemicals</li><li>Wipe gently with a soft, dry cloth after wear</li><li>Store in the included velvet pouch when not in use</li><li>Keep away from direct sunlight and extreme heat</li></ul>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Info "name": "Product Info & Gallery" Gallery - Cinnabar"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.pdp-tabs-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #E8E0D5;
+}
+
+.pdp-tab-headers {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #E8E0D5;
+  flex-wrap: wrap;
+}
+
+.pdp-tab-header {
+  background: none;
+  border: none;
+  padding: 0 0 12px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #8A7A72;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.pdp-tab-header.active {
+  color: #2A1F1A;
+  border-bottom-color: #9E2B25;
+}
+
+.pdp-tab-panel {
+  display: none;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5A4A42;
+}
+
+.pdp-tab-panel.active {
+  display: block;
+}
+
+.pdp-tab-panel p {
+  margin-bottom: 15px;
+}
+
+.pdp-tab-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdp-tab-panel li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.pdp-tab-panel li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #9E2B25;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab switching functionality
+  var tabsSection = document.querySelector('.pdp-tabs-section');
+  if (tabsSection) {
+    var tabHeaders = tabsSection.querySelectorAll('.pdp-tab-header');
+    var tabPanels = tabsSection.querySelectorAll('.pdp-tab-panel');
+    
+    tabHeaders.forEach(function(header) {
+      header.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        
+        tabHeaders.forEach(function(h) { h.classList.remove('active'); });
+        tabPanels.forEach(function(p) { p.classList.remove('active'); });
+        
+        this.classList.add('active');
+        tabsSection.querySelector('.pdp-tab-panel[data-panel="' + tab + '"]').classList.add('active');
+      });
+    });
+  }
+
+  // Auto-sync rating text with review count from customer reviews section
+  var ratingText = document.getElementById('ratingText');
+  if (ratingText) {
+    var reviewCountEl = document.querySelector('.review-count');
+    if (reviewCountEl) {
+      var reviewCountText = reviewCountEl.textContent.trim();
+      if (reviewCountText) {
+        // Extract the number from "X reviews"
+        var match = reviewCountText.match(/(\d+)/);
+        if (match) {
+          var count = parseInt(match[1]);
+          if (count === 0) {
+            ratingText.textContent = '(No reviews yet)';
+          } else {
+            ratingText.textContent = '(' + reviewCountText + ')';
+          }
+        }
+      }
+    }
+  }
+});
+</script>

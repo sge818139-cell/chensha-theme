@@ -1,0 +1,51 @@
+<section class="pdp-story" style="{% if section.settings.bg_color != '' %}background:{{ section.settings.bg_color }};{% endif %}">
+  <div class="pdp-story-img">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.title | escape }}">
+    {% else %}
+      <img src="{{ 'product-lifestyle.jpg' | asset_url }}" alt="{{ section.settings.title | escape }}">
+    {% endif %}
+  </div>
+  <div class="pdp-story-text">
+    <div class="pdp-story-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.title }}</h2>
+    {{ section.settings.body }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Story Split - Cloisonne",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The CHENSHA Philosophy"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "For Those Who Seek Meaning"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body Text",
+      "default": "<p>Every CHENSHA piece begins with a belief — that what you wear should carry weight beyond adornment. Our cinnabar is hand-selected, hand-polished, and hand-assembled by artisans who treat each bead as a small ritual.</p><p>Born from over two millennia of Chinese craft tradition, CHENSHA brings the sacred red of emperors and scholars into the quiet moments of modern life.</p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Right Background Color",
+      "default": "#7A1F1A"
+    }
+  ]
+}
+{% endschema %}

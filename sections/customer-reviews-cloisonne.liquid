@@ -1,0 +1,368 @@
+{% assign review_count = section.settings.review_count | plus: 0 %}
+
+<section class="customer-reviews-section">
+  <div class="container">
+    <h2 class="reviews-title">{{ section.settings.title }}</h2>
+    
+    <div class="reviews-summary">
+      <div class="score-block">
+        <span class="score">{{ section.settings.score }}</span>
+        <span class="score-divider">/5</span>
+      </div>
+      <div class="stars-block">
+        <div class="stars">★★★★★</div>
+        <div class="review-count">{{ review_count }} reviews</div>
+      </div>
+    </div>
+
+    <div class="reviews-actions">
+      <a href="{{ section.settings.ask_question_link }}" class="btn-outline">{{ section.settings.ask_question_btn }}</a>
+      <a href="{{ section.settings.write_review_link }}" class="btn-outline">{{ section.settings.write_review_btn }}</a>
+    </div>
+
+    <div class="review-list" id="reviewList">
+      {% if review_count == 0 %}
+      <div class="empty-reviews">
+        <p>No reviews yet. Be the first to share your experience!</p>
+      </div>
+      {% else %}
+        {% if review_count >= 1 %}
+        <div class="review-item">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 weeks ago</span>
+          <h4 class="review-title">Beautiful and Meaningful</h4>
+          <div class="review-author">Emily Chen <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 2 %}
+        <div class="review-item">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 month ago</span>
+          <h4 class="review-title">Great Quality, Worth Every Penny</h4>
+          <div class="review-author">Sarah Johnson <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 3 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Love the Story Behind It</h4>
+          <div class="review-author">Michelle Tan <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 4 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">3 weeks ago</span>
+          <h4 class="review-title">Perfect Gift</h4>
+          <div class="review-author">Lisa Wong <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Bought this for my mom and she absolutely loved it. The quality is amazing and the presentation was beautiful. It arrived quickly too.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 5 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 week ago</span>
+          <h4 class="review-title">Beautiful Piece</h4>
+          <div class="review-author">Jessica Lee <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I've been wearing this every day and it hasn't faded or lost its shine. The cinnabar is so vibrant in person.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 6 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Meaningful and Elegant</h4>
+          <div class="review-author">Amanda Park <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Not just jewelry - it carries so much cultural meaning. The design is elegant and goes with everything. Highly recommend.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 7 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 month ago</span>
+          <h4 class="review-title">Excellent Customer Service</h4>
+          <div class="review-author">David Brown <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Had a question about sizing and got a response within hours. The bracelet itself is even more beautiful than the photos.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 8 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">3 weeks ago</span>
+          <h4 class="review-title">Stunning Color</h4>
+          <div class="review-author">Rachel Green <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">The red is so rich and deep. It's not bright and cheap-looking at all. Very premium feel.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 9 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Great Investment</h4>
+          <div class="review-author">Laura Miller <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I've bought many cinnabar pieces over the years and this is by far the best quality. You can tell it's authentic.</p>
+        </div>
+        {% endif %}
+
+        {% if review_count >= 10 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 week ago</span>
+          <h4 class="review-title">Perfect Size</h4>
+          <div class="review-author">Anna Smith <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Fits my wrist perfectly. Not too tight, not too loose. The adjustable string makes it really easy to customize.</p>
+        </div>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% if review_count > 2 %}
+    <button class="read-all-link" id="toggleReviews">Read all {{ review_count }} reviews</button>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.customer-reviews-section {
+  padding: 80px 0;
+  background: #FAF8F4;
+}
+
+.reviews-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #2A1F1A;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.score-block {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.score {
+  font-size: 48px;
+  font-weight: 300;
+  color: #2A1F1A;
+  line-height: 1;
+}
+
+.score-divider {
+  font-size: 18px;
+  color: #8A7A72;
+}
+
+.stars {
+  color: #C9A24B;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.review-count {
+  font-size: 14px;
+  color: #8A7A72;
+}
+
+.reviews-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  justify-content: flex-end;
+}
+
+.btn-outline {
+  padding: 12px 24px;
+  border: 1px solid #2A1F1A;
+  background: transparent;
+  color: #2A1F1A;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: #2A1F1A;
+  color: #FAF8F4;
+}
+
+.review-list {
+  margin-bottom: 30px;
+}
+
+.review-item {
+  padding: 25px 0;
+  border-bottom: 1px solid #E8E0D5;
+  display: block;
+}
+
+.review-item-hidden {
+  display: none;
+}
+
+.empty-reviews {
+  padding: 60px 0;
+  text-align: center;
+  color: #8A7A72;
+  font-size: 16px;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+.review-stars {
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.review-date {
+  font-size: 13px;
+  color: #8A7A72;
+  float: right;
+}
+
+.review-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2A1F1A;
+  margin: 10px 0 5px 0;
+}
+
+.review-author {
+  font-size: 14px;
+  color: #5A4A42;
+  margin-bottom: 10px;
+}
+
+.verified-badge {
+  color: #9E2B25;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.review-content {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #5A4A42;
+}
+
+.read-all-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #9E2B25;
+  text-decoration: underline;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('toggleReviews');
+  var items = document.querySelectorAll('.review-item-hidden');
+  var expanded = false;
+  
+  if (btn && items.length > 0) {
+    btn.addEventListener('click', function() {
+      expanded = !expanded;
+      items.forEach(function(item) {
+        if (expanded) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      if (expanded) {
+        btn.textContent = 'Show less reviews';
+      } else {
+        btn.textContent = 'Read all {{ review_count }} reviews';
+      }
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews - Cloisonne",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "text",
+      "id": "score",
+      "label": "Average Score",
+      "default": "4.9"
+    },
+    {
+      "type": "range",
+      "id": "review_count",
+      "label": "Number of Reviews to Display",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "ask_question_btn",
+      "label": "Ask Question Button Text",
+      "default": "Ask a Question"
+    },
+    {
+      "type": "url",
+      "id": "ask_question_link",
+      "label": "Ask Question Button Link"
+    },
+    {
+      "type": "text",
+      "id": "write_review_btn",
+      "label": "Write Review Button Text",
+      "default": "Write a Review"
+    },
+    {
+      "type": "url",
+      "id": "write_review_link",
+      "label": "Write Review Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews - Cloisonne"
+    }
+  ]
+}
+{% endschema %}
