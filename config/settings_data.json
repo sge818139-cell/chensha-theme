@@ -427,8 +427,8 @@
         "type": "customer-reviews",
         "settings": {
           "title": "Customer Reviews",
-          "score": "4.9",
-          "review_count": 10,
+          "score": "5.0",
+          "review_count": 3,
           "ask_question_btn": "Ask a Question",
           "ask_question_link": "",
           "write_review_btn": "Write a Review",
