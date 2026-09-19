@@ -37,7 +37,7 @@
             </div>
             <div class="cart-item-total">
               <div class="cart-item-line-price">{{ item.final_line_price | money }}</div>
-              <button type="submit" name="updates[]" value="0" class="cart-remove" data-line="{{ forloop.index }}">
+              <button type="button" class="cart-remove" data-line="{{ forloop.index }}">
                 Remove
               </button>
             </div>
@@ -231,13 +231,39 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Auto-update cart when quantity changes
-  var qtyInputs = document.querySelectorAll('.qty-control input');
   var form = document.querySelector('.cart-form');
   
+  // Auto-update cart when quantity changes
+  var qtyInputs = document.querySelectorAll('.qty-control input');
   qtyInputs.forEach(function(input) {
     input.addEventListener('change', function() {
       form.submit();
+    });
+  });
+  
+  // Remove item via AJAX
+  var removeButtons = document.querySelectorAll('.cart-remove');
+  removeButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var line = this.getAttribute('data-line');
+      
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          line: line,
+          quantity: 0
+        })
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(cart) {
+        location.reload();
+      });
     });
   });
 });
