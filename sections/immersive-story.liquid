@@ -4,8 +4,8 @@
   <div class="journey-screen">
     <div class="screen-bg">
       <div class="bg-far"></div>
-      <div class="bg-mid"></div>
-      <div class="bg-near"></div>
+      <div class="bg-cloud cloud-1"></div>
+      <div class="bg-cloud cloud-2"></div>
     </div>
     <div class="screen-content reveal">
       <div class="eyebrow red">CHENSHA JOURNEY</div>
@@ -19,8 +19,8 @@
   <div class="journey-screen">
     <div class="screen-bg">
       <div class="bg-far"></div>
-      <div class="bg-mid"></div>
-      <div class="bg-near"></div>
+      <div class="bg-mountain"></div>
+      <div class="bg-bird"></div>
     </div>
     <div class="screen-content reveal">
       <div class="scene-image" style="background-image: url('{{ 'scene-origin.png' | asset_url }}')"></div>
@@ -34,9 +34,9 @@
   <!-- 场景 2: 品质 -->
   <div class="journey-screen">
     <div class="screen-bg">
-      <div class="bg-far"></div>
-      <div class="bg-mid"></div>
-      <div class="bg-near"></div>
+      <div class="bg-mountain"></div>
+      <div class="bg-bamboo"></div>
+      <div class="bg-pine"></div>
     </div>
     <div class="screen-content reveal">
       <div class="scene-image" style="background-image: url('{{ 'scene-quality.png' | asset_url }}')"></div>
@@ -49,9 +49,9 @@
   <!-- 场景 3: 工艺 -->
   <div class="journey-screen">
     <div class="screen-bg">
-      <div class="bg-far"></div>
-      <div class="bg-mid"></div>
-      <div class="bg-near"></div>
+      <div class="bg-bamboo"></div>
+      <div class="bg-pine"></div>
+      <div class="bg-plum"></div>
     </div>
     <div class="screen-content reveal">
       <div class="scene-image" style="background-image: url('{{ 'scene-craft.png' | asset_url }}')"></div>
@@ -64,9 +64,9 @@
   <!-- 场景 4: 产品 -->
   <div class="journey-screen">
     <div class="screen-bg">
-      <div class="bg-far"></div>
-      <div class="bg-mid"></div>
-      <div class="bg-near"></div>
+      <div class="bg-plum"></div>
+      <div class="bg-willow"></div>
+      <div class="bg-bird"></div>
     </div>
     <div class="screen-content reveal">
       <div class="scene-image" style="background-image: url('{{ 'scene-product.png' | asset_url }}')"></div>
@@ -118,40 +118,86 @@
   pointer-events: none;
 }
 
+/* 背景元素 - 层层递进，每个场景出现新元素 */
 .bg-far {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: 
-    url('{{ 'ink-far-mountain.png' | asset_url }}') bottom center / 800px auto no-repeat;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: url('{{ 'ink-far-mountain.png' | asset_url }}') center / contain no-repeat;
   opacity: 0.25;
 }
 
-.bg-mid {
+.bg-cloud {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: 
-    url('{{ 'ink-mountain.png' | asset_url }}') bottom center / 600px auto no-repeat,
-    url('{{ 'ink-cloud.png' | asset_url }}') top left / 100px auto no-repeat;
+  width: 80px;
+  height: 80px;
+  background: url('{{ 'ink-cloud.png' | asset_url }}') center / contain no-repeat;
+  opacity: 0.3;
+}
+.cloud-1 { top: 15%; left: 12%; }
+.cloud-2 { top: 25%; right: 18%; width: 60px; height: 60px; }
+
+.bg-mountain {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: url('{{ 'ink-mountain.png' | asset_url }}') center / contain no-repeat;
+  opacity: 0.35;
+}
+
+.bg-bird {
+  position: absolute;
+  top: 20%;
+  left: 28%;
+  width: 60px;
+  height: 50px;
+  background: url('{{ 'ink-bird.png' | asset_url }}') center / contain no-repeat;
   opacity: 0.4;
 }
 
-.bg-near {
+.bg-bamboo {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: 
-    url('{{ 'ink-bamboo.png' | asset_url }}') bottom left / 140px auto no-repeat,
-    url('{{ 'ink-pine.png' | asset_url }}') bottom right / 150px auto no-repeat,
-    url('{{ 'ink-plum.png' | asset_url }}') left 5% bottom 10% / 100px auto no-repeat,
-    url('{{ 'ink-willow.png' | asset_url }}') right 5% bottom 12% / 110px auto no-repeat;
+  bottom: 15%;
+  left: 3%;
+  width: 130px;
+  height: 260px;
+  background: url('{{ 'ink-bamboo.png' | asset_url }}') center / contain no-repeat;
+  opacity: 0.5;
+}
+
+.bg-pine {
+  position: absolute;
+  bottom: 12%;
+  right: 4%;
+  width: 150px;
+  height: 290px;
+  background: url('{{ 'ink-pine.png' | asset_url }}') center / contain no-repeat;
+  opacity: 0.5;
+}
+
+.bg-plum {
+  position: absolute;
+  bottom: 10%;
+  left: 8%;
+  width: 110px;
+  height: 220px;
+  background: url('{{ 'ink-plum.png' | asset_url }}') center / contain no-repeat;
+  opacity: 0.6;
+}
+
+.bg-willow {
+  position: absolute;
+  bottom: 12%;
+  right: 10%;
+  width: 120px;
+  height: 240px;
+  background: url('{{ 'ink-willow.png' | asset_url }}') center / contain no-repeat;
   opacity: 0.6;
 }
 
@@ -282,6 +328,8 @@
   .scene-image { width: 220px; height: 220px; }
   .scene-title { font-size: 28px; }
   .finale-title { font-size: 32px; }
+  .bg-bamboo { width: 80px; height: 160px; }
+  .bg-pine { width: 90px; height: 180px; }
 }
 </style>
 
