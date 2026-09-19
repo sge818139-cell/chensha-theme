@@ -290,28 +290,32 @@
             "type": "card",
             "settings": {
               "title": "BRACELETS",
-              "subtitle": "Shop Now"
+              "subtitle": "Shop Now",
+              "link": ""
             }
           },
           "explore-more-1": {
             "type": "card",
             "settings": {
               "title": "NECKLACES",
-              "subtitle": "Shop Now"
+              "subtitle": "Shop Now",
+              "link": ""
             }
           },
           "explore-more-2": {
             "type": "card",
             "settings": {
               "title": "RINGS",
-              "subtitle": "Shop Now"
+              "subtitle": "Shop Now",
+              "link": ""
             }
           },
           "explore-more-3": {
             "type": "card",
             "settings": {
               "title": "CHARMS",
-              "subtitle": "Shop Now"
+              "subtitle": "Shop Now",
+              "link": ""
             }
           }
         },
@@ -321,16 +325,18 @@
           "explore-more-2",
           "explore-more-3"
         ],
-        "settings": {}
+        "settings": {
+          "heading": "Explore More Treasures"
+        }
       },
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
-          "collection-products-editable-0": {
+          "product_t3DGyw": {
             "type": "product",
             "settings": {
-              "title": "CINNABAR BRACELETS",
-              "price": "$168.00",
+              "title": "Product Name",
+              "price": "$0.00",
               "link": ""
             }
           },
@@ -376,7 +382,7 @@
           }
         },
         "block_order": [
-          "collection-products-editable-0",
+          "product_t3DGyw",
           "collection-products-editable-1",
           "collection-products-editable-2",
           "collection-products-editable-3",
