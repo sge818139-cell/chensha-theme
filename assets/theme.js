@@ -114,17 +114,17 @@
                   el.setAttribute('data-original-direct-text', originalDirectText);
                 }
 
-                // Match ONLY prices that have a $ symbol AND decimal point (e.g. $128.00)
+                // Match ONLY prices that have a $ symbol (e.g. $128, $128.00, $1,280.00)
                 // This prevents matching plain integers like "4 payments"
-                var match = originalDirectText.match(/\$[\d,.]+\.\d{2}/);
+                var match = originalDirectText.match(/\$[\d,.]+/);
                 if (match) {
                   var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
                   var convertedPrice = originalPrice * rate;
 
                   // Replace price in direct text
                   var newDirectText = originalDirectText
-                    .replace(/\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                    .replace(/€[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2));
+                    .replace(/\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                    .replace(/€[\d,.]+/, symbol + convertedPrice.toFixed(2));
 
                   // Update only the direct text nodes
                   var textIndex = 0;
@@ -145,20 +145,20 @@
               el.setAttribute('data-original-text', originalText);
             }
 
-            // Match ONLY prices that have a $ symbol AND decimal point (e.g. $128.00)
+            // Match ONLY prices that have a $ symbol (e.g. $128, $128.00, $1,280.00)
             // This prevents matching plain integers like "4 payments"
-            var match = originalText.match(/\$[\d,.]+\.\d{2}/);
+            var match = originalText.match(/\$[\d,.]+/);
             if (match) {
               var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
               var convertedPrice = originalPrice * rate;
 
               var newText = originalText
-                .replace(/\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                .replace(/€[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                .replace(/S\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                .replace(/NT\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                .replace(/HK\$[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2))
-                .replace(/RM[\d,.]+\.\d{2}/, symbol + convertedPrice.toFixed(2));
+                .replace(/\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                .replace(/€[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                .replace(/S\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                .replace(/NT\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                .replace(/HK\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
+                .replace(/RM[\d,.]+/, symbol + convertedPrice.toFixed(2));
               el.textContent = newText;
             }
           });
