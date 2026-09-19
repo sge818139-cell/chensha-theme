@@ -335,21 +335,39 @@
   if (!section) return;
 
   const layers = section.querySelectorAll('.bg-layer');
+  const contents = section.querySelectorAll('.screen-content');
 
-  // 简单的视差效果
-  function updateParallax() {
+  // 增强的视差效果 + 内容动效
+  function updateAnimation() {
     const scrollY = window.scrollY;
-    const speeds = [0.05, 0.1, 0.15, 0.2];
+    const windowH = window.innerHeight;
+
+    // 背景层视差移动 - 速度更大更明显
+    const speeds = [0.2, 0.35, 0.5, 0.65];
     for (let i = 0; i < layers.length; i++) {
       if (layers[i]) {
         layers[i].style.transform = 'translateY(' + (scrollY * speeds[i]) + 'px)';
       }
     }
+
+    // 场景内容动效 - 根据滚动位置调整透明度和位置
+    for (let i = 0; i < contents.length; i++) {
+      const rect = contents[i].getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2;
+      const windowCenter = windowH / 2;
+      const distance = Math.abs(elementCenter - windowCenter);
+      const maxDistance = windowH;
+      const opacity = Math.max(0.3, 1 - distance / maxDistance);
+      const translateY = (elementCenter - windowCenter) * 0.1;
+
+      contents[i].style.opacity = opacity;
+      contents[i].style.transform = 'translateY(' + translateY + 'px)';
+    }
   }
 
-  window.addEventListener('scroll', updateParallax, { passive: true });
-  window.addEventListener('resize', updateParallax);
-  updateParallax();
+  window.addEventListener('scroll', updateAnimation, { passive: true });
+  window.addEventListener('resize', updateAnimation);
+  updateAnimation();
 })();
 </script>
 
