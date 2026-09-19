@@ -3,21 +3,45 @@
     <h2 class="related-title">{{ section.settings.title }}</h2>
     
     <div class="related-grid">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}" class="related-card">
-          <div class="related-image">
-            {% if block.settings.image != blank %}
-              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.name | escape }}">
-            {% else %}
-              <div class="image-placeholder">Product Image</div>
-            {% endif %}
-          </div>
-          <div class="related-info">
-            <div class="related-name">{{ block.settings.name }}</div>
-            <div class="related-price">{{ block.settings.price }}</div>
-          </div>
-        </a>
-      {% endfor %}
+      <a href="{{ section.settings.product_1_link }}" class="related-card">
+        <div class="related-image">
+          <img src="{{ 'product-bracelet.jpg' | asset_url }}" alt="Cinnabar Bead Bracelet">
+        </div>
+        <div class="related-info">
+          <div class="related-name">{{ section.settings.product_1_name }}</div>
+          <div class="related-price">{{ section.settings.product_1_price }}</div>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.product_2_link }}" class="related-card">
+        <div class="related-image">
+          <img src="{{ 'product-necklace.jpg' | asset_url }}" alt="Cinnabar Pendant Necklace">
+        </div>
+        <div class="related-info">
+          <div class="related-name">{{ section.settings.product_2_name }}</div>
+          <div class="related-price">{{ section.settings.product_2_price }}</div>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.product_3_link }}" class="related-card">
+        <div class="related-image">
+          <img src="{{ 'product-ring.jpg' | asset_url }}" alt="Cinnabar Ring">
+        </div>
+        <div class="related-info">
+          <div class="related-name">{{ section.settings.product_3_name }}</div>
+          <div class="related-price">{{ section.settings.product_3_price }}</div>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.product_4_link }}" class="related-card">
+        <div class="related-image">
+          <img src="{{ 'product-earrings.jpg' | asset_url }}" alt="Cinnabar Earrings">
+        </div>
+        <div class="related-info">
+          <div class="related-name">{{ section.settings.product_4_name }}</div>
+          <div class="related-price">{{ section.settings.product_4_price }}</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -66,16 +90,6 @@
   object-fit: cover;
 }
 
-.image-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8A7A72;
-  font-size: 14px;
-}
-
 .related-name {
   font-size: 15px;
   color: #2A1F1A;
@@ -102,78 +116,101 @@
 {% schema %}
 {
   "name": "You May Also Love",
-  "max_blocks": 4,
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
       "default": "You May Also Love"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Product Image"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Product Name",
-          "default": "Cinnabar Bead Bracelet"
-        },
-        {
-          "type": "text",
-          "id": "price",
-          "label": "Product Price",
-          "default": "$128.00"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Product Link"
-        }
-      ]
+      "type": "header",
+      "content": "Product 1"
+    },
+    {
+      "type": "text",
+      "id": "product_1_name",
+      "label": "Product Name",
+      "default": "Cinnabar Bead Bracelet"
+    },
+    {
+      "type": "text",
+      "id": "product_1_price",
+      "label": "Product Price",
+      "default": "$128.00"
+    },
+    {
+      "type": "url",
+      "id": "product_1_link",
+      "label": "Product Link"
+    },
+    {
+      "type": "header",
+      "content": "Product 2"
+    },
+    {
+      "type": "text",
+      "id": "product_2_name",
+      "label": "Product Name",
+      "default": "Cinnabar Pendant Necklace"
+    },
+    {
+      "type": "text",
+      "id": "product_2_price",
+      "label": "Product Price",
+      "default": "$168.00"
+    },
+    {
+      "type": "url",
+      "id": "product_2_link",
+      "label": "Product Link"
+    },
+    {
+      "type": "header",
+      "content": "Product 3"
+    },
+    {
+      "type": "text",
+      "id": "product_3_name",
+      "label": "Product Name",
+      "default": "Cinnabar Ring"
+    },
+    {
+      "type": "text",
+      "id": "product_3_price",
+      "label": "Product Price",
+      "default": "$98.00"
+    },
+    {
+      "type": "url",
+      "id": "product_3_link",
+      "label": "Product Link"
+    },
+    {
+      "type": "header",
+      "content": "Product 4"
+    },
+    {
+      "type": "text",
+      "id": "product_4_name",
+      "label": "Product Name",
+      "default": "Cinnabar Earrings"
+    },
+    {
+      "type": "text",
+      "id": "product_4_price",
+      "label": "Product Price",
+      "default": "$88.00"
+    },
+    {
+      "type": "url",
+      "id": "product_4_link",
+      "label": "Product Link"
     }
   ],
   "presets": [
     {
-      "name": "You May Also Love",
-      "blocks": [
-        {
-          "type": "product",
-          "settings": {
-            "name": "Cinnabar Bead Bracelet",
-            "price": "$128.00"
-          }
-        },
-        {
-          "type": "product",
-          "settings": {
-            "name": "Cinnabar Pendant Necklace",
-            "price": "$168.00"
-          }
-        },
-        {
-          "type": "product",
-          "settings": {
-            "name": "Cinnabar Ring",
-            "price": "$98.00"
-          }
-        },
-        {
-          "type": "product",
-          "settings": {
-            "name": "Cinnabar Earrings",
-            "price": "$88.00"
-          }
-        }
-      ]
+      "name": "You May Also Love"
     }
   ]
 }

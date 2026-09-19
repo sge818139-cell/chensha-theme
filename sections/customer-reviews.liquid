@@ -19,22 +19,50 @@
     </div>
 
     <div class="review-list">
-      {% for block in section.blocks %}
-        <div class="review-item">
-          <div class="review-stars">{{ block.settings.stars }}</div>
-          <div class="review-meta">
-            <span class="review-date">{{ block.settings.date }}</span>
-          </div>
-          <h4 class="review-title">{{ block.settings.title }}</h4>
-          <div class="review-author">
-            {{ block.settings.author }}
-            {% if block.settings.verified %}
-              <span class="verified-badge">✓ Verified Buyer</span>
-            {% endif %}
-          </div>
-          <p class="review-content">{{ block.settings.content }}</p>
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-meta">
+          <span class="review-date">{{ section.settings.review_1_date }}</span>
         </div>
-      {% endfor %}
+        <h4 class="review-title">{{ section.settings.review_1_title }}</h4>
+        <div class="review-author">
+          {{ section.settings.review_1_author }}
+          {% if section.settings.review_1_verified %}
+            <span class="verified-badge">✓ Verified Buyer</span>
+          {% endif %}
+        </div>
+        <p class="review-content">{{ section.settings.review_1_content }}</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-meta">
+          <span class="review-date">{{ section.settings.review_2_date }}</span>
+        </div>
+        <h4 class="review-title">{{ section.settings.review_2_title }}</h4>
+        <div class="review-author">
+          {{ section.settings.review_2_author }}
+          {% if section.settings.review_2_verified %}
+            <span class="verified-badge">✓ Verified Buyer</span>
+          {% endif %}
+        </div>
+        <p class="review-content">{{ section.settings.review_2_content }}</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-meta">
+          <span class="review-date">{{ section.settings.review_3_date }}</span>
+        </div>
+        <h4 class="review-title">{{ section.settings.review_3_title }}</h4>
+        <div class="review-author">
+          {{ section.settings.review_3_author }}
+          {% if section.settings.review_3_verified %}
+            <span class="verified-badge">✓ Verified Buyer</span>
+          {% endif %}
+        </div>
+        <p class="review-content">{{ section.settings.review_3_content }}</p>
+      </div>
     </div>
 
     <a href="#" class="read-all-link">{{ section.settings.read_all_link }}</a>
@@ -176,7 +204,6 @@
 {% schema %}
 {
   "name": "Customer Reviews",
-  "max_blocks": 10,
   "settings": [
     {
       "type": "text",
@@ -213,87 +240,113 @@
       "id": "read_all_link",
       "label": "Read All Link Text",
       "default": "Read all 6 reviews"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "review",
-      "name": "Review",
-      "settings": [
-        {
-          "type": "text",
-          "id": "stars",
-          "label": "Stars",
-          "default": "★★★★★"
-        },
-        {
-          "type": "text",
-          "id": "date",
-          "label": "Date",
-          "default": "2 weeks ago"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Review Title",
-          "default": "Beautiful and Meaningful"
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author Name",
-          "default": "Lauren M."
-        },
-        {
-          "type": "checkbox",
-          "id": "verified",
-          "label": "Verified Buyer",
-          "default": true
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Review Content",
-          "default": "<p>The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>"
-        }
-      ]
+      "type": "header",
+      "content": "Review 1"
+    },
+    {
+      "type": "text",
+      "id": "review_1_title",
+      "label": "Review Title",
+      "default": "Beautiful and Meaningful"
+    },
+    {
+      "type": "text",
+      "id": "review_1_author",
+      "label": "Author Name",
+      "default": "Lauren M."
+    },
+    {
+      "type": "text",
+      "id": "review_1_date",
+      "label": "Date",
+      "default": "2 weeks ago"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_1_verified",
+      "label": "Verified Buyer",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "review_1_content",
+      "label": "Review Content",
+      "default": "<p>The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Review 2"
+    },
+    {
+      "type": "text",
+      "id": "review_2_title",
+      "label": "Review Title",
+      "default": "Great Quality, Worth Every Penny"
+    },
+    {
+      "type": "text",
+      "id": "review_2_author",
+      "label": "Author Name",
+      "default": "Sarah K."
+    },
+    {
+      "type": "text",
+      "id": "review_2_date",
+      "label": "Date",
+      "default": "1 month ago"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_2_verified",
+      "label": "Verified Buyer",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "review_2_content",
+      "label": "Review Content",
+      "default": "<p>Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Review 3"
+    },
+    {
+      "type": "text",
+      "id": "review_3_title",
+      "label": "Review Title",
+      "default": "Love the Story Behind It"
+    },
+    {
+      "type": "text",
+      "id": "review_3_author",
+      "label": "Author Name",
+      "default": "Michelle L."
+    },
+    {
+      "type": "text",
+      "id": "review_3_date",
+      "label": "Date",
+      "default": "2 months ago"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_3_verified",
+      "label": "Verified Buyer",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "review_3_content",
+      "label": "Review Content",
+      "default": "<p>I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>"
     }
   ],
   "presets": [
     {
-      "name": "Customer Reviews",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "title": "Beautiful and Meaningful",
-            "author": "Lauren M.",
-            "date": "2 weeks ago",
-            "verified": true,
-            "content": "<p>The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "title": "Great Quality, Worth Every Penny",
-            "author": "Sarah K.",
-            "date": "1 month ago",
-            "verified": true,
-            "content": "<p>Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "title": "Love the Story Behind It",
-            "author": "Michelle L.",
-            "date": "2 months ago",
-            "verified": true,
-            "content": "<p>I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>"
-          }
-        }
-      ]
+      "name": "Customer Reviews"
     }
   ]
 }
