@@ -25,7 +25,7 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
       <a href="{{ section.settings.write_review_link }}" class="btn-outline">{{ section.settings.write_review_btn }}</a>
     </div>
 
-    <div class="review-list">
+    <div class="review-list" id="reviewList">
       {% for i in (0..review_count) %}
         {% assign idx = start_index | plus: i | times: 4 | modulo: 120 %}
         {% assign title = all_reviews[idx] %}
@@ -34,7 +34,7 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
         {% assign content = all_reviews[idx | plus: 3] %}
         
         {% if title != blank and i < review_count %}
-        <div class="review-item">
+        <div class="review-item{% if i >= 2 %} review-item-hidden{% endif %}">
           <div class="review-stars">★★★★★</div>
           <div class="review-meta">
             <span class="review-date">{{ date }}</span>
@@ -50,7 +50,7 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
       {% endfor %}
     </div>
 
-    <a href="{{ section.settings.read_all_link }}" class="read-all-link">Read all {{ review_count }} reviews</a>
+    <button class="read-all-link" id="toggleReviews">Read all {{ review_count }} reviews</button>
   </div>
 </section>
 
@@ -140,6 +140,14 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
   border-bottom: 1px solid #E8E0D5;
 }
 
+.review-item-hidden {
+  display: none;
+}
+
+.review-item.expanded {
+  display: block;
+}
+
 .review-stars {
   color: #C9A24B;
   font-size: 14px;
@@ -179,13 +187,42 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
 
 .read-all-link {
   display: block;
+  width: 100%;
   text-align: center;
   font-size: 14px;
   color: #9E2B25;
   text-decoration: underline;
   margin-top: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('toggleReviews');
+  var items = document.querySelectorAll('.review-item-hidden');
+  var expanded = false;
+  
+  if (btn && items.length > 0) {
+    btn.addEventListener('click', function() {
+      expanded = !expanded;
+      items.forEach(function(item) {
+        if (expanded) {
+          item.classList.add('expanded');
+          item.style.display = 'block';
+        } else {
+          item.classList.remove('expanded');
+          item.style.display = 'none';
+        }
+      });
+      btn.textContent = expanded ? 'Show less reviews' : btn.textContent.replace('Show less reviews', 'Read all {{ review_count }} reviews');
+    });
+  }
+});
+</script>
 
 {% schema %}
 {
@@ -233,11 +270,6 @@ Beautiful and Meaningful|Lauren M.|2 weeks ago|The details are stunning and the 
       "type": "url",
       "id": "write_review_link",
       "label": "Write Review Button Link"
-    },
-    {
-      "type": "url",
-      "id": "read_all_link",
-      "label": "Read All Reviews Link"
     }
   ],
   "presets": [
