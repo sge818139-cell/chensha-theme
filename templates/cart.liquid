@@ -34,14 +34,12 @@
                 Remove
               </button>
             </div>
-            <div class="cart-item-right">
-              <div class="cart-item-qty">
-                <button type="button" class="qty-btn qty-minus">−</button>
-                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}">
-                <button type="button" class="qty-btn qty-plus">+</button>
-              </div>
-              <div class="cart-item-line-price">{{ item.final_line_price | money }}</div>
+            <div class="cart-item-qty">
+              <button type="button" class="qty-btn qty-minus">−</button>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}">
+              <button type="button" class="qty-btn qty-plus">+</button>
             </div>
+            <div class="cart-item-line-price">{{ item.final_line_price | money }}</div>
           </div>
           {% endfor %}
         </div>
@@ -101,8 +99,8 @@
 
 .cart-item {
   display: grid;
-  grid-template-columns: 100px 1fr 200px;
-  gap: 40px;
+  grid-template-columns: 100px 1fr 150px 120px;
+  gap: 30px;
   align-items: center;
   padding: 30px 0;
   border-bottom: 1px solid #E8E0D5;
@@ -166,14 +164,10 @@
   opacity: 0.7;
 }
 
-.cart-item-right {
-  text-align: right;
-}
-
 .cart-item-qty {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  justify-content: center;
 }
 
 .qty-btn {
@@ -215,6 +209,7 @@
   font-size: 20px;
   font-weight: 500;
   color: #2A1F1A;
+  text-align: right;
 }
 
 .cart-summary {
@@ -280,16 +275,14 @@
     gap: 20px;
   }
   
-  .cart-item-right {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
+  .cart-item-qty {
+    grid-column: 2;
   }
   
-  .cart-item-qty {
-    margin-bottom: 0;
+  .cart-item-line-price {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-top: 10px;
   }
 }
 </style>
