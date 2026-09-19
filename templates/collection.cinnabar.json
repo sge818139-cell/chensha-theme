@@ -90,6 +90,46 @@
     },
     "explore": {
       "type": "explore-more",
+      "blocks": {
+        "card_WHPaJJ": {
+          "type": "card",
+          "settings": {
+            "title": "BRACELETS",
+            "subtitle": "Shop Now",
+            "link": ""
+          }
+        },
+        "card_tdx4FW": {
+          "type": "card",
+          "settings": {
+            "title": "BRACELETS",
+            "subtitle": "Shop Now",
+            "link": ""
+          }
+        },
+        "card_b7b9Nb": {
+          "type": "card",
+          "settings": {
+            "title": "BRACELETS",
+            "subtitle": "Shop Now",
+            "link": ""
+          }
+        },
+        "card_EnEw7x": {
+          "type": "card",
+          "settings": {
+            "title": "BRACELETS",
+            "subtitle": "Shop Now",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_WHPaJJ",
+        "card_tdx4FW",
+        "card_b7b9Nb",
+        "card_EnEw7x"
+      ],
       "settings": {
         "heading": "Explore More Treasures"
       }
