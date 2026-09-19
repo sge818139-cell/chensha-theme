@@ -1,0 +1,145 @@
+<section class="pdp-tabs-section">
+  <div class="pdp-tabs">
+    <div class="pdp-tab-headers">
+      {% for block in section.blocks %}
+        <button class="pdp-tab-header{% if forloop.first %} active{% endif %}" data-tab="tab-{{ block.id }}">
+          {{ block.settings.title }}
+        </button>
+      {% endfor %}
+    </div>
+    <div class="pdp-tab-content">
+      {% for block in section.blocks %}
+        <div class="pdp-tab-panel{% if forloop.first %} active{% endif %}" data-panel="tab-{{ block.id }}">
+          {{ block.settings.content }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.pdp-tabs-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #E8E0D5;
+}
+
+.pdp-tab-headers {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #E8E0D5;
+  flex-wrap: wrap;
+}
+
+.pdp-tab-header {
+  background: none;
+  border: none;
+  padding: 0 0 12px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #8A7A72;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.pdp-tab-header.active {
+  color: #2A1F1A;
+  border-bottom-color: #9E2B25;
+}
+
+.pdp-tab-panel {
+  display: none;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5A4A42;
+}
+
+.pdp-tab-panel.active {
+  display: block;
+}
+
+.pdp-tab-panel p {
+  margin-bottom: 15px;
+}
+
+.pdp-tab-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdp-tab-panel li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.pdp-tab-panel li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #9E2B25;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tabsSection = document.querySelector('.pdp-tabs-section');
+  if (!tabsSection) return;
+  
+  var tabHeaders = tabsSection.querySelectorAll('.pdp-tab-header');
+  var tabPanels = tabsSection.querySelectorAll('.pdp-tab-panel');
+  
+  tabHeaders.forEach(function(header) {
+    header.addEventListener('click', function() {
+      var tab = this.getAttribute('data-tab');
+      
+      tabHeaders.forEach(function(h) { h.classList.remove('active'); });
+      tabPanels.forEach(function(p) { p.classList.remove('active'); });
+      
+      this.classList.add('active');
+      tabsSection.querySelector('.pdp-tab-panel[data-panel="' + tab + '"]').classList.add('active');
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Product Tabs",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Title",
+          "default": "Details"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Tab Content",
+          "default": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Tabs",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Details" } },
+        { "type": "tab", "settings": { "title": "Symbolism" } },
+        { "type": "tab", "settings": { "title": "Materials" } },
+        { "type": "tab", "settings": { "title": "Care" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -111,54 +111,8 @@
           </div>
         </div>
 
-        <div class="pdp-tabs">
-          <div class="pdp-tab-headers">
-            <button class="pdp-tab-header active" data-tab="details">Details</button>
-            <button class="pdp-tab-header" data-tab="symbolism">Symbolism</button>
-            <button class="pdp-tab-header" data-tab="materials">Materials</button>
-            <button class="pdp-tab-header" data-tab="care">Care</button>
-          </div>
-          <div class="pdp-tab-content">
-            <div class="pdp-tab-panel active" data-panel="details">
-              <p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence. A luminous stone sits at the center, illuminating your way forward.</p>
-              <ul>
-                <li>Natural cinnabar beads, hand-selected</li>
-                <li>Bead diameter - 8mm / 10mm / 12mm options</li>
-                <li>Adjustable cord - fits wrist sizes 15-19cm</li>
-                <li>99% pure cinnabar from Tongren, China</li>
-                <li>Handcrafted by master artisans</li>
-                <li>Hypoallergenic & made for everyday wear</li>
-              </ul>
-            </div>
-            <div class="pdp-tab-panel" data-panel="symbolism">
-              <p>For over two millennia, cinnabar has been revered as the "Stone of Life" in Chinese culture.</p>
-              <ul>
-                <li>Represents good fortune, protection, and vitality</li>
-                <li>Worn by emperors and scholars through every dynasty</li>
-                <li>Believed to ward off negative energy</li>
-                <li>Symbol of passion, creativity, and confidence</li>
-              </ul>
-            </div>
-            <div class="pdp-tab-panel" data-panel="materials">
-              <p>Sourced from the ancient mines of Tongren, Guizhou - the birthplace of the world's finest cinnabar.</p>
-              <ul>
-                <li>99% pure natural cinnabar (HgS)</li>
-                <li>Hand-polished to a deep, luminous crimson</li>
-                <li>Waxed cotton cord, adjustable</li>
-                <li>Gold vermeil accents (18k gold over sterling silver)</li>
-              </ul>
-            </div>
-            <div class="pdp-tab-panel" data-panel="care">
-              <p>Caring for your CHENSHA piece ensures it stays beautiful for generations.</p>
-              <ul>
-                <li>Avoid prolonged contact with water, perfume, or chemicals</li>
-                <li>Wipe gently with a soft, dry cloth after wear</li>
-                <li>Store in the included velvet pouch when not in use</li>
-                <li>Keep away from direct sunlight and extreme heat</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- Product Tabs Section -->
+        {% section 'product-tabs' %}
 
       </div>
     </div>
@@ -178,23 +132,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Tabs
-  var tabHeaders = document.querySelectorAll('.pdp-tab-header');
-  var tabPanels = document.querySelectorAll('.pdp-tab-panel');
-  
-  tabHeaders.forEach(function(header) {
-    header.addEventListener('click', function() {
-      var tab = this.getAttribute('data-tab');
-      
-      tabHeaders.forEach(function(h) { h.classList.remove('active'); });
-      tabPanels.forEach(function(p) { p.classList.remove('active'); });
-      
-      this.classList.add('active');
-      document.querySelector('.pdp-tab-panel[data-panel="' + tab + '"]').classList.add('active');
-    });
-  });
-
-  // Variant form
   var form = document.getElementById('product-form');
   if (!form) return;
   
@@ -224,69 +161,3 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-<style>
-.pdp-tabs {
-  margin-top: 40px;
-  padding-top: 30px;
-  border-top: 1px solid #E8E0D5;
-}
-
-.pdp-tab-headers {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid #E8E0D5;
-}
-
-.pdp-tab-header {
-  background: none;
-  border: none;
-  padding: 0 0 12px 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  color: #8A7A72;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.pdp-tab-header.active {
-  color: #2A1F1A;
-  border-bottom-color: #9E2B25;
-}
-
-.pdp-tab-panel {
-  display: none;
-  font-size: 15px;
-  line-height: 1.8;
-  color: #5A4A42;
-}
-
-.pdp-tab-panel.active {
-  display: block;
-}
-
-.pdp-tab-panel p {
-  margin-bottom: 15px;
-}
-
-.pdp-tab-panel ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.pdp-tab-panel li {
-  padding-left: 18px;
-  position: relative;
-  margin-bottom: 8px;
-}
-
-.pdp-tab-panel li:before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #9E2B25;
-}
-</style>
