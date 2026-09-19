@@ -102,13 +102,18 @@
 
 /* 固定背景层 */
 .journey-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
   pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.journey-bg.hidden {
+  opacity: 0;
 }
 
 .bg-layer {
@@ -334,12 +339,24 @@
   const section = document.getElementById('cinnabar-journey-{{ section.id }}');
   if (!section) return;
 
+  const bg = section.querySelector('.journey-bg');
   const layers = section.querySelectorAll('.bg-layer');
   const contents = section.querySelectorAll('.screen-content');
 
   function updateAnimation() {
     const scrollY = window.scrollY;
     const windowH = window.innerHeight;
+    const sectionRect = section.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    const sectionBottom = sectionRect.bottom;
+
+    // 检测是否在沉浸式页面内
+    if (sectionTop > windowH || sectionBottom < 0) {
+      bg.classList.add('hidden');
+      return;
+    } else {
+      bg.classList.remove('hidden');
+    }
 
     // 背景层视差移动 - 轻微移动
     const speeds = [0.05, 0.1, 0.15, 0.2];
