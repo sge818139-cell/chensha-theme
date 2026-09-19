@@ -43,7 +43,13 @@
 
       <div class="pdp-rating-row">
         <span class="pdp-stars">★★★★★</span>
-        <span class="pdp-rating-text" id="ratingText">{{ section.settings.rating_text }}</span>
+        <span class="pdp-rating-text" id="ratingText">
+          {% if product.metafields.custom.rating_text != blank %}
+            {{ product.metafields.custom.rating_text }}
+          {% else %}
+            {{ section.settings.rating_text }}
+          {% endif %}
+        </span>
       </div>
 
       <div class="pdp-divider"></div>
@@ -116,16 +122,32 @@
           </div>
           <div class="pdp-tab-content">
             <div class="pdp-tab-panel active" data-panel="tab1">
-              {{ section.settings.tab1_content }}
+              {% if product.metafields.custom.tab1_content != blank %}
+                {{ product.metafields.custom.tab1_content }}
+              {% else %}
+                {{ section.settings.tab1_content }}
+              {% endif %}
             </div>
             <div class="pdp-tab-panel" data-panel="tab2">
-              {{ section.settings.tab2_content }}
+              {% if product.metafields.custom.tab2_content != blank %}
+                {{ product.metafields.custom.tab2_content }}
+              {% else %}
+                {{ section.settings.tab2_content }}
+              {% endif %}
             </div>
             <div class="pdp-tab-panel" data-panel="tab3">
-              {{ section.settings.tab3_content }}
+              {% if product.metafields.custom.tab3_content != blank %}
+                {{ product.metafields.custom.tab3_content }}
+              {% else %}
+                {{ section.settings.tab3_content }}
+              {% endif %}
             </div>
             <div class="pdp-tab-panel" data-panel="tab4">
-              {{ section.settings.tab4_content }}
+              {% if product.metafields.custom.tab4_content != blank %}
+                {{ product.metafields.custom.tab4_content }}
+              {% else %}
+                {{ section.settings.tab4_content }}
+              {% endif %}
             </div>
           </div>
         </div>
