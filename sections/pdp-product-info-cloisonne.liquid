@@ -129,8 +129,8 @@
               {% endif %}
             </div>
             <div class="pdp-tab-panel" data-panel="tab2">
-              {% if product.metafields.custom.tab2_content != blank %}
-                {{ product.metafields.custom.tab2_content }}
+              {% if product.description != blank %}
+                {{ product.description }}
               {% else %}
                 {{ section.settings.tab2_content }}
               {% endif %}
