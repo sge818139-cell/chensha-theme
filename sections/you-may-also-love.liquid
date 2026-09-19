@@ -5,7 +5,11 @@
     <div class="related-grid">
       <a href="{{ section.settings.product_1_link }}" class="related-card">
         <div class="related-image">
-          <img src="{{ 'product-bracelet.jpg' | asset_url }}" alt="Cinnabar Bead Bracelet">
+          {% if section.settings.product_1_image != blank %}
+            <img src="{{ section.settings.product_1_image | image_url: width: 500 }}" alt="{{ section.settings.product_1_name | escape }}">
+          {% else %}
+            <img src="{{ 'product-bracelet.jpg' | asset_url }}" alt="{{ section.settings.product_1_name | escape }}">
+          {% endif %}
         </div>
         <div class="related-info">
           <div class="related-name">{{ section.settings.product_1_name }}</div>
@@ -15,7 +19,11 @@
 
       <a href="{{ section.settings.product_2_link }}" class="related-card">
         <div class="related-image">
-          <img src="{{ 'product-necklace.jpg' | asset_url }}" alt="Cinnabar Pendant Necklace">
+          {% if section.settings.product_2_image != blank %}
+            <img src="{{ section.settings.product_2_image | image_url: width: 500 }}" alt="{{ section.settings.product_2_name | escape }}">
+          {% else %}
+            <img src="{{ 'product-necklace.jpg' | asset_url }}" alt="{{ section.settings.product_2_name | escape }}">
+          {% endif %}
         </div>
         <div class="related-info">
           <div class="related-name">{{ section.settings.product_2_name }}</div>
@@ -25,7 +33,11 @@
 
       <a href="{{ section.settings.product_3_link }}" class="related-card">
         <div class="related-image">
-          <img src="{{ 'product-ring.jpg' | asset_url }}" alt="Cinnabar Ring">
+          {% if section.settings.product_3_image != blank %}
+            <img src="{{ section.settings.product_3_image | image_url: width: 500 }}" alt="{{ section.settings.product_3_name | escape }}">
+          {% else %}
+            <img src="{{ 'product-ring.jpg' | asset_url }}" alt="{{ section.settings.product_3_name | escape }}">
+          {% endif %}
         </div>
         <div class="related-info">
           <div class="related-name">{{ section.settings.product_3_name }}</div>
@@ -35,7 +47,11 @@
 
       <a href="{{ section.settings.product_4_link }}" class="related-card">
         <div class="related-image">
-          <img src="{{ 'product-earrings.jpg' | asset_url }}" alt="Cinnabar Earrings">
+          {% if section.settings.product_4_image != blank %}
+            <img src="{{ section.settings.product_4_image | image_url: width: 500 }}" alt="{{ section.settings.product_4_name | escape }}">
+          {% else %}
+            <img src="{{ 'product-earrings.jpg' | asset_url }}" alt="{{ section.settings.product_4_name | escape }}">
+          {% endif %}
         </div>
         <div class="related-info">
           <div class="related-name">{{ section.settings.product_4_name }}</div>
@@ -128,6 +144,11 @@
       "content": "Product 1"
     },
     {
+      "type": "image_picker",
+      "id": "product_1_image",
+      "label": "Product Image"
+    },
+    {
       "type": "text",
       "id": "product_1_name",
       "label": "Product Name",
@@ -147,6 +168,11 @@
     {
       "type": "header",
       "content": "Product 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_2_image",
+      "label": "Product Image"
     },
     {
       "type": "text",
@@ -170,6 +196,11 @@
       "content": "Product 3"
     },
     {
+      "type": "image_picker",
+      "id": "product_3_image",
+      "label": "Product Image"
+    },
+    {
       "type": "text",
       "id": "product_3_name",
       "label": "Product Name",
@@ -189,6 +220,11 @@
     {
       "type": "header",
       "content": "Product 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_4_image",
+      "label": "Product Image"
     },
     {
       "type": "text",

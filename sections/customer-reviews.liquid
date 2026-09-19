@@ -14,8 +14,8 @@
     </div>
 
     <div class="reviews-actions">
-      <button class="btn-outline">{{ section.settings.ask_question_btn }}</button>
-      <button class="btn-outline">{{ section.settings.write_review_btn }}</button>
+      <a href="{{ section.settings.ask_question_link }}" class="btn-outline">{{ section.settings.ask_question_btn }}</a>
+      <a href="{{ section.settings.write_review_link }}" class="btn-outline">{{ section.settings.write_review_btn }}</a>
     </div>
 
     <div class="review-list">
@@ -47,21 +47,6 @@
           {% endif %}
         </div>
         <p class="review-content">{{ section.settings.review_2_content }}</p>
-      </div>
-
-      <div class="review-item">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-meta">
-          <span class="review-date">{{ section.settings.review_3_date }}</span>
-        </div>
-        <h4 class="review-title">{{ section.settings.review_3_title }}</h4>
-        <div class="review-author">
-          {{ section.settings.review_3_author }}
-          {% if section.settings.review_3_verified %}
-            <span class="verified-badge">✓ Verified Buyer</span>
-          {% endif %}
-        </div>
-        <p class="review-content">{{ section.settings.review_3_content }}</p>
       </div>
     </div>
 
@@ -138,6 +123,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btn-outline:hover {
@@ -226,14 +212,24 @@
     {
       "type": "text",
       "id": "ask_question_btn",
-      "label": "Ask Question Button",
+      "label": "Ask Question Button Text",
       "default": "Ask a Question"
+    },
+    {
+      "type": "url",
+      "id": "ask_question_link",
+      "label": "Ask Question Button Link"
     },
     {
       "type": "text",
       "id": "write_review_btn",
-      "label": "Write Review Button",
+      "label": "Write Review Button Text",
       "default": "Write a Review"
+    },
+    {
+      "type": "url",
+      "id": "write_review_link",
+      "label": "Write Review Button Link"
     },
     {
       "type": "text",
@@ -308,40 +304,6 @@
       "id": "review_2_content",
       "label": "Review Content",
       "default": "<p>Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Review 3"
-    },
-    {
-      "type": "text",
-      "id": "review_3_title",
-      "label": "Review Title",
-      "default": "Love the Story Behind It"
-    },
-    {
-      "type": "text",
-      "id": "review_3_author",
-      "label": "Author Name",
-      "default": "Michelle L."
-    },
-    {
-      "type": "text",
-      "id": "review_3_date",
-      "label": "Date",
-      "default": "2 months ago"
-    },
-    {
-      "type": "checkbox",
-      "id": "review_3_verified",
-      "label": "Verified Buyer",
-      "default": true
-    },
-    {
-      "type": "richtext",
-      "id": "review_3_content",
-      "label": "Review Content",
-      "default": "<p>I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>"
     }
   ],
   "presets": [
