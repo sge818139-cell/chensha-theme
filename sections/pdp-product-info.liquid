@@ -340,22 +340,35 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Tab switching functionality
   var tabsSection = document.querySelector('.pdp-tabs-section');
-  if (!tabsSection) return;
-  
-  var tabHeaders = tabsSection.querySelectorAll('.pdp-tab-header');
-  var tabPanels = tabsSection.querySelectorAll('.pdp-tab-panel');
-  
-  tabHeaders.forEach(function(header) {
-    header.addEventListener('click', function() {
-      var tab = this.getAttribute('data-tab');
-      
-      tabHeaders.forEach(function(h) { h.classList.remove('active'); });
-      tabPanels.forEach(function(p) { p.classList.remove('active'); });
-      
-      this.classList.add('active');
-      tabsSection.querySelector('.pdp-tab-panel[data-panel="' + tab + '"]').classList.add('active');
+  if (tabsSection) {
+    var tabHeaders = tabsSection.querySelectorAll('.pdp-tab-header');
+    var tabPanels = tabsSection.querySelectorAll('.pdp-tab-panel');
+    
+    tabHeaders.forEach(function(header) {
+      header.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        
+        tabHeaders.forEach(function(h) { h.classList.remove('active'); });
+        tabPanels.forEach(function(p) { p.classList.remove('active'); });
+        
+        this.classList.add('active');
+        tabsSection.querySelector('.pdp-tab-panel[data-panel="' + tab + '"]').classList.add('active');
+      });
     });
-  });
+  }
+
+  // Auto-sync rating text with review count from customer reviews section
+  var ratingText = document.getElementById('ratingText');
+  if (ratingText) {
+    var reviewCountEl = document.querySelector('.review-count');
+    if (reviewCountEl) {
+      var reviewCountText = reviewCountEl.textContent.trim();
+      if (reviewCountText) {
+        ratingText.textContent = '(' + reviewCountText + ')';
+      }
+    }
+  }
 });
 </script>
