@@ -366,7 +366,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (reviewCountEl) {
       var reviewCountText = reviewCountEl.textContent.trim();
       if (reviewCountText) {
-        ratingText.textContent = '(' + reviewCountText + ')';
+        // Extract the number from "X reviews"
+        var match = reviewCountText.match(/(\d+)/);
+        if (match) {
+          var count = parseInt(match[1]);
+          if (count === 0) {
+            ratingText.textContent = '(No reviews yet)';
+          } else {
+            ratingText.textContent = '(' + reviewCountText + ')';
+          }
+        }
       }
     }
   }
