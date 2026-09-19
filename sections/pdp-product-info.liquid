@@ -43,6 +43,11 @@
 
       <div class="pdp-pay">or 4 interest-free payments of <strong>{{ product.price | money | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</strong> with Afterpay</div>
 
+      <div class="pdp-rating-row">
+        <span class="pdp-stars">★★★★★</span>
+        <span class="pdp-rating-text" id="ratingText">{{ section.settings.rating_text }}</span>
+      </div>
+
       <div class="pdp-divider"></div>
 
       {% if product and product.available %}
