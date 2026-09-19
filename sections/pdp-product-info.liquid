@@ -41,8 +41,6 @@
         {% endif %}
       </div>
 
-      <div class="pdp-pay">or 4 interest-free payments of <strong>{{ product.price | money | remove: '$' | divided_by: 4 | round: 2 | prepend: '$' }}</strong> with Afterpay</div>
-
       <div class="pdp-rating-row">
         <span class="pdp-stars">★★★★★</span>
         <span class="pdp-rating-text" id="ratingText">{{ section.settings.rating_text }}</span>
@@ -122,6 +120,12 @@
       "type": "image_picker",
       "id": "packaging_image",
       "label": "Packaging Image (Bottom Left)"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "(No reviews yet)"
     },
     {
       "type": "header",
