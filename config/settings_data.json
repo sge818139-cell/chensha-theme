@@ -392,6 +392,23 @@
           "product_count_text": "6 RESULTS",
           "sort_text": "SORT BY: NEWEST ↓"
         }
+      },
+      "immersive-story": {
+        "type": "immersive-story",
+        "settings": {
+          "scene_1_title": "Ancient Origins",
+          "scene_1_desc": "For over two millennia, the mountains of Tongren, Guizhou have yielded the world's finest cinnabar. This sacred red stone has been treasured by emperors and scholars through every dynasty.",
+          "scene_2_title": "Premium Quality",
+          "scene_2_desc": "Our cinnabar boasts 99% purity, with a deep, vibrant crimson that reflects the light with a warm, golden glow. Each piece is carefully selected for the highest quality.",
+          "scene_3_title": "Master Craftsmanship",
+          "scene_3_desc": "Every CHENSHA bracelet is handcrafted by master artisans with decades of experience. From stringing to finishing, each step is done with meticulous care.",
+          "scene_4_title": "Our Collection",
+          "scene_4_desc": "Discover bracelets that carry thousands of years of Chinese heritage, crafted to be worn and treasured every day.",
+          "finale_title": "Thank You for Choosing CHENSHA",
+          "finale_desc": "Carry a piece of Chinese heritage with you.",
+          "cta_button": "EXPLORE MORE",
+          "cta_link": "shopify://collections/original"
+        }
       }
     },
     "content_for_index": []
