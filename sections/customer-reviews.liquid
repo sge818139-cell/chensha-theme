@@ -1,21 +1,5 @@
 {% assign review_count = section.settings.review_count | plus: 0 %}
 
-{% assign all_reviews = "Emily Chen|Beautiful and Meaningful|2 weeks ago|The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.
-Sarah Johnson|Great Quality, Worth Every Penny|1 month ago|Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.
-Michelle Tan|Love the Story Behind It|2 months ago|I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.
-Lisa Wong|Perfect Gift|3 weeks ago|Bought this for my mom and she absolutely loved it. The quality is amazing and the presentation was beautiful. It arrived quickly too.
-Jessica Lee|Beautiful Piece|1 week ago|I've been wearing this every day and it hasn't faded or lost its shine. The cinnabar is so vibrant in person.
-Amanda Park|Meaningful and Elegant|2 months ago|Not just jewelry - it carries so much cultural meaning. The design is elegant and goes with everything. Highly recommend.
-David Brown|Excellent Customer Service|1 month ago|Had a question about sizing and got a response within hours. The bracelet itself is even more beautiful than the photos.
-Rachel Green|Stunning Color|3 weeks ago|The red is so rich and deep. It's not bright and cheap-looking at all. Very premium feel.
-Laura Miller|Great Investment|2 months ago|I've bought many cinnabar pieces over the years and this is by far the best quality. You can tell it's authentic.
-Anna Smith|Perfect Size|1 week ago|Fits my wrist perfectly. Not too tight, not too loose. The adjustable string makes it really easy to customize." | split: newline %}
-
-{% assign product_offset = 0 %}
-{% if product.id %}
-  {% assign product_offset = product.id | modulo: 5 %}
-{% endif %}
-
 <section class="customer-reviews-section">
   <div class="container">
     <h2 class="reviews-title">{{ section.settings.title }}</h2>
@@ -36,28 +20,89 @@ Anna Smith|Perfect Size|1 week ago|Fits my wrist perfectly. Not too tight, not t
       <a href="{{ section.settings.write_review_link }}" class="btn-outline">{{ section.settings.write_review_btn }}</a>
     </div>
 
-    <div class="review-list" id="reviewList">
-      {% for i in (0..review_count) %}
-        {% assign review_index = i | plus: product_offset %}
-        {% if review_index >= 10 %}
-          {% assign review_index = review_index | minus: 10 %}
-        {% endif %}
-        {% assign review = all_reviews[review_index] %}
-        {% assign review_parts = review | split: '|' %}
-        <div class="review-item{% if i >= 2 %} review-item-hidden{% endif %}">
-          <div class="review-stars">★★★★★</div>
-          <span class="review-date">{{ review_parts[2] }}</span>
-          <h4 class="review-title">{{ review_parts[1] }}</h4>
-          <div class="review-author">
-            {{ review_parts[0] }}
-            <span class="verified-badge">✓ Verified Buyer</span>
-          </div>
-          <p class="review-content">{{ review_parts[3] }}</p>
-        </div>
-      {% endfor %}
+    <div class="review-list" id="reviewList" data-review-count="{{ review_count }}">
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">2 weeks ago</span>
+        <h4 class="review-title">Beautiful and Meaningful</h4>
+        <div class="review-author">Emily Chen <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">1 month ago</span>
+        <h4 class="review-title">Great Quality, Worth Every Penny</h4>
+        <div class="review-author">Sarah Johnson <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">2 months ago</span>
+        <h4 class="review-title">Love the Story Behind It</h4>
+        <div class="review-author">Michelle Tan <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">3 weeks ago</span>
+        <h4 class="review-title">Perfect Gift</h4>
+        <div class="review-author">Lisa Wong <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">Bought this for my mom and she absolutely loved it. The quality is amazing and the presentation was beautiful. It arrived quickly too.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">1 week ago</span>
+        <h4 class="review-title">Beautiful Piece</h4>
+        <div class="review-author">Jessica Lee <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">I've been wearing this every day and it hasn't faded or lost its shine. The cinnabar is so vibrant in person.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">2 months ago</span>
+        <h4 class="review-title">Meaningful and Elegant</h4>
+        <div class="review-author">Amanda Park <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">Not just jewelry - it carries so much cultural meaning. The design is elegant and goes with everything. Highly recommend.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">1 month ago</span>
+        <h4 class="review-title">Excellent Customer Service</h4>
+        <div class="review-author">David Brown <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">Had a question about sizing and got a response within hours. The bracelet itself is even more beautiful than the photos.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">3 weeks ago</span>
+        <h4 class="review-title">Stunning Color</h4>
+        <div class="review-author">Rachel Green <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">The red is so rich and deep. It's not bright and cheap-looking at all. Very premium feel.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">2 months ago</span>
+        <h4 class="review-title">Great Investment</h4>
+        <div class="review-author">Laura Miller <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">I've bought many cinnabar pieces over the years and this is by far the best quality. You can tell it's authentic.</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <span class="review-date">1 week ago</span>
+        <h4 class="review-title">Perfect Size</h4>
+        <div class="review-author">Anna Smith <span class="verified-badge">✓ Verified Buyer</span></div>
+        <p class="review-content">Fits my wrist perfectly. Not too tight, not too loose. The adjustable string makes it really easy to customize.</p>
+      </div>
     </div>
 
-    <button class="read-all-link" id="toggleReviews" data-count="{{ review_count }}">Read all {{ review_count }} reviews</button>
+    <button class="read-all-link" id="toggleReviews">Read all {{ review_count }} reviews</button>
   </div>
 </section>
 
@@ -145,10 +190,11 @@ Anna Smith|Perfect Size|1 week ago|Fits my wrist perfectly. Not too tight, not t
 .review-item {
   padding: 25px 0;
   border-bottom: 1px solid #E8E0D5;
+  display: none;
 }
 
-.review-item-hidden {
-  display: none;
+.review-item.visible {
+  display: block;
 }
 
 .review-stars {
@@ -205,24 +251,48 @@ Anna Smith|Perfect Size|1 week ago|Fits my wrist perfectly. Not too tight, not t
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  var reviewList = document.getElementById('reviewList');
+  if (!reviewList) return;
+  
+  var totalReviews = parseInt(reviewList.getAttribute('data-review-count'));
+  var allItems = reviewList.querySelectorAll('.review-item');
+  var productUrl = window.location.pathname;
+  
+  // 根据产品 URL 计算偏移量，确保不同产品显示不同评论
+  var offset = 0;
+  for (var i = 0; i < productUrl.length; i++) {
+    offset += productUrl.charCodeAt(i);
+  }
+  offset = offset % 5;
+  
+  // 初始显示对应数量的评论
+  function showReviews(count) {
+    allItems.forEach(function(item) {
+      item.classList.remove('visible');
+    });
+    for (var i = 0; i < count; i++) {
+      var index = (i + offset) % allItems.length;
+      allItems[index].classList.add('visible');
+    }
+  }
+  
+  showReviews(totalReviews);
+  
+  // 展开/收起功能
   var btn = document.getElementById('toggleReviews');
-  var items = document.querySelectorAll('.review-item-hidden');
   var expanded = false;
   
-  if (btn && items.length > 0) {
+  if (btn) {
     btn.addEventListener('click', function() {
       expanded = !expanded;
-      items.forEach(function(item) {
-        if (expanded) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
       if (expanded) {
+        allItems.forEach(function(item) {
+          item.classList.add('visible');
+        });
         btn.textContent = 'Show less reviews';
       } else {
-        btn.textContent = 'Read all ' + btn.getAttribute('data-count') + ' reviews';
+        showReviews(totalReviews);
+        btn.textContent = 'Read all ' + totalReviews + ' reviews';
       }
     });
   }
