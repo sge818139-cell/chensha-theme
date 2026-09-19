@@ -88,7 +88,14 @@
           currencyCode.textContent = currency;
 
           // Convert all prices on the page
-          var allPriceElements = document.querySelectorAll('.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, .old, .pcard-pay');
+          // Include all common price classes across homepage, PDP, cart, collections
+          var allPriceElements = document.querySelectorAll(
+            '.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, ' +
+            '.price__regular, .price__sale, .price-item, .product__price, .price-price, ' +
+            '.price--last, .price--unit, .pcard-pay, .price__compare, ' +
+            '.cart-item__price, .order-summary__price, .product-form__price, .price__current, ' +
+            '.product-single__price, .product-single__sale-price'
+          );
           allPriceElements.forEach(function (el) {
             // For elements with child elements, only convert direct text nodes
             if (el.children.length > 0) {
@@ -107,9 +114,11 @@
                   el.setAttribute('data-original-direct-text', originalDirectText);
                 }
 
-                var match = originalDirectText.match(/[\d,.]+\.\d{2}/);
+                // Match ONLY prices that have a $ symbol AND decimal point (e.g. $128.00)
+                // This prevents matching plain integers like "4 payments"
+                var match = originalDirectText.match(/\$[\d,.]+\.\d{2}/);
                 if (match) {
-                  var originalPrice = parseFloat(match[0].replace(/,/g, ''));
+                  var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
                   var convertedPrice = originalPrice * rate;
 
                   // Replace price in direct text
@@ -136,9 +145,11 @@
               el.setAttribute('data-original-text', originalText);
             }
 
-            var match = originalText.match(/[\d,.]+\.\d{2}/);
+            // Match ONLY prices that have a $ symbol AND decimal point (e.g. $128.00)
+            // This prevents matching plain integers like "4 payments"
+            var match = originalText.match(/\$[\d,.]+\.\d{2}/);
             if (match) {
-              var originalPrice = parseFloat(match[0].replace(/,/g, ''));
+              var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
               var convertedPrice = originalPrice * rate;
 
               var newText = originalText
