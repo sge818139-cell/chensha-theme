@@ -92,74 +92,35 @@
           var allPriceElements = document.querySelectorAll(
             '.price, .pdp-price, .cart-price, .product-price, .pcard-price, .feat-price, ' +
             '.price__regular, .price__sale, .price-item, .product__price, .price-price, ' +
-            '.price--last, .price--unit, .pcard-pay, .price__compare, ' +
+            '.price--last, .price--unit, .price__compare, .pdp-compare, ' +
             '.cart-item__price, .order-summary__price, .product-form__price, .price__current, ' +
             '.product-single__price, .product-single__sale-price'
           );
+          
           allPriceElements.forEach(function (el) {
-            // For elements with child elements, only convert direct text nodes
-            if (el.children.length > 0) {
-              // Get direct text content (not from child elements)
-              var directText = '';
-              el.childNodes.forEach(function (node) {
-                if (node.nodeType === Node.TEXT_NODE) {
-                  directText += node.textContent;
-                }
-              });
-
-              if (directText.trim()) {
-                var originalDirectText = el.getAttribute('data-original-direct-text');
-                if (!originalDirectText) {
-                  originalDirectText = directText;
-                  el.setAttribute('data-original-direct-text', originalDirectText);
-                }
-
-                // Match ONLY prices that have a $ symbol (e.g. $128, $128.00, $1,280.00)
-                // This prevents matching plain integers like "4 payments"
-                var match = originalDirectText.match(/\$[\d,.]+/);
-                if (match) {
-                  var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
-                  var convertedPrice = originalPrice * rate;
-
-                  // Replace price in direct text
-                  var newDirectText = originalDirectText
-                    .replace(/\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                    .replace(/€[\d,.]+/, symbol + convertedPrice.toFixed(2));
-
-                  // Update only the direct text nodes
-                  var textIndex = 0;
-                  el.childNodes.forEach(function (node) {
-                    if (node.nodeType === Node.TEXT_NODE) {
-                      node.textContent = newDirectText;
-                    }
-                  });
-                }
-              }
+            // Skip elements that contain payment text (like "4 payments of ...")
+            // We only want pure price elements
+            var elementText = el.textContent || '';
+            if (elementText.indexOf('payment') !== -1 || elementText.indexOf('Pay') !== -1) {
               return;
             }
-
-            // Leaf elements - convert entire text
+            
+            // Get original text
             var originalText = el.getAttribute('data-original-text');
             if (!originalText) {
-              originalText = el.textContent;
+              originalText = el.textContent.trim();
               el.setAttribute('data-original-text', originalText);
             }
-
-            // Match ONLY prices that have a $ symbol (e.g. $128, $128.00, $1,280.00)
-            // This prevents matching plain integers like "4 payments"
-            var match = originalText.match(/\$[\d,.]+/);
-            if (match) {
-              var originalPrice = parseFloat(match[0].replace(/[$,]/g, ''));
+            
+            // Extract the price number from any format: $128.00, 128.00 USD, US$128, 1,280.00
+            var priceMatch = originalText.match(/[\d,]+\.?\d*/);
+            if (priceMatch) {
+              var originalPrice = parseFloat(priceMatch[0].replace(/,/g, ''));
+              if (isNaN(originalPrice) || originalPrice < 0.01) return;
+              
               var convertedPrice = originalPrice * rate;
-
-              var newText = originalText
-                .replace(/\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                .replace(/€[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                .replace(/S\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                .replace(/NT\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                .replace(/HK\$[\d,.]+/, symbol + convertedPrice.toFixed(2))
-                .replace(/RM[\d,.]+/, symbol + convertedPrice.toFixed(2));
-              el.textContent = newText;
+              // Replace entire element content with new price
+              el.textContent = symbol + convertedPrice.toFixed(2);
             }
           });
 
