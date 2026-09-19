@@ -102,11 +102,11 @@
 
 /* 固定背景层 */
 .journey-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
 }
@@ -357,7 +357,7 @@
       const distance = Math.abs(elementCenter - windowCenter);
       const maxDistance = windowH;
       const opacity = Math.max(0.3, 1 - distance / maxDistance);
-      const translateY = (elementCenter - windowCenter) * 0.1;
+      const translateY = (elementCenter - windowCenter) * 0.03;
 
       contents[i].style.opacity = opacity;
       contents[i].style.transform = 'translateY(' + translateY + 'px)';
