@@ -412,35 +412,46 @@
       },
       "product-tabs": {
         "type": "product-tabs",
-        "blocks": {
-          "tab_myFzEA": {
-            "type": "tab",
-            "settings": {
-              "title": "Details",
-              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
-            }
-          },
-          "tab_9eLxGV": {
-            "type": "tab",
-            "settings": {
-              "title": "Details",
-              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
-            }
-          },
-          "tab_kB9eVw": {
-            "type": "tab",
-            "settings": {
-              "title": "Details",
-              "content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li></ul>"
-            }
-          }
-        },
-        "block_order": [
-          "tab_myFzEA",
-          "tab_9eLxGV",
-          "tab_kB9eVw"
-        ],
-        "settings": {}
+        "settings": {
+          "tab1_title": "Details",
+          "tab1_content": "<p>Let your inner compass guide you. The CHENSHA Cinnabar Bracelet is a token of direction, purpose, and quiet confidence. A luminous stone sits at the center, illuminating your way forward.</p><ul><li>Natural cinnabar beads, hand-selected</li><li>Bead diameter - 8mm / 10mm / 12mm options</li><li>Adjustable cord - fits wrist sizes 15-19cm</li><li>99% pure cinnabar from Tongren, China</li><li>Handcrafted by master artisans</li><li>Hypoallergenic & made for everyday wear</li></ul>",
+          "tab2_title": "Symbolism",
+          "tab2_content": "<p>For over two millennia, cinnabar has been revered as the Stone of Life in Chinese culture.</p><ul><li>Represents good fortune, protection, and vitality</li><li>Worn by emperors and scholars through every dynasty</li><li>Believed to ward off negative energy</li><li>Symbol of passion, creativity, and confidence</li></ul>",
+          "tab3_title": "Materials",
+          "tab3_content": "<p>Sourced from the ancient mines of Tongren, Guizhou - the birthplace of the world's finest cinnabar.</p><ul><li>99% pure natural cinnabar (HgS)</li><li>Hand-polished to a deep, luminous crimson</li><li>Waxed cotton cord, adjustable</li><li>Gold vermeil accents (18k gold over sterling silver)</li></ul>",
+          "tab4_title": "Care",
+          "tab4_content": "<p>Caring for your CHENSHA piece ensures it stays beautiful for generations.</p><ul><li>Avoid prolonged contact with water, perfume, or chemicals</li><li>Wipe gently with a soft, dry cloth after wear</li><li>Store in the included velvet pouch when not in use</li><li>Keep away from direct sunlight and extreme heat</li></ul>"
+        }
+      },
+      "customer-reviews": {
+        "type": "customer-reviews",
+        "settings": {
+          "title": "Customer Reviews",
+          "score": "4.9",
+          "review_count": 10,
+          "ask_question_btn": "Ask a Question",
+          "ask_question_link": "",
+          "write_review_btn": "Write a Review",
+          "write_review_link": ""
+        }
+      },
+      "you-may-also-love": {
+        "type": "you-may-also-love",
+        "settings": {
+          "title": "You May Also Love",
+          "product_1_name": "Cinnabar Bead Bracelet",
+          "product_1_price": "$128.00",
+          "product_1_link": "",
+          "product_2_name": "Cinnabar Pendant Necklace",
+          "product_2_price": "$168.00",
+          "product_2_link": "",
+          "product_3_name": "Cinnabar Ring",
+          "product_3_price": "$98.00",
+          "product_3_link": "",
+          "product_4_name": "Cinnabar Earrings",
+          "product_4_price": "$88.00",
+          "product_4_link": ""
+        }
       }
     },
     "content_for_index": []
