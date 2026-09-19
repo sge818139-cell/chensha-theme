@@ -11,16 +11,93 @@
   "sections": {
     "hero": {
       "type": "collection-hero",
-      "settings": {}
+      "settings": {
+        "eyebrow": "PRODUCTS",
+        "title": "Products",
+        "cn_title": "全 部 作 品",
+        "description": "Symbols of intention and beauty, crafted to be worn close and carry you through every chapter."
+      }
     },
     "products": {
       "type": "collection-products-editable",
-      "settings": {}
+      "blocks": {
+        "product_mWp6q3": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        },
+        "product_piPkrP": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        },
+        "product_9Lwxem": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        },
+        "product_3bHGUj": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        },
+        "product_fw9GDK": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        },
+        "product_RcW3CL": {
+          "type": "product",
+          "settings": {
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_mWp6q3",
+        "product_piPkrP",
+        "product_9Lwxem",
+        "product_3bHGUj",
+        "product_fw9GDK",
+        "product_RcW3CL"
+      ],
+      "settings": {
+        "filter_title": "FILTER BY",
+        "filter_1": "Intention",
+        "filter_2": "Symbol",
+        "filter_3": "Material",
+        "filter_4": "Price",
+        "product_count_text": "6 RESULTS",
+        "sort_text": "SORT BY: NEWEST ↓"
+      }
     },
     "explore": {
       "type": "explore-more",
-      "settings": {}
+      "settings": {
+        "heading": "Explore More Treasures"
+      }
     }
   },
-  "order": ["hero", "products", "explore"]
+  "order": [
+    "hero",
+    "products",
+    "explore"
+  ]
 }
