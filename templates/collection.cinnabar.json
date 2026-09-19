@@ -24,59 +24,105 @@
         "product_mWp6q3": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/0916_1.jpg",
             "title": "Product Name",
             "price": "$0.00",
-            "link": ""
-          }
-        },
-        "product_piPkrP": {
-          "type": "product",
-          "settings": {
-            "title": "Product Name",
-            "price": "$0.00",
-            "link": ""
+            "link": "shopify://products/collector-grade-natural-cinnabar-bracelet-收藏品质天然朱砂手串"
           }
         },
         "product_9Lwxem": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/20D4671E-0369-4371-B970-0EBEFC39A0AD.jpg",
             "title": "Product Name",
             "price": "$0.00",
-            "link": ""
-          }
-        },
-        "product_3bHGUj": {
-          "type": "product",
-          "settings": {
-            "title": "Product Name",
-            "price": "$0.00",
-            "link": ""
-          }
-        },
-        "product_fw9GDK": {
-          "type": "product",
-          "settings": {
-            "title": "Product Name",
-            "price": "$0.00",
-            "link": ""
+            "link": "shopify://products/cinnabar-pingan-kou-braided-cord-bracelet-朱砂平安扣黑色编绳手环"
           }
         },
         "product_RcW3CL": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/76B8F592-5FF8-495E-B28E-8F5A963DE6AC.jpg",
             "title": "Product Name",
             "price": "$0.00",
-            "link": ""
+            "link": "shopify://products/grand-cinnabar-sphere-collar-necklace-朱砂圆珠配蜜蜡松石项链"
+          }
+        },
+        "product_3bHGUj": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/D420D04C-CDD9-4F54-8B9A-49AF6A55D1FB.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/grand-cinnabar-pingan-kou-pendant-necklace-经典天然朱砂平安扣吊坠项链"
+          }
+        },
+        "product_piPkrP": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/0916_5.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/cinnabar-carnelian-cat-s-eye-bracelet-朱砂南红猫眼手串"
+          }
+        },
+        "product_fw9GDK": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1019.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/carved-cinnabar-pixiu-braided-bracelet-with-lotus-finials-朱砂精雕貔貅黑编绳手链"
+          }
+        },
+        "product_d6ykxm": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/1A024C80-4368-43A1-96CD-6221ED28606F.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/multi-wrap-natural-cinnabar-mala-bracelet-多圈天然朱砂念珠手串"
+          }
+        },
+        "product_4t9ynE": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/1_a111364e-9a0c-4af3-a383-3801c660f0fd.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/natural-cinnabar-mantra-bead-bracelet-朱砂六字箴言手串"
+          }
+        },
+        "product_3VzKYU": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/2.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/natural-cinnabar-freshwater-pearl-bracelet-朱砂珍珠手串"
+          }
+        },
+        "product_Rawy4U": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "title": "Product Name",
+            "price": "$0.00",
+            "link": "shopify://products/朱砂手串小直径"
           }
         }
       },
       "block_order": [
         "product_mWp6q3",
-        "product_piPkrP",
         "product_9Lwxem",
+        "product_RcW3CL",
         "product_3bHGUj",
+        "product_piPkrP",
         "product_fw9GDK",
-        "product_RcW3CL"
+        "product_d6ykxm",
+        "product_4t9ynE",
+        "product_3VzKYU",
+        "product_Rawy4U"
       ],
       "settings": {
         "filter_title": "FILTER BY",
