@@ -25,7 +25,9 @@
               <h3 class="cart-item-title">{{ item.product.title }}</h3>
               <div class="cart-item-variant">
                 {% for option in item.product.options_with_values %}
-                  {{ option.name }}: {{ item.variant.options[forloop.index0] }}
+                  {% unless option.name == 'Title' or option.value == 'Default Title' %}
+                    {{ option.name }}: {{ item.variant.options[forloop.index0] }}
+                  {% endunless %}
                 {% endfor %}
               </div>
               <button type="button" class="cart-remove" data-line="{{ forloop.index }}">
@@ -51,6 +53,9 @@
           </div>
           <p class="cart-shipping-note">Shipping & taxes calculated at checkout.</p>
           <button type="submit" name="checkout" class="btn btn-gold btn-checkout">Check Out</button>
+          <a href="{{ routes.all_products_collection_url }}" class="continue-shopping-link">
+            Continue Shopping →
+          </a>
         </div>
       </form>
     {% endif %}
@@ -252,6 +257,21 @@
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.continue-shopping-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #8A7A72;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.continue-shopping-link:hover {
+  color: #9E2B25;
 }
 
 @media (max-width: 768px) {
