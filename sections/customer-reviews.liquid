@@ -21,104 +21,116 @@
     </div>
 
     <div class="review-list" id="reviewList">
-      <div class="review-item">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">2 weeks ago</span>
-        <h4 class="review-title">Beautiful and Meaningful</h4>
-        <div class="review-author">Emily Chen <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>
+      {% if review_count == 0 %}
+      <div class="empty-reviews">
+        <p>No reviews yet. Be the first to share your experience!</p>
       </div>
+      {% else %}
+        {% if review_count >= 1 %}
+        <div class="review-item{% if review_count == 1 %} review-item-hidden{% endif %}">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 weeks ago</span>
+          <h4 class="review-title">Beautiful and Meaningful</h4>
+          <div class="review-author">Emily Chen <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">The details are stunning and the cinnabar catches the light so beautifully. It feels like a little piece of Chinese culture I can carry with me every day.</p>
+        </div>
+        {% endif %}
 
-      <div class="review-item">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">1 month ago</span>
-        <h4 class="review-title">Great Quality, Worth Every Penny</h4>
-        <div class="review-author">Sarah Johnson <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>
-      </div>
+        {% if review_count >= 2 %}
+        <div class="review-item{% if review_count == 2 %} review-item-hidden{% endif %}">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 month ago</span>
+          <h4 class="review-title">Great Quality, Worth Every Penny</h4>
+          <div class="review-author">Sarah Johnson <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Such beautiful craftsmanship. The bead is smooth and the color is exactly as shown. It's become my daily go-to bracelet. The packaging was also lovely - perfect for gifting.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 3 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">2 months ago</span>
-        <h4 class="review-title">Love the Story Behind It</h4>
-        <div class="review-author">Michelle Tan <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 3 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Love the Story Behind It</h4>
+          <div class="review-author">Michelle Tan <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I was drawn to the meaning behind cinnabar and the brand's story. This bracelet exceeded my expectations. It feels special and I get compliments all the time.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 4 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">3 weeks ago</span>
-        <h4 class="review-title">Perfect Gift</h4>
-        <div class="review-author">Lisa Wong <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">Bought this for my mom and she absolutely loved it. The quality is amazing and the presentation was beautiful. It arrived quickly too.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 4 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">3 weeks ago</span>
+          <h4 class="review-title">Perfect Gift</h4>
+          <div class="review-author">Lisa Wong <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Bought this for my mom and she absolutely loved it. The quality is amazing and the presentation was beautiful. It arrived quickly too.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 5 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">1 week ago</span>
-        <h4 class="review-title">Beautiful Piece</h4>
-        <div class="review-author">Jessica Lee <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">I've been wearing this every day and it hasn't faded or lost its shine. The cinnabar is so vibrant in person.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 5 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 week ago</span>
+          <h4 class="review-title">Beautiful Piece</h4>
+          <div class="review-author">Jessica Lee <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I've been wearing this every day and it hasn't faded or lost its shine. The cinnabar is so vibrant in person.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 6 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">2 months ago</span>
-        <h4 class="review-title">Meaningful and Elegant</h4>
-        <div class="review-author">Amanda Park <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">Not just jewelry - it carries so much cultural meaning. The design is elegant and goes with everything. Highly recommend.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 6 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Meaningful and Elegant</h4>
+          <div class="review-author">Amanda Park <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Not just jewelry - it carries so much cultural meaning. The design is elegant and goes with everything. Highly recommend.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 7 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">1 month ago</span>
-        <h4 class="review-title">Excellent Customer Service</h4>
-        <div class="review-author">David Brown <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">Had a question about sizing and got a response within hours. The bracelet itself is even more beautiful than the photos.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 7 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 month ago</span>
+          <h4 class="review-title">Excellent Customer Service</h4>
+          <div class="review-author">David Brown <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Had a question about sizing and got a response within hours. The bracelet itself is even more beautiful than the photos.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 8 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">3 weeks ago</span>
-        <h4 class="review-title">Stunning Color</h4>
-        <div class="review-author">Rachel Green <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">The red is so rich and deep. It's not bright and cheap-looking at all. Very premium feel.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 8 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">3 weeks ago</span>
+          <h4 class="review-title">Stunning Color</h4>
+          <div class="review-author">Rachel Green <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">The red is so rich and deep. It's not bright and cheap-looking at all. Very premium feel.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 9 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">2 months ago</span>
-        <h4 class="review-title">Great Investment</h4>
-        <div class="review-author">Laura Miller <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">I've bought many cinnabar pieces over the years and this is by far the best quality. You can tell it's authentic.</p>
-      </div>
-      {% endif %}
+        {% if review_count >= 9 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">2 months ago</span>
+          <h4 class="review-title">Great Investment</h4>
+          <div class="review-author">Laura Miller <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">I've bought many cinnabar pieces over the years and this is by far the best quality. You can tell it's authentic.</p>
+        </div>
+        {% endif %}
 
-      {% if review_count >= 10 %}
-      <div class="review-item review-item-hidden">
-        <div class="review-stars">★★★★★</div>
-        <span class="review-date">1 week ago</span>
-        <h4 class="review-title">Perfect Size</h4>
-        <div class="review-author">Anna Smith <span class="verified-badge">✓ Verified Buyer</span></div>
-        <p class="review-content">Fits my wrist perfectly. Not too tight, not too loose. The adjustable string makes it really easy to customize.</p>
-      </div>
+        {% if review_count >= 10 %}
+        <div class="review-item review-item-hidden">
+          <div class="review-stars">★★★★★</div>
+          <span class="review-date">1 week ago</span>
+          <h4 class="review-title">Perfect Size</h4>
+          <div class="review-author">Anna Smith <span class="verified-badge">✓ Verified Buyer</span></div>
+          <p class="review-content">Fits my wrist perfectly. Not too tight, not too loose. The adjustable string makes it really easy to customize.</p>
+        </div>
+        {% endif %}
       {% endif %}
     </div>
 
+    {% if review_count > 2 %}
     <button class="read-all-link" id="toggleReviews">Read all {{ review_count }} reviews</button>
+    {% endif %}
   </div>
 </section>
 
@@ -211,6 +223,14 @@
 
 .review-item-hidden {
   display: none;
+}
+
+.empty-reviews {
+  padding: 60px 0;
+  text-align: center;
+  color: #8A7A72;
+  font-size: 16px;
+  border-bottom: 1px solid #E8E0D5;
 }
 
 .review-stars {
@@ -311,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "range",
       "id": "review_count",
       "label": "Number of Reviews to Display",
-      "min": 2,
+      "min": 0,
       "max": 10,
       "step": 1,
       "default": 6
