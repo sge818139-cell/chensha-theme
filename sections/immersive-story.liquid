@@ -210,6 +210,14 @@
   text-align: center;
   max-width: 400px;
   padding: 40px;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(30px);
+}
+
+.screen-content.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .eyebrow {
@@ -334,44 +342,39 @@
   if (!section) return;
 
   const layers = section.querySelectorAll('.bg-layer');
-  const screens = section.querySelectorAll('.journey-screen');
-  const introContent = section.querySelector('.intro-screen .screen-content');
+  const contents = section.querySelectorAll('.screen-content');
 
-  function updateScroll() {
+  // 用 Intersection Observer 处理淡入淡出
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      } else {
+        entry.target.classList.remove('active');
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  contents.forEach(function(content) {
+    observer.observe(content);
+  });
+
+  // 简单的视差效果
+  function updateParallax() {
     const scrollY = window.scrollY;
-    const windowH = window.innerHeight;
-    
-    // 计算当前滚动了多少个屏幕
-    const totalScroll = section.offsetTop + (screens.length - 1) * windowH;
-    const scrolled = Math.max(0, scrollY - section.offsetTop);
-    const progress = Math.min(1, scrolled / totalScroll);
-
-    // 背景层视差移动
-    const speeds = [0.1, 0.2, 0.35, 0.5];
+    const speeds = [0.05, 0.1, 0.15, 0.2];
     for (let i = 0; i < layers.length; i++) {
       if (layers[i]) {
-        layers[i].style.transform = 'translateY(' + (progress * speeds[i] * windowH) + 'px)';
-      }
-    }
-
-    // 场景内容淡入淡出
-    for (let i = 0; i < screens.length; i++) {
-      const screenTop = section.offsetTop + i * windowH;
-      const screenCenter = screenTop + windowH / 2;
-      const distance = Math.abs(scrollY + windowH / 2 - screenCenter);
-      const opacity = Math.max(0, 1 - distance / (windowH * 0.6));
-      
-      const content = screens[i].querySelector('.screen-content');
-      if (content) {
-        content.style.opacity = opacity;
-        content.style.transform = 'translateY(' + (distance * 0.1) + 'px)';
+        layers[i].style.transform = 'translateY(' + (scrollY * speeds[i]) + 'px)';
       }
     }
   }
 
-  window.addEventListener('scroll', updateScroll, { passive: true });
-  window.addEventListener('resize', updateScroll);
-  updateScroll();
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  window.addEventListener('resize', updateParallax);
+  updateParallax();
 })();
 </script>
 
