@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "pdp-product-info-cloisonne",
+      "settings": {}
+    },
+    "brand-story": {
+      "type": "pdp-brand-story-cloisonne",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "customer-reviews-cloisonne",
+      "settings": {}
+    },
+    "related": {
+      "type": "you-may-also-love",
+      "settings": {}
+    }
+  },
+  "order": ["main", "brand-story", "reviews", "related"]
+}

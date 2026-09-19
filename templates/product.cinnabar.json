@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "pdp-product-info-cinnabar",
+      "settings": {}
+    },
+    "brand-story": {
+      "type": "pdp-brand-story-cinnabar",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "customer-reviews-cinnabar",
+      "settings": {}
+    },
+    "related": {
+      "type": "you-may-also-love",
+      "settings": {}
+    }
+  },
+  "order": ["main", "brand-story", "reviews", "related"]
+}
