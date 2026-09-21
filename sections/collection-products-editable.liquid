@@ -4,16 +4,43 @@
     <aside class="collection-sidebar">
       <div class="filter-title">{{ section.settings.filter_title }}</div>
       <div class="filter-group">
-        <div class="filter-label">{{ section.settings.filter_1 }} <span class="filter-plus">+</span></div>
+        <div class="filter-label" data-filter="intention">{{ section.settings.filter_1 }} <span class="filter-plus">+</span></div>
+        <div class="filter-options" data-options="intention">
+          <label class="filter-option"><input type="checkbox" value="protection"> Protection</label>
+          <label class="filter-option"><input type="checkbox" value="fortune"> Fortune</label>
+          <label class="filter-option"><input type="checkbox" value="love"> Love & Harmony</label>
+          <label class="filter-option"><input type="checkbox" value="health"> Health</label>
+          <label class="filter-option"><input type="checkbox" value="wisdom"> Wisdom</label>
+        </div>
       </div>
       <div class="filter-group">
-        <div class="filter-label">{{ section.settings.filter_2 }} <span class="filter-plus">+</span></div>
+        <div class="filter-label" data-filter="symbol">{{ section.settings.filter_2 }} <span class="filter-plus">+</span></div>
+        <div class="filter-options" data-options="symbol">
+          <label class="filter-option"><input type="checkbox" value="pixiu"> Pixiu</label>
+          <label class="filter-option"><input type="checkbox" value="gourd"> Hulu Gourd</label>
+          <label class="filter-option"><input type="checkbox" value="knot"> Peace Knot</label>
+          <label class="filter-option"><input type="checkbox" value="beads"> Beads</label>
+          <label class="filter-option"><input type="checkbox" value="pingankou"> Ping An Kou</label>
+        </div>
       </div>
       <div class="filter-group">
-        <div class="filter-label">{{ section.settings.filter_3 }} <span class="filter-plus">+</span></div>
+        <div class="filter-label" data-filter="material">{{ section.settings.filter_3 }} <span class="filter-plus">+</span></div>
+        <div class="filter-options" data-options="material">
+          <label class="filter-option"><input type="checkbox" value="pure-cinnabar"> Pure Cinnabar</label>
+          <label class="filter-option"><input type="checkbox" value="cinnabar-gold"> Cinnabar + Gold</label>
+          <label class="filter-option"><input type="checkbox" value="cinnabar-jade"> Cinnabar + Jade</label>
+          <label class="filter-option"><input type="checkbox" value="black-cord"> Black Cord</label>
+          <label class="filter-option"><input type="checkbox" value="brown-cord"> Brown Cord</label>
+        </div>
       </div>
       <div class="filter-group">
-        <div class="filter-label">{{ section.settings.filter_4 }} <span class="filter-plus">+</span></div>
+        <div class="filter-label" data-filter="price">{{ section.settings.filter_4 }} <span class="filter-plus">+</span></div>
+        <div class="filter-options" data-options="price">
+          <label class="filter-option"><input type="checkbox" value="under-100"> Under $100</label>
+          <label class="filter-option"><input type="checkbox" value="100-200"> $100 - $200</label>
+          <label class="filter-option"><input type="checkbox" value="200-300"> $200 - $300</label>
+          <label class="filter-option"><input type="checkbox" value="over-300"> $300+</label>
+        </div>
       </div>
     </aside>
 
@@ -86,3 +113,196 @@
   }
 }
 {% endschema %}
+
+<style>
+.collection-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  padding-right: 40px;
+}
+
+.filter-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #2A1F1A;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+.filter-group {
+  border-bottom: 1px solid #E8E0D5;
+  padding: 15px 0;
+}
+
+.filter-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #5A4A42;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.filter-label:hover {
+  color: #9E2B25;
+}
+
+.filter-plus {
+  font-size: 18px;
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+
+.filter-group.active .filter-plus {
+  transform: rotate(45deg);
+}
+
+.filter-options {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.filter-group.active .filter-options {
+  max-height: 300px;
+  padding-top: 15px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #8A7A72;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.filter-option:hover {
+  color: #9E2B25;
+}
+
+.filter-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #9E2B25;
+}
+
+.collection-layout {
+  display: flex;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+.collection-main {
+  flex: 1;
+}
+
+.collection-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+.collection-count, .collection-sort {
+  font-size: 14px;
+  color: #8A7A72;
+  letter-spacing: 1px;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.pcard {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(158, 43, 37, 0.1);
+}
+
+.pcard-img {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #FAF6F0;
+}
+
+.pcard-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.pcard:hover .pcard-img img {
+  transform: scale(1.05);
+}
+
+.pcard-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.pcard-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #2A1F1A;
+  margin-bottom: 8px;
+}
+
+.pcard-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pcard-price {
+  font-size: 14px;
+  color: #9E2B25;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .collection-layout {
+    flex-direction: column;
+  }
+  .collection-sidebar {
+    width: 100%;
+    padding-right: 0;
+  }
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .prod-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 筛选展开/收起
+  document.querySelectorAll('.filter-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+      const group = this.closest('.filter-group');
+      group.classList.toggle('active');
+    });
+  });
+});
+</script>
