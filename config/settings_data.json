@@ -294,7 +294,8 @@
           "explore-more-0": {
             "type": "card",
             "settings": {
-              "title": "BRACELETS",
+              "image": "shopify://shop_images/custom-bracelets.jpg",
+              "title": "纏腕 | The Wrist",
               "subtitle": "Shop Now",
               "link": ""
             }
@@ -302,7 +303,8 @@
           "explore-more-1": {
             "type": "card",
             "settings": {
-              "title": "NECKLACES",
+              "image": "shopify://shop_images/custom-necklaces.jpg",
+              "title": "墜心 | The Heart",
               "subtitle": "Shop Now",
               "link": ""
             }
@@ -310,7 +312,8 @@
           "explore-more-2": {
             "type": "card",
             "settings": {
-              "title": "RINGS",
+              "image": "shopify://shop_images/custom-rings.jpg",
+              "title": "執指 | The Band",
               "subtitle": "Shop Now",
               "link": ""
             }
@@ -318,7 +321,8 @@
           "explore-more-3": {
             "type": "card",
             "settings": {
-              "title": "CHARMS",
+              "image": "shopify://shop_images/custom-charms.jpg",
+              "title": "藏福 | The Talisman",
               "subtitle": "Shop Now",
               "link": ""
             }
