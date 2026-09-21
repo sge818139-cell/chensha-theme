@@ -376,13 +376,33 @@
               "price": "$168.00",
               "link": "shopify://products/cinnabar-turquoise-gold-accent-bracelet-朱砂松石金珠手串"
             }
+          },
+          "product_mXbTk7": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/custom-product-2.jpg",
+              "title": "如玉 | THE PURE",
+              "price": "$0.00",
+              "link": ""
+            }
+          },
+          "product_FmHRQC": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/custom-product-3.jpg",
+              "title": "守財 | THE GUARD",
+              "price": "$0.00",
+              "link": ""
+            }
           }
         },
         "block_order": [
           "collection-products-editable-1",
           "collection-products-editable-2",
           "collection-products-editable-3",
-          "collection-products-editable-4"
+          "collection-products-editable-4",
+          "product_mXbTk7",
+          "product_FmHRQC"
         ],
         "settings": {
           "filter_title": "FILTER BY",
