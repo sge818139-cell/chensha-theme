@@ -50,24 +50,19 @@
         <div class="collection-count">{{ section.settings.product_count_text }}</div>
         <div class="collection-sort">{{ section.settings.sort_text }}</div>
       </div>
-      <div class="prod-grid">
-        {% for block in section.blocks %}
-          {% assign product_index = forloop.index0 | plus: 1 %}
-          <div class="pcard">
+      <div class="prod-grid" id="productGrid">
+        {% for product in collection.products %}
+          <div class="pcard" data-tags="{{ product.tags | join: ',' }}" data-price="{{ product.price | money_without_currency | replace: ',', '' }}">
             <div class="pcard-img">
-              {% if block.settings.image != blank %}
-                <a href="{{ block.settings.link }}">
-                  <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}">
-                </a>
-              {% else %}
-                <a href="{{ block.settings.link }}">
-                  <img src="{{ 'p0' | append: product_index | append: '.jpg' | asset_url }}" alt="{{ block.settings.title | escape }}">
-                </a>
-              {% endif %}
+              <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
+                {% endif %}
+              </a>
             </div>
             <div class="pcard-body">
-              <div class="pcard-name"><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></div>
-              <div class="pcard-price">{{ block.settings.price }}</div>
+              <div class="pcard-name"><a href="{{ product.url }}">{{ product.title }}</a></div>
+              <div class="pcard-price">{{ product.price | money }}</div>
             </div>
           </div>
         {% endfor %}
@@ -85,32 +80,8 @@
     { "type": "text", "id": "filter_2", "label": "Filter 2", "default": "Symbol" },
     { "type": "text", "id": "filter_3", "label": "Filter 3", "default": "Material" },
     { "type": "text", "id": "filter_4", "label": "Filter 4", "default": "Price" },
-    { "type": "text", "id": "product_count_text", "label": "Product Count Text", "default": "9 RESULTS" },
     { "type": "text", "id": "sort_text", "label": "Sort Text", "default": "SORT BY: NEWEST ↓" }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Product Image" },
-        { "type": "text", "id": "title", "label": "Product Title", "default": "Product Name" },
-        { "type": "text", "id": "price", "label": "Price", "default": "$0.00" },
-        { "type": "url", "id": "link", "label": "Product Link" }
-      ]
-    }
-  ],
-  "max_blocks": 12,
-  "default": {
-    "blocks": [
-      { "type": "product", "settings": { "title": "CINNABAR BRACELETS", "price": "$168.00" } },
-      { "type": "product", "settings": { "title": "CLOISONNÉ & GOLD", "price": "$178.00" } },
-      { "type": "product", "settings": { "title": "GOLD GOURD CHARM", "price": "$188.00" } },
-      { "type": "product", "settings": { "title": "TURQUOISE & GOLD", "price": "$158.00" } },
-      { "type": "product", "settings": { "title": "NORTH STAR BRACELET", "price": "$168.00" } },
-      { "type": "product", "settings": { "title": "DIVINE EYE CHARM", "price": "$188.00" } }
-    ]
-  }
+  ]
 }
 {% endschema %}
 
@@ -303,6 +274,70 @@ document.addEventListener('DOMContentLoaded', function() {
       const group = this.closest('.filter-group');
       group.classList.toggle('active');
     });
+  });
+
+  // 产品筛选功能
+  const productCards = document.querySelectorAll('#productGrid .pcard');
+  const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+
+  function filterProducts() {
+    const activeFilters = {
+      intention: [],
+      symbol: [],
+      material: [],
+      price: []
+    };
+
+    // 收集选中的筛选条件
+    checkboxes.forEach(function(cb) {
+      if (cb.checked) {
+        const group = cb.closest('.filter-options');
+        const type = group.dataset.options;
+        activeFilters[type].push(cb.value);
+      }
+    });
+
+    // 过滤产品
+    productCards.forEach(function(card) {
+      const tags = card.dataset.tags.split(',').map(t => t.trim());
+      const price = parseFloat(card.dataset.price);
+      let show = true;
+
+      // 检查每个筛选维度
+      for (const [filterType, values] of Object.entries(activeFilters)) {
+        if (values.length === 0) continue;
+
+        if (filterType === 'price') {
+          // 价格筛选
+          let priceMatch = false;
+          values.forEach(function(range) {
+            if (range === 'under-100' && price < 100) priceMatch = true;
+            if (range === '100-200' && price >= 100 && price <= 200) priceMatch = true;
+            if (range === '200-300' && price >= 200 && price <= 300) priceMatch = true;
+            if (range === 'over-300' && price > 300) priceMatch = true;
+          });
+          if (!priceMatch) show = false;
+        } else {
+          // 标签筛选
+          const tagMatch = values.some(v => tags.includes(v));
+          if (!tagMatch) show = false;
+        }
+      }
+
+      card.style.display = show ? 'block' : 'none';
+    });
+
+    // 更新结果计数
+    const visibleCount = document.querySelectorAll('#productGrid .pcard:not([style*="display: none"])').length;
+    const countEl = document.querySelector('.collection-count');
+    if (countEl) {
+      countEl.textContent = visibleCount + ' RESULTS';
+    }
+  }
+
+  // 绑定筛选事件
+  checkboxes.forEach(function(cb) {
+    cb.addEventListener('change', filterProducts);
   });
 });
 </script>
