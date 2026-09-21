@@ -140,7 +140,8 @@
         "card_WHPaJJ": {
           "type": "card",
           "settings": {
-            "title": "BRACELETS",
+            "image": "shopify://shop_images/product-1-round-bead.jpg",
+            "title": "圓滿 | THE ETERNAL",
             "subtitle": "Shop Now",
             "link": ""
           }
@@ -148,7 +149,8 @@
         "card_tdx4FW": {
           "type": "card",
           "settings": {
-            "title": "BRACELETS",
+            "image": "shopify://shop_images/product-2-pixiu.jpg",
+            "title": "招財 | THE FORTUNE",
             "subtitle": "Shop Now",
             "link": ""
           }
@@ -156,7 +158,8 @@
         "card_b7b9Nb": {
           "type": "card",
           "settings": {
-            "title": "BRACELETS",
+            "image": "shopify://shop_images/product-3-pingankou.jpg",
+            "title": "平安 | THE PEACE",
             "subtitle": "Shop Now",
             "link": ""
           }
@@ -164,7 +167,8 @@
         "card_EnEw7x": {
           "type": "card",
           "settings": {
-            "title": "BRACELETS",
+            "image": "shopify://shop_images/product-4-hulu.jpg",
+            "title": "納福 | THE BLESSING",
             "subtitle": "Shop Now",
             "link": ""
           }
