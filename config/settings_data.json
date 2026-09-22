@@ -341,12 +341,21 @@
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
+          "product_FfUtcr": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/0916_1.jpg",
+              "title": "本源 | The Essence",
+              "price": "$1648",
+              "link": "shopify://products/collector-grade-natural-cinnabar-bracelet-收藏品质天然朱砂手串"
+            }
+          },
           "collection-products-editable-1": {
             "type": "product",
             "settings": {
               "image": "shopify://shop_images/0916_6.jpg",
               "title": "福祿 | The Gourd",
-              "price": "$178.00",
+              "price": "$1168",
               "link": "shopify://products/cinnabar-gold-gourd-charm-bracelet-朱砂金葫芦吹坠手串"
             }
           },
@@ -355,7 +364,7 @@
             "settings": {
               "image": "shopify://shop_images/0916_2.jpg",
               "title": "朝儀 | The Dynasty",
-              "price": "$188.00",
+              "price": "$898",
               "link": "shopify://products/cinnabar-cloisonne-enamel-charm-bracelet-朱砂掌丝珐琅手串"
             }
           },
@@ -364,7 +373,7 @@
             "settings": {
               "image": "shopify://shop_images/0916_3.jpg",
               "title": "心語 | The Whisper",
-              "price": "$158.00",
+              "price": "$520",
               "link": "shopify://products/cinnabar-woven-cord-bracelet-with-jade-cloud-clasp-朱砂编练手串-白玉祥云扣"
             }
           },
@@ -373,7 +382,7 @@
             "settings": {
               "image": "shopify://shop_images/0916_4.jpg",
               "title": "鎏金 | The Aurum",
-              "price": "$168.00",
+              "price": "$888",
               "link": "shopify://products/cinnabar-turquoise-gold-accent-bracelet-朱砂松石金珠手串"
             }
           },
@@ -382,7 +391,7 @@
             "settings": {
               "image": "shopify://shop_images/custom-product-2.jpg",
               "title": "如玉 | THE PURE",
-              "price": "$0.00",
+              "price": "$908",
               "link": ""
             }
           },
@@ -391,12 +400,13 @@
             "settings": {
               "image": "shopify://shop_images/custom-product-3.jpg",
               "title": "守財 | THE GUARD",
-              "price": "$0.00",
+              "price": "$818",
               "link": ""
             }
           }
         },
         "block_order": [
+          "product_FfUtcr",
           "collection-products-editable-1",
           "collection-products-editable-2",
           "collection-products-editable-3",
