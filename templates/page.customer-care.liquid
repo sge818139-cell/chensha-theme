@@ -1,5 +1,285 @@
 {% layout 'theme' %}
 
-<div class="page-customer-care">
-  {% section 'customer-care' %}
+<div class="customer-care-page">
+  <div class="container">
+    <div class="page-header text-center">
+      <h1>Customer Care</h1>
+      <p class="subtitle">Shipping, Returns & Frequently Asked Questions</p>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="shipping">Shipping Policy</button>
+      <button class="tab-btn" data-tab="returns">Return & Refund</button>
+      <button class="tab-btn" data-tab="faq">FAQ</button>
+    </div>
+
+    <div class="tab-content active" id="tab-shipping">
+      <div class="content-card">
+        <h2>Shipping Policy</h2>
+        
+        <div class="policy-block">
+          <h3>Order Processing</h3>
+          <p>All orders are carefully handcrafted and processed within 3–5 business days. Made-to-order pieces may require 7–10 business days for artisan craftsmanship before shipment.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Shipping Destinations & Estimates</h3>
+          <p><strong>United States:</strong> 7–14 business days, Free over $99</p>
+          <p><strong>Europe:</strong> 10–21 business days, Free over $129</p>
+          <p><strong>Asia Pacific:</strong> 5–10 business days, Free over $79</p>
+          <p><strong>Rest of World:</strong> 14–30 business days, Calculated at checkout</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Tracking Information</h3>
+          <p>Once your order ships, you will receive a confirmation email with a tracking number. You can track your package in real-time through the link provided.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Customs & Duties</h3>
+          <p>International orders may be subject to customs duties and import taxes, which are the responsibility of the customer. We are not responsible for any delays caused by customs clearance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-returns">
+      <div class="content-card">
+        <h2>Return & Refund Policy</h2>
+        
+        <div class="policy-block">
+          <h3>30-Day Return Window</h3>
+          <p>We want you to love your CHENSHA piece. If you're not completely satisfied, you may return your order within 30 days of delivery for a full refund or exchange.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Return Conditions</h3>
+          <ul>
+            <li>Items must be in original, unused condition</li>
+            <li>Original packaging and dust bag included</li>
+            <li>Proof of purchase required</li>
+          </ul>
+        </div>
+
+        <div class="policy-block notice-box">
+          <p><strong>Custom-designed pieces are final sale and cannot be returned or exchanged.</strong> Each creation is uniquely handcrafted to your specifications, making it non-resalable.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Refund Processing</h3>
+          <p>Once we receive and inspect your return, refunds are processed within 3–5 business days to your original payment method. Shipping costs are non-refundable.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Damaged or Defective Items</h3>
+          <p>If your item arrives damaged or defective, please contact us within 7 days of delivery with photos. We will arrange a free replacement or full refund.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-faq">
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is cinnabar? Is it safe?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Cinnabar (朱砂) is a naturally occurring mineral with over 2,000 years of history in Chinese culture. Our cinnabar pieces are processed to ensure safety — they contain stabilized cinnabar pigment sealed in a protective layer, making them completely safe for daily wear.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I measure my wrist size?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Wrap a flexible measuring tape around your wrist bone. Add 1–2 cm for a comfortable fit. Our bracelets are adjustable with a sliding knot for a perfect fit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I care for my cinnabar jewelry?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Remove before showering, swimming, or exercising. Avoid contact with perfumes and chemicals. Wipe gently with a soft dry cloth after wear.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I customize my bracelet?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Yes! We offer custom design services. Choose your beads, charms, cord color, and arrangement. Each custom piece ships within 7–10 business days. Custom orders are final sale.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+.customer-care-page {
+  padding: 80px 0;
+  background: #FAF6F0;
+  min-height: 80vh;
+}
+.customer-care-page .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.customer-care-page .page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.customer-care-page .page-header h1 {
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #2A1F1A;
+}
+.customer-care-page .page-header .subtitle {
+  color: #999;
+  font-size: 16px;
+}
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 12px 30px;
+  border: 1px solid #E8E0D5;
+  border-radius: 50px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  color: #666;
+}
+.tab-btn.active {
+  background: #9E2B25;
+  color: white;
+  border-color: #9E2B25;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.content-card {
+  background: white;
+  border-radius: 16px;
+  padding: 50px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.content-card h2 {
+  font-size: 28px;
+  color: #9E2B25;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+.policy-block {
+  margin-bottom: 25px;
+  line-height: 1.8;
+  color: #555;
+}
+.policy-block h3 {
+  font-size: 18px;
+  color: #2A1F1A;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.policy-block.notice-box {
+  background: #F4EDE2;
+  padding: 20px;
+  border-radius: 8px;
+}
+.faq-list {
+  margin-top: 20px;
+}
+.faq-item {
+  border-bottom: 1px solid #E8E0D5;
+  padding: 20px 0;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 500;
+  color: #2A1F1A;
+  transition: color 0.3s;
+}
+.faq-question:hover {
+  color: #9E2B25;
+}
+.faq-icon {
+  font-size: 24px;
+  color: #C9A24B;
+  font-weight: 300;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: #666;
+  line-height: 1.8;
+}
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  padding-top: 15px;
+}
+@media (max-width: 768px) {
+  .content-card {
+    padding: 30px 20px;
+  }
+  .customer-care-page .page-header h1 {
+    font-size: 32px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 标签页切换
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const tabName = this.dataset.tab;
+      
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      this.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    });
+  });
+
+  // FAQ 展开收起
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', function() {
+      item.classList.toggle('open');
+      const icon = item.querySelector('.faq-icon');
+      icon.textContent = item.classList.contains('open') ? '−' : '+';
+    });
+  });
+});
+</script>
