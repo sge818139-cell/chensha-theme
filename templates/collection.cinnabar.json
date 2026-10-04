@@ -15,7 +15,8 @@
         "eyebrow": "PRODUCTS",
         "title": "Regular style",
         "cn_title": "常 规 款",
-        "description": "Symbols of intention and beauty, crafted to be worn close and carry you through every chapter."
+        "description": "Symbols of intention and beauty, crafted to be worn close and carry you through every chapter.",
+        "image": "shopify://shop_images/all-products-hero.jpg"
       }
     },
     "products": {
