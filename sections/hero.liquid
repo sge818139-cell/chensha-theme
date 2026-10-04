@@ -9,6 +9,7 @@
     { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Shop the Collection" },
     { "type": "url", "id": "cta1_url", "label": "Primary CTA URL" },
     { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "Discover Our Story" },
+    { "type": "url", "id": "cta2_url", "label": "Secondary CTA URL" },
     { "type": "image_picker", "id": "image", "label": "Hero image" }
   ]
 }
@@ -21,7 +22,7 @@
       <p class="lead">{{ section.settings.lead }}</p>
       <div class="btn-row">
         <a href="{{ section.settings.cta1_url | default: '#' }}" class="btn btn-gold">{{ section.settings.cta1 }}</a>
-        <a href="#origin" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
+        <a href="{{ section.settings.cta2_url | default: '#' }}" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
       </div>
     </div>
     <div class="hero-visual">
