@@ -16,9 +16,9 @@
       
       <!-- 快捷筛选标签 -->
       <div class="filter-tags">
-        <a href="/collections/all" class="filter-tag active">All</a>
-        <a href="/collections/cinnabar" class="filter-tag">Conventional</a>
-        <a href="/collections/default" class="filter-tag">Customized</a>
+        <a href="{{ section.settings.all_link }}" class="filter-tag active">All</a>
+        <a href="{{ section.settings.conventional_link }}" class="filter-tag">Conventional</a>
+        <a href="{{ section.settings.customized_link }}" class="filter-tag">Customized</a>
       </div>
       
       <div class="toolbar-note">Handcrafted with intention</div>
@@ -80,6 +80,26 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Banner Image"
+    },
+    {
+      "type": "header",
+      "content": "Navigation Links"
+    },
+    {
+      "type": "url",
+      "id": "all_link",
+      "label": "All Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "url",
+      "id": "conventional_link",
+      "label": "Conventional Collection Link"
+    },
+    {
+      "type": "url",
+      "id": "customized_link",
+      "label": "Customized Collection Link"
     }
   ]
 }
