@@ -1,28 +1,17 @@
 <section class="all-products">
   <!-- Hero区域 -->
   <div class="hero-banner">
-    <div class="hero-decor left"></div>
+    <div class="hero-ink-bg"></div>
     <div class="hero-content">
-      <div class="hero-divider"></div>
       <h1>{{ section.settings.heading }}</h1>
       <p class="subtitle">{{ section.settings.subheading }}</p>
-      <div class="hero-divider"></div>
     </div>
-    <div class="hero-decor right"></div>
   </div>
 
   <div class="container">
     <!-- 顶部工具栏 -->
     <div class="collection-toolbar">
-      <div class="product-count"><span id="productCount">{{ collections.all.products_count }}</span> PRODUCTS</div>
-      
-      <!-- 快捷筛选标签 -->
-      <div class="filter-tags">
-        <a href="javascript:void(0)" class="filter-tag active" data-filter="all">All</a>
-        <a href="javascript:void(0)" class="filter-tag" data-filter="bracelets">Bracelets</a>
-        <a href="javascript:void(0)" class="filter-tag" data-filter="pendants">Pendants</a>
-        <a href="javascript:void(0)" class="filter-tag" data-filter="custom">Custom</a>
-      </div>
+      <div class="product-count">{{ collections.all.products_count }} PRODUCTS</div>
       
       <div class="sort-dropdown">
         <label>SORT BY:</label>
@@ -42,7 +31,7 @@
     <div class="products-grid" id="productsGrid">
       {% assign all_products = collections.all.products %}
       {% for product in all_products %}
-        <div class="product-card" data-category="{% if product.title contains 'Bracelet' or product.title contains 'bracelet' %}bracelets{% elsif product.title contains 'Pendant' or product.title contains 'pendant' %}pendants{% elsif product.title contains 'Custom' or product.title contains 'custom' %}custom{% else %}bracelets{% endif %}" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
+        <div class="product-card" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
           <div class="product-image">
             <a href="{{ product.url }}">
               {% if product.featured_image %}
@@ -108,10 +97,10 @@
   font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
 }
 
-/* Hero区域 */
+/* Hero区域 - 水墨风 */
 .hero-banner {
   position: relative;
-  padding: 80px 0 60px;
+  padding: 40px 0 50px;
   background: #FAF6F0;
   display: flex;
   align-items: center;
@@ -120,25 +109,16 @@
   overflow: hidden;
 }
 
-.hero-decor {
+.hero-ink-bg {
   position: absolute;
-  width: 120px;
-  height: 120px;
-  opacity: 0.1;
-}
-
-.hero-decor.left {
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: radial-gradient(circle, #9E2B25 0%, transparent 70%);
-}
-
-.hero-decor.right {
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: radial-gradient(circle, #C9A24B 0%, transparent 70%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(42, 31, 26, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(158, 43, 37, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(201, 162, 75, 0.05) 0%, transparent 40%);
 }
 
 .hero-content {
@@ -149,17 +129,10 @@
   z-index: 1;
 }
 
-.hero-divider {
-  width: 60px;
-  height: 1px;
-  background: #C9A24B;
-  margin: 20px auto;
-}
-
 .hero-content h1 {
   font-size: 42px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   letter-spacing: 0.1em;
   color: #2A1F1A;
 }
@@ -183,7 +156,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
-  padding: 15px 0;
+  padding: 20px 0;
   border-top: 1px solid #E0D5C8;
   border-bottom: 1px solid #E0D5C8;
   flex-wrap: wrap;
@@ -195,29 +168,6 @@
   color: #8A7A72;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-/* 快捷筛选标签 */
-.filter-tags {
-  display: flex;
-  gap: 20px;
-}
-
-.filter-tag {
-  font-size: 13px;
-  color: #8A7A72;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  padding: 5px 0;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.filter-tag:hover,
-.filter-tag.active {
-  color: #9E2B25;
-  border-bottom-color: #9E2B25;
 }
 
 .sort-dropdown {
@@ -243,14 +193,14 @@
   appearance: none;
   -webkit-appearance: none;
   padding: 8px 35px 8px 15px;
-  border: 1px solid #E0D5C8;
-  background: white;
+  border: none;
+  border-bottom: 1px solid #C9A24B;
+  background: transparent;
   font-size: 13px;
   color: #2A1F1A;
   cursor: pointer;
   font-family: inherit;
-  border-radius: 2px;
-  min-width: 160px;
+  min-width: 140px;
 }
 
 .custom-arrow {
@@ -433,10 +383,6 @@
   .hero-content h1 {
     font-size: 36px;
   }
-  .hero-decor {
-    width: 80px;
-    height: 80px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -445,7 +391,7 @@
     gap: 20px;
   }
   .hero-banner {
-    padding: 60px 0 40px;
+    padding: 30px 0 40px;
   }
   .hero-content h1 {
     font-size: 28px;
@@ -456,13 +402,11 @@
   .collection-toolbar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 15px 0;
   }
   .pagination {
     flex-wrap: wrap;
     gap: 10px;
-  }
-  .hero-decor {
-    display: none;
   }
 }
 
@@ -478,24 +422,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const productsPerPage = 8;
   const productCards = Array.from(document.querySelectorAll('#productsGrid .product-card'));
   const pagination = document.getElementById('pagination');
-  const productCountEl = document.getElementById('productCount');
-  const filterTags = document.querySelectorAll('.filter-tag');
   const sortSelect = document.getElementById('sortSelect');
   
-  let currentFilter = 'all';
   let currentSort = 'manual';
   let currentPage = 1;
 
-  function getFilteredProducts() {
-    let filtered = productCards;
+  function getSortedProducts() {
+    let sorted = [...productCards];
     
-    // 筛选
-    if (currentFilter !== 'all') {
-      filtered = filtered.filter(card => card.dataset.category === currentFilter);
-    }
-    
-    // 排序
-    filtered.sort((a, b) => {
+    sorted.sort((a, b) => {
       if (currentSort === 'price-asc') {
         return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
       } else if (currentSort === 'price-desc') {
@@ -506,12 +441,12 @@ document.addEventListener('DOMContentLoaded', function() {
       return 0; // manual
     });
     
-    return filtered;
+    return sorted;
   }
 
   function showPage(page) {
-    const filtered = getFilteredProducts();
-    const totalPages = Math.ceil(filtered.length / productsPerPage);
+    const sorted = getSortedProducts();
+    const totalPages = Math.ceil(sorted.length / productsPerPage);
     currentPage = Math.min(page, totalPages);
     
     const start = (currentPage - 1) * productsPerPage;
@@ -521,14 +456,11 @@ document.addEventListener('DOMContentLoaded', function() {
     productCards.forEach(card => card.style.display = 'none');
     
     // 显示当前页的产品
-    filtered.forEach((card, index) => {
+    sorted.forEach((card, index) => {
       if (index >= start && index < end) {
         card.style.display = 'block';
       }
     });
-    
-    // 更新产品计数
-    productCountEl.textContent = filtered.length;
     
     renderPagination(totalPages);
   }
@@ -568,16 +500,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-
-  // 筛选标签点击
-  filterTags.forEach(tag => {
-    tag.addEventListener('click', function() {
-      filterTags.forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-      currentFilter = this.dataset.filter;
-      showPage(1);
-    });
-  });
 
   // 排序下拉框
   sortSelect.addEventListener('change', function() {
