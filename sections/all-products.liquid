@@ -10,63 +10,41 @@
 
   <div class="container">
     <!-- 产品网格 -->
-    <div class="products-grid">
+    <div class="products-grid" id="productsGrid">
       {% assign all_products = collections.all.products %}
-      {% paginate all_products by 8 %}
-        {% for product in paginate.products %}
-          <div class="product-card">
-            <div class="product-image">
-              <a href="{{ product.url }}">
-                {% if product.featured_image %}
-                  <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
-                {% else %}
-                  <div class="placeholder-img">No Image</div>
-                {% endif %}
-              </a>
-              <!-- 产品标签 -->
-              {% if product.tags.size > 0 %}
-                <div class="product-badges">
-                  {% for tag in product.tags limit: 1 %}
-                    <span class="badge">{{ tag }}</span>
-                  {% endfor %}
-                </div>
+      {% for product in all_products %}
+        <div class="product-card">
+          <div class="product-image">
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
+              {% else %}
+                <div class="placeholder-img">No Image</div>
               {% endif %}
-              <!-- Hover时的快速查看按钮 -->
-              <div class="quick-view">
-                <a href="{{ product.url }}" class="quick-view-btn">View Details</a>
+            </a>
+            <!-- 产品标签 -->
+            {% if product.tags.size > 0 %}
+              <div class="product-badges">
+                {% for tag in product.tags limit: 1 %}
+                  <span class="badge">{{ tag }}</span>
+                {% endfor %}
               </div>
-            </div>
-            <div class="product-info">
-              <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
-              <p class="product-price">{{ product.price | money }}</p>
+            {% endif %}
+            <!-- Hover时的快速查看按钮 -->
+            <div class="quick-view">
+              <a href="{{ product.url }}" class="quick-view-btn">View Details</a>
             </div>
           </div>
-        {% endfor %}
-      {% endpaginate %}
+          <div class="product-info">
+            <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+            <p class="product-price">{{ product.price | money }}</p>
+          </div>
+        </div>
+      {% endfor %}
     </div>
 
     <!-- 分页 -->
-    {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {% if paginate.previous %}
-          <a href="{{ paginate.previous.url }}" class="page-link prev">‹ Previous</a>
-        {% endif %}
-        
-        <div class="page-numbers">
-          {% for part in paginate.parts %}
-            {% if part.is_link %}
-              <a href="{{ part.url }}" class="page-number">{{ part.title }}</a>
-            {% else %}
-              <span class="page-number current">{{ part.title }}</span>
-            {% endif %}
-          {% endfor %}
-        </div>
-        
-        {% if paginate.next %}
-          <a href="{{ paginate.next.url }}" class="page-link next">Next ›</a>
-        {% endif %}
-      </div>
-    {% endif %}
+    <div class="pagination" id="pagination"></div>
   </div>
 </section>
 
@@ -276,6 +254,7 @@
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .page-link:hover {
@@ -300,6 +279,7 @@
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .page-number:hover {
@@ -347,3 +327,72 @@
   }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const productsPerPage = 8;
+  const productCards = document.querySelectorAll('#productsGrid .product-card');
+  const pagination = document.getElementById('pagination');
+  const totalPages = Math.ceil(productCards.length / productsPerPage);
+  let currentPage = 1;
+
+  function showPage(page) {
+    currentPage = page;
+    const start = (page - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    
+    productCards.forEach((card, index) => {
+      if (index >= start && index < end) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    renderPagination();
+  }
+
+  function renderPagination() {
+    if (totalPages <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
+
+    let html = '';
+    
+    // 上一页
+    if (currentPage > 1) {
+      html += `<a class="page-link prev" data-page="${currentPage - 1}">‹ Previous</a>`;
+    }
+    
+    // 页码
+    html += '<div class="page-numbers">';
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === currentPage) {
+        html += `<span class="page-number current">${i}</span>`;
+      } else {
+        html += `<a class="page-number" data-page="${i}">${i}</a>`;
+      }
+    }
+    html += '</div>';
+    
+    // 下一页
+    if (currentPage < totalPages) {
+      html += `<a class="page-link next" data-page="${currentPage + 1}">Next ›</a>`;
+    }
+    
+    pagination.innerHTML = html;
+    
+    // 绑定点击事件
+    pagination.querySelectorAll('[data-page]').forEach(el => {
+      el.addEventListener('click', function() {
+        showPage(parseInt(this.dataset.page));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // 初始化
+  showPage(1);
+});
+</script>
