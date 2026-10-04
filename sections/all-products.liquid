@@ -1,11 +1,20 @@
 <section class="all-products">
-  <!-- Hero区域 -->
-  <div class="hero-banner">
-    <div class="hero-ink-bg"></div>
-    <div class="hero-cinnabar"></div>
-    <div class="hero-content">
-      <h1>{{ section.settings.heading }}</h1>
-      <p class="subtitle">{{ section.settings.subheading }}</p>
+  <!-- Hero区域 - 左右布局 -->
+  <div class="collection-hero">
+    <div class="container collection-hero-grid">
+      <div class="collection-hero-text">
+        <div class="sec-eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1 class="collection-hero-title">{{ section.settings.title }}<span class="cn-title">{{ section.settings.cn_title }}</span></h1>
+        <div class="hero-divider"></div>
+        <p class="collection-hero-desc">{{ section.settings.description }}</p>
+      </div>
+      <div class="collection-hero-img">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | escape }}">
+        {% else %}
+          <img src="{{ 'collection-hero.jpg' | asset_url }}" alt="{{ section.settings.title | escape }}">
+        {% endif %}
+      </div>
     </div>
   </div>
 
@@ -28,7 +37,7 @@
     <div class="products-grid" id="productsGrid">
       {% assign all_products = collections.all.products %}
       {% for product in all_products %}
-        <div class="product-card" data-category="{% if product.title contains 'Bracelet' or product.title contains 'bracelet' %}bracelets{% elsif product.title contains 'Pendant' or product.title contains 'pendant' %}pendants{% else %}bracelets{% endif %}" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
+        <div class="product-card" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
           <div class="product-image">
             <a href="{{ product.url }}">
               {% if product.featured_image %}
@@ -64,23 +73,11 @@
 {
   "name": "All Products",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Page Heading",
-      "default": "Our Collection"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Page Subheading",
-      "default": "Discover the Ancient Power of Cinnabar"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Banner Image"
-    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE CHENSHA COLLECTION" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Our Full Collection" },
+    { "type": "text", "id": "cn_title", "label": "Chinese Title", "default": "全 部 作 品" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Every CHENSHA piece begins with a belief — that what you wear should carry meaning beyond adornment. Our cinnabar is hand-selected, hand-polished, and hand-assembled by artisans who treat each bead as a small ritual." },
+    { "type": "image_picker", "id": "image", "label": "Hero Image" },
     {
       "type": "header",
       "content": "Navigation Links"
@@ -114,63 +111,74 @@
   font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
 }
 
-/* Hero区域 - 水墨风 */
-.hero-banner {
-  position: relative;
-  padding: 70px 0 80px;
+/* Collection Hero - 左右布局 */
+.collection-hero {
+  padding: 60px 0 50px;
   background: #FAF6F0;
-  display: flex;
+}
+
+.collection-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
-  justify-content: center;
+}
+
+.collection-hero-text {
+  padding-right: 20px;
+}
+
+.sec-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A24B;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.collection-hero-title {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #2A1F1A;
+  margin-bottom: 0;
+}
+
+.collection-hero-title .cn-title {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: #9E2B25;
+  margin-top: 10px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.hero-divider {
+  width: 50px;
+  height: 2px;
+  background: #C9A24B;
+  margin: 25px 0;
+}
+
+.collection-hero-desc {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5A4A42;
   margin: 0;
+  font-weight: 300;
+}
+
+.collection-hero-img {
+  aspect-ratio: 4/3;
   overflow: hidden;
 }
 
-.hero-ink-bg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.collection-hero-img img {
+  width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(ellipse at 15% 85%, rgba(42, 31, 26, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(42, 31, 26, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 95%, rgba(42, 31, 26, 0.07) 0%, transparent 45%);
-}
-
-.hero-cinnabar {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(158, 43, 37, 0.08) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(60px);
-}
-
-.hero-content {
-  text-align: center;
-  color: #2A1F1A;
-  padding: 0 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content h1 {
-  font-size: 42px;
-  font-weight: 500;
-  margin-bottom: 15px;
-  letter-spacing: 0.1em;
-  color: #3A2520;
-}
-
-.hero-content .subtitle {
-  font-size: 15px;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  color: #8A7A72;
+  object-fit: cover;
 }
 
 .all-products .container {
@@ -396,28 +404,28 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-  .hero-content h1 {
-    font-size: 36px;
-  }
-  .hero-cinnabar {
-    width: 200px;
-    height: 200px;
+  .collection-hero-title {
+    font-size: 38px;
   }
 }
 
 @media (max-width: 768px) {
+  .collection-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .collection-hero-text {
+    padding-right: 0;
+  }
+  .collection-hero-title {
+    font-size: 32px;
+  }
+  .collection-hero-title .cn-title {
+    font-size: 20px;
+  }
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
-  .hero-banner {
-    padding: 30px 0 40px;
-  }
-  .hero-content h1 {
-    font-size: 28px;
-  }
-  .hero-content .subtitle {
-    font-size: 14px;
   }
   .collection-toolbar {
     flex-direction: column;
@@ -442,24 +450,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const productsPerPage = 8;
   const productCards = Array.from(document.querySelectorAll('#productsGrid .product-card'));
   const pagination = document.getElementById('pagination');
-  const filterTags = document.querySelectorAll('.filter-tag');
   
-  let currentFilter = 'all';
   let currentPage = 1;
 
-  function getFilteredProducts() {
-    let filtered = productCards;
-    
-    if (currentFilter !== 'all') {
-      filtered = filtered.filter(card => card.dataset.category === currentFilter);
-    }
-    
-    return filtered;
-  }
-
   function showPage(page) {
-    const filtered = getFilteredProducts();
-    const totalPages = Math.ceil(filtered.length / productsPerPage);
+    const totalPages = Math.ceil(productCards.length / productsPerPage);
     currentPage = Math.min(page, totalPages);
     
     const start = (currentPage - 1) * productsPerPage;
@@ -469,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
     productCards.forEach(card => card.style.display = 'none');
     
     // 显示当前页的产品
-    filtered.forEach((card, index) => {
+    productCards.forEach((card, index) => {
       if (index >= start && index < end) {
         card.style.display = 'block';
       }
@@ -513,16 +508,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-
-  // 筛选标签点击
-  filterTags.forEach(tag => {
-    tag.addEventListener('click', function() {
-      filterTags.forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-      currentFilter = this.dataset.filter;
-      showPage(1);
-    });
-  });
 
   // 初始化
   showPage(1);
