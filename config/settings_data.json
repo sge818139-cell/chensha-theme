@@ -440,7 +440,7 @@
           "finale_title": "Thank You for Choosing CHENSHA",
           "finale_desc": "Carry a piece of Chinese heritage with you.",
           "cta_button": "EXPLORE MORE",
-          "cta_link": "shopify://collections/cloisonne-gold"
+          "cta_link": "shopify://pages/customer-care"
         }
       },
       "product-tabs": {
@@ -509,8 +509,6 @@
       "all-products": {
         "type": "all-products",
         "settings": {
-          "heading": "Our Collection",
-          "subheading": "Discover our handcrafted cinnabar pieces",
           "all_link": "shopify://collections/all",
           "conventional_link": "shopify://collections/cloisonne-gold",
           "customized_link": "shopify://collections/original"
