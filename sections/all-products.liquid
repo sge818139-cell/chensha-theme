@@ -1,35 +1,37 @@
 <section class="all-products">
   <!-- Hero区域 -->
   <div class="hero-banner">
+    <div class="hero-decor left"></div>
     <div class="hero-content">
       <div class="hero-divider"></div>
       <h1>{{ section.settings.heading }}</h1>
       <p class="subtitle">{{ section.settings.subheading }}</p>
       <div class="hero-divider"></div>
     </div>
+    <div class="hero-decor right"></div>
   </div>
 
   <div class="container">
     <!-- 顶部工具栏 -->
     <div class="collection-toolbar">
-      <div class="product-count">{{ collections.all.products_count }} PRODUCTS</div>
+      <div class="product-count"><span id="productCount">{{ collections.all.products_count }}</span> PRODUCTS</div>
       
       <!-- 快捷筛选标签 -->
       <div class="filter-tags">
-        <a href="/collections/all" class="filter-tag active">All</a>
-        <a href="/collections/all?sort_by=manual" class="filter-tag">Bracelets</a>
-        <a href="/collections/all?sort_by=manual" class="filter-tag">Pendants</a>
-        <a href="/collections/all?sort_by=manual" class="filter-tag">Custom</a>
+        <a href="javascript:void(0)" class="filter-tag active" data-filter="all">All</a>
+        <a href="javascript:void(0)" class="filter-tag" data-filter="bracelets">Bracelets</a>
+        <a href="javascript:void(0)" class="filter-tag" data-filter="pendants">Pendants</a>
+        <a href="javascript:void(0)" class="filter-tag" data-filter="custom">Custom</a>
       </div>
       
       <div class="sort-dropdown">
         <label>SORT BY:</label>
         <div class="custom-select">
-          <select id="sortSelect" onchange="window.location.href=this.value">
-            <option value="/collections/all?sort_by=manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>Featured</option>
-            <option value="/collections/all?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, Low to High</option>
-            <option value="/collections/all?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, High to Low</option>
-            <option value="/collections/all?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest Arrivals</option>
+          <select id="sortSelect">
+            <option value="manual">Featured</option>
+            <option value="price-asc">Price, Low to High</option>
+            <option value="price-desc">Price, High to Low</option>
+            <option value="name-asc">Name, A to Z</option>
           </select>
           <span class="custom-arrow">▾</span>
         </div>
@@ -40,7 +42,7 @@
     <div class="products-grid" id="productsGrid">
       {% assign all_products = collections.all.products %}
       {% for product in all_products %}
-        <div class="product-card">
+        <div class="product-card" data-category="{% if product.title contains 'Bracelet' or product.title contains 'bracelet' %}bracelets{% elsif product.title contains 'Pendant' or product.title contains 'pendant' %}pendants{% elsif product.title contains 'Custom' or product.title contains 'custom' %}custom{% else %}bracelets{% endif %}" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
           <div class="product-image">
             <a href="{{ product.url }}">
               {% if product.featured_image %}
@@ -106,7 +108,7 @@
   font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
 }
 
-/* Hero区域 - 浅米白底，和整体统一 */
+/* Hero区域 */
 .hero-banner {
   position: relative;
   padding: 80px 0 60px;
@@ -115,12 +117,36 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+  overflow: hidden;
+}
+
+.hero-decor {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.1;
+}
+
+.hero-decor.left {
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, #9E2B25 0%, transparent 70%);
+}
+
+.hero-decor.right {
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, #C9A24B 0%, transparent 70%);
 }
 
 .hero-content {
   text-align: center;
   color: #2A1F1A;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-divider {
@@ -174,7 +200,7 @@
 /* 快捷筛选标签 */
 .filter-tags {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 .filter-tag {
@@ -185,6 +211,7 @@
   padding: 5px 0;
   border-bottom: 1px solid transparent;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .filter-tag:hover,
@@ -406,6 +433,10 @@
   .hero-content h1 {
     font-size: 36px;
   }
+  .hero-decor {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -430,6 +461,9 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+  .hero-decor {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -442,29 +476,64 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const productsPerPage = 8;
-  const productCards = document.querySelectorAll('#productsGrid .product-card');
+  const productCards = Array.from(document.querySelectorAll('#productsGrid .product-card'));
   const pagination = document.getElementById('pagination');
-  let totalPages = Math.ceil(productCards.length / productsPerPage);
+  const productCountEl = document.getElementById('productCount');
+  const filterTags = document.querySelectorAll('.filter-tag');
+  const sortSelect = document.getElementById('sortSelect');
+  
+  let currentFilter = 'all';
+  let currentSort = 'manual';
   let currentPage = 1;
 
+  function getFilteredProducts() {
+    let filtered = productCards;
+    
+    // 筛选
+    if (currentFilter !== 'all') {
+      filtered = filtered.filter(card => card.dataset.category === currentFilter);
+    }
+    
+    // 排序
+    filtered.sort((a, b) => {
+      if (currentSort === 'price-asc') {
+        return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+      } else if (currentSort === 'price-desc') {
+        return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+      } else if (currentSort === 'name-asc') {
+        return a.dataset.name.localeCompare(b.dataset.name);
+      }
+      return 0; // manual
+    });
+    
+    return filtered;
+  }
+
   function showPage(page) {
-    currentPage = page;
-    const start = (page - 1) * productsPerPage;
+    const filtered = getFilteredProducts();
+    const totalPages = Math.ceil(filtered.length / productsPerPage);
+    currentPage = Math.min(page, totalPages);
+    
+    const start = (currentPage - 1) * productsPerPage;
     const end = start + productsPerPage;
     
-    productCards.forEach((card, index) => {
+    // 先隐藏所有产品
+    productCards.forEach(card => card.style.display = 'none');
+    
+    // 显示当前页的产品
+    filtered.forEach((card, index) => {
       if (index >= start && index < end) {
         card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
       }
     });
     
-    renderPagination();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 更新产品计数
+    productCountEl.textContent = filtered.length;
+    
+    renderPagination(totalPages);
   }
 
-  function renderPagination() {
+  function renderPagination(totalPages) {
     if (totalPages <= 1) {
       pagination.innerHTML = '';
       return;
@@ -495,9 +564,26 @@ document.addEventListener('DOMContentLoaded', function() {
     pagination.querySelectorAll('[data-page]').forEach(el => {
       el.addEventListener('click', function() {
         showPage(parseInt(this.dataset.page));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   }
+
+  // 筛选标签点击
+  filterTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+      filterTags.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+      showPage(1);
+    });
+  });
+
+  // 排序下拉框
+  sortSelect.addEventListener('change', function() {
+    currentSort = this.value;
+    showPage(1);
+  });
 
   // 初始化
   showPage(1);
