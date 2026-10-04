@@ -1,10 +1,12 @@
 <section class="all-products">
   <!-- Hero区域 -->
   <div class="hero-banner">
-    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
     <div class="hero-content">
+      <div class="hero-divider"></div>
       <h1>{{ section.settings.heading }}</h1>
       <p class="subtitle">{{ section.settings.subheading }}</p>
+      <div class="hero-divider"></div>
     </div>
   </div>
 
@@ -14,12 +16,15 @@
       <div class="product-count">{{ collections.all.products_count }} PRODUCTS</div>
       <div class="sort-dropdown">
         <label>SORT BY:</label>
-        <select id="sortSelect">
-          <option value="manual">Featured</option>
-          <option value="price-asc">Price, Low to High</option>
-          <option value="price-desc">Price, High to Low</option>
-          <option value="created-desc">Newest Arrivals</option>
-        </select>
+        <div class="custom-select">
+          <select id="sortSelect">
+            <option value="manual">Featured</option>
+            <option value="price-asc">Price, Low to High</option>
+            <option value="price-desc">Price, High to Low</option>
+            <option value="created-desc">Newest Arrivals</option>
+          </select>
+          <span class="custom-arrow">▾</span>
+        </div>
       </div>
     </div>
 
@@ -96,34 +101,54 @@
 /* Hero区域 */
 .hero-banner {
   position: relative;
-  height: 380px;
-  background: #2A1F1A;
-  background-image: linear-gradient(rgba(42, 31, 26, 0.6), rgba(42, 31, 26, 0.6)), url('{{ section.settings.hero_image | image_url: width: 1600 }}');
+  height: 400px;
+  background: linear-gradient(135deg, #2A1F1A 0%, #4A2F2A 50%, #2A1F1A 100%);
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle at 20% 50%, #C9A24B 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, #9E2B25 0%, transparent 40%),
+                    radial-gradient(circle at 60% 80%, #C9A24B 0%, transparent 45%);
 }
 
 .hero-content {
   text-align: center;
   color: white;
   z-index: 1;
+  padding: 0 20px;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: #C9A24B;
+  margin: 20px auto;
 }
 
 .hero-content h1 {
   font-size: 48px;
   font-weight: 500;
-  margin-bottom: 15px;
-  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
 }
 
 .hero-content .subtitle {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   opacity: 0.9;
 }
 
@@ -163,8 +188,16 @@
   text-transform: uppercase;
 }
 
-.sort-dropdown select {
-  padding: 8px 15px;
+/* 自定义下拉框 */
+.custom-select {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 40px 10px 15px;
   border: 1px solid #E0D5C8;
   background: white;
   font-size: 13px;
@@ -172,6 +205,17 @@
   cursor: pointer;
   font-family: inherit;
   border-radius: 2px;
+  min-width: 180px;
+}
+
+.custom-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9E2B25;
+  pointer-events: none;
+  font-size: 12px;
 }
 
 .products-grid {
@@ -352,7 +396,7 @@
     gap: 20px;
   }
   .hero-banner {
-    height: 280px;
+    height: 300px;
   }
   .hero-content h1 {
     font-size: 30px;
