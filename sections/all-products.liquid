@@ -2,6 +2,7 @@
   <!-- Hero区域 -->
   <div class="hero-banner">
     <div class="hero-ink-bg"></div>
+    <div class="hero-cinnabar"></div>
     <div class="hero-content">
       <h1>{{ section.settings.heading }}</h1>
       <p class="subtitle">{{ section.settings.subheading }}</p>
@@ -13,25 +14,21 @@
     <div class="collection-toolbar">
       <div class="product-count">{{ collections.all.products_count }} PRODUCTS</div>
       
-      <div class="sort-dropdown">
-        <label>SORT BY:</label>
-        <div class="custom-select">
-          <select id="sortSelect">
-            <option value="manual">Featured</option>
-            <option value="price-asc">Price, Low to High</option>
-            <option value="price-desc">Price, High to Low</option>
-            <option value="name-asc">Name, A to Z</option>
-          </select>
-          <span class="custom-arrow">▾</span>
-        </div>
+      <!-- 快捷筛选标签 -->
+      <div class="filter-tags">
+        <a href="javascript:void(0)" class="filter-tag active" data-filter="all">All</a>
+        <a href="javascript:void(0)" class="filter-tag" data-filter="bracelets">Bracelets</a>
+        <a href="javascript:void(0)" class="filter-tag" data-filter="pendants">Pendants</a>
       </div>
+      
+      <div class="toolbar-note">Handcrafted with intention</div>
     </div>
 
     <!-- 产品网格 -->
     <div class="products-grid" id="productsGrid">
       {% assign all_products = collections.all.products %}
       {% for product in all_products %}
-        <div class="product-card" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
+        <div class="product-card" data-category="{% if product.title contains 'Bracelet' or product.title contains 'bracelet' %}bracelets{% elsif product.title contains 'Pendant' or product.title contains 'pendant' %}pendants{% else %}bracelets{% endif %}" data-price="{{ product.price | divided_by: 100 }}" data-name="{{ product.title | downcase }}">
           <div class="product-image">
             <a href="{{ product.url }}">
               {% if product.featured_image %}
@@ -116,9 +113,21 @@
   right: 0;
   height: 100%;
   background: 
-    radial-gradient(ellipse at 20% 80%, rgba(42, 31, 26, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(158, 43, 37, 0.06) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 90%, rgba(201, 162, 75, 0.05) 0%, transparent 40%);
+    radial-gradient(ellipse at 20% 80%, rgba(42, 31, 26, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(42, 31, 26, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(42, 31, 26, 0.1) 0%, transparent 40%);
+}
+
+.hero-cinnabar {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(158, 43, 37, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(30px);
 }
 
 .hero-content {
@@ -170,47 +179,34 @@
   text-transform: uppercase;
 }
 
-.sort-dropdown {
+/* 快捷筛选标签 */
+.filter-tags {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 25px;
 }
 
-.sort-dropdown label {
+.filter-tag {
   font-size: 13px;
   color: #8A7A72;
+  text-decoration: none;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* 自定义下拉框 */
-.custom-select {
-  position: relative;
-  display: inline-block;
-}
-
-.custom-select select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding: 8px 35px 8px 15px;
-  border: none;
-  border-bottom: 1px solid #C9A24B;
-  background: transparent;
-  font-size: 13px;
-  color: #2A1F1A;
+  padding: 5px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
   cursor: pointer;
-  font-family: inherit;
-  min-width: 140px;
 }
 
-.custom-arrow {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+.filter-tag:hover,
+.filter-tag.active {
   color: #9E2B25;
-  pointer-events: none;
+  border-bottom-color: #9E2B25;
+}
+
+.toolbar-note {
   font-size: 12px;
+  color: #C9B8A8;
+  letter-spacing: 0.1em;
+  font-style: italic;
 }
 
 .products-grid {
@@ -383,6 +379,10 @@
   .hero-content h1 {
     font-size: 36px;
   }
+  .hero-cinnabar {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -422,31 +422,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const productsPerPage = 8;
   const productCards = Array.from(document.querySelectorAll('#productsGrid .product-card'));
   const pagination = document.getElementById('pagination');
-  const sortSelect = document.getElementById('sortSelect');
+  const filterTags = document.querySelectorAll('.filter-tag');
   
-  let currentSort = 'manual';
+  let currentFilter = 'all';
   let currentPage = 1;
 
-  function getSortedProducts() {
-    let sorted = [...productCards];
+  function getFilteredProducts() {
+    let filtered = productCards;
     
-    sorted.sort((a, b) => {
-      if (currentSort === 'price-asc') {
-        return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
-      } else if (currentSort === 'price-desc') {
-        return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
-      } else if (currentSort === 'name-asc') {
-        return a.dataset.name.localeCompare(b.dataset.name);
-      }
-      return 0; // manual
-    });
+    if (currentFilter !== 'all') {
+      filtered = filtered.filter(card => card.dataset.category === currentFilter);
+    }
     
-    return sorted;
+    return filtered;
   }
 
   function showPage(page) {
-    const sorted = getSortedProducts();
-    const totalPages = Math.ceil(sorted.length / productsPerPage);
+    const filtered = getFilteredProducts();
+    const totalPages = Math.ceil(filtered.length / productsPerPage);
     currentPage = Math.min(page, totalPages);
     
     const start = (currentPage - 1) * productsPerPage;
@@ -456,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
     productCards.forEach(card => card.style.display = 'none');
     
     // 显示当前页的产品
-    sorted.forEach((card, index) => {
+    filtered.forEach((card, index) => {
       if (index >= start && index < end) {
         card.style.display = 'block';
       }
@@ -501,10 +494,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 排序下拉框
-  sortSelect.addEventListener('change', function() {
-    currentSort = this.value;
-    showPage(1);
+  // 筛选标签点击
+  filterTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+      filterTags.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+      showPage(1);
+    });
   });
 
   // 初始化
