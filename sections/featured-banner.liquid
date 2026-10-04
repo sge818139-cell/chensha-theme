@@ -8,13 +8,16 @@
     { "type": "textarea", "id": "lead", "label": "Lead", "default": "A statement piece pairing polished Nanhong agate with hand-fired cloisonné in vintage gold, finished with a red agate peace-knot pendant." },
     { "type": "text", "id": "price", "label": "Price", "default": "$268" },
     { "type": "text", "id": "price_old", "label": "Old price", "default": "$310" },
+    { "type": "product", "id": "product", "label": "Product to add to cart" },
     { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Add to Cart" },
-    { "type": "url", "id": "cta1_url", "label": "Primary CTA URL" },
     { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "View Details" },
     { "type": "url", "id": "cta2_url", "label": "Secondary CTA URL" }
   ]
 }
 {% endschema %}
+
+{% assign featured_product = all_products[section.settings.product] %}
+
 <section class="featured">
   <div class="container feat-inner">
     <div>
@@ -23,10 +26,85 @@
       <p>{{ section.settings.lead }}</p>
       <div class="feat-price">{{ section.settings.price }}<span class="old">{{ section.settings.price_old }}</span></div>
       <div class="btn-row">
-        <a href="{{ section.settings.cta1_url | default: '#' }}" class="btn btn-gold">{{ section.settings.cta1 }}</a>
-        <a href="{{ section.settings.cta2_url | default: '#' }}" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
+        {% if featured_product %}
+          <button type="button" class="btn btn-gold add-to-cart-btn" data-product-id="{{ featured_product.id }}" data-variant-id="{{ featured_product.selected_or_first_available_variant.id }}">
+            <span class="btn-text">{{ section.settings.cta1 }}</span>
+            <span class="btn-loading" style="display:none;">Adding...</span>
+          </button>
+        {% else %}
+          <a href="#" class="btn btn-gold">{{ section.settings.cta1 }}</a>
+        {% endif %}
+        <a href="{{ section.settings.cta2_url | default: featured_product.url | default: '#' }}" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
       </div>
     </div>
     <div></div>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+  
+  addToCartBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const variantId = this.dataset.variantId;
+      const btnText = this.querySelector('.btn-text');
+      const btnLoading = this.querySelector('.btn-loading');
+      
+      // 显示加载状态
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      btn.disabled = true;
+      
+      // Shopify AJAX API 添加到购物车
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          items: [{
+            id: variantId,
+            quantity: 1
+          }]
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // 添加成功
+        btnText.textContent = 'Added!';
+        btnLoading.style.display = 'none';
+        btnText.style.display = 'inline';
+        
+        // 尝试打开购物车抽屉（如果主题支持）
+        if (window.Shopify && window.Shopify.theme && window.Shopify.theme.cartDrawer) {
+          window.Shopify.theme.cartDrawer.open();
+        } else {
+          // 跳转到购物车页面
+          setTimeout(() => {
+            window.location.href = '/cart';
+          }, 500);
+        }
+        
+        // 2秒后恢复按钮文字
+        setTimeout(() => {
+          btnText.textContent = '{{ section.settings.cta1 }}';
+          btn.disabled = false;
+        }, 2000);
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        btnText.textContent = 'Error';
+        btnLoading.style.display = 'none';
+        btnText.style.display = 'inline';
+        
+        setTimeout(() => {
+          btnText.textContent = '{{ section.settings.cta1 }}';
+          btn.disabled = false;
+        }, 2000);
+      });
+    });
+  });
+});
+</script>
