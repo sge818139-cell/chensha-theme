@@ -504,6 +504,14 @@
           "tab4_title": "Care",
           "tab4_content": "<p>Caring for your CHENSHA piece ensures it stays beautiful for generations.</p><ul><li>Avoid prolonged contact with water, perfume, or chemicals</li><li>Wipe gently with a soft, dry cloth after wear</li><li>Store in the included velvet pouch when not in use</li><li>Keep away from direct sunlight and extreme heat</li></ul>"
         }
+      },
+      "all-products": {
+        "type": "all-products",
+        "settings": {
+          "heading": "Our Collection",
+          "subheading": "Discover our handcrafted cinnabar pieces",
+          "products_per_row": 3
+        }
       }
     },
     "content_for_index": []
