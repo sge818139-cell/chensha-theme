@@ -510,7 +510,9 @@
         "settings": {
           "heading": "Our Collection",
           "subheading": "Discover our handcrafted cinnabar pieces",
-          "products_per_row": 3
+          "all_link": "shopify://collections/all",
+          "conventional_link": "shopify://collections/cloisonne-gold",
+          "customized_link": "shopify://collections/original"
         }
       }
     },
