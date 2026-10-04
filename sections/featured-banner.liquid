@@ -9,6 +9,7 @@
     { "type": "text", "id": "price", "label": "Price", "default": "$268" },
     { "type": "text", "id": "price_old", "label": "Old price", "default": "$310" },
     { "type": "product", "id": "product", "label": "Product to add to cart" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Product Image" },
     { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Add to Cart" },
     { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "View Details" },
     { "type": "url", "id": "cta2_url", "label": "Secondary CTA URL" }
@@ -37,9 +38,18 @@
         <a href="{{ section.settings.cta2_url | default: featured_product.url | default: '#' }}" class="btn btn-ghost">{{ section.settings.cta2 }}</a>
       </div>
     </div>
-    <div></div>
+    <div class="feat-bg-img" style="{% if section.settings.background_image %}background-image: url('{{ section.settings.background_image | image_url: width: 1200 }}');{% endif %}"></div>
   </div>
 </section>
+
+<style>
+.featured .feat-bg-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 400px;
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
