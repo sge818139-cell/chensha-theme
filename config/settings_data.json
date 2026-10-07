@@ -343,6 +343,15 @@
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
+          "product_NdFYwe": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/20261007113852_71_200.jpg",
+              "title": "点絳 | The Crimson",
+              "price": "$368",
+              "link": "shopify://products/点絳-the-crimson-sterling-silver-beaded-collar-cinnabar-drop-earrings"
+            }
+          },
           "product_FfUtcr": {
             "type": "product",
             "settings": {
@@ -408,6 +417,7 @@
           }
         },
         "block_order": [
+          "product_NdFYwe",
           "product_FfUtcr",
           "collection-products-editable-1",
           "collection-products-editable-2",
