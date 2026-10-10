@@ -343,6 +343,24 @@
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
+          "product_xBf7B3": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/20261010122020.jpg",
+              "title": "紫宸 | The Celestial",
+              "price": "$699",
+              "link": "shopify://products/the-celestial"
+            }
+          },
+          "product_Bj7PMC": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/20261010122032.jpg",
+              "title": "錦繡 | The Tapestry",
+              "price": "$728",
+              "link": "shopify://products/the-tapestry"
+            }
+          },
           "product_NdFYwe": {
             "type": "product",
             "settings": {
@@ -417,6 +435,8 @@
           }
         },
         "block_order": [
+          "product_xBf7B3",
+          "product_Bj7PMC",
           "product_NdFYwe",
           "product_FfUtcr",
           "collection-products-editable-1",
