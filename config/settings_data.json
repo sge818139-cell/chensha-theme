@@ -343,6 +343,15 @@
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
+          "product_6FVBPL": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/custom-deposit-product.jpg",
+              "title": "custom-deposit",
+              "price": "$50",
+              "link": "shopify://products/custom-order-deposit"
+            }
+          },
           "product_xBf7B3": {
             "type": "product",
             "settings": {
@@ -435,6 +444,7 @@
           }
         },
         "block_order": [
+          "product_6FVBPL",
           "product_xBf7B3",
           "product_Bj7PMC",
           "product_NdFYwe",
