@@ -85,6 +85,15 @@
           <button type="submit" name="add" class="pdp-add-btn">Add to Cart</button>
         </div>
       {% endform %}
+      
+      <!-- Buy Now 直接购买按钮 -->
+      {% if product and product.available %}
+      <button type="button" class="pdp-buy-now-btn" id="buyNowBtn">
+        <span class="buy-now-text">Buy Now · 直接购买</span>
+        <span class="buy-now-loading" style="display:none;">Processing...</span>
+      </button>
+      {% endif %}
+      
       {% else %}
         <div class="pdp-qty-cart">
           <div class="pdp-qty">
@@ -290,6 +299,39 @@
 {% endschema %}
 
 <style>
+.pdp-buy-now-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #C9A24B 0%, #B8923F 100%);
+  color: white;
+  border: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(201, 162, 75, 0.3);
+}
+
+.pdp-buy-now-btn:hover {
+  background: linear-gradient(135deg, #B8923F 0%, #A68235 100%);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.4);
+  transform: translateY(-1px);
+}
+
+.pdp-buy-now-btn:active {
+  transform: translateY(0);
+}
+
+.pdp-buy-now-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .pdp-tabs-section {
   margin-top: 40px;
   padding-top: 30px;
@@ -358,6 +400,72 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Buy Now 直接购买功能
+  var buyNowBtn = document.getElementById('buyNowBtn');
+  if (buyNowBtn) {
+    buyNowBtn.addEventListener('click', function() {
+      var btnText = this.querySelector('.buy-now-text');
+      var btnLoading = this.querySelector('.buy-now-loading');
+      var productForm = document.getElementById('product-form');
+      
+      if (!productForm) {
+        alert('Product form not found. Please refresh the page.');
+        return;
+      }
+      
+      // 获取当前选中的variant ID和数量
+      var variantInput = productForm.querySelector('input[name="id"]');
+      var quantityInput = productForm.querySelector('input[name="quantity"]');
+      
+      if (!variantInput || !variantInput.value) {
+        alert('Please select a product option.');
+        return;
+      }
+      
+      var variantId = variantInput.value;
+      var quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+      
+      // 显示加载状态
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      this.disabled = true;
+      
+      // 用Shopify AJAX API添加到购物车
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          items: [{
+            id: variantId,
+            quantity: quantity
+          }]
+        })
+      })
+      .then(function(response) {
+        if (!response.ok) {
+          return response.json().then(function(data) {
+            throw new Error(data.description || 'Failed to add to cart');
+          });
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        // 添加成功，直接跳转到结账页
+        window.location.href = '/checkout';
+      })
+      .catch(function(error) {
+        console.error('Buy Now error:', error);
+        alert('Sorry, something went wrong. Please try again or use Add to Cart.');
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        buyNowBtn.disabled = false;
+      });
+    });
+  }
+
   // Tab switching functionality
   var tabsSection = document.querySelector('.pdp-tabs-section');
   if (tabsSection) {
