@@ -343,6 +343,15 @@
       "collection-products-editable": {
         "type": "collection-products-editable",
         "blocks": {
+          "product_w4pMVi": {
+            "type": "product",
+            "settings": {
+              "image": "shopify://shop_images/bce89176ab8ef0b44cf7ff2d724d168d.jpg",
+              "title": "星曜 | The Cosmos",
+              "price": "$1518",
+              "link": "shopify://products/the-cosmos"
+            }
+          },
           "product_6FVBPL": {
             "type": "product",
             "settings": {
@@ -444,6 +453,7 @@
           }
         },
         "block_order": [
+          "product_w4pMVi",
           "product_6FVBPL",
           "product_xBf7B3",
           "product_Bj7PMC",
