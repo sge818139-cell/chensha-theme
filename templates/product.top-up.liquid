@@ -1,0 +1,71 @@
+{% comment %}
+  储值充值产品页面模板
+  使用方法：在Shopify后台编辑产品时，模板选择 "product.top-up"
+{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ product.title }} | {{ shop.name }}</title>
+  <meta name="description" content="{{ product.description | strip_html | truncate: 160 }}">
+
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- 基础样式 -->
+  {{ content_for_header }}
+
+  <style>
+    /* 重置和基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 充值产品Section -->
+  {% section 'top-up-product' %}
+
+  <!-- 页脚（可以替换成你主题的页脚section） -->
+  <footer class="topup-footer">
+    <div class="topup-footer-content">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <style>
+    .topup-footer {
+      background: #2A1F1A;
+      color: #8A7A72;
+      padding: 30px 40px;
+      text-align: center;
+      font-size: 14px;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+  </style>
+
+</body>
+</html>

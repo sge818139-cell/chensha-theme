@@ -1,0 +1,652 @@
+{% comment %}
+  CHENSHA 储值充值产品 Section
+  功能：
+  - 预设面额选择（$50/$100/$200/$500/$1000）
+  - 自定义金额输入
+  - 充值送规则实时计算和展示
+  - 品牌风格：朱砂红 + 金色 + 米白 + 中国风
+{% endcomment %}
+
+<section class="topup-section">
+  <div class="topup-container">
+
+    <!-- 左侧：标题和说明 -->
+    <div class="topup-left">
+      <div class="topup-eyebrow">CHENSHA · 储值钱包</div>
+      <h1 class="topup-title">{{ section.settings.title | default: '账户充值 · Account Top Up' }}</h1>
+      <p class="topup-subtitle">{{ section.settings.subtitle | default: '充值即享专属赠送，余额可用于全站任意产品购买' }}</p>
+
+      <!-- 充值送规则展示 -->
+      <div class="topup-bonus-rules">
+        <div class="bonus-rules-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/>
+          </svg>
+          <span>充值专属礼遇 · Exclusive Bonus</span>
+        </div>
+        <div class="bonus-rules-list">
+          <div class="bonus-rule-item">
+            <span class="bonus-amount">充$100</span>
+            <span class="bonus-arrow">→</span>
+            <span class="bonus-gift">送$10</span>
+          </div>
+          <div class="bonus-rule-item">
+            <span class="bonus-amount">充$500</span>
+            <span class="bonus-arrow">→</span>
+            <span class="bonus-gift">送$70</span>
+          </div>
+          <div class="bonus-rule-item">
+            <span class="bonus-amount">充$1000</span>
+            <span class="bonus-arrow">→</span>
+            <span class="bonus-gift">送$200</span>
+          </div>
+          <div class="bonus-rule-item highlight">
+            <span class="bonus-amount">充$5000</span>
+            <span class="bonus-arrow">→</span>
+            <span class="bonus-gift">送$1200</span>
+          </div>
+        </div>
+        <p class="bonus-rules-note">* 按单笔充值金额达到的最高档位赠送，不叠加。充值金额实时到账账户余额。</p>
+      </div>
+    </div>
+
+    <!-- 右侧：充值操作区 -->
+    <div class="topup-right">
+      <div class="topup-card">
+
+        <!-- 预设面额选择 -->
+        <div class="topup-field">
+          <label class="topup-label">选择面额 · Select Amount</label>
+          <div class="topup-amount-buttons">
+            <button type="button" class="amount-btn" data-amount="50">$50</button>
+            <button type="button" class="amount-btn" data-amount="100">$100</button>
+            <button type="button" class="amount-btn" data-amount="200">$200</button>
+            <button type="button" class="amount-btn" data-amount="500">$500</button>
+            <button type="button" class="amount-btn" data-amount="1000">$1000</button>
+          </div>
+        </div>
+
+        <!-- 自定义金额 -->
+        <div class="topup-field">
+          <label class="topup-label">自定义金额 · Custom Amount</label>
+          <div class="topup-custom-input-wrapper">
+            <span class="currency-symbol">$</span>
+            <input type="number" id="customAmount" class="topup-custom-input" placeholder="输入任意金额" min="10" step="0.01">
+          </div>
+          <p class="topup-hint">最低充值金额 $10</p>
+        </div>
+
+        <!-- 实时计算结果 -->
+        <div class="topup-calculation">
+          <div class="calc-row">
+            <span class="calc-label">充值金额</span>
+            <span class="calc-value" id="calcTopupAmount">$0.00</span>
+          </div>
+          <div class="calc-row bonus-row">
+            <span class="calc-label">
+              赠送金额
+              <span class="bonus-tag" id="bonusTag" style="display:none;">已享赠送</span>
+            </span>
+            <span class="calc-value bonus-value" id="calcBonusAmount">+$0.00</span>
+          </div>
+          <div class="calc-divider"></div>
+          <div class="calc-row total-row">
+            <span class="calc-label">实际到账余额</span>
+            <span class="calc-value total-value" id="calcTotalCredit">$0.00</span>
+          </div>
+          <div class="next-bonus-hint" id="nextBonusHint" style="display:none;">
+            <span>再充 <strong id="nextBonusDiff">$0</strong> 即可享 <strong id="nextBonusGift">$0</strong> 赠送</span>
+          </div>
+        </div>
+
+        <!-- 立即充值按钮 -->
+        <button type="button" class="topup-submit-btn" id="topupSubmitBtn" disabled>
+          <span class="btn-text">立即充值 · Top Up Now</span>
+          <span class="btn-loading" style="display:none;">处理中...</span>
+        </button>
+
+        <p class="topup-security-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          安全加密支付 · 充值金额即时到账
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 隐藏的产品表单（用于添加到购物车） -->
+{% form 'product', product, id: 'topup-product-form', class: 'topup-hidden-form' %}
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" name="quantity" value="1" id="topupQuantity">
+  <input type="hidden" name="properties[Custom Amount]" id="topupCustomAmount" value="">
+  <input type="hidden" name="properties[充值金额]" id="topupCustomAmountCN" value="">
+{% endform %}
+
+{% schema %}
+{
+  "name": "储值充值产品",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "账户充值 · Account Top Up"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "副标题",
+      "default": "充值即享专属赠送，余额可用于全站任意产品购买"
+    },
+    {
+      "type": "header",
+      "content": "面额设置"
+    },
+    {
+      "type": "number",
+      "id": "min_amount",
+      "label": "最低充值金额",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "储值充值产品"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* ========== 充值页面样式 ========== */
+.topup-section {
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
+  min-height: 80vh;
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+}
+
+.topup-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* 左侧 */
+.topup-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #9E2B25;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.topup-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #2A1F1A;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.topup-subtitle {
+  font-size: 17px;
+  color: #5A4A42;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* 充值送规则 */
+.topup-bonus-rules {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(158, 43, 37, 0.06);
+  border: 1px solid rgba(201, 162, 75, 0.15);
+}
+
+.bonus-rules-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #9E2B25;
+  margin-bottom: 24px;
+}
+
+.bonus-rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bonus-rule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #FAF6F0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.bonus-rule-item.highlight {
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(158, 43, 37, 0.25);
+}
+
+.bonus-rule-item.highlight .bonus-gift {
+  color: #E0C88A;
+}
+
+.bonus-amount {
+  font-weight: 600;
+}
+
+.bonus-arrow {
+  color: #C9A24B;
+  font-weight: 600;
+}
+
+.bonus-gift {
+  color: #9E2B25;
+  font-weight: 700;
+}
+
+.bonus-rules-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #8A7A72;
+  line-height: 1.6;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* 右侧充值卡片 */
+.topup-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 40px rgba(158, 43, 37, 0.08);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+}
+
+.topup-field {
+  margin-bottom: 28px;
+}
+
+.topup-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2A1F1A;
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+}
+
+/* 面额按钮 */
+.topup-amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.amount-btn {
+  padding: 16px 12px;
+  border: 2px solid #E8E0D5;
+  background: #FAF6F0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5A4A42;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.amount-btn:hover {
+  border-color: #C9A24B;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.15);
+}
+
+.amount-btn.active {
+  border-color: #9E2B25;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(158, 43, 37, 0.25);
+}
+
+/* 自定义金额输入 */
+.topup-custom-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #9E2B25;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.topup-custom-input {
+  width: 100%;
+  padding: 16px 20px 16px 44px;
+  border: 2px solid #E8E0D5;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2A1F1A;
+  background: #FAF6F0;
+  transition: all 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+  outline: none;
+}
+
+.topup-custom-input:focus {
+  border-color: #9E2B25;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(158, 43, 37, 0.1);
+}
+
+.topup-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #8A7A72;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* 计算结果 */
+.topup-calculation {
+  background: linear-gradient(135deg, #FAF6F0 0%, #F4EDE2 100%);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(201, 162, 75, 0.15);
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.calc-label {
+  color: #5A4A42;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-value {
+  font-weight: 600;
+  color: #2A1F1A;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.bonus-row .calc-value {
+  color: #9E2B25;
+}
+
+.bonus-tag {
+  font-size: 11px;
+  background: #9E2B25;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.calc-divider {
+  height: 1px;
+  background: rgba(201, 162, 75, 0.3);
+  margin: 12px 0;
+}
+
+.total-row .calc-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2A1F1A;
+}
+
+.total-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #9E2B25;
+}
+
+.next-bonus-hint {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(201, 162, 75, 0.3);
+  font-size: 13px;
+  color: #8A7A72;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.next-bonus-hint strong {
+  color: #9E2B25;
+}
+
+/* 提交按钮 */
+.topup-submit-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(158, 43, 37, 0.25);
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+}
+
+.topup-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(158, 43, 37, 0.35);
+}
+
+.topup-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.topup-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 安全提示 */
+.topup-security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #8A7A72;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* 隐藏表单 */
+.topup-hidden-form {
+  display: none;
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .topup-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .topup-title {
+    font-size: 32px;
+  }
+
+  .topup-amount-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .topup-section {
+    padding: 40px 20px;
+  }
+
+  .topup-card {
+    padding: 28px 20px;
+  }
+
+  .topup-amount-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 充值送规则（和后端config/bonus-rules.js保持一致）
+  const BONUS_RULES = [
+    { minAmount: 100, bonus: 10 },
+    { minAmount: 500, bonus: 70 },
+    { minAmount: 1000, bonus: 200 },
+    { minAmount: 5000, bonus: 1200 }
+  ];
+
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  const customAmountInput = document.getElementById('customAmount');
+  const calcTopupAmount = document.getElementById('calcTopupAmount');
+  const calcBonusAmount = document.getElementById('calcBonusAmount');
+  const calcTotalCredit = document.getElementById('calcTotalCredit');
+  const bonusTag = document.getElementById('bonusTag');
+  const nextBonusHint = document.getElementById('nextBonusHint');
+  const nextBonusDiff = document.getElementById('nextBonusDiff');
+  const nextBonusGift = document.getElementById('nextBonusGift');
+  const submitBtn = document.getElementById('topupSubmitBtn');
+  const topupCustomAmount = document.getElementById('topupCustomAmount');
+  const topupCustomAmountCN = document.getElementById('topupCustomAmountCN');
+  const topupProductForm = document.getElementById('topup-product-form');
+
+  let selectedAmount = 0;
+
+  // 计算赠送金额
+  function calculateBonus(amount) {
+    const sorted = [...BONUS_RULES].sort((a, b) => b.minAmount - a.minAmount);
+    const reached = sorted.find(r => amount >= r.minAmount);
+    const asc = [...BONUS_RULES].sort((a, b) => a.minAmount - b.minAmount);
+    const next = asc.find(r => amount < r.minAmount);
+    return {
+      bonus: reached ? reached.bonus : 0,
+      next: next || null
+    };
+  }
+
+  // 更新计算显示
+  function updateCalculation(amount) {
+    selectedAmount = amount;
+    const { bonus, next } = calculateBonus(amount);
+
+    calcTopupAmount.textContent = '$' + amount.toFixed(2);
+    calcBonusAmount.textContent = '+$' + bonus.toFixed(2);
+    calcTotalCredit.textContent = '$' + (amount + bonus).toFixed(2);
+
+    if (bonus > 0) {
+      bonusTag.style.display = 'inline-block';
+    } else {
+      bonusTag.style.display = 'none';
+    }
+
+    if (next && amount > 0) {
+      const diff = next.minAmount - amount;
+      nextBonusDiff.textContent = '$' + diff.toFixed(2);
+      nextBonusGift.textContent = '$' + next.bonus.toFixed(2);
+      nextBonusHint.style.display = 'block';
+    } else {
+      nextBonusHint.style.display = 'none';
+    }
+
+    // 更新隐藏表单的自定义金额属性
+    if (amount > 0) {
+      topupCustomAmount.value = amount.toFixed(2);
+      topupCustomAmountCN.value = amount.toFixed(2);
+      submitBtn.disabled = false;
+    } else {
+      topupCustomAmount.value = '';
+      topupCustomAmountCN.value = '';
+      submitBtn.disabled = true;
+    }
+  }
+
+  // 面额按钮点击
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      amountBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      customAmountInput.value = '';
+      const amount = parseFloat(this.dataset.amount);
+      updateCalculation(amount);
+    });
+  });
+
+  // 自定义金额输入
+  customAmountInput.addEventListener('input', function() {
+    amountBtns.forEach(b => b.classList.remove('active'));
+    const amount = parseFloat(this.value);
+    if (!isNaN(amount) && amount > 0) {
+      updateCalculation(amount);
+    } else {
+      updateCalculation(0);
+    }
+  });
+
+  // 提交充值
+  submitBtn.addEventListener('click', function() {
+    if (selectedAmount <= 0) {
+      alert('请选择或输入充值金额');
+      return;
+    }
+
+    const btnText = this.querySelector('.btn-text');
+    const btnLoading = this.querySelector('.btn-loading');
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    this.disabled = true;
+
+    // 提交隐藏的产品表单（添加到购物车）
+    if (topupProductForm) {
+      topupProductForm.submit();
+    }
+  });
+
+  // 初始化
+  updateCalculation(0);
+});
+</script>
