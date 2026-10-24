@@ -10,6 +10,19 @@
 <section class="topup-section">
   <div class="topup-container">
 
+    {% if customer %}
+      <!-- 已登录：显示充值内容 -->
+    {% else %}
+      <!-- 未登录：显示登录提示 -->
+      <div class="topup-login-notice" style="grid-column: 1 / -1; background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%); color: white; padding: 24px 32px; border-radius: 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <h3 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 600;">Please Login First</h3>
+          <p style="margin: 0; font-size: 15px; opacity: 0.9;">You need to login to top up your account balance. If you don't have an account, you can create one during checkout.</p>
+        </div>
+        <a href="/account/login?return_url={{ request.path }}" style="background: white; color: #9E2B25; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap;">Login</a>
+      </div>
+    {% endif %}
+
     <!-- 左侧：标题和说明 -->
     <div class="topup-left">
       <div class="topup-eyebrow">CHENSHA · Wallet</div>
