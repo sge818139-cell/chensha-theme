@@ -653,34 +653,38 @@ document.addEventListener('DOMContentLoaded', function() {
     this.disabled = true;
 
     if (isCustomAmount) {
-      // 自定义金额：直接在加购的时候设置价格
+      // 自定义金额：用form提交的方式，带price参数
       const baseVariantId = window.TOPUP_VARIANTS[50];
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: [{
-            id: baseVariantId,
-            quantity: 1,
-            price: Math.round(selectedAmount * 100), // 直接设置价格（单位：分）
-            properties: {
-              'Custom Amount': selectedAmount.toFixed(2)
-            }
-          }]
-        })
-      })
-      .then(() => {
-        window.location.href = '/cart';
-      })
-      .catch(err => {
-        console.error('Error:', err);
-        alert('Something went wrong. Please try again.');
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
-        this.disabled = false;
-      });
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/cart/add';
+      
+      const idInput = document.createElement('input');
+      idInput.type = 'hidden';
+      idInput.name = 'id';
+      idInput.value = baseVariantId;
+      form.appendChild(idInput);
+      
+      const quantityInput = document.createElement('input');
+      quantityInput.type = 'hidden';
+      quantityInput.name = 'quantity';
+      quantityInput.value = '1';
+      form.appendChild(quantityInput);
+      
+      const priceInput = document.createElement('input');
+      priceInput.type = 'hidden';
+      priceInput.name = 'price';
+      priceInput.value = Math.round(selectedAmount * 100);
+      form.appendChild(priceInput);
+      
+      const customAmountInput = document.createElement('input');
+      customAmountInput.type = 'hidden';
+      customAmountInput.name = 'properties[Custom Amount]';
+      customAmountInput.value = selectedAmount.toFixed(2);
+      form.appendChild(customAmountInput);
+      
+      document.body.appendChild(form);
+      form.submit();
     } else {
       // 预设面额：直接提交表单
       if (topupProductForm) {
