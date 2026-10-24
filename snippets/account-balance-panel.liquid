@@ -23,7 +23,7 @@
   <div class="balance-hero-card">
     <div class="balance-hero-bg"></div>
     <div class="balance-hero-content">
-      <div class="balance-hero-label">账户余额 · Account Balance</div>
+      <div class="balance-hero-label">Account Balance</div>
       <div class="balance-hero-amount">
         <span class="currency">$</span>
         <span class="amount-number">{{ customer.metafields.custom.account_balance | default: 0 }}</span>
@@ -34,7 +34,7 @@
             <line x1="12" y1="5" x2="12" y2="19"/>
             <line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
-          立即充值 · Top Up
+          Top Up
         </a>
       </div>
     </div>
@@ -54,13 +54,13 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
         </svg>
-        充值记录
+        Top Up Records
       </button>
       <button class="record-tab" data-tab="usage">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M20 7h-9M14 17H5M17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
         </svg>
-        消费记录
+        Payment Records
       </button>
     </div>
 
@@ -81,9 +81,9 @@
               <div class="record-info">
                 <div class="record-title">
                   {% if record.amount < 0 %}
-                    充值退款
+                    Top Up Refund
                   {% else %}
-                    账户充值
+                    Account Top Up
                   {% endif %}
                   {% if record.bonusRule and record.bonusRule != '退款扣回' %}
                     <span class="record-bonus-tag">{{ record.bonusRule }}</span>
@@ -92,12 +92,12 @@
                 <div class="record-meta">
                   <span>{{ record.timestamp | date: "%Y-%m-%d %H:%M" }}</span>
                   {% if record.orderName %}
-                    <span class="record-order">订单 {{ record.orderName }}</span>
+                    <span class="record-order">Order {{ record.orderName }}</span>
                   {% endif %}
                 </div>
                 {% if record.amount > 0 and record.bonus > 0 %}
                   <div class="record-detail">
-                    充值 ${{ record.amount }} + 赠送 ${{ record.bonus }}
+                    Top up ${{ record.amount }} + Bonus ${{ record.bonus }}
                   </div>
                 {% endif %}
               </div>
@@ -116,8 +116,8 @@
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
           </svg>
-          <p>暂无充值记录</p>
-          <a href="/products/account-top-up" class="empty-topup-link">立即充值，享专属赠送</a>
+          <p>No top-up records yet</p>
+          <a href="/products/account-top-up" class="empty-topup-link">Top up now to enjoy exclusive bonuses</a>
         </div>
       {% endif %}
     </div>
@@ -138,13 +138,13 @@
               </div>
               <div class="record-info">
                 <div class="record-title">
-                  余额支付
+                  Balance Payment
                   <span class="record-status status-{{ record.status | default: 'pending' }}">
                     {% case record.status %}
-                      {% when 'used' %}已完成
-                      {% when 'pending' %}待结账
-                      {% when 'cancelled' %}已取消
-                      {% when 'refunded' %}已退款
+                      {% when 'used' %}Completed
+                      {% when 'pending' %}Pending Checkout
+                      {% when 'cancelled' %}Cancelled
+                      {% when 'refunded' %}Refunded
                       {% else %}{{ record.status }}
                     {% endcase %}
                   </span>
@@ -152,11 +152,11 @@
                 <div class="record-meta">
                   <span>{{ record.createdAt | date: "%Y-%m-%d %H:%M" }}</span>
                   {% if record.orderName %}
-                    <span class="record-order">订单 {{ record.orderName }}</span>
+                    <span class="record-order">Order {{ record.orderName }}</span>
                   {% endif %}
                 </div>
                 {% if record.discountCode %}
-                  <div class="record-detail">折扣码 {{ record.discountCode }}</div>
+                  <div class="record-detail">Discount code {{ record.discountCode }}</div>
                 {% endif %}
               </div>
               <div class="record-amount negative">
@@ -172,8 +172,8 @@
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          <p>暂无消费记录</p>
-          <p class="empty-hint">使用余额支付后，记录将显示在这里</p>
+          <p>No payment records yet</p>
+          <p class="empty-hint">Records will appear here after you use balance payment</p>
         </div>
       {% endif %}
     </div>

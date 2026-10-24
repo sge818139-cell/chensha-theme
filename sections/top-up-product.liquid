@@ -12,9 +12,9 @@
 
     <!-- 左侧：标题和说明 -->
     <div class="topup-left">
-      <div class="topup-eyebrow">CHENSHA · 储值钱包</div>
-      <h1 class="topup-title">{{ section.settings.title | default: '账户充值 · Account Top Up' }}</h1>
-      <p class="topup-subtitle">{{ section.settings.subtitle | default: '充值即享专属赠送，余额可用于全站任意产品购买' }}</p>
+      <div class="topup-eyebrow">CHENSHA · Wallet</div>
+      <h1 class="topup-title">{{ section.settings.title | default: 'Account Top Up' }}</h1>
+      <p class="topup-subtitle">{{ section.settings.subtitle | default: 'Top up and enjoy exclusive bonuses. Your balance can be used for any product on our site.' }}</p>
 
       <!-- 充值送规则展示 -->
       <div class="topup-bonus-rules">
@@ -22,31 +22,31 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/>
           </svg>
-          <span>充值专属礼遇 · Exclusive Bonus</span>
+          <span>Exclusive Bonus Rewards</span>
         </div>
         <div class="bonus-rules-list">
           <div class="bonus-rule-item">
-            <span class="bonus-amount">充$100</span>
+            <span class="bonus-amount">Top up $100</span>
             <span class="bonus-arrow">→</span>
-            <span class="bonus-gift">送$10</span>
+            <span class="bonus-gift">Get $10 free</span>
           </div>
           <div class="bonus-rule-item">
-            <span class="bonus-amount">充$500</span>
+            <span class="bonus-amount">Top up $500</span>
             <span class="bonus-arrow">→</span>
-            <span class="bonus-gift">送$70</span>
+            <span class="bonus-gift">Get $70 free</span>
           </div>
           <div class="bonus-rule-item">
-            <span class="bonus-amount">充$1000</span>
+            <span class="bonus-amount">Top up $1000</span>
             <span class="bonus-arrow">→</span>
-            <span class="bonus-gift">送$200</span>
+            <span class="bonus-gift">Get $200 free</span>
           </div>
           <div class="bonus-rule-item highlight">
-            <span class="bonus-amount">充$5000</span>
+            <span class="bonus-amount">Top up $5000</span>
             <span class="bonus-arrow">→</span>
-            <span class="bonus-gift">送$1200</span>
+            <span class="bonus-gift">Get $1200 free</span>
           </div>
         </div>
-        <p class="bonus-rules-note">* 按单笔充值金额达到的最高档位赠送，不叠加。充值金额实时到账账户余额。</p>
+        <p class="bonus-rules-note">* Bonus is based on the highest tier reached per single top-up, non-cumulative. Balance is credited instantly.</p>
       </div>
     </div>
 
@@ -56,7 +56,7 @@
 
         <!-- 预设面额选择 -->
         <div class="topup-field">
-          <label class="topup-label">选择面额 · Select Amount</label>
+          <label class="topup-label">Select Amount</label>
           <div class="topup-amount-buttons">
             <button type="button" class="amount-btn" data-amount="50">$50</button>
             <button type="button" class="amount-btn" data-amount="100">$100</button>
@@ -68,41 +68,41 @@
 
         <!-- 自定义金额 -->
         <div class="topup-field">
-          <label class="topup-label">自定义金额 · Custom Amount</label>
+          <label class="topup-label">Custom Amount</label>
           <div class="topup-custom-input-wrapper">
             <span class="currency-symbol">$</span>
-            <input type="number" id="customAmount" class="topup-custom-input" placeholder="输入任意金额" min="10" step="0.01">
+            <input type="number" id="customAmount" class="topup-custom-input" placeholder="Enter any amount" min="10" step="0.01">
           </div>
-          <p class="topup-hint">最低充值金额 $10</p>
+          <p class="topup-hint">Minimum top-up $10</p>
         </div>
 
         <!-- 实时计算结果 -->
         <div class="topup-calculation">
           <div class="calc-row">
-            <span class="calc-label">充值金额</span>
+            <span class="calc-label">Top-up Amount</span>
             <span class="calc-value" id="calcTopupAmount">$0.00</span>
           </div>
           <div class="calc-row bonus-row">
             <span class="calc-label">
-              赠送金额
-              <span class="bonus-tag" id="bonusTag" style="display:none;">已享赠送</span>
+              Bonus Amount
+              <span class="bonus-tag" id="bonusTag" style="display:none;">Bonus Applied</span>
             </span>
             <span class="calc-value bonus-value" id="calcBonusAmount">+$0.00</span>
           </div>
           <div class="calc-divider"></div>
           <div class="calc-row total-row">
-            <span class="calc-label">实际到账余额</span>
+            <span class="calc-label">Total Credit</span>
             <span class="calc-value total-value" id="calcTotalCredit">$0.00</span>
           </div>
           <div class="next-bonus-hint" id="nextBonusHint" style="display:none;">
-            <span>再充 <strong id="nextBonusDiff">$0</strong> 即可享 <strong id="nextBonusGift">$0</strong> 赠送</span>
+            <span>Top up <strong id="nextBonusDiff">$0</strong> more to get <strong id="nextBonusGift">$0</strong> bonus</span>
           </div>
         </div>
 
         <!-- 立即充值按钮 -->
         <button type="button" class="topup-submit-btn" id="topupSubmitBtn" disabled>
-          <span class="btn-text">立即充值 · Top Up Now</span>
-          <span class="btn-loading" style="display:none;">处理中...</span>
+          <span class="btn-text">Top Up Now</span>
+          <span class="btn-loading" style="display:none;">Processing...</span>
         </button>
 
         <p class="topup-security-note">
@@ -110,7 +110,7 @@
             <rect x="3" y="11" width="18" height="11" rx="2"/>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
-          安全加密支付 · 充值金额即时到账
+          Secure encrypted payment · Instant credit
         </p>
 
       </div>
@@ -129,34 +129,34 @@
 
 {% schema %}
 {
-  "name": "储值充值产品",
+  "name": "Top Up Product",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "标题",
-      "default": "账户充值 · Account Top Up"
+      "label": "Title",
+      "default": "Account Top Up"
     },
     {
       "type": "textarea",
       "id": "subtitle",
-      "label": "副标题",
-      "default": "充值即享专属赠送，余额可用于全站任意产品购买"
+      "label": "Subtitle",
+      "default": "Top up and enjoy exclusive bonuses. Your balance can be used for any product on our site."
     },
     {
       "type": "header",
-      "content": "面额设置"
+      "content": "Amount Settings"
     },
     {
       "type": "number",
       "id": "min_amount",
-      "label": "最低充值金额",
+      "label": "Minimum Top-up Amount",
       "default": 10
     }
   ],
   "presets": [
     {
-      "name": "储值充值产品"
+      "name": "Top Up Product"
     }
   ]
 }
@@ -630,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 提交充值
   submitBtn.addEventListener('click', function() {
     if (selectedAmount <= 0) {
-      alert('请选择或输入充值金额');
+      alert('Please select or enter a top-up amount');
       return;
     }
 
