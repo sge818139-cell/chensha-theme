@@ -653,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
     this.disabled = true;
 
     if (isCustomAmount) {
-      // 自定义金额：先加购基础变体，然后AJAX修改价格
+      // 自定义金额：直接在加购的时候设置价格
       const baseVariantId = window.TOPUP_VARIANTS[50];
       fetch('/cart/add.js', {
         method: 'POST',
@@ -664,30 +664,12 @@ document.addEventListener('DOMContentLoaded', function() {
           items: [{
             id: baseVariantId,
             quantity: 1,
+            price: Math.round(selectedAmount * 100), // 直接设置价格（单位：分）
             properties: {
               'Custom Amount': selectedAmount.toFixed(2)
             }
           }]
         })
-      })
-      .then(res => res.json())
-      .then(cart => {
-        // 获取购物车最后一个行项目
-        return fetch('/cart.js').then(res => res.json()).then(cartData => {
-          const lastItem = cartData.items[cartData.items.length - 1];
-          // 修改价格为自定义金额（Shopify价格单位是分）
-          return fetch('/cart/change.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: lastItem.key,
-              quantity: 1,
-              price: Math.round(selectedAmount * 100)
-            })
-          });
-        });
       })
       .then(() => {
         window.location.href = '/cart';
