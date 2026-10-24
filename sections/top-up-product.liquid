@@ -121,11 +121,19 @@
 
 <!-- 隐藏的产品表单（用于添加到购物车） -->
 {% form 'product', product, id: 'topup-product-form', class: 'topup-hidden-form' %}
-  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="topupVariantId">
   <input type="hidden" name="quantity" value="1" id="topupQuantity">
-  <input type="hidden" name="properties[Custom Amount]" id="topupCustomAmount" value="">
-  <input type="hidden" name="properties[充值金额]" id="topupCustomAmountCN" value="">
 {% endform %}
+
+<!-- 变体映射（面额 → 变体ID） -->
+<script>
+  window.TOPUP_VARIANTS = {
+    {% for variant in product.variants %}
+      {% assign amount = variant.options[0] | remove: '$' | plus: 0 %}
+      "{{ amount }}": {{ variant.id }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
 
 {% schema %}
 {
@@ -551,9 +559,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextBonusDiff = document.getElementById('nextBonusDiff');
   const nextBonusGift = document.getElementById('nextBonusGift');
   const submitBtn = document.getElementById('topupSubmitBtn');
-  const topupCustomAmount = document.getElementById('topupCustomAmount');
-  const topupCustomAmountCN = document.getElementById('topupCustomAmountCN');
+  const topupVariantId = document.getElementById('topupVariantId');
   const topupProductForm = document.getElementById('topup-product-form');
+
+  // 隐藏自定义金额输入（暂时只支持预设面额）
+  if (customAmountInput) {
+    customAmountInput.closest('.topup-field').style.display = 'none';
+  }
 
   let selectedAmount = 0;
 
@@ -593,14 +605,11 @@ document.addEventListener('DOMContentLoaded', function() {
       nextBonusHint.style.display = 'none';
     }
 
-    // 更新隐藏表单的自定义金额属性
-    if (amount > 0) {
-      topupCustomAmount.value = amount.toFixed(2);
-      topupCustomAmountCN.value = amount.toFixed(2);
+    // 更新隐藏表单的变体ID
+    if (amount > 0 && window.TOPUP_VARIANTS[amount]) {
+      topupVariantId.value = window.TOPUP_VARIANTS[amount];
       submitBtn.disabled = false;
     } else {
-      topupCustomAmount.value = '';
-      topupCustomAmountCN.value = '';
       submitBtn.disabled = true;
     }
   }
