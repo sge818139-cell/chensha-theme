@@ -49,6 +49,9 @@
             <span class="cart-subtotal-label">Subtotal</span>
             <span class="cart-subtotal-price">{{ cart.total_price | money }}</span>
           </div>
+          
+          {% render 'cart-balance-payment' %}
+          
           <p class="cart-shipping-note">Shipping & taxes calculated at checkout.</p>
           <button type="submit" name="checkout" class="btn btn-gold btn-checkout">Check Out</button>
           <a href="{{ routes.all_products_collection_url }}" class="continue-shopping-link">

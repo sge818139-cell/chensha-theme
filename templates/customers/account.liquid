@@ -1,0 +1,106 @@
+{% layout 'theme' %}
+
+<section class="account-section">
+  <div class="container">
+    <h1 class="account-title">My Account</h1>
+    
+    {% render 'account-balance-panel' %}
+    
+    <div class="account-orders">
+      <h2>Order History</h2>
+      {% paginate customer.orders by 10 %}
+        {% if customer.orders.size > 0 %}
+          <div class="order-list">
+            {% for order in customer.orders %}
+              <div class="order-item">
+                <div class="order-number">Order #{{ order.order_number }}</div>
+                <div class="order-date">{{ order.created_at | date: '%B %d, %Y' }}</div>
+                <div class="order-total">{{ order.total_price | money }}</div>
+                <div class="order-status">{{ order.financial_status_label }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="no-orders">You haven't placed any orders yet.</p>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+    
+    <div class="account-links">
+      <a href="{{ routes.account_logout_url }}" class="logout-link">Log Out</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.account-section {
+  padding: 100px 0;
+  min-height: 70vh;
+  background: #FAF8F4;
+}
+
+.account-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: #2A1F1A;
+  margin-bottom: 60px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.account-orders {
+  margin-top: 60px;
+}
+
+.account-orders h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #2A1F1A;
+  margin-bottom: 30px;
+}
+
+.order-list {
+  border-top: 1px solid #E8E0D5;
+}
+
+.order-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px 100px;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #E8E0D5;
+  font-size: 14px;
+  color: #5A4A42;
+}
+
+.no-orders {
+  color: #8A7A72;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.account-links {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.logout-link {
+  color: #9E2B25;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.logout-link:hover {
+  opacity: 0.7;
+}
+</style>
