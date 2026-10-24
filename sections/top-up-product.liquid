@@ -562,6 +562,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const topupVariantId = document.getElementById('topupVariantId');
   const topupProductForm = document.getElementById('topup-product-form');
 
+  // 隐藏自定义金额输入（Shopify不支持前端修改价格，暂时只支持预设面额）
+  if (customAmountInput) {
+    customAmountInput.closest('.topup-field').style.display = 'none';
+  }
+
   let selectedAmount = 0;
   let isCustomAmount = false;
 
