@@ -1,0 +1,102 @@
+{% layout 'theme' %}
+
+<section class="balance-page-section">
+  <div class="container">
+    
+    {% if customer %}
+      <!-- 已登录：显示余额面板 -->
+      {% render 'account-balance-panel' %}
+      
+      <div class="balance-page-links">
+        <a href="/products/account-top-up" class="balance-page-link">Top Up Now</a>
+        <a href="/account" class="balance-page-link secondary">Back to My Account</a>
+      </div>
+    {% else %}
+      <!-- 未登录：显示登录提示 -->
+      <div class="balance-login-notice">
+        <h1>Please Login</h1>
+        <p>You need to login to view your balance.</p>
+        <a href="/account/login?return_url={{ request.path }}" class="login-btn">Login</a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+.balance-page-section {
+  padding: 80px 0;
+  min-height: 70vh;
+  background: #FAF8F4;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.balance-login-notice {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.balance-login-notice h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #2A1F1A;
+  margin-bottom: 16px;
+}
+
+.balance-login-notice p {
+  font-size: 16px;
+  color: #5A4A42;
+  margin-bottom: 32px;
+}
+
+.login-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  color: white;
+  padding: 14px 40px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+}
+
+.balance-page-links {
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.balance-page-link {
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.balance-page-link:first-child {
+  background: linear-gradient(135deg, #9E2B25 0%, #7A1F1A 100%);
+  color: white;
+}
+
+.balance-page-link.secondary {
+  background: white;
+  color: #5A4A42;
+  border: 1px solid #E8E0D5;
+}
+
+.balance-page-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+</style>
