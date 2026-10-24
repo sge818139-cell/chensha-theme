@@ -562,12 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const topupVariantId = document.getElementById('topupVariantId');
   const topupProductForm = document.getElementById('topup-product-form');
 
-  // 隐藏自定义金额输入（暂时只支持预设面额）
-  if (customAmountInput) {
-    customAmountInput.closest('.topup-field').style.display = 'none';
-  }
-
   let selectedAmount = 0;
+  let isCustomAmount = false;
 
   // 计算赠送金额
   function calculateBonus(amount) {
@@ -620,6 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
       amountBtns.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       customAmountInput.value = '';
+      isCustomAmount = false;
       const amount = parseFloat(this.dataset.amount);
       updateCalculation(amount);
     });
@@ -629,9 +626,11 @@ document.addEventListener('DOMContentLoaded', function() {
   customAmountInput.addEventListener('input', function() {
     amountBtns.forEach(b => b.classList.remove('active'));
     const amount = parseFloat(this.value);
-    if (!isNaN(amount) && amount > 0) {
+    if (!isNaN(amount) && amount >= 10) {
+      isCustomAmount = true;
       updateCalculation(amount);
     } else {
+      isCustomAmount = false;
       updateCalculation(0);
     }
   });
@@ -649,9 +648,58 @@ document.addEventListener('DOMContentLoaded', function() {
     btnLoading.style.display = 'inline';
     this.disabled = true;
 
-    // 提交隐藏的产品表单（添加到购物车）
-    if (topupProductForm) {
-      topupProductForm.submit();
+    if (isCustomAmount) {
+      // 自定义金额：先加购基础变体，然后AJAX修改价格
+      const baseVariantId = window.TOPUP_VARIANTS[50];
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: [{
+            id: baseVariantId,
+            quantity: 1,
+            properties: {
+              'Custom Amount': selectedAmount.toFixed(2)
+            }
+          }]
+        })
+      })
+      .then(res => res.json())
+      .then(cart => {
+        // 获取购物车最后一个行项目
+        return fetch('/cart.js').then(res => res.json()).then(cartData => {
+          const lastItem = cartData.items[cartData.items.length - 1];
+          // 修改价格为自定义金额（Shopify价格单位是分）
+          return fetch('/cart/change.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: lastItem.key,
+              quantity: 1,
+              price: Math.round(selectedAmount * 100)
+            })
+          });
+        });
+      })
+      .then(() => {
+        window.location.href = '/cart';
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        alert('Something went wrong. Please try again.');
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        this.disabled = false;
+      });
+    } else {
+      // 预设面额：直接提交表单
+      if (topupProductForm) {
+        topupProductForm.submit();
+      }
     }
   });
 
