@@ -602,8 +602,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 更新隐藏表单的变体ID
-    if (amount > 0 && window.TOPUP_VARIANTS[amount]) {
-      topupVariantId.value = window.TOPUP_VARIANTS[amount];
+    if (amount > 0) {
+      if (!isCustomAmount && window.TOPUP_VARIANTS[amount]) {
+        // 预设面额：设置对应变体ID
+        topupVariantId.value = window.TOPUP_VARIANTS[amount];
+      }
+      // 不管是预设还是自定义，只要金额>0就启用按钮
       submitBtn.disabled = false;
     } else {
       submitBtn.disabled = true;
